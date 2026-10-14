@@ -4,7 +4,8 @@ Spike index. Detailed state lives in each spike's `.todo.md`; this file stays sc
 **GitHub Issues and the project board are the live work tracker for humans.** This file indexes the repo's spikes — bounded chunks of work that carry their own docs. See [AGENTS.md](AGENTS.md) for how the two relate.
 
 ## Active Spikes
-None yet. The five below are proposed and unclaimed.
+- Policies Migration (slug `policies-migration`, opened 2026-10-14): migrated current guidance and local routing to `docs/policies/`; verification and checkpoint state in [reasoning](docs/active-spikes/policies-migration.md) and [tasks](docs/active-spikes/policies-migration.todo.md). Closure pending.
+The proposed product investigations below remain unclaimed.
 
 ## Open Questions — Not Yet Spikes
 These need answering. Most will become issues; the ones with real work behind them will get a spike doc pair in `docs/active-spikes/`.
@@ -23,8 +24,8 @@ These need answering. Most will become issues; the ones with real work behind th
 - **Team membership** is not final until the Sept 4 course deadline.
 - **Compute budget** — roughly $100 was indicated as possibly available. Not confirmed.
 
-## Decisions Made
-See `docs/decisions/`. In short: the model stays swappable, and **the agent proposes rather than silently mutating shared knowledge.**
+## Current Policies
+See `docs/policies/`. In short: the model stays swappable, and **the agent proposes rather than silently mutating shared knowledge.**
 
 ## Course Milestones
 - **Fri Sept 4, 1:00pm** — team formation and initial idea submission

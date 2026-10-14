@@ -23,7 +23,7 @@ Current local skills: `run-project-spike`, `commit-work`, `triage-project-misc`,
 | Path | What belongs there |
 |---|---|
 | `docs/active-spikes/` | Current spike work — a concept doc and a `.todo.md` per spike |
-| `docs/decisions/` | Durable architecture decisions, numbered `0001-title.md` |
+| `docs/policies/` | Current rules, defaults, procedures, and useful rationale, numbered `0001-title.md` |
 | `docs/scratch/` | Rough thinking, references, early notes. Not authoritative |
 | `docs/archive/` | Closed or superseded spikes. History, not current rules |
 | `TODO.md` | The spike index and coordination map. Keep it scannable |
@@ -53,7 +53,7 @@ An epic spans one or more spikes over time. **Not every issue has a spike** — 
 
 Archived spikes are deliberately kept rather than deleted: they are how a future agent gets up to speed on what was already tried.
 
-When an architecture question gets settled, write it into `docs/decisions/` so it survives the conversation that produced it.
+When an approach becomes durable project guidance, create or update its policy in `docs/policies/`. Policies describe current rules, defaults, procedures, exceptions, and useful rationale. Revise them directly; Git preserves their evolution. Keep development chronology and abandoned alternatives in Git or archived spike notes rather than accumulating immutable ADRs. No fixed Context / Decision / Consequences format is required.
 
 ## Working With The Team's Code
 - **Do not force-push shared branches.** Do not rewrite history that others may have pulled.

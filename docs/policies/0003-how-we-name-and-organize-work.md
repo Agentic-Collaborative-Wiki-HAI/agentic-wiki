@@ -1,16 +1,5 @@
 # 0003 How We Name And Organize Work
-## Context
-This repo runs two systems that both track work, and without a stated boundary they compete.
-
-**GitHub issues and the project board** are how people coordinate — who owns what, what is open, what is blocked. Visible without cloning anything.
-
-**Spike docs in `docs/active-spikes/`** are how an agent keeps track of work in progress. A concept doc holds why the work exists and what was decided; a `.todo.md` holds granular state. They are far more detailed than an issue and are read mostly by agents, not people.
-
-Both contain things called "tasks." Deciding which is authoritative, and at what resolution, is the actual question — the naming problem follows from it.
-
-There is also a trap in the word *spike*. In XP it means a timeboxed throwaway investigation that returns an answer. **That is not what it means here**, and an earlier draft of this repo's docs defined it that way, which was wrong.
-
-## Decision
+## Current Approach
 **Four terms, at different resolutions.**
 
 **Epic** — a GitHub issue type. A durable topic that accumulates work over time and stays open. *Design the interface.* An epic is a thin organizing shell; it has no natural end and may sit open while children close beneath it.
@@ -27,7 +16,10 @@ There is also a trap in the word *spike*. In XP it means a timeboxed throwaway i
 
 **Not every issue has a spike.** Design and research work performed in Figma or elsewhere is tracked here for visibility and co-location, with no repo docs behind it at all.
 
-## Consequences
+## Rationale
+GitHub issues and the project board coordinate human ownership and visible work. Spike conceptual docs and `.todo.md` files preserve agent reasoning and granular implementation state. They serve different readers at different resolutions. Here a spike means a bounded body of real work, rather than an XP-style throwaway investigation; clear vocabulary prevents the two systems from competing.
+
+## Operating Notes
 **Easier:** no argument about whether something is a spike or a task, because they are not alternatives — they are different resolutions. No duplicated task tracking. An agent reading a fresh clone finds the concept doc; a person reading the board finds the issue.
 
 **Harder:** two places to look when reconstructing what happened. Mitigated by issues linking their spike doc and spike docs recording their issue number.

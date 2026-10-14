@@ -4,9 +4,6 @@ description: "Create or materially revise Codex/Claude skills with concise trigg
 ---
 
 # Write Skills
-## Local Documentation Convention
-This repository retains `docs/decisions/` for durable guidance. Update current rules and procedures there; this skill refresh does not rename the folder or require immutable ADRs.
-
 ## Purpose
 Use this skill when creating or materially revising reusable agent skills. Keep the process light: skills are durable workflow guidance, not ceremony.
 
@@ -88,7 +85,7 @@ For project workflow skills, coordinate with the shared taxonomy:
 docs/pinned-issues.md        unresolved things intentionally preserved for later
 docs/scratch/future-ideas.md conceptual someday material
 docs/scratch/misc.md         raw observed friction / issue intake
-docs/decisions/               current durable rules, defaults, and procedures
+docs/policies/               current durable rules, defaults, and procedures
 docs/active-spikes/          active scoped work
 ```
 
