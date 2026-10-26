@@ -29,4 +29,4 @@ GitHub issues and the project board coordinate human ownership and visible work.
 **Out of scope:** unifying the two systems into one. They serve different readers at different resolutions, and collapsing them would make one of them worse.
 
 ## Links
-- [AGENTS.md](../../AGENTS.md) · [TODO.md](../../TODO.md) · [skills/run-project-spike/SKILL.md](../../skills/run-project-spike/SKILL.md)
+- [AGENTS.md](../../AGENTS.md) · [TODO.md](../../TODO.md) · [project-workflows/run-project-spike/SKILL.md](../../project-workflows/run-project-spike/SKILL.md)

@@ -67,7 +67,8 @@ docs/
   policies/        current project guidance, numbered
   scratch/         rough thinking, not authoritative
   archive/         closed or superseded spikes
-skills/            agent workflows this repo carries
+project-workflows/ adopted project workflow collection
+skills/            independent skill-authoring guidance
 TODO.md            spike index and coordination map
 AGENTS.md          instructions for AI agents working in this repo
 ```
@@ -87,3 +88,8 @@ A few words mean specific things here — **epic**, **spike**, **task** — and 
 ## License
 
 [AGPL-3.0](LICENSE). Chosen deliberately: if this becomes something people run as a service, the improvements should come back.
+
+## Project Workflows adoption
+Use the pinned `project-workflows/` collection on `project/agentic-wiki` with [AGENTS.md](AGENTS.md) as project authority. [Reconciliation record](docs/active-spikes/project-workflows-adoption.md) · [validation and remaining steps](docs/active-spikes/project-workflows-adoption.todo.md). Future updates follow the [adopted update procedure](project-workflows/update-project-workflows/SKILL.md).
+
+This rollout is local only pending security/privacy review. After the child commit is separately published, `git submodule update --init project-workflows` retrieves the recorded pin; the public URL alone does not make the current local commit available. The existing TODO/workshop work remains uncommitted and untouched; this README links the adoption until the index owner can reconcile that entry.

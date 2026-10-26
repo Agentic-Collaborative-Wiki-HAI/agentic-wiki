@@ -15,9 +15,9 @@ This repo is public under AGPL-3.0. Everything committed here is visible to anyo
 - Do not commit unreleased course material, other students' work, or anything from the instructor that was not shared publicly.
 
 ## Skills Are Repo Authority
-`skills/` holds workflows this repo carries so it is self-contained after clone. **A repo-local skill overrides a global skill of the same name.** Global skills are fallback seed material.
+The complete Project Workflows collection is adopted at `project-workflows/`. Read [workflow.toml](project-workflows/workflow.toml), then load `project-workflows/<skill-name>/SKILL.md` before global seeds. The child uses `project/agentic-wiki`; this repository keeps its own branch and exact gitlink. Project rules here override shared defaults, and actual project documents stay outside the collection.
 
-Current local skills: `run-project-spike`, `commit-work`, `triage-project-misc`, `pin-issue`, `write-skills`, `draft-approval-slate`.
+The seven procedures are run-project-spike, commit-work, triage-project-misc, capture-for-later, draft-approval-slate, setup-project-workflows, and update-project-workflows. The independent `skills/write-skills/` procedure and its client metadata stay local. Existing notes and deferred work are preserved. Use capture-for-later for new small individual scratch notes; update related existing material without bulk migration or creating tasks.
 
 ## Where Things Go
 | Path | What belongs there |
@@ -27,7 +27,8 @@ Current local skills: `run-project-spike`, `commit-work`, `triage-project-misc`,
 | `docs/scratch/` | Rough thinking, references, early notes. Not authoritative |
 | `docs/archive/` | Closed or superseded spikes. History, not current rules |
 | `TODO.md` | The spike index and coordination map. Keep it scannable |
-| `skills/` | Agent workflows |
+| `project-workflows/` | Adopted project procedures and configuration |
+| `skills/` | Independent skill-authoring guidance |
 
 **Do not create a `README.md` inside `docs/` or its subfolders.** `TODO.md` is the index; `ls` handles the rest.
 
@@ -59,7 +60,7 @@ When an approach becomes durable project guidance, create or update its policy i
 - **Do not force-push shared branches.** Do not rewrite history that others may have pulled.
 - **Do not commit on someone's behalf** or amend their commits.
 - If the worktree is dirty with changes you did not make, **stop and ask.** Someone else may be mid-task.
-- Commit by explicit pathspec. Never `git add -A` in a shared repo — see `skills/commit-work/`.
+- Commit by explicit pathspec. Never `git add -A` in a shared repo — see `project-workflows/commit-work/`.
 - **Do not add `Co-Authored-By:` trailers.**
 
 ## Scope Discipline
