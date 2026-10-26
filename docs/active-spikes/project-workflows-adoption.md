@@ -11,3 +11,7 @@ Unrelated TODO/ignore edits and four untracked workshop documents are preserved 
 
 ## Verification and limits
 Check frontmatter/resources, TOML, relative links, shared ancestry, intended metadata differences, symlink targets, unchanged unrelated work, and exact child/index/committed pins. No runtime build is needed. No publication, client installation, or external service operation is authorized. Local Git history and a verified recovery bundle preserve the child; remote availability, security/privacy review and fresh-client validation remain separate.
+
+## Shared rollout follow-up
+Reconciled shared main `8f6bdcf` locally, preserving this project's adaptation. The follow-up clarifies separately authorized list migration, incomplete parent scaffolds, and private local recovery. Publication remains on hold; the public source URL does not make this new child pin available remotely.
+The bounded legacy-register check found no remaining pinned-issues or future-ideas list in this project's documentation; existing individual notes and deferred work were preserved.
