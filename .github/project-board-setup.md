@@ -43,7 +43,7 @@ If you are not an org owner, the org must approve the token before it works.
 Save it as a repository secret named **`ACTIONS_TOKEN`**:
 
 ```sh
-gh secret set ACTIONS_TOKEN --repo Agentic-Collaborative-Wiki-HAI/mono-repo
+gh secret set ACTIONS_TOKEN --repo Agentic-Collaborative-Wiki-HAI/agentic-wiki
 ```
 
 ## 2. Find the board's IDs
@@ -72,7 +72,7 @@ gh api graphql -f query='
 
 ## 3. Store them as repository variables
 ```sh
-R=Agentic-Collaborative-Wiki-HAI/mono-repo
+R=Agentic-Collaborative-Wiki-HAI/agentic-wiki
 gh variable set PROJECT_ID           --repo $R --body "PVT_..."
 gh variable set STATUS_FIELD_ID      --repo $R --body "PVTSSF_..."
 gh variable set BACKLOG_OPTION_ID    --repo $R --body "..."
