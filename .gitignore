@@ -216,3 +216,6 @@ secrets/*
 scratch/
 tmp/
 *.tmp
+
+# Private working references; never publish meeting or research source material.
+/reference-material/

@@ -4,6 +4,8 @@ Spike index. Detailed state lives in each spike's `.todo.md`; this file stays sc
 **GitHub Issues and the project board are the live work tracker for humans.** This file indexes the repo's spikes — bounded chunks of work that carry their own docs. See [AGENTS.md](AGENTS.md) for how the two relate.
 
 ## Active Spikes
+- Workshop UI System (slug `workshop-ui-system`, opened 2026-10-22): shared foundations and components integrated across 37 current screens; ready for human QA. Source assets live on Prototype Custom Design System page; [reasoning](docs/active-spikes/workshop-ui-system.md) and [tasks](docs/active-spikes/workshop-ui-system.todo.md).
+- Wireframe Workshop (slug `wireframe-workshop`, opened 2026-10-21): consolidation implemented; current F1/F4/F8 routes and grouped historical explorations are ready for human QA. Open decisions and review routes are in [reasoning](docs/active-spikes/wireframe-workshop.md) and [tasks](docs/active-spikes/wireframe-workshop.todo.md).
 - Policies Migration (slug `policies-migration`, opened 2026-10-14): migrated current guidance and local routing to `docs/policies/`; verification and checkpoint state in [reasoning](docs/active-spikes/policies-migration.md) and [tasks](docs/active-spikes/policies-migration.todo.md). Closure pending.
 The proposed product investigations below remain unclaimed.
 
