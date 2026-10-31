@@ -1,100 +1,59 @@
 # Agentic Collaborative Wiki
-
-A shared knowledge base where an AI agent is a participant rather than a private assistant — and where everything it proposes goes through human review before it becomes part of the record.
+A collaborative knowledge workspace for small academic and research teams, exploring how an AI agent can help organize and maintain shared knowledge while people retain control over what becomes authoritative.
 
 Term project for **INF 385T.13 Human-AI Interaction**, UT Austin iSchool, Fall 2026.
 
-## The problem
+**Current phase:** interaction design and evaluation, alongside selective engineering experiments. The main user-testing artifact is a Figma wireframe/prototype. This repository contains project guidance, design records and workflow tooling; it does not contain a runnable wiki application.
 
-Agentic knowledge tools are getting good, but they are almost all **personal**. They assume you know Markdown, run Obsidian or VS Code, are comfortable in a terminal, and can drive a coding agent against local files. That rules out most people.
+[Figma wireframes](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd/Agentic-Collaborative-Wiki) · [User flows and scenarios](https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085) · [Current issues](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues) · [Spike index](TODO.md)
 
-Meanwhile, mature wikis solved something those tools never attempted: **the social layer.** Revision history. Rollback. Proposed and contested edits. Discussion attached to a change. Identifiable contributors. Ways to handle a bad edit.
+## The question
+> How can people delegate knowledge work to an agent in a shared workspace while understanding its evidence, reviewing its proposed changes, and retaining an accountable history?
 
-Put those together and you get the question this project is actually about:
+The design connects source material, documentation and conversation. A lab member might upload an orientation recording, consult its transcript, ask a question about an instruction, or request a correction. The interface needs to make the source and scope of an agent's answer or proposed edit clear enough for someone else to judge it.
 
-> **What happens when an AI agent becomes an actor inside a shared, governed knowledge system rather than a private assistant working for one person?**
+We are investigating whether this review process provides useful oversight without making review harder than doing the work manually. The wireframes express design hypotheses; their existence does not establish that the interactions work well for users.
 
-Not "a chatbot next to a wiki." The interesting part is governance — who reviews what the agent proposes, how they see what would change and why, and how that decision enters the record.
+## Project scope and deliverables
+The research/design and technical work proceed in parallel. User testing does not depend on selecting a platform or completing an integrated application.
 
-## Who it's for
+- **Research:** understand existing knowledge-management practices, delegation boundaries and trust concerns through generative research and competitive analysis, then evaluate the proposed interactions with users.
+- **Interaction design:** develop connected, user-testable flows for evidence intake, knowledge finding, human notes, proposed changes and review. Revise the design from evaluation findings; a second evaluation round is a stretch goal.
+- **Technical exploration:** run bounded capability experiments and describe the system architecture and tradeoffs needed to demonstrate the agentic approach. A full production application is not a course deliverable.
+- **Final presentation:** bring together the problem, research, design, evaluation findings and the engineering evidence actually obtained, with remaining uncertainties stated clearly.
 
-**Small academic and research teams**, to start. Collaboration around accumulated knowledge is native to how they work, they are reachable for evaluation, and it keeps us honest about scope. We are not trying to solve collaborative knowledge management in general.
+The [design epic](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/4), [evaluation epic](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/5), [technical epic](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/3) and [final presentation task](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/29) carry the current scope and ownership.
 
-## What we're building first
+## What the wireframes explore
+Initial flow work covers two complementary groups:
 
-The smallest thing that demonstrates the idea:
+| Flow group | Interactions |
+| --- | --- |
+| [Evidence capture, proposal review and correction — F1/F4/F8](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/32) | Add source material, inspect grounded suggestions, and correct outdated or contradictory instructions through human review. |
+| [Knowledge finding, human notes and maintenance — F2/F5/F9](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/33) | Find and question shared knowledge, add human context alongside evidence, and surface maintenance concerns with proposed repairs. |
 
-> A nontechnical member of a shared workspace asks an agent to work with shared knowledge. The agent reads and searches the corpus and produces a **transparent proposed change**. Another human can understand and review that proposal before it becomes part of the shared record.
+Supporting views explore recordings and transcripts, citations and margin notes, anchored comment threads, editing and tracked suggestions, chat, and revision history. Uploads, transcription, messages and review outcomes in these views are simulated prototype states, not implemented services. A broad set of screens is not a commitment to implement every depicted feature this semester.
 
-The loop:
+The central review interaction is:
 
-1. Agent reads and searches the shared corpus
-2. Agent creates a **proposed** edit — never a silent one
-3. Humans see what would change, and why
-4. Humans accept, reject, or revise
-5. Only accepted changes become canonical
-6. The decision enters revision history
+1. A person requests work, or an agent surfaces a concern with supporting context.
+2. The agent presents a bounded proposed change and its rationale and sources.
+3. A person examines the change in context, discusses it and accepts, rejects or requests a revision.
+4. Accepted changes enter the shared record; the decision and associated discussion remain traceable.
 
-If that works well, the idea is demonstrated. Everything else is supporting infrastructure.
+Current follow-up work includes [wireframe QA](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35), [agent management and instruction scopes](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/34), [connecting maintenance into the wider experience](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/37), and a proposed [research-grounded Showroom](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/36). These are open work, not completed or validated behavior. The [first user-testing round](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/31) evaluates the initial wireframes.
 
-## Deliberately out of scope
+## Commitments and boundaries
+- **Human control over shared changes.** Agent-proposed changes to canonical shared knowledge require human review. Source/context, attribution and review outcomes must be inspectable. See [the review policy](docs/policies/0001-agent-proposes-humans-dispose.md).
+- **Model independence.** Keep model access swappable and evaluate capability, cost and integration tradeoffs rather than binding the project to one provider. See [the model policy](docs/policies/0002-keep-the-model-swappable.md).
+- **Evidence before implementation claims.** Distinguish a drawn interaction, a capability test and a working integrated system. Candidate tests are not test results.
+- **Bounded technical scope.** Real-time co-editing/CRDTs, multi-agent orchestration, a full permissions system, federation, enterprise retrieval infrastructure and local model hosting for cost savings are outside the current implementation scope. Agent-initiated maintenance is a design exploration of concerns and human-reviewed repairs; it does not establish an unattended operating cadence or automatic-write policy.
+- **Public-repository privacy.** Keep credentials, raw participant data and private research records out of this repository. Public design examples and summaries must be safe to share.
 
-Real-time multi-cursor collaboration · CRDTs · multi-agent orchestration · autonomous background agents · MediaWiki feature parity · elaborate permissions · federation · enterprise RAG infrastructure · local model hosting to save a few dollars.
+## Technical questions
+The [agent-stack investigation](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/9) remains open. Capability experiments may examine intake/classification, organization, retrieval, citation, bounded proposals, review and maintenance. The choice of a wiki substrate or custom interface serves a specific experiment; it is not an up-front gate for design or evaluation.
 
-This is a semester project. Scope discipline is the main risk.
-
-## Open architecture questions
-
-Nothing here is decided. These are the things the first spikes exist to answer.
-
-- **Extend an existing wiki, or build small from scratch?** Wiki.js is the leading candidate for the first path; MediaWiki has a richer AI/MCP ecosystem but a heavier architecture.
-- **Which model is good enough?** We want the *cheapest* model that reliably does the real tasks, not the most capable one. This is a benchmark question, not an opinion.
-- **What agent harness, if any?** A thin vendor-neutral tool-calling loop keeps models swappable.
-- **Where does it run**, and who owns the API keys and billing?
-
-## Design commitments
-
-Two things we are not planning to relitigate:
-
-- **The model stays swappable.** No architecting around a single vendor.
-- **The agent proposes; humans dispose.** Agent output creates reviewable proposals. It does not silently mutate shared knowledge. This is the whole point of the project.
-
-## Repository layout
-
-```text
-docs/
-  active-spikes/   current spike work — a concept doc plus a .todo.md each
-  policies/        current project guidance, numbered
-  scratch/         rough thinking, not authoritative
-  archive/         closed or superseded spikes
-project-workflows/ adopted project workflow collection
-wireframe-workflows/ adopted wireframe procedures and policies
-design-files.json   design file and page-owner mapping
-skills/            independent skill-authoring guidance
-TODO.md            spike index and coordination map
-AGENTS.md          instructions for AI agents working in this repo
-```
-
-## Getting started
-
-Nothing to run yet — the stack is not chosen. See [TODO.md](TODO.md) for open spikes and pick one that interests you.
-
-**If you are working with an AI agent in this repo, read [AGENTS.md](AGENTS.md) first.**
-
-## How we work
-
-**People pick up work rather than being assigned it.** Issues and the project board are the coordination surface; current project guidance lives in `docs/policies/`, revised directly while Git preserves its history.
-
-A few words mean specific things here — **epic**, **spike**, **task** — and they are defined in [docs/policies/0003](docs/policies/0003-how-we-name-and-organize-work.md). The short version: an epic is an open-ended topic, a spike is a bounded chunk of work with its own docs, and a plain issue is just a piece of work someone owns.
-
-## License
-
-[AGPL-3.0](LICENSE). Chosen deliberately: if this becomes something people run as a service, the improvements should come back.
-
-## Project Workflows adoption
-Use the pinned `project-workflows/` collection on `project/agentic-wiki` with [AGENTS.md](AGENTS.md) as project authority. [Reconciliation record](docs/active-spikes/project-workflows-adoption.md) · [validation and remaining steps](docs/active-spikes/project-workflows-adoption.todo.md). Future updates follow the [adopted update procedure](project-workflows/update-project-workflows/SKILL.md).
-
-Clone recursively to retrieve the project collections at their recorded revisions. [Publication status](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) records successful publication and fresh-clone verification. In an existing checkout, use `git submodule update --init --recursive` after checking for local work; do not reset dirty submodules or substitute remote tips for the recorded pins.
+Architecture work should explain the interface, knowledge storage, agent execution, retrieval/context, model access, provenance and review/history layers, including what was tested and what remains hypothetical. This repository does not yet define application installation, deployment or model-credential configuration.
 
 <h2><img src="assets/agent-hands-head-thumbs-up.png" height="32" alt="Robot head giving a thumbs-up"> Get set up with your agent</h2>
 
@@ -112,7 +71,7 @@ If I will work on wireframes, read design-files.json, docs/design/wireframe-conv
 - [Project Workflows](project-workflows/README.md): project planning, spike records, contribution coordination and scoped commits. The top-level collection governs this repository's work records.
 - [Wireframe Workflows](wireframe-workflows/README.md): design organization, exploration, components and prototype work, including [Figma/Penpot connection setup](wireframe-workflows/setup-wireframe-workflows/SKILL.md#3-connect-and-check-the-design-tool). Neither collection requires global installation for use in this repository.
 
-The [Figma file](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd) has individually owned Workshop/Scratchpad pages and a shared Archive. [Project conventions](docs/design/wireframe-conventions.md) and the [board lookup](docs/design/figma-board-map.json) explain the current organization. Erwin's existing work has not been migrated; adoption of the conventions on his pages is his choice.
+The [file manifest](design-files.json), [project conventions](docs/design/wireframe-conventions.md) and [board lookup](docs/design/figma-board-map.json) locate the design work. Workshops and Scratchpads preserve individual ownership; the Archive is shared. Aslan's work uses the recorded numbering conventions; Erwin's existing work retains its own conventions until he chooses to adopt them.
 
 For a fresh clone:
 ```sh
@@ -121,4 +80,29 @@ git clone --recurse-submodules https://github.com/Agentic-Collaborative-Wiki-HAI
 
 For an existing clean clone, initialize missing pinned dependencies with `git submodule update --init --recursive`; inspect dirty submodules before doing so. The parent pin selects the version. `.gitmodules` records `project/agentic-wiki` for future updates, but setup must not use `--remote` to substitute a newer revision.
 
-Global links are optional convenience, not the source of project authority. The installer supports Codex and Claude Code and refuses conflicts. Other agents can read the same `SKILL.md` files directly. See the [adoption tasks](docs/active-spikes/wireframe-workflow-adoption.todo.md) for publication and fresh-clone verification status before sending these instructions to teammates.
+Global links are optional convenience, not the source of project authority. The installer supports Codex and Claude Code and refuses conflicts. Other agents can read the same `SKILL.md` files directly. See the [adoption verification](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) for the published revisions and fresh-clone checks. Future collection updates follow the adopted [Project Workflows](project-workflows/update-project-workflows/SKILL.md) and [Wireframe Workflows](wireframe-workflows/update-wireframe-workflows/SKILL.md) update procedures.
+
+## How we work
+People select contributions through the team's issues and project board. Those are the live coordination surface; [TODO.md](TODO.md) indexes repository spikes rather than duplicating every task. Some older planning entries retain historical dates, so use the current issue for scheduling and ownership.
+
+A spike is a bounded piece of work with a concept document and task record. Current guidance lives in `docs/policies/`; exploration stays in scratch material and completed records remain in the archive. See [the work vocabulary](docs/policies/0003-how-we-name-and-organize-work.md) and [AGENTS.md](AGENTS.md) for contribution, privacy and commit rules. Read project instructions before editing, and preserve other contributors' work.
+
+## Repository layout
+```text
+docs/
+  active-spikes/      scoped work, reasoning and task records
+  policies/          current project guidance
+  design/            wireframe conventions and board lookup
+  scratch/           exploratory notes, not authoritative
+  archive/           historical work records
+assets/              README imagery
+project-workflows/   pinned project procedures and configuration
+wireframe-workflows/ pinned wireframe procedures and policies
+design-files.json    design files, page roles and ownership
+skills/              independent skill-authoring guidance
+TODO.md              repository spike index
+AGENTS.md            agent instructions and contribution rules
+```
+
+## License
+[AGPL-3.0](LICENSE).

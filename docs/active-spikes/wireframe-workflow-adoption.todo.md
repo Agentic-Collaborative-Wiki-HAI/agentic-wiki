@@ -10,6 +10,7 @@ attention: live
 - Prepared shared collection global-link installer and tested previews, repeat runs, conflict preflight and broken-link protection. Installed ten skills into each of the existing Codex and Claude Code discovery directories, with no conflicts.
 
 ## Verification and review
+- README overview reconciled against current GitHub design/evaluation/technical epics and follow-ups on 2026-10-30. Scope identifies the prototype as the evaluation artifact, selective engineering as supporting evidence, and substrate selection as a nonblocking investigation. Existing setup instructions and icon remain available. Historical TODO entries and older design notes were not treated as current scheduling authority.
 - Repository onboarding covers general contribution setup and introduces both workflow collections. Design contributors are guided through missing Figma/Penpot connection setup rather than stopped at a capability gap. Live teammate installation remains to be exercised.
 - Initial and post-renaming Workshop interaction checksum: `3808836145`, covering 3,989 nodes with reactions. No Workshop targets point to archived work.
 - Archive and Scratchpad orientation text visually checked. Archive is last; Erwin's pages and shared component sources were not mutated.

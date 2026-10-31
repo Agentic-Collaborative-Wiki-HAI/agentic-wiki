@@ -10,7 +10,7 @@ Existing frame IDs and prototype interactions are preserved. Historical product 
 ## Deliverables
 - [Project conventions](../design/wireframe-conventions.md), [board lookup](../design/figma-board-map.json) and [design file manifest](../../design-files.json).
 - Shared collection on `project/agentic-wiki`, with the exact parent pin controlling adoption.
-- README setup prompt that loads this project's instructions and both workflow collections before offering global discovery.
+- README project overview and repository-wide setup prompt, grounded in current team issues and distinguishing research, prototype work and selective engineering from a full application build. The prompt loads project instructions and both workflow collections before offering global discovery.
 - Preview-first global-link installer with conflict protection and offline tests, developed in the shared collection.
 
 ## Publication
