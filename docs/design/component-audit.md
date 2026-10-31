@@ -16,16 +16,16 @@ Of the 68 Aslan instances, 29 have resolution bindings. All 29 hide the associat
 The family description documents the direct compact Resolve thread action and separate acceptance/rejection semantics. The Closed variant is the current direct action; Menu is retained for compatibility. No thread behavior or shared visual source was changed.
 
 ## Component lifecycle descriptions
-Descriptions distinguish current Editing bar, Thread actions and Contextual endnotes from legacy Endnotes, Thread card, Message, Reply composer and Suggestion thread specimens. The legacy endnotes source remains because Archive uses it. Descriptions are maintenance guidance; no sources were renamed, deleted or visually altered.
+Descriptions distinguish current Editing bar, Thread actions and Contextual endnotes from legacy Endnotes, Thread card, Message, Reply composer and Suggestion thread specimens. The legacy endnotes source remains because Archive uses it. Descriptions are maintenance guidance. The three separately approved retirements are recorded below; shared visual foundations remain unchanged.
 
-## Retirement investigation
-The following three exact components have no detected instance consumers, prototype destinations, or component-property references in the file, including the populated pages’ hidden instance descendants. They are candidates for explicit retirement review, not deleted assets.
+## Approved retirements
+The user approved C1–C3. Their instance-consumer checks were repeated before deletion; the preceding full-file scan found no prototype or component-property references, including hidden descendants. All three are absent from the Component Library after deletion.
 
-| Component | Node |
-| --- | --- |
-| Workshop/Context notice | [580:441](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=580-441) |
-| Workshop/Discussion content | [580:443](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=580-443) |
-| Workshop/Thread entry | [664:4378](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=664-4378) |
+| Approval | Retired component | Former node ID |
+| --- | --- | --- |
+| C1 | Workshop/Context notice | `580:441` |
+| C2 | Workshop/Discussion content | `580:443` |
+| C3 | Workshop/Thread entry | `664:4378` |
 
 ### Keep these hidden-state dependencies
 | Family | Aslan Workshop | Library | Archive |
@@ -41,6 +41,8 @@ The following three exact components have no detected instance consumers, protot
 None of these candidate families has an Erwin Workshop consumer in this scan. That does not authorize changing other shared primitives or tokens, which can have cross-owner dependencies.
 
 ## Evidence labels and limits
-At least 23 evidence-role instances were identified with effective visibility false. They remain in place; the user asked for clarification about them, without explicitly approving their removal in this pass. Hidden structure can still serve prototype states, so visibility alone is not deletion evidence.
+All 67 obsolete evidence-role instances were deleted from Aslan’s Workshop, including nested metadata and transcript-slot content. A follow-up scan with invisible descendants included found no remaining instances of the evidence-role family there. Visible Primary recording metadata remains. The source family and historical Archive consumers are retained.
 
-No component was deleted. No Erwin page or shared visual foundation was changed. Checks do not establish external-file consumers, arbitrary detached visual copies, full override correctness outside the named families, or runtime scrolling and state persistence. The saved-transcript repair was visually checked. Recheck dependencies immediately before any later retirement.
+The first slot badge was removed through its live instance handle; the remaining 66 were removed in a batch whose before/after visible-text and prototype-reaction checksums matched. No active visibility bindings or reactions were found on the removed badges. A representative recording view was rendered after cleanup.
+
+No Erwin page or shared visual foundation was changed. Checks do not establish external-file consumers, arbitrary detached visual copies, full override correctness outside the named families, or runtime scrolling and state persistence. The saved-transcript repair was visually checked.

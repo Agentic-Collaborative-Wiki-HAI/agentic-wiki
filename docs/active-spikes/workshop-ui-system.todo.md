@@ -15,7 +15,7 @@ Sources live in the shared Component Library. Aslan’s Workshop references thos
 - Verified 66 editing-bar instances against the five existing semantic variants; inspected overrides are sizing, names, reactions and bindings. Saved transcript correction now uses Transcript view, with Edit transcript returning to its editor.
 - Verified all 29 resolution-bound controls among 68 thread-action instances hide the active thread and expose history. Other controls are hidden in draft/history compositions.
 - Documented current and legacy component contracts without changing shared visuals. Retained hidden icon/editor dependencies and Archive endnotes.
-- Three retirement candidates await explicit review; no components or hidden evidence-tier instances were deleted.
+- User approved C1–C3; retired Context notice, Discussion content and Thread entry after repeated consumer checks. Deleted 67 obsolete hidden evidence-role instances from Aslan’s Workshop; zero remain there. Visible metadata, route reactions, Erwin’s work and Archive were preserved.
 - Structural destination checks and the saved-transcript render passed. Runtime sticky and full route playback remain separate checks.
 
 ## Historical implementation and review checkpoints
