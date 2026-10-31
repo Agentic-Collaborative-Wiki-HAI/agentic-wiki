@@ -5,12 +5,14 @@ attention: live
 Opened 2026-10-22. Slug: `workshop-ui-system`. [Purpose and scope](workshop-ui-system.md).
 
 ## Current State
-Implementation is ready for human review. The system lives on the user-created [Prototype Custom Design System page](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd/Agentic-Collaborative-Wiki?node-id=593-3103). The maintained Workshop includes the existing routes and retained references, artifact-dialog overlays, Profile and Settings, staged chat upload, and focused history views. The new j1–j4 branches demonstrate adding a link, citation, margin note and comment through the editing selection menu. The established Roboto and blue-gray appearance is retained. Pre-existing screen roots retain their identities, dimensions and positions. Chat starts closed with a working sidebar toggle.
+Sources live in the shared Component Library. Aslan’s Workshop references those components across the connected routes. The [2026-10-31 audit](../design/component-audit.md) found 8,890 instances with no missing main components; 26 library families also have Erwin consumers. No library cleanup was performed.
 
 ## To Do
-No implementation tasks remain in this pass; human review is pending below.
+- Review the audit’s cleanup candidates before changing shared sources; preserve Erwin’s consumers and Archive.
+- Complete a focused visual and interaction consistency pass; the usage inventory alone does not establish override or route-action correctness.
 
-## Ready for Human QA
+## Historical implementation and review checkpoints
+The entries below preserve prior implementation and review context, including provisional treatments. Current behavior is described in the [concept document](workshop-ui-system.md); older counts and open-choice statements are not current verification.
 - Review [A2 · Audio note](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10623), reached from Add artifact → Upload file → Audio note. Try both transcription choices, generating later, transcript editing, and reviewed/revised attribution links. The note is a child of Getting started and labeled Secondary source; earlier versions remain for reference. Entry and content are simulated. Citation form redesign, provenance colors, freshness, and the broader history model remain open discussion rather than implemented decisions.
 - Review the refined [Profile](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=738-7644): no page-level contents or bottom Open settings action, a Private wiki section marked Only you, and a date/time on each recent-activity entry. The private-space interior is intentionally not modeled.
 - Review the [selection-action routes j1–j4](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-9449), connected from the editing selection menu. Each branch shows entry, completion, insertion and the saved result. Link selects a wiki destination; citation selects a transcript passage with an optional note; margin note adds a numbered aside; comment opens a range-anchored thread in the margin. Fields populate an example when clicked. Review the distinction between applying page content and posting a discussion, and the cancellation paths.

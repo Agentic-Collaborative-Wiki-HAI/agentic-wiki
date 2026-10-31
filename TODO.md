@@ -5,8 +5,8 @@ Spike index. Detailed state lives in each spike's `.todo.md`; this file stays sc
 
 ## Active Spikes
 - Wireframe Workflow Adoption (slug `wireframe-workflow-adoption`, opened 2026-10-30): Aslan-only Figma migration, shared Archive, project workflow branch and teammate setup. [Reasoning](docs/active-spikes/wireframe-workflow-adoption.md) · [tasks](docs/active-spikes/wireframe-workflow-adoption.todo.md).
-- Workshop UI System (slug `workshop-ui-system`, opened 2026-10-22): shared foundations and components integrated across 37 current screens; ready for human QA. Source assets live on Prototype Custom Design System page; [reasoning](docs/active-spikes/workshop-ui-system.md) and [tasks](docs/active-spikes/workshop-ui-system.todo.md).
-- Wireframe Workshop (slug `wireframe-workshop`, opened 2026-10-21): consolidation implemented; current F1/F4/F8 routes and grouped historical explorations are ready for human QA. Open decisions and review routes are in [reasoning](docs/active-spikes/wireframe-workshop.md) and [tasks](docs/active-spikes/wireframe-workshop.todo.md).
+- Workshop UI System (slug `workshop-ui-system`, opened 2026-10-22): shared Component Library and current usage audit; cross-owner consumers and cleanup candidates documented; [reasoning](docs/active-spikes/workshop-ui-system.md) and [tasks](docs/active-spikes/workshop-ui-system.todo.md).
+- Wireframe Workshop (slug `wireframe-workshop`, opened 2026-10-21): 178 named Workshop boards with current design basis, paired owner pages and archived historical explorations. Open decisions and review routes are in [reasoning](docs/active-spikes/wireframe-workshop.md) and [tasks](docs/active-spikes/wireframe-workshop.todo.md).
 - Policies Migration (slug `policies-migration`, opened 2026-10-14): migrated current guidance and local routing to `docs/policies/`; verification and checkpoint state in [reasoning](docs/active-spikes/policies-migration.md) and [tasks](docs/active-spikes/policies-migration.todo.md). Closure pending.
 The proposed product investigations below remain unclaimed.
 

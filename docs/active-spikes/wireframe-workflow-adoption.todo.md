@@ -9,6 +9,12 @@ attention: live
 - Created local `project/agentic-wiki` branch in the adopted Wireframe Workflows submodule, pinned to shared installer revision `9f5e70e`.
 - Prepared shared collection global-link installer and tested previews, repeat runs, conflict preflight and broken-link protection. Installed ten skills into each of the existing Codex and Claude Code discovery directories, with no conflicts.
 
+## Cover and documentation reconciliation (2026-10-31)
+- Added the native Cover guide with Workshop and repository links, page directory and explicit unpopulated Prototype/Staging/Showroom status; rendered and checked the result.
+- Kept Workshop/Scratchpad adjacent per person and reconciled the reusable page policy and setup skill. No page reordering or teammate changes were needed.
+- Reconciled current Workshop and component documentation; earlier task checkpoints remain historical evidence.
+- Completed the [component usage audit](../design/component-audit.md). No component sources or Erwin pages were changed.
+
 ## Verification and review
 - README overview reconciled against current GitHub design/evaluation/technical epics and follow-ups on 2026-10-30. Scope identifies the prototype as the evaluation artifact, selective engineering as supporting evidence, and substrate selection as a nonblocking investigation. Existing setup instructions and icon remain available. Historical TODO entries and older design notes were not treated as current scheduling authority.
 - Repository onboarding covers general contribution setup and introduces both workflow collections. Design contributors are guided through missing Figma/Penpot connection setup rather than stopped at a capability gap. Live teammate installation remains to be exercised.

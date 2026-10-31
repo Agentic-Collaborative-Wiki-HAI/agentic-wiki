@@ -1,6 +1,9 @@
 # Agentic Wiki wireframe conventions
 The [file manifest](../../design-files.json) maps page roles and ownership. The shared collection's [numbering policy](../../wireframe-workflows/policies/board-numbering-and-layout.md) and [Scratchpad/Archive policy](../../wireframe-workflows/policies/scratchpad-and-archive.md) govern Aslan's migrated work. Erwin's pages retain their existing conventions until he chooses to adopt them.
 
+## File orientation and page order
+The shared [Cover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1507-2) links to the current Workshop routes and repository setup. Staging, Prototype and Showroom are unpopulated; no settled team prototype is presented there. Keep each person’s Workshop immediately followed by their Scratchpad, preserving the established owner order. Component Library remains shared and Archive stays last.
+
 ## Scope and addresses
 Navigation addresses follow the existing wiki hierarchy. They locate the screen, not its place in a route walkthrough. Screen states, editing modes and history views retain the owning object's address and use descriptive names. This is the current prototype's address map, not a proposed permissions or routing implementation.
 
