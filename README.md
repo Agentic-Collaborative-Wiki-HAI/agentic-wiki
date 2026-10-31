@@ -94,7 +94,7 @@ A few words mean specific things here — **epic**, **spike**, **task** — and 
 ## Project Workflows adoption
 Use the pinned `project-workflows/` collection on `project/agentic-wiki` with [AGENTS.md](AGENTS.md) as project authority. [Reconciliation record](docs/active-spikes/project-workflows-adoption.md) · [validation and remaining steps](docs/active-spikes/project-workflows-adoption.todo.md). Future updates follow the [adopted update procedure](project-workflows/update-project-workflows/SKILL.md).
 
-This rollout is local only pending security/privacy review. After the child commit is separately published, `git submodule update --init project-workflows` retrieves the recorded pin; the public URL alone does not make the current local commit available. The existing TODO/workshop work remains uncommitted and untouched; this README links the adoption until the index owner can reconcile that entry.
+The pinned workflow revisions are published. A fresh recursive clone retrieves the project collections and their dependencies. In an existing checkout, use `git submodule update --init --recursive` after checking for local work; do not reset dirty submodules or substitute remote tips for the recorded pins.
 
 ## Wireframes: start with your agent
 The [Figma file](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd) has individually owned Workshop/Scratchpad pages and a shared Archive. [Project conventions](docs/design/wireframe-conventions.md) and the [board lookup](docs/design/figma-board-map.json) explain the current organization. Erwin's existing work has not been migrated; adoption of the conventions on his pages is his choice.
@@ -105,7 +105,7 @@ The [Figma file](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd) has indivi
 Set me up to work on this Agentic Collaborative Wiki repository's wireframes. Read README.md and AGENTS.md first, and inspect the Git/submodule state without overwriting any work. Initialize missing pinned submodules recursively; do not update them to remote tips or reset dirty checkouts. Read the top-level project-workflows/workflow.toml and use that collection for project records, then read design-files.json, docs/design/wireframe-conventions.md and wireframe-workflows/setup-wireframe-workflows/SKILL.md. Use the project's pinned policies and skills rather than global versions. Ask which owner's Figma pages I will work on, verify Figma access through my existing connector, and leave other owners' pages unchanged. Offer optional global links for my chosen local agent clients with wireframe-workflows/setup-wireframe-workflows/scripts/link-skills.py: preview first, preserve existing installations, and verify targets after execution. Do not automatically install service integrations, modify the shared Component Library, move design work, publish branches or push commits. Report any missing published revision or connector access instead of substituting a different version.
 ```
 
-For a fresh clone, after the adopted commits are published:
+For a fresh clone:
 ```sh
 git clone --recurse-submodules https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki.git
 ```

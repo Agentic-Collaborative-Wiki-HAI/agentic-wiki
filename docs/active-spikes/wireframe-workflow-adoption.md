@@ -14,4 +14,4 @@ Existing frame IDs and prototype interactions are preserved. Historical product 
 - Preview-first global-link installer with conflict protection and offline tests, developed in the shared collection.
 
 ## Publication
-Local setup does not make unpublished commits available to teammates. Publish the reviewed shared workflow revision and project branch before the parent adoption commit, and verify a fresh recursive clone. Do not replace a missing pin with an older remote version. No pushes are part of this task.
+The shared Wireframe Workflows revision and `project/agentic-wiki` branch are published, as is the parent adoption. A fresh recursive GitHub clone retrieved all three pinned collections on 2026-10-30. Installer tests and temporary Codex/Claude link installations passed. Teammates still need their own Figma access and connector; repository verification does not establish that access. Do not replace a missing pin with an older remote version.

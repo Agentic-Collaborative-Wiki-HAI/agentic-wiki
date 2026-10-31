@@ -14,7 +14,8 @@ attention: live
 - Archive and Scratchpad orientation text visually checked. Archive is last; Erwin's pages and shared component sources were not mutated.
 - Confirm the migrated layout and naming in Figma. Global discovery should be checked in fresh Codex/Claude sessions; filesystem links alone do not prove client discovery.
 
-## Publication remaining
-- Shared installer committed as `9f5e70e`; the project branch is fast-forwarded to that exact revision. The parent adoption records the same gitlink.
-- Publish shared workflow commits and `project/agentic-wiki`, then publish the parent adoption. Remote `main` was checked and does not yet contain the locally approved policy commits; no project branch is published yet.
-- Verify a fresh recursive clone can retrieve all pins, including this project's existing Project Workflows adoption. Until then the teammate path is locally prepared, not distribution-verified.
+## Publication verified
+- Published shared Wireframe Workflows `main` and `project/agentic-wiki` at `9f5e70e`, then wiki adoption `12e0f66` on `main`.
+- A fresh recursive GitHub clone retrieved the exact pins: Project Workflows `2f20ab5`, Wireframe Workflows `9f5e70e`, and its contributor Project Workflows `ce2c9bc`.
+- All four installer tests passed in the fresh clone. Temporary Codex and Claude installations each passed read-only preview, ten-link creation, target verification and idempotent repeat installation. The cloned worktree remained clean.
+- Client UI discovery and teammate Figma access remain separate checks; temporary filesystem verification does not establish those.
