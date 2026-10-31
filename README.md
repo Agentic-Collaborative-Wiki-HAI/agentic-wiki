@@ -96,7 +96,8 @@ Use the pinned `project-workflows/` collection on `project/agentic-wiki` with [A
 
 Clone recursively to retrieve the project collections at their recorded revisions. [Publication status](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) tracks the local onboarding follow-up and its dependency. In an existing checkout, use `git submodule update --init --recursive` after checking for local work; do not reset dirty submodules or substitute remote tips for the recorded pins.
 
-## Get set up with your agent
+<h2><img src="assets/agent-hands-head-thumbs-up.png" height="32" alt="Robot head giving a thumbs-up"> Get set up with your agent</h2>
+
 Copy this prompt into your agent while working in this repository. It covers general project onboarding; design-tool setup is offered when relevant to your work.
 
 ```text
