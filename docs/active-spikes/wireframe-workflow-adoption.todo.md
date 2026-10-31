@@ -10,6 +10,7 @@ attention: live
 - Prepared shared collection global-link installer and tested previews, repeat runs, conflict preflight and broken-link protection. Installed ten skills into each of the existing Codex and Claude Code discovery directories, with no conflicts.
 
 ## Verification and review
+- Repository onboarding covers general contribution setup and introduces both workflow collections. Design contributors are guided through missing Figma/Penpot connection setup rather than stopped at a capability gap. Live teammate installation remains to be exercised.
 - Initial and post-renaming Workshop interaction checksum: `3808836145`, covering 3,989 nodes with reactions. No Workshop targets point to archived work.
 - Archive and Scratchpad orientation text visually checked. Archive is last; Erwin's pages and shared component sources were not mutated.
 - Confirm the migrated layout and naming in Figma. Global discovery should be checked in fresh Codex/Claude sessions; filesystem links alone do not prove client discovery.
@@ -19,3 +20,7 @@ attention: live
 - A fresh recursive GitHub clone retrieved the exact pins: Project Workflows `2f20ab5`, Wireframe Workflows `9f5e70e`, and its contributor Project Workflows `ce2c9bc`.
 - All four installer tests passed in the fresh clone. Temporary Codex and Claude installations each passed read-only preview, ten-link creation, target verification and idempotent repeat installation. The cloned worktree remained clean.
 - Client UI discovery and teammate Figma access remain separate checks; temporary filesystem verification does not establish those.
+
+## Onboarding follow-up publication
+- Adopted connector-setup guidance `f82b4b0` locally and broadened the README prompt to repository-wide onboarding. This includes shared contribution-coordination update `0397268`; its nested Project Workflows pin `c0e088d` was retrieved from the local source because GitHub could not serve it. Publish that dependency before these new collection and parent commits. The earlier fresh-clone verification applies to the published revisions recorded above, not this follow-up.
+- Direct frontmatter, relative-link and portability checks passed. The standard skill validator could not run because its Python environment lacks PyYAML. Live first-time connector setup is still unverified.
