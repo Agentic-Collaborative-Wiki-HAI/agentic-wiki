@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "name": "Agentic Collaborative Wiki",
+      "tool": "figma",
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd",
+      "file_id": "fm5zX32mbG13hahShVgJwd",
+      "pages": {
+        "cover": "Cover",
+        "showroom": "Showroom",
+        "prototype": "Prototype",
+        "staging": "Staging ",
+        "workshop": [
+          {
+            "page": "Aslan's Workshop",
+            "owner": "Aslan"
+          },
+          {
+            "page": "Erwin's Workshop",
+            "owner": "Erwin"
+          }
+        ],
+        "scratchpad": [
+          {
+            "page": "Aslan's Scratchpad",
+            "owner": "Aslan"
+          },
+          {
+            "page": "Erwin's Scratchpad",
+            "owner": "Erwin"
+          }
+        ],
+        "component_library": "Component Library",
+        "archive": "Archive"
+      }
+    }
+  ]
+}

@@ -86,3 +86,8 @@ Until then: check that Markdown links resolve and that nothing secret is staged 
 
 ## CLAUDE.md
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`.
+
+## Wireframe Workflows
+The project adopts `wireframe-workflows/` on `project/agentic-wiki`. Its exact gitlink is authoritative. Read [design-files.json](design-files.json), [the project conventions](docs/design/wireframe-conventions.md), and the collection's `policies/` before design work. Use its `<skill-name>/SKILL.md` procedures instead of global seeds. Project planning and records still use this repository's top-level `project-workflows/`, not the workflow collection's internal contributor tooling.
+
+Use the connected Figma capability and its tool-specific skills for this file. Ask which owner's pages a request concerns when that is unclear. Aslan's numbering and Archive migration do not authorize changes to Erwin's pages. The Component Library remains shared and requires its own explicit task. Global discovery is optional and does not override this project context.
