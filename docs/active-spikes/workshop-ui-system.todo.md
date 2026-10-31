@@ -5,11 +5,18 @@ attention: live
 Opened 2026-10-22. Slug: `workshop-ui-system`. [Purpose and scope](workshop-ui-system.md).
 
 ## Current State
-Sources live in the shared Component Library. Aslan’s Workshop references those components across the connected routes. The [2026-10-31 audit](../design/component-audit.md) found 8,890 instances with no missing main components; 26 library families also have Erwin consumers. No library cleanup was performed.
+Sources live in the shared Component Library. Aslan’s Workshop references those components across the connected routes. The [2026-10-31 audit](../design/component-audit.md) checks editing bars, thread resolution and retirement candidates with invisible descendants included. Editing bars and thread actions have no Erwin consumers. Shared visual foundations remain unchanged.
 
 ## To Do
 - Review the audit’s cleanup candidates before changing shared sources; preserve Erwin’s consumers and Archive.
 - Complete a focused visual and interaction consistency pass; the usage inventory alone does not establish override or route-action correctness.
+
+## Component reconciliation (2026-10-31)
+- Verified 66 editing-bar instances against the five existing semantic variants; inspected overrides are sizing, names, reactions and bindings. Saved transcript correction now uses Transcript view, with Edit transcript returning to its editor.
+- Verified all 29 resolution-bound controls among 68 thread-action instances hide the active thread and expose history. Other controls are hidden in draft/history compositions.
+- Documented current and legacy component contracts without changing shared visuals. Retained hidden icon/editor dependencies and Archive endnotes.
+- Three retirement candidates await explicit review; no components or hidden evidence-tier instances were deleted.
+- Structural destination checks and the saved-transcript render passed. Runtime sticky and full route playback remain separate checks.
 
 ## Historical implementation and review checkpoints
 The entries below preserve prior implementation and review context, including provisional treatments. Current behavior is described in the [concept document](workshop-ui-system.md); older counts and open-choice statements are not current verification.
