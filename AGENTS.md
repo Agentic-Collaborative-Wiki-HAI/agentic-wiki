@@ -17,7 +17,9 @@ This repo is public under AGPL-3.0. Everything committed here is visible to anyo
 ## Skills Are Repo Authority
 The complete Project Workflows collection is adopted at `project-workflows/`. Read [workflow.toml](project-workflows/workflow.toml), then load `project-workflows/<skill-name>/SKILL.md` before global seeds. The child uses `project/agentic-wiki`; this repository keeps its own branch and exact gitlink. Project rules here override shared defaults, and actual project documents stay outside the collection.
 
-The seven procedures are run-project-spike, commit-work, triage-project-misc, capture-for-later, draft-approval-slate, setup-project-workflows, and update-project-workflows. The independent `skills/write-skills/` procedure and its client metadata stay local. Existing notes and deferred work are preserved. Use capture-for-later for new small individual scratch notes; update related existing material without bulk migration or creating tasks.
+The eight procedures are run-project-spike, coordinate-project-contribution, commit-work, triage-project-misc, capture-for-later, draft-approval-slate, setup-project-workflows, and update-project-workflows. The independent `skills/write-skills/` procedure and its client metadata stay local. Existing notes and deferred work are preserved. Use capture-for-later for new small individual scratch notes; update related existing material without bulk migration or creating tasks.
+
+Use [Coordinate Project Contribution](project-workflows/coordinate-project-contribution/SKILL.md) to start contribution and review work under this project’s existing human direction. Each agent keeps its own spike; a branch may carry several spikes/issues and later reviews. Existing privacy, validation and publication rules remain authoritative.
 
 ## Where Things Go
 | Path | What belongs there |

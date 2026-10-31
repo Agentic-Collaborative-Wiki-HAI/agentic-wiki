@@ -82,6 +82,8 @@ For an existing clean clone, initialize missing pinned dependencies with `git su
 
 Global links are optional convenience, not the source of project authority. The installer supports Codex and Claude Code and refuses conflicts. Other agents can read the same `SKILL.md` files directly. See the [adoption verification](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) for the published revisions and fresh-clone checks. Future collection updates follow the adopted [Project Workflows](project-workflows/update-project-workflows/SKILL.md) and [Wireframe Workflows](wireframe-workflows/update-wireframe-workflows/SKILL.md) update procedures.
 
+For local collaborator setup, use the adopted [Get started guidance](project-workflows/README.md#get-started). Start contribution work with [Coordinate Project Contribution](project-workflows/coordinate-project-contribution/SKILL.md); each agent keeps its own spike and follows this project’s existing scope and review rules.
+
 ## How we work
 People select contributions through the team's issues and project board. Those are the live coordination surface; [TODO.md](TODO.md) indexes repository spikes rather than duplicating every task. Some older planning entries retain historical dates, so use the current issue for scheduling and ownership.
 
