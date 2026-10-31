@@ -22,5 +22,6 @@ attention: live
 - Client UI discovery and teammate Figma access remain separate checks; temporary filesystem verification does not establish those.
 
 ## Onboarding follow-up publication
-- Adopted connector-setup guidance `f82b4b0` locally and broadened the README prompt to repository-wide onboarding. This includes shared contribution-coordination update `0397268`; its nested Project Workflows pin `c0e088d` was retrieved from the local source because GitHub could not serve it. Publish that dependency before these new collection and parent commits. The earlier fresh-clone verification applies to the published revisions recorded above, not this follow-up.
-- Direct frontmatter, relative-link and portability checks passed. The standard skill validator could not run because its Python environment lacks PyYAML. Live first-time connector setup is still unverified.
+- Published Project Workflows dependency `c0e088d` on `project/wireframe-workflows`, Wireframe Workflows `78e2aad` on `main` and `project/agentic-wiki`, and the repository-wide setup and icon update `1322000` on wiki `main`.
+- A new recursive GitHub clone on 2026-10-30 retrieved all exact pins, including top-level Project Workflows `2f20ab5`. All four installer tests passed. Codex and Claude each passed preview, ten-link creation, target verification and repeat installation in temporary directories. README local links and matching PNG header assets were verified; the cloned worktree remained clean.
+- Direct frontmatter, relative-link and portability checks passed. The standard skill validator could not run because its Python environment lacks PyYAML. Live first-time connector authentication and client UI discovery remain unverified; the setup guidance now walks teammates through those steps.

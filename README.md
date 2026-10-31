@@ -94,7 +94,7 @@ A few words mean specific things here — **epic**, **spike**, **task** — and 
 ## Project Workflows adoption
 Use the pinned `project-workflows/` collection on `project/agentic-wiki` with [AGENTS.md](AGENTS.md) as project authority. [Reconciliation record](docs/active-spikes/project-workflows-adoption.md) · [validation and remaining steps](docs/active-spikes/project-workflows-adoption.todo.md). Future updates follow the [adopted update procedure](project-workflows/update-project-workflows/SKILL.md).
 
-Clone recursively to retrieve the project collections at their recorded revisions. [Publication status](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) tracks the local onboarding follow-up and its dependency. In an existing checkout, use `git submodule update --init --recursive` after checking for local work; do not reset dirty submodules or substitute remote tips for the recorded pins.
+Clone recursively to retrieve the project collections at their recorded revisions. [Publication status](docs/active-spikes/wireframe-workflow-adoption.todo.md#onboarding-follow-up-publication) records successful publication and fresh-clone verification. In an existing checkout, use `git submodule update --init --recursive` after checking for local work; do not reset dirty submodules or substitute remote tips for the recorded pins.
 
 <h2><img src="assets/agent-hands-head-thumbs-up.png" height="32" alt="Robot head giving a thumbs-up"> Get set up with your agent</h2>
 
