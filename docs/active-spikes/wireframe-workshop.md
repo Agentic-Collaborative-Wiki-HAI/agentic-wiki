@@ -7,7 +7,7 @@ Opened 2026-10-21. Slug: `wireframe-workshop`.
 ## Purpose and scope
 Maintain Aslan’s connected working prototype for evidence intake, source-grounded suggestions and anchored correction, with the related editing, chat and history routes. These are working wireframes for design review, not a settled team specification or a functioning application. Erwin’s pages remain independently owned and unchanged by this work.
 
-The [board lookup](../design/figma-board-map.json) identifies 178 Workshop boards by current name and unchanged node ID, retaining old route codes as aliases. The [Cover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1507-2) links to the working routes and repository. Staging, Prototype and Showroom remain unpopulated; Workshop has not been promoted into them.
+The [board lookup](../design/figma-board-map.json) identifies 178 Workshop boards by current name and unchanged node ID, retaining old route codes as aliases. The [Cover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1507-2) links to the working routes and repository. Staging and Prototype remain unpopulated; Workshop has not been promoted. Showroom contains a [seven-frame research walkthrough](showroom-research-tour.md) using labelled Workshop proposals.
 
 ## Current design basis
 - Recordings are typed objects with audio and an optional transcript presented together. Audio format permits Primary recording or Audio note; the type is selected before adding the artifact. Typed relationships and source links express provenance without standalone Primary/Secondary/Tertiary labels. Transcription is not automatically another evidence tier.

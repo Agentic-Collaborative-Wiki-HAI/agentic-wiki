@@ -39,3 +39,19 @@ October 22 comment-anchor check: native Workshop comments #3 and #4 are attached
 The preservation audit compares original descendants and text, excluding intended section renaming and repositioning. Prototype validation inspects actual reaction destinations and required routes; it is not a claim that this wireframe behaves like a stateful application. The working examples retain AI authorship after acceptance, distinguish human edits from acceptance, and do not equate transcript accuracy with procedure freshness.
 
 All current source inspection points use the recording unit. Scratchpad deliberately retains separate audio/transcript alternatives as history. Do not bulk-replace their text to match the current model. No standing policy, skill, teammate page, external message or GitHub object was changed.
+
+## Remaining work after the Showroom · 2026-11-02
+Broad Workshop cleanup is deferred while the [research tour](showroom-research-tour.md) prepares a bounded class presentation. The November 1–2 [verification record](../design/wireframe-conventions.md) remains the source for completed structural, visual and playback checks; these follow-ups do not reopen those repaired defects or imply that every state was exercised.
+
+- [ ] Human walkthrough of the connected launcher entries and recent chat/history/Resolve repairs; classify new findings as reproducible bugs, incomplete examples, or open design questions. Track bounded QA through [#35](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35).
+- [ ] Assess failure and recovery behavior across the selected connected flows: upload/transcription failure, absent or unavailable evidence, and interrupted review. These are assessment candidates, not agreed automatic recovery behavior.
+- [ ] Reconcile source-change review and reference/endnote consistency in context. Source freshness, transcription accuracy and permission to change shared prose remain distinct.
+- [ ] Resolve suggestion scope outside an original text anchor, superseding proposals, and whether/how a reviewer edits a suggestion before accepting it.
+- [ ] Decide how versioned comment citations interact with editing older comments and deleting or replacing cited objects.
+- [ ] Integrate agent-initiated maintenance and instruction scope under human agreement; preserve Erwin's existing exploration. See [#37](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/37).
+- [ ] Review cross-owner component differences and combine agreed work in Staging before promotion. A Showroom copy is not component approval or a team merge.
+- [ ] Explore broader file processing, inline documentation images, narrow screens and private-space interiors when prioritized; the current file picker does not establish complete workflows for every format.
+- [ ] Evaluate the proposed interface with researchers. Successful scripted playback is not evidence that people understand the agent's authority, can assess the source, or save effort.
+
+### Explicit prototype limits
+File selection, typing, audio, transcription and agent replies are scripted examples. Arbitrary repeated actions and persistent application state remain beyond this prototype. Clicking a page heading scrolls and updates its selection; manual scrolling does not update active-heading selection. This fidelity limit can remain deferred unless it interferes with the chosen demonstration.
