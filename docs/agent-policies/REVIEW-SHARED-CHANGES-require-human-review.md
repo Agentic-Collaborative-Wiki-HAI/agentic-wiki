@@ -1,4 +1,14 @@
-# 0001 Agent Proposes, Humans Dispose
+---
+id: REVIEW-SHARED-CHANGES
+type: operational
+scope: "Agent proposals and implementation of changes to canonical shared knowledge."
+status: adopted
+authority: "Aslan requested migration of all remaining policies into the sole docs/agent-policies location in the active chat on 2026-11-02."
+revised: "2026-11-02"
+depends_on: ["RESOLVE-DEPENDENCIES"]
+related_to: []
+---
+# Require human review of shared changes
 ## Current Approach
 **Agent output creates reviewable proposals. The agent does not silently mutate canonical shared knowledge.**
 

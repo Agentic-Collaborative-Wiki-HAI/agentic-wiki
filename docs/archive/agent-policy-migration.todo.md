@@ -1,17 +1,21 @@
 ---
-attention: live
+attention: historical
 reviewed: 2026-11-02
 ---
 # Agent policy migration — Agentic Wiki work
 Opened 2026-11-02. Stable slug: `agent-policy-migration`. [Concept and mapping](agent-policy-migration.md).
 
+Historical record, closed 2026-11-02. Current guidance: [AGENTS.md](../../AGENTS.md) and the [policy index](../agent-policies/policy.index.md).
+
 ## To Do
-None for the bounded migration. The actual ordinary-use check remains in Ready for Human QA; archival has not been requested or authorized.
+None. The remaining policy bodies, nested source, affected routing and closure are complete.
 
 ## Ready for Human QA
-- After adoption, use the index and relevant prerequisite closure during one ordinary authorized task; distinguish actual observed use from structural graph checks. No service or design writes solely for QA.
+None. The ordinary-use item was exercised during this authorized migration continuation.
 
 ## Done
+- After adoption, use the index and relevant prerequisite closure during one ordinary authorized task; distinguish actual observed use from structural graph checks. No service or design writes solely for QA. — Completed 2026-11-02 during the consolidation task; actual index and prerequisite bodies were read and applied before policy and workflow work. This does not establish automatic discovery or universal client compliance.
+- Consolidate all remaining current guidance into the sole agent-policy directory, repair affected references, receive Wireframe main and close the completed spike. — Completed 2026-11-02 under Aslan’s explicit follow-up; the final concept section records the thirteen-policy mapping, exact receiving revisions, preservation and repeatability checks.
 - Obtain any missing scoped local commit approval, checkpoint only the reviewed receiving files/pins and leave unrelated work untouched. Prepare closure only when bounded completion criteria are met and authorized. — Completed in this D3-approved checkpoint on 2026-11-02; twenty migration paths and both exact receiving pins are recorded. TODO.md and unrelated implementation remain uncommitted under the approved scope. The spike stays active for its separate ordinary-use QA and any later authorized closure.
 - Reconcile the custom PR template’s missing source baseline without replacing its content; preview both exact deterministic package updates and apply only under their actual commit authority. — Completed 2026-11-02; the reviewed new baseline retains the custom template. D1 approved top-level merge 29b6af2; nested provider delivery and both repeat updater no-ops are verified.
 - Apply the actual adoption decision, route AGENTS and configuration to the project index, and verify complete and selected prerequisite closures. — Completed 2026-11-02 under the actual D2 approval; eleven records are adopted, all associated routing is applied and actual full/selected closures pass.
@@ -32,3 +36,6 @@ D2 covers the independent authoring guide’s policy/procedure wording and TODO�
 
 ## Final implementation receipt
 The concept’s “Current receiving state and human decisions” section owns the exact adoption authority, source/adaptation history, current pending parent pins and actual verification. The migration is implemented and verified; the D3-approved checkpoint records its completed scope. The concrete ordinary-use QA item remains separate and does not imply an unverified client-compliance result.
+
+## Final delivery scope
+The follow-up authorizes closure, local commits and publication of the migration and its necessary workflow dependencies. Earlier no-push/no-archive decisions above describe their original checkpoints. Other workstreams retain their own current state; this migration does not approve or complete Showroom or Workshop work.

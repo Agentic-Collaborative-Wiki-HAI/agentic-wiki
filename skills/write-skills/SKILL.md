@@ -85,8 +85,7 @@ For project workflow skills, coordinate with the shared taxonomy. For this proje
 docs/pinned-issues.md        unresolved things intentionally preserved for later
 docs/scratch/future-ideas.md conceptual someday material
 docs/scratch/misc.md         raw observed friction / issue intake
-docs/agent-policies/         durable agent obligations and policy.index.md
-docs/policies/               shared product and team guidance
+docs/agent-policies/         all current agent policies and policy.index.md
 docs/active-spikes/          active scoped work
 ```
 

@@ -1,9 +1,11 @@
 ---
-attention: live
+attention: historical
 reviewed: 2026-11-02
 ---
 # Agent policy migration — Agentic Wiki
-Opened 2026-11-02. Stable slug: `agent-policy-migration`. [Tasks](agent-policy-migration.todo.md). Continues the completed [policies migration](policies-migration.md) without reopening or closing it.
+Opened 2026-11-02. Stable slug: `agent-policy-migration`. [Tasks](agent-policy-migration.todo.md). Continues the completed [policies migration](../active-spikes/policies-migration.md) without reopening or closing it.
+
+Historical record, closed 2026-11-02. Stable slug: `agent-policy-migration`. Current authority is [AGENTS.md](../../AGENTS.md) and the [project-owned policy index](../agent-policies/policy.index.md). The initial separate-location decision below records the first checkpoint; the final consolidation is recorded at the end.
 
 ## Scope and authority
 The user requested completion of this receiving-project migration, preservation of concurrent edits, coordination of nested workflow packages without changing canonical repositories, and explicit requests for any missing adoption or commit approval. This launch resolves the previously reported dirty-worktree hold within this migration’s scope. It does not adopt unseen policy bodies or authorize a push, publication, service write, design change or canonical-source edit.
@@ -134,3 +136,17 @@ The proposed local checkpoint contains exactly twenty paths: AGENTS.md, README.m
 
 ## Parent checkpoint decision — 2026-11-02
 Aslan answered “Approve this local checkpoint” to D3, covering the exact twenty paths, both receiving gitlinks and the displayed message. This checkpoint records the complete migration and verification. TODO.md remains wholly uncommitted under that explicit decision; its migration/routing changes, existing Showroom entry and other workstream’s untracked bodies are preserved. No push, source publication or spike archival is authorized. The stable history handle is `Spike: agent-policy-migration`.
+
+## Final consolidation and closure — 2026-11-02
+Aslan explicitly requested `docs/agent-policies/` as the sole policy location, migration of remaining guidance and affected references, a local checkpoint, closure if complete, and publication. This extends the earlier D1–D3 scope; the earlier separate shared-policy location is no longer current.
+
+The complete `0001` body and rationale are retained under REVIEW-SHARED-CHANGES; `0002` is retained under KEEP-MODELS-SWAPPABLE. The complete `0003` work vocabulary, rationale and operating notes are integrated into ORGANIZE-WORK rather than creating a duplicate owner. All three retain the actual project requirements and human-governance boundaries. Their numeric identities remain reserved in the index and Git history. The result is thirteen adopted records: three kernel and ten operational policies. Both workflow locators select `docs/agent-policies/`; no second current policy folder remains.
+
+Wireframe Workflows shared main `0217eb5` already contains the complete seven-body consolidation and reference repairs. The receiving project adaptation incorporates it as `3c87fd727d717b1925a005132066b2fff14607a9`. Its Project Workflows child `ea3c077ee6edecb7140cd6fac3e2efc1edbc40c0` retains both receiving and published source histories. The top-level workflow adaptation uses `96d631e489fe1b593ecc19d2413a2e101d1039db` to point the legacy locator at the same sole policy directory. No canonical checkout or design file was edited.
+
+Both actual policy sets pass their complete graphs and every selected-root prerequisite closure (thirteen root records and ten Wireframe records). Index regeneration and deterministic Project Workflows reruns are unchanged. The original review and model-policy bodies are exact after their headings; the complete work-vocabulary body is preserved. The migration repaired the root instructions, README, authoring guide, policy index, design-policy references and predecessor's current-owner links. Link checks cover the migration's projected committed files, rather than relying on unrelated untracked Showroom documents.
+
+The ordinary-use QA item was exercised during this authorized continuation: the agent read the actual root index and adopted prerequisite bodies before policy, workflow and commit work, and used the selected policy-management procedures. This observes this task's use; it does not prove automatic discovery or compliance by every agent client. No further client installation, service call or design write is required for this migration. No migration work or successor remains; the maintained owners above now hold the current guidance. Publication is authorized for the necessary receiving branches, deepest dependency first, with remote readback and a fresh recursive-clone check reported separately after delivery.
+
+### Scoped checkpoint selection
+Aslan approved a one-commit isolated-index exception to select only the migration changes in TODO.md and the wireframe conventions. Existing Showroom tracking, its design-status paragraph, the Workshop edits and the untracked Showroom documents remain uncommitted. This exception does not amend the standing commit procedure.

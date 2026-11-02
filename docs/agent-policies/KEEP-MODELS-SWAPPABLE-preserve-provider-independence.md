@@ -1,4 +1,14 @@
-# 0002 Keep The Model Swappable
+---
+id: KEEP-MODELS-SWAPPABLE
+type: operational
+scope: "Agent architecture proposals and implementation of model access for this project."
+status: adopted
+authority: "Aslan requested migration of all remaining policies into the sole docs/agent-policies location in the active chat on 2026-11-02."
+revised: "2026-11-02"
+depends_on: ["RESOLVE-DEPENDENCIES"]
+related_to: []
+---
+# Keep models swappable
 ## Current Approach
 **Do not architect around a single model provider.** Candidates worth testing include OpenAI, Anthropic, Qwen, and DeepSeek.
 

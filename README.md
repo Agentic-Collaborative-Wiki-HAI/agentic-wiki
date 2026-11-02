@@ -44,8 +44,8 @@ The central review interaction is:
 Current follow-up work includes [wireframe QA](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35), [agent management and instruction scopes](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/34), [connecting maintenance into the wider experience](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/37), and a proposed [research-grounded Showroom](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/36). These are open work, not completed or validated behavior. The [first user-testing round](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/31) evaluates the initial wireframes.
 
 ## Commitments and boundaries
-- **Human control over shared changes.** Agent-proposed changes to canonical shared knowledge require human review. Source/context, attribution and review outcomes must be inspectable. See [the review policy](docs/policies/0001-agent-proposes-humans-dispose.md).
-- **Model independence.** Keep model access swappable and evaluate capability, cost and integration tradeoffs rather than binding the project to one provider. See [the model policy](docs/policies/0002-keep-the-model-swappable.md).
+- **Human control over shared changes.** Agent-proposed changes to canonical shared knowledge require human review. Source/context, attribution and review outcomes must be inspectable. See [the review policy](docs/agent-policies/REVIEW-SHARED-CHANGES-require-human-review.md).
+- **Model independence.** Keep model access swappable and evaluate capability, cost and integration tradeoffs rather than binding the project to one provider. See [the model policy](docs/agent-policies/KEEP-MODELS-SWAPPABLE-preserve-provider-independence.md).
 - **Evidence before implementation claims.** Distinguish a drawn interaction, a capability test and a working integrated system. Candidate tests are not test results.
 - **Bounded technical scope.** Real-time co-editing/CRDTs, multi-agent orchestration, a full permissions system, federation, enterprise retrieval infrastructure and local model hosting for cost savings are outside the current implementation scope. Agent-initiated maintenance is a design exploration of concerns and human-reviewed repairs; it does not establish an unattended operating cadence or automatic-write policy.
 - **Public-repository privacy.** Keep credentials, raw participant data and private research records out of this repository. Public design examples and summaries must be safe to share.
@@ -87,14 +87,13 @@ For local collaborator setup, use the adopted [Get started guidance](project-wor
 ## How we work
 People select contributions through the team's issues and project board. Those are the live coordination surface; [TODO.md](TODO.md) indexes repository spikes rather than duplicating every task. Some older planning entries retain historical dates, so use the current issue for scheduling and ownership.
 
-A spike is a bounded piece of work with a concept document and task record. Agent obligations are indexed in [docs/agent-policies/policy.index.md](docs/agent-policies/policy.index.md); shared product and team guidance remains in `docs/policies/`. Exploration stays in scratch material and completed records remain in the archive. See [the work vocabulary](docs/policies/0003-how-we-name-and-organize-work.md) and [AGENTS.md](AGENTS.md) for contribution, privacy and commit rules. Read project instructions before editing, and preserve other contributors' work.
+A spike is a bounded piece of work with a concept document and task record. Agent obligations are indexed in [docs/agent-policies/policy.index.md](docs/agent-policies/policy.index.md). All current policies live in that directory. Exploration stays in scratch material and completed records remain in the archive. See [the work vocabulary](docs/agent-policies/ORGANIZE-WORK-follow-shared-work-conventions.md) and [AGENTS.md](AGENTS.md) for contribution, privacy and commit rules. Read project instructions before editing, and preserve other contributors' work.
 
 ## Repository layout
 ```text
 docs/
   active-spikes/      scoped work, reasoning and task records
   agent-policies/    project-owned agent obligations and index
-  policies/          shared product and team guidance
   design/            wireframe conventions and board lookup
   scratch/           exploratory notes, not authoritative
   archive/           historical work records

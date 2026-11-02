@@ -7,8 +7,11 @@ Spike index. Detailed state lives in each spike's `.todo.md`; this file stays sc
 - Wireframe Workflow Adoption (slug `wireframe-workflow-adoption`, opened 2026-10-30): Aslan-only Figma migration, shared Archive, project workflow branch and teammate setup. [Reasoning](docs/active-spikes/wireframe-workflow-adoption.md) · [tasks](docs/active-spikes/wireframe-workflow-adoption.todo.md).
 - Workshop UI System (slug `workshop-ui-system`, opened 2026-10-22): shared Component Library and current usage audit; cross-owner consumers and cleanup candidates documented; [reasoning](docs/active-spikes/workshop-ui-system.md) and [tasks](docs/active-spikes/workshop-ui-system.todo.md).
 - Wireframe Workshop (slug `wireframe-workshop`, opened 2026-10-21): 178 named Workshop boards with current design basis, paired owner pages and archived historical explorations. Open decisions and review routes are in [reasoning](docs/active-spikes/wireframe-workshop.md) and [tasks](docs/active-spikes/wireframe-workshop.todo.md).
-- Policies Migration (slug `policies-migration`, opened 2026-10-14): migrated current guidance and local routing to `docs/policies/`; verification and checkpoint state in [reasoning](docs/active-spikes/policies-migration.md) and [tasks](docs/active-spikes/policies-migration.todo.md). Closure pending.
+- Policies Migration (slug `policies-migration`, opened 2026-10-14): migrated the earlier decisions layer; current guidance is consolidated in `docs/agent-policies/`; verification and checkpoint state in [reasoning](docs/active-spikes/policies-migration.md) and [tasks](docs/active-spikes/policies-migration.todo.md). Closure pending.
 The proposed product investigations below remain unclaimed.
+
+## Completed Spikes
+- Agent Policy Migration (slug `agent-policy-migration`, closed 2026-11-02): all current policies consolidated in `docs/agent-policies/`, Wireframe main received and migration verified. [Reasoning](docs/archive/agent-policy-migration.md) · [tasks](docs/archive/agent-policy-migration.todo.md).
 
 ## Open Questions — Not Yet Spikes
 These need answering. Most will become issues; the ones with real work behind them will get a spike doc pair in `docs/active-spikes/`.
@@ -28,7 +31,7 @@ These need answering. Most will become issues; the ones with real work behind th
 - **Compute budget** — roughly $100 was indicated as possibly available. Not confirmed.
 
 ## Current Policies
-See `docs/policies/`. In short: the model stays swappable, and **the agent proposes rather than silently mutating shared knowledge.**
+See the [agent policy index](docs/agent-policies/policy.index.md) for all current policies. The model stays swappable, and **the agent proposes rather than silently mutating shared knowledge.**
 
 ## Course Milestones
 - **Fri Sept 4, 1:00pm** — team formation and initial idea submission

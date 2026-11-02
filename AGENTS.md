@@ -10,7 +10,7 @@ The term project for INF 385T.13 Human-AI Interaction (UT Austin iSchool, Fall 2
 Follow [PROTECT-PRIVACY](docs/agent-policies/PROTECT-PRIVACY-protect-public-repository-privacy.md) for this scope.
 
 ## Agent policy routing
-Read the project-owned [agent policy index](docs/agent-policies/policy.index.md) for status and scope. Load applicable adopted policies with their complete prerequisite closure, prerequisites first and each policy once. Proposed records are non-operative; package updates do not adopt policies. Shared product and team guidance remains in [docs/policies/](docs/policies/), with its existing authority and scope.
+Read the project-owned [agent policy index](docs/agent-policies/policy.index.md) for status and scope. Load applicable adopted policies with their complete prerequisite closure, prerequisites first and each policy once. Proposed records are non-operative; package updates do not adopt policies. All current policies live in `docs/agent-policies/`, including the review boundary, model portability and work conventions. Their migration preserves project requirements and does not change human governance.
 
 ## Project workflow routing
 Follow [FOLLOW-WORKFLOWS](docs/agent-policies/FOLLOW-WORKFLOWS-follow-project-owned-workflows.md) for this scope.
@@ -19,8 +19,7 @@ Follow [FOLLOW-WORKFLOWS](docs/agent-policies/FOLLOW-WORKFLOWS-follow-project-ow
 | Path | What belongs there |
 |---|---|
 | `docs/active-spikes/` | Current spike work — a concept doc and a `.todo.md` per spike |
-| `docs/agent-policies/` | Project-owned agent obligations and policy.index.md |
-| `docs/policies/` | Shared product and team guidance, with existing numbered identities |
+| `docs/agent-policies/` | All current project-owned agent policies and policy.index.md |
 | `docs/scratch/` | Rough thinking, references, early notes. Not authoritative |
 | `docs/archive/` | Closed or superseded spikes. History, not current rules |
 | `TODO.md` | The spike index and coordination map. Keep it scannable |
