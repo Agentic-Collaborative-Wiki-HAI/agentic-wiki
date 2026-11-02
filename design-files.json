@@ -33,6 +33,9 @@
         ],
         "component_library": "Component Library",
         "archive": "Archive"
+      },
+      "local": {
+        "routes": "docs/design/figma-board-map.json"
       }
     }
   ]

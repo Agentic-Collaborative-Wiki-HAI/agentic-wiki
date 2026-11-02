@@ -19,7 +19,7 @@ Navigation addresses follow the existing wiki hierarchy. They locate the screen,
 | `1.1.1.2` | Planning a microscope session |
 | `2` | Profile |
 | `3` | Personal settings |
-| `P0` | Prototype routing frame, outside the product hierarchy |
+| `P0` | Workshop launcher, outside the product hierarchy |
 | `O1`–`O10` | Standalone overlay/partial demonstrations, identified individually in the board lookup |
 
 The `O` family is local to this project; it is not a universal convention. Full-screen host states showing a modal keep the host's address. Viewport is an optional qualifier, not a hierarchy level. Intermediate hierarchy entries need not have a separate frame.
@@ -35,3 +35,19 @@ Archived exploration preserves legacy names and node identities. It is browsable
 Use the top-level `project-workflows/` for this project's planning and records, and the pinned `wireframe-workflows/` for wireframe procedures. Its nested Project Workflows dependency governs contributions to that collection, not this project's records. Use the actual selected checkout when following relative skill links; keep full folders and supporting policies together.
 
 Figma access is provided by the user's configured connector. Global skill links do not install or authenticate it. Creating shared components, changing other owners' work or publishing commits requires the corresponding authorization.
+
+## Workshop launcher
+[Open Aslan’s Workshop launcher](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=513-299&scaling=scale-down-width&hide-ui=1). The [board lookup](figma-board-map.json) is also the entry-point record; the file manifest references it through `local.routes`. Keep its action nodes, destination boards, prototype URLs, starting conditions and scenario references synchronized with the launcher.
+
+Workshop contains individual screen/state boards directly on the connected canvas. Scenario and development-batch sections do not partition it or add a level to navigation addresses. Existing left-to-right sequences and branch rows retain their positions. Scratchpad and Archive retain their separate exploration/history grouping conventions.
+
+The launcher exposes eighteen activities, including the original F1 recording, F4 review and F8 comment scenarios from the [user-flow record](https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085). Other activities have descriptive names without invented scenario identifiers. Entries can share a starting board; they do not own isolated copies of the product. The file Cover continues to link to this launcher and selected starts.
+
+Restart the prototype before choosing an entry to reset shared state. Launcher actions reset scroll and interactive component state, close or open chat as appropriate, and navigate to the named screen. Chat entries also initialize the conversation/composer variables; direct frame URLs do not execute launcher actions, so open Chat when entering that way. File selection, typing, audio and agent replies are scripted examples. The launcher states these limits and links to the detailed records rather than repeating the project task list.
+
+## Convention application verification · 2026-11-01
+- Structural inspection: removed twenty-six scenario/development sections, including one empty legacy section. All 178 screen IDs, dimensions and absolute positions were preserved. Descendant identity, geometry, visibility, text and reaction fingerprints matched immediately after reparenting; the launcher was then deliberately updated. The connector does not offer named-version creation; a pre-change geometry/signature snapshot was retained for this operation.
+- Entry inspection: all fifteen distinct destinations used by the eighteen launcher actions resolve. Replaced copied flow-start labels with the launcher plus those fifteen distinct starts. Added missing chat-citation/endnotes actions and navigation after chat intake initialization.
+- Visual inspection: rendered the launcher, normalized secondary entry controls and aligned the three primary cards. Product screen contents were not redesigned.
+- Ownership: Erwin’s Workshop and Scratchpad matched their before/after identity, geometry, visibility, text and reaction fingerprints. No write targeted his pages, shared component definitions, Scratchpad, Archive or Cover.
+- Remaining verification: this pass does not establish native playback, shared-state reset behavior, every route’s reachability, native-comment attachment, or the accuracy of every historical canvas connector. Continue the existing [Workshop QA](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35) with the consistency audit and bug-fix skills. Structural inspection, visual inspection, prototype playback and human acceptance remain separate evidence.

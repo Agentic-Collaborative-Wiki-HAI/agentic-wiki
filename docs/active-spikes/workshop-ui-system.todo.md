@@ -126,4 +126,11 @@ This task covers Figma design-system work and the authorized connected Workshop 
 - Removed obsolete hidden UI and replaced superseded header, metadata, context, thread, chat and formatting compositions with the current families documented in the [audit](../design/component-audit.md).
 - Reconciled citation entry with the unified search/URL/DOI flow and optional manual details. Preserved current board identities and route-specific actions.
 - Rendered representative states and checked all 567 unique reaction destinations. Dynamic chat switching exposed lost descendant overrides; evidence preview now attaches to a persistent conversation host. Its broad answer-state hit target and full native playback remain QA items.
-- Repo documentation is prepared locally; no commit or push in this task. Posted and independently verified the [bounded cleanup report on issue #35](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35#issuecomment-6550044945). The issue remains open; completed issue #32 was not reopened.
+- The component cleanup and its records are checkpointed in `2c4d9cf`. Posted and independently verified the [bounded cleanup report on issue #35](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35#issuecomment-6550044945). The issue remains open; completed issue #32 was not reopened.
+
+## Connected Workshop conventions · 2026-11-01
+- [x] Adopt the approved Wireframe Workflows policies and the `audit-wireframe-consistency` and `fix-wireframe-bug-reports` skills. Keep DesignOps governance separate.
+- [x] Remove Aslan’s scenario/development sections without moving or replacing the 178 screen boards; retain the existing branch arrangement.
+- [x] Refresh the single Workshop launcher with eighteen contextual entries, F1/F4/F8 source references, explicit simulation/restart guidance and repaired start actions. Replace copied Figma flow labels with actual distinct entry points.
+- [x] Reconcile the existing board map, file manifest and [project conventions](../design/wireframe-conventions.md). Erwin’s pages are unchanged.
+- [ ] Human walkthrough of the launcher entries, especially both chat starts, endnotes and shared-state reset. Agent evidence covers structural checks and the rendered launcher, not full native playback.

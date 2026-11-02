@@ -8,13 +8,13 @@
     {
       "id": "513:299",
       "oldName": "w1 · Prototype routes",
-      "name": "P0 · Prototype routes · Entry",
+      "name": "P0 · Workshop launcher · Entry",
       "address": "P0",
-      "screen": "Prototype routes",
+      "screen": "Workshop launcher",
       "state": "Entry",
-      "code": "P0.pr-e",
-      "groupId": "513:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=513-299"
+      "code": "P0.wl-e",
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=513-299",
+      "parentId": "500:2"
     },
     {
       "id": "509:299",
@@ -24,8 +24,8 @@
       "screen": "Getting started",
       "state": "Begin on a wiki page",
       "code": "1.1.1.1.gs-boawp",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-299"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-299",
+      "parentId": "500:2"
     },
     {
       "id": "509:383",
@@ -35,8 +35,8 @@
       "screen": "Getting started",
       "state": "Name the artifact and choose a file",
       "code": "1.1.1.1.gs-ntaacaf",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-383"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-383",
+      "parentId": "500:2"
     },
     {
       "id": "509:427",
@@ -46,8 +46,8 @@
       "screen": "Getting started",
       "state": "File uploaded — choose its meaning",
       "code": "1.1.1.1.gs-fucim",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-427"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-427",
+      "parentId": "500:2"
     },
     {
       "id": "509:482",
@@ -57,8 +57,8 @@
       "screen": "Getting started",
       "state": "Primary recording selected — add and transcribe",
       "code": "1.1.1.1.gs-prsaat",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-482"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-482",
+      "parentId": "500:2"
     },
     {
       "id": "509:537",
@@ -68,8 +68,8 @@
       "screen": "Orientation recording",
       "state": "Recording saved — transcript preparing",
       "code": "1.1.1.1.1.or-rstp",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-537"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-537",
+      "parentId": "500:2"
     },
     {
       "id": "509:589",
@@ -79,8 +79,8 @@
       "screen": "Orientation recording",
       "state": "One recording record — transcript ready",
       "code": "1.1.1.1.1.or-orrtr",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-589"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-589",
+      "parentId": "500:2"
     },
     {
       "id": "509:667",
@@ -90,8 +90,8 @@
       "screen": "Orientation recording",
       "state": "Check mode in the same recording",
       "code": "1.1.1.1.1.or-cmitsr",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-667"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-667",
+      "parentId": "500:2"
     },
     {
       "id": "509:747",
@@ -101,8 +101,8 @@
       "screen": "Orientation recording",
       "state": "Transcript checked — recording stays one record",
       "code": "1.1.1.1.1.or-tcrsor",
-      "groupId": "509:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-747"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=509-747",
+      "parentId": "500:2"
     },
     {
       "id": "510:299",
@@ -112,8 +112,8 @@
       "screen": "Getting started",
       "state": "A proposal is waiting on the guide",
       "code": "1.1.1.1.gs-apiwotg",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-299"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-299",
+      "parentId": "500:2"
     },
     {
       "id": "510:344",
@@ -123,8 +123,8 @@
       "screen": "Getting started",
       "state": "Inspect the exact proposed passage",
       "code": "1.1.1.1.gs-itepp",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-344"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-344",
+      "parentId": "500:2"
     },
     {
       "id": "510:407",
@@ -134,8 +134,8 @@
       "screen": "Getting started",
       "state": "Request a narrower revision",
       "code": "1.1.1.1.gs-ranr",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-407"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-407",
+      "parentId": "500:2"
     },
     {
       "id": "510:463",
@@ -145,8 +145,8 @@
       "screen": "Getting started",
       "state": "Review the revised proposal",
       "code": "1.1.1.1.gs-rtrp",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-463"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-463",
+      "parentId": "500:2"
     },
     {
       "id": "510:526",
@@ -156,8 +156,8 @@
       "screen": "Getting started",
       "state": "Revised wording accepted into the page",
       "code": "1.1.1.1.gs-rwaitp",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-526"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-526",
+      "parentId": "500:2"
     },
     {
       "id": "510:574",
@@ -167,8 +167,8 @@
       "screen": "Getting started",
       "state": "Rejected proposal leaves the page unchanged",
       "code": "1.1.1.1.gs-rpltpu",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-574"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-574",
+      "parentId": "500:2"
     },
     {
       "id": "510:619",
@@ -178,8 +178,8 @@
       "screen": "Getting started",
       "state": "Human edits the agent proposal before accepting",
       "code": "1.1.1.1.gs-hetapba",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-619"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-619",
+      "parentId": "500:2"
     },
     {
       "id": "510:663",
@@ -189,8 +189,8 @@
       "screen": "Getting started",
       "state": "Human-edited agent wording accepted",
       "code": "1.1.1.1.gs-hawa",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-663"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-663",
+      "parentId": "500:2"
     },
     {
       "id": "510:709",
@@ -200,8 +200,8 @@
       "screen": "Getting started",
       "state": "Initial proposal accepted without revision",
       "code": "1.1.1.1.gs-ipawr",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-709"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-709",
+      "parentId": "500:2"
     },
     {
       "id": "510:755",
@@ -211,8 +211,8 @@
       "screen": "Getting started",
       "state": "Review a tracked human edit",
       "code": "1.1.1.1.gs-rathe",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-755"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-755",
+      "parentId": "500:2"
     },
     {
       "id": "510:810",
@@ -222,8 +222,8 @@
       "screen": "Getting started",
       "state": "Tracked human edit accepted",
       "code": "1.1.1.1.gs-thea",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-810"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=510-810",
+      "parentId": "500:2"
     },
     {
       "id": "549:766",
@@ -233,8 +233,8 @@
       "screen": "Getting started",
       "state": "Human proposal rejected",
       "code": "1.1.1.1.gs-hpr",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=549-766"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=549-766",
+      "parentId": "500:2"
     },
     {
       "id": "511:569",
@@ -244,8 +244,8 @@
       "screen": "Getting started",
       "state": "Revised proposal accepted — comment thread still open",
       "code": "1.1.1.1.gs-rpactso",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-569"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-569",
+      "parentId": "500:2"
     },
     {
       "id": "511:623",
@@ -255,8 +255,8 @@
       "screen": "Getting started",
       "state": "Comment thread resolved — no open threads",
       "code": "1.1.1.1.gs-ctrnot",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-623"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-623",
+      "parentId": "500:2"
     },
     {
       "id": "511:728",
@@ -266,8 +266,8 @@
       "screen": "Getting started",
       "state": "Initial wording accepted — comment thread still open",
       "code": "1.1.1.1.gs-iwactso",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-728"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-728",
+      "parentId": "500:2"
     },
     {
       "id": "511:782",
@@ -277,8 +277,8 @@
       "screen": "Getting started",
       "state": "Initial wording — comment thread resolved",
       "code": "1.1.1.1.gs-iwctr",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-782"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-782",
+      "parentId": "500:2"
     },
     {
       "id": "511:833",
@@ -288,8 +288,8 @@
       "screen": "Getting started",
       "state": "Edited wording accepted — comment thread still open",
       "code": "1.1.1.1.gs-ewactso",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-833"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-833",
+      "parentId": "500:2"
     },
     {
       "id": "511:887",
@@ -299,8 +299,8 @@
       "screen": "Getting started",
       "state": "Edited wording — comment thread resolved",
       "code": "1.1.1.1.gs-ewctr",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-887"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-887",
+      "parentId": "500:2"
     },
     {
       "id": "511:674",
@@ -310,8 +310,8 @@
       "screen": "Getting started",
       "state": "Rejected proposal — concern remains open",
       "code": "1.1.1.1.gs-rpcro",
-      "groupId": "510:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-674"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-674",
+      "parentId": "500:2"
     },
     {
       "id": "511:299",
@@ -321,8 +321,8 @@
       "screen": "Getting started",
       "state": "Select an instruction that may be outdated",
       "code": "1.1.1.1.gs-saitmbo",
-      "groupId": "511:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-299"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-299",
+      "parentId": "500:2"
     },
     {
       "id": "511:346",
@@ -332,8 +332,8 @@
       "screen": "Getting started",
       "state": "Write a comment on the selected passage",
       "code": "1.1.1.1.gs-wacotsp",
-      "groupId": "511:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-346"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-346",
+      "parentId": "500:2"
     },
     {
       "id": "511:400",
@@ -343,8 +343,8 @@
       "screen": "Getting started",
       "state": "Comment posted — no agent request yet",
       "code": "1.1.1.1.gs-cpnary",
-      "groupId": "511:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-400"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-400",
+      "parentId": "500:2"
     },
     {
       "id": "511:454",
@@ -354,8 +354,8 @@
       "screen": "Getting started",
       "state": "Explicitly ask the agent for a proposed revision",
       "code": "1.1.1.1.gs-eatafapr",
-      "groupId": "511:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-454"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-454",
+      "parentId": "500:2"
     },
     {
       "id": "511:513",
@@ -365,8 +365,8 @@
       "screen": "Getting started",
       "state": "Agent proposal ready — continue through F4 review",
       "code": "1.1.1.1.gs-aprctfr",
-      "groupId": "511:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-513"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=511-513",
+      "parentId": "500:2"
     },
     {
       "id": "512:299",
@@ -376,8 +376,8 @@
       "screen": "Getting started",
       "state": "Inline citation, ordinary link and margin note",
       "code": "1.1.1.1.gs-icolamn",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-299"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-299",
+      "parentId": "500:2"
     },
     {
       "id": "512:353",
@@ -387,8 +387,8 @@
       "screen": "Getting started",
       "state": "Comments use the same margin in a separate tab",
       "code": "1.1.1.1.gs-cutsmiast",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-353"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-353",
+      "parentId": "500:2"
     },
     {
       "id": "512:404",
@@ -398,8 +398,8 @@
       "screen": "Getting started",
       "state": "Reused range — one handle, subtle highlight, linked source",
       "code": "1.1.1.1.gs-rrohshls",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-404"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-404",
+      "parentId": "500:2"
     },
     {
       "id": "512:464",
@@ -409,8 +409,8 @@
       "screen": "Orientation recording",
       "state": "Edit transcript from a reused excerpt",
       "code": "1.1.1.1.1.or-etfare",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-464"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-464",
+      "parentId": "500:2"
     },
     {
       "id": "512:526",
@@ -420,8 +420,8 @@
       "screen": "Evidence preview",
       "state": "Inspect the recording source",
       "code": "O1.ep-itrs",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-526"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-526",
+      "parentId": "500:2"
     },
     {
       "id": "512:576",
@@ -431,8 +431,8 @@
       "screen": "Source editor",
       "state": "Edit source in context",
       "code": "O2.se-esic",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-576"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=512-576",
+      "parentId": "500:2"
     },
     {
       "id": "781:27591",
@@ -442,8 +442,8 @@
       "screen": "Evidence preview",
       "state": "Citation preview — transcript passage 00:18",
       "code": "O3.ep-cptp0",
-      "groupId": "512:298",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=781-27591"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=781-27591",
+      "parentId": "500:2"
     },
     {
       "id": "657:2968",
@@ -453,8 +453,8 @@
       "screen": "The Lab",
       "state": "Wiki home",
       "code": "1.tl-wh",
-      "groupId": "657:2967",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-2968"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-2968",
+      "parentId": "500:2"
     },
     {
       "id": "657:3054",
@@ -464,8 +464,8 @@
       "screen": "Getting started",
       "state": "Edit the page normally",
       "code": "1.1.1.1.gs-etpn",
-      "groupId": "657:3053",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3054"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3054",
+      "parentId": "500:2"
     },
     {
       "id": "657:3139",
@@ -475,8 +475,8 @@
       "screen": "Getting started",
       "state": "Direct edit ready to save",
       "code": "1.1.1.1.gs-derts",
-      "groupId": "657:3053",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3139"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3139",
+      "parentId": "500:2"
     },
     {
       "id": "657:3224",
@@ -486,8 +486,8 @@
       "screen": "Getting started",
       "state": "Track changes — suggest the same edit",
       "code": "1.1.1.1.gs-tcstse",
-      "groupId": "657:3053",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3224"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3224",
+      "parentId": "500:2"
     },
     {
       "id": "657:3309",
@@ -497,8 +497,8 @@
       "screen": "Getting started",
       "state": "Direct edit saved",
       "code": "1.1.1.1.gs-des",
-      "groupId": "657:3053",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3309"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=657-3309",
+      "parentId": "500:2"
     },
     {
       "id": "663:3823",
@@ -508,8 +508,8 @@
       "screen": "Getting started",
       "state": "Remove uploaded file — keep entered context",
       "code": "1.1.1.1.gs-rufkec",
-      "groupId": "672:4493",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=663-3823"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=663-3823",
+      "parentId": "500:2"
     },
     {
       "id": "684:5356",
@@ -519,8 +519,8 @@
       "screen": "Getting started",
       "state": "Add recording without generating a transcript",
       "code": "1.1.1.1.gs-arwgat",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5356"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5356",
+      "parentId": "500:2"
     },
     {
       "id": "684:5590",
@@ -530,8 +530,8 @@
       "screen": "Orientation recording",
       "state": "Recording saved without transcript",
       "code": "1.1.1.1.1.or-rswt",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5590"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5590",
+      "parentId": "500:2"
     },
     {
       "id": "684:5789",
@@ -541,8 +541,8 @@
       "screen": "Orientation recording",
       "state": "Edit recording title and description",
       "code": "1.1.1.1.1.or-ertad",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5789"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-5789",
+      "parentId": "500:2"
     },
     {
       "id": "684:6009",
@@ -552,8 +552,8 @@
       "screen": "Orientation recording",
       "state": "Transcript revised by a human",
       "code": "1.1.1.1.1.or-trbah",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6009"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6009",
+      "parentId": "500:2"
     },
     {
       "id": "684:6544",
@@ -563,8 +563,8 @@
       "screen": "Microscope care",
       "state": "New page saved",
       "code": "1.1.1.1.3.mc-nps",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6544"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6544",
+      "parentId": "500:2"
     },
     {
       "id": "684:6684",
@@ -574,8 +574,8 @@
       "screen": "Getting started history",
       "state": "Page history — changes and review trail",
       "code": "1.1.1.1.gsh-phcart",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6684"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6684",
+      "parentId": "500:2"
     },
     {
       "id": "684:6806",
@@ -585,8 +585,8 @@
       "screen": "Orientation recording history",
       "state": "Recording artifact history",
       "code": "1.1.1.1.1.orh-rah",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6806"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6806",
+      "parentId": "500:2"
     },
     {
       "id": "684:6928",
@@ -596,8 +596,8 @@
       "screen": "Orientation transcript history",
       "state": "Transcript revision history",
       "code": "1.1.1.1.1.oth-trh",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6928"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=684-6928",
+      "parentId": "500:2"
     },
     {
       "id": "692:8833",
@@ -607,8 +607,8 @@
       "screen": "Microscope care history",
       "state": "New page history",
       "code": "1.1.1.1.3.mch-nph",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=692-8833"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=692-8833",
+      "parentId": "500:2"
     },
     {
       "id": "695:7357",
@@ -618,8 +618,8 @@
       "screen": "Orientation recording history",
       "state": "Recording history before transcription",
       "code": "1.1.1.1.1.orh-rhbt",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=695-7357"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=695-7357",
+      "parentId": "500:2"
     },
     {
       "id": "891:10599",
@@ -629,8 +629,8 @@
       "screen": "Getting started",
       "state": "Add page modal — empty",
       "code": "1.1.1.1.gs-apme",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=891-10599"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=891-10599",
+      "parentId": "500:2"
     },
     {
       "id": "891:10660",
@@ -640,8 +640,8 @@
       "screen": "Getting started",
       "state": "Add page modal — ready to create",
       "code": "1.1.1.1.gs-apmrtc",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=891-10660"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=891-10660",
+      "parentId": "500:2"
     },
     {
       "id": "927:51060",
@@ -651,8 +651,8 @@
       "screen": "Microscope care",
       "state": "Edit the created page",
       "code": "1.1.1.1.3.mc-etcp",
-      "groupId": "684:5328",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=927-51060"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=927-51060",
+      "parentId": "500:2"
     },
     {
       "id": "707:7431",
@@ -662,8 +662,8 @@
       "screen": "Getting started",
       "state": "Selected text — add a comment",
       "code": "1.1.1.1.gs-staac",
-      "groupId": "707:7430",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=707-7431"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=707-7431",
+      "parentId": "500:2"
     },
     {
       "id": "707:7592",
@@ -673,8 +673,8 @@
       "screen": "Getting started",
       "state": "Selected text while editing",
       "code": "1.1.1.1.gs-stwe",
-      "groupId": "707:7430",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=707-7592"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=707-7592",
+      "parentId": "500:2"
     },
     {
       "id": "738:7644",
@@ -684,8 +684,8 @@
       "screen": "Profile",
       "state": "Overview",
       "code": "2.p-o",
-      "groupId": "738:7643",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=738-7644"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=738-7644",
+      "parentId": "500:2"
     },
     {
       "id": "738:7756",
@@ -695,8 +695,8 @@
       "screen": "Settings",
       "state": "Personal settings",
       "code": "3.s-ps",
-      "groupId": "738:7643",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=738-7756"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=738-7756",
+      "parentId": "500:2"
     },
     {
       "id": "761:26929",
@@ -706,8 +706,8 @@
       "screen": "Getting started",
       "state": "Full-screen empty artifact dialog",
       "code": "1.1.1.1.gs-fead",
-      "groupId": "761:26928",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-26929"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-26929",
+      "parentId": "500:2"
     },
     {
       "id": "761:26987",
@@ -717,8 +717,8 @@
       "screen": "Getting started",
       "state": "Full-screen type artifact dialog",
       "code": "1.1.1.1.gs-ftad",
-      "groupId": "761:26928",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-26987"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-26987",
+      "parentId": "500:2"
     },
     {
       "id": "761:27078",
@@ -728,8 +728,8 @@
       "screen": "Getting started",
       "state": "Full-screen ready artifact dialog",
       "code": "1.1.1.1.gs-frad",
-      "groupId": "761:26928",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27078"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27078",
+      "parentId": "500:2"
     },
     {
       "id": "761:27171",
@@ -739,8 +739,8 @@
       "screen": "Getting started",
       "state": "Full-screen removed artifact dialog",
       "code": "1.1.1.1.gs-frad-full-screen-removed-artifact-dialog",
-      "groupId": "761:26928",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27171"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27171",
+      "parentId": "500:2"
     },
     {
       "id": "761:27229",
@@ -750,8 +750,8 @@
       "screen": "Getting started",
       "state": "Full-screen Add artifact without transcript",
       "code": "1.1.1.1.gs-faawt",
-      "groupId": "761:26928",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27229"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=761-27229",
+      "parentId": "500:2"
     },
     {
       "id": "786:9450",
@@ -761,8 +761,8 @@
       "screen": "Getting started",
       "state": "Choose link",
       "code": "1.1.1.1.gs-cl",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-9450"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-9450",
+      "parentId": "500:2"
     },
     {
       "id": "786:9920",
@@ -772,8 +772,8 @@
       "screen": "Getting started",
       "state": "Complete link",
       "code": "1.1.1.1.gs-cl-complete-link",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-9920"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-9920",
+      "parentId": "500:2"
     },
     {
       "id": "786:10390",
@@ -783,8 +783,8 @@
       "screen": "Getting started",
       "state": "Apply link",
       "code": "1.1.1.1.gs-al",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-10390"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-10390",
+      "parentId": "500:2"
     },
     {
       "id": "786:10860",
@@ -794,8 +794,8 @@
       "screen": "Getting started",
       "state": "Saved link",
       "code": "1.1.1.1.gs-sl",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-10860"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-10860",
+      "parentId": "500:2"
     },
     {
       "id": "786:11317",
@@ -805,8 +805,8 @@
       "screen": "Getting started",
       "state": "Choose citation",
       "code": "1.1.1.1.gs-cc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-11317"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-11317",
+      "parentId": "500:2"
     },
     {
       "id": "786:11787",
@@ -816,8 +816,8 @@
       "screen": "Getting started",
       "state": "Complete citation",
       "code": "1.1.1.1.gs-cc-complete-citation",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-11787"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-11787",
+      "parentId": "500:2"
     },
     {
       "id": "786:12257",
@@ -827,8 +827,8 @@
       "screen": "Getting started",
       "state": "Apply citation",
       "code": "1.1.1.1.gs-ac",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-12257"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-12257",
+      "parentId": "500:2"
     },
     {
       "id": "786:12727",
@@ -838,8 +838,8 @@
       "screen": "Getting started",
       "state": "Saved citation",
       "code": "1.1.1.1.gs-sc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-12727"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-12727",
+      "parentId": "500:2"
     },
     {
       "id": "786:13184",
@@ -849,8 +849,8 @@
       "screen": "Getting started",
       "state": "Choose margin note",
       "code": "1.1.1.1.gs-cmn",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-13184"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-13184",
+      "parentId": "500:2"
     },
     {
       "id": "786:13654",
@@ -860,8 +860,8 @@
       "screen": "Getting started",
       "state": "Complete margin note",
       "code": "1.1.1.1.gs-cmn-complete-margin-note",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-13654"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-13654",
+      "parentId": "500:2"
     },
     {
       "id": "786:14124",
@@ -871,8 +871,8 @@
       "screen": "Getting started",
       "state": "Apply margin note",
       "code": "1.1.1.1.gs-amn",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-14124"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-14124",
+      "parentId": "500:2"
     },
     {
       "id": "786:14594",
@@ -882,8 +882,8 @@
       "screen": "Getting started",
       "state": "Saved margin note",
       "code": "1.1.1.1.gs-smn",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-14594"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-14594",
+      "parentId": "500:2"
     },
     {
       "id": "786:15051",
@@ -893,8 +893,8 @@
       "screen": "Getting started",
       "state": "Choose comment",
       "code": "1.1.1.1.gs-cc-choose-comment",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15051"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15051",
+      "parentId": "500:2"
     },
     {
       "id": "786:15521",
@@ -904,8 +904,8 @@
       "screen": "Getting started",
       "state": "Complete comment",
       "code": "1.1.1.1.gs-cc-complete-comment",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15521"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15521",
+      "parentId": "500:2"
     },
     {
       "id": "786:15991",
@@ -915,8 +915,8 @@
       "screen": "Getting started",
       "state": "Apply comment",
       "code": "1.1.1.1.gs-ac-apply-comment",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15991"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-15991",
+      "parentId": "500:2"
     },
     {
       "id": "786:16461",
@@ -926,8 +926,8 @@
       "screen": "Getting started",
       "state": "Saved comment",
       "code": "1.1.1.1.gs-sc-saved-comment",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-16461"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=786-16461",
+      "parentId": "500:2"
     },
     {
       "id": "790:10435",
@@ -937,8 +937,8 @@
       "screen": "Link preview",
       "state": "Link destination preview",
       "code": "O4.lp-ldp",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=790-10435"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=790-10435",
+      "parentId": "500:2"
     },
     {
       "id": "833:13467",
@@ -948,8 +948,8 @@
       "screen": "Getting started",
       "state": "Apply web citation",
       "code": "1.1.1.1.gs-awc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-13467"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-13467",
+      "parentId": "500:2"
     },
     {
       "id": "833:13975",
@@ -959,8 +959,8 @@
       "screen": "Getting started",
       "state": "Saved web citation",
       "code": "1.1.1.1.gs-swc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-13975"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-13975",
+      "parentId": "500:2"
     },
     {
       "id": "833:17355",
@@ -970,8 +970,8 @@
       "screen": "Getting started",
       "state": "Apply print citation",
       "code": "1.1.1.1.gs-apc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-17355"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-17355",
+      "parentId": "500:2"
     },
     {
       "id": "833:17863",
@@ -981,8 +981,8 @@
       "screen": "Getting started",
       "state": "Saved print citation",
       "code": "1.1.1.1.gs-spc",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-17863"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=833-17863",
+      "parentId": "500:2"
     },
     {
       "id": "1066:31494",
@@ -992,8 +992,8 @@
       "screen": "Getting started",
       "state": "Link context menu while editing",
       "code": "1.1.1.1.gs-lcmwe",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-31494"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-31494",
+      "parentId": "500:2"
     },
     {
       "id": "1066:31581",
@@ -1003,8 +1003,8 @@
       "screen": "Getting started",
       "state": "Edit link destination",
       "code": "1.1.1.1.gs-eld",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-31581"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-31581",
+      "parentId": "500:2"
     },
     {
       "id": "1144:32936",
@@ -1014,8 +1014,8 @@
       "screen": "Getting started",
       "state": "Select note words to add a link",
       "code": "1.1.1.1.gs-snwtaal",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-32936"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-32936",
+      "parentId": "500:2"
     },
     {
       "id": "1144:33913",
@@ -1025,8 +1025,8 @@
       "screen": "Getting started",
       "state": "Add link to the new note",
       "code": "1.1.1.1.gs-alttnn",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-33913"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-33913",
+      "parentId": "500:2"
     },
     {
       "id": "1144:34890",
@@ -1036,8 +1036,8 @@
       "screen": "Getting started",
       "state": "Choose the note link destination",
       "code": "1.1.1.1.gs-ctnld",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-34890"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-34890",
+      "parentId": "500:2"
     },
     {
       "id": "1144:35867",
@@ -1047,8 +1047,8 @@
       "screen": "Getting started",
       "state": "Linked note ready to add",
       "code": "1.1.1.1.gs-lnrta",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-35867"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-35867",
+      "parentId": "500:2"
     },
     {
       "id": "1144:36844",
@@ -1058,8 +1058,8 @@
       "screen": "Getting started",
       "state": "Select the draft note link",
       "code": "1.1.1.1.gs-stdnl",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-36844"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-36844",
+      "parentId": "500:2"
     },
     {
       "id": "1144:37821",
@@ -1069,8 +1069,8 @@
       "screen": "Getting started",
       "state": "Edit the selected note link",
       "code": "1.1.1.1.gs-etsnl",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-37821"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-37821",
+      "parentId": "500:2"
     },
     {
       "id": "1144:38798",
@@ -1080,8 +1080,8 @@
       "screen": "Getting started",
       "state": "New margin note with inline link",
       "code": "1.1.1.1.gs-nmnwil",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-38798"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-38798",
+      "parentId": "500:2"
     },
     {
       "id": "1144:39748",
@@ -1091,8 +1091,8 @@
       "screen": "Getting started",
       "state": "Saved linked margin note",
       "code": "1.1.1.1.gs-slmn",
-      "groupId": "786:9449",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-39748"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1144-39748",
+      "parentId": "500:2"
     },
     {
       "id": "903:10624",
@@ -1102,8 +1102,8 @@
       "screen": "Getting started",
       "state": "Add audio note and generate transcript",
       "code": "1.1.1.1.gs-aanagt",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10624"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10624",
+      "parentId": "500:2"
     },
     {
       "id": "903:10716",
@@ -1113,8 +1113,8 @@
       "screen": "Getting started",
       "state": "Add audio note without transcript",
       "code": "1.1.1.1.gs-aanwt",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10716"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10716",
+      "parentId": "500:2"
     },
     {
       "id": "903:10808",
@@ -1124,8 +1124,8 @@
       "screen": "Orientation audio note",
       "state": "Audio note saved — transcript preparing",
       "code": "1.1.1.1.2.oan-anstp",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10808"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-10808",
+      "parentId": "500:2"
     },
     {
       "id": "903:13933",
@@ -1135,8 +1135,8 @@
       "screen": "Orientation audio note",
       "state": "Audio note — transcript visible",
       "code": "1.1.1.1.2.oan-antv",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-13933"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-13933",
+      "parentId": "500:2"
     },
     {
       "id": "903:14136",
@@ -1146,8 +1146,8 @@
       "screen": "Orientation audio note",
       "state": "Edit the audio-note transcript",
       "code": "1.1.1.1.2.oan-etat",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14136"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14136",
+      "parentId": "500:2"
     },
     {
       "id": "903:14301",
@@ -1157,8 +1157,8 @@
       "screen": "Orientation audio note history",
       "state": "Audio-note history",
       "code": "1.1.1.1.2.oanh-ah",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14301"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14301",
+      "parentId": "500:2"
     },
     {
       "id": "903:14503",
@@ -1168,8 +1168,8 @@
       "screen": "Orientation audio note",
       "state": "Edit the audio-note title and description",
       "code": "1.1.1.1.2.oan-etatad",
-      "groupId": "903:10623",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14503"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=903-14503",
+      "parentId": "500:2"
     },
     {
       "id": "939:13562",
@@ -1179,8 +1179,8 @@
       "screen": "Getting started",
       "state": "Open chat on the current page",
       "code": "1.1.1.1.gs-ocotcp",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-13562"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-13562",
+      "parentId": "500:2"
     },
     {
       "id": "939:14305",
@@ -1190,8 +1190,8 @@
       "screen": "Getting started",
       "state": "Compose a question",
       "code": "1.1.1.1.gs-caq",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-14305"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-14305",
+      "parentId": "500:2"
     },
     {
       "id": "939:15048",
@@ -1201,8 +1201,8 @@
       "screen": "Getting started",
       "state": "Read the agent’s cited answer",
       "code": "1.1.1.1.gs-rtaca",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-15048"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-15048",
+      "parentId": "500:2"
     },
     {
       "id": "939:15791",
@@ -1212,8 +1212,8 @@
       "screen": "Getting started",
       "state": "Compose a follow-up",
       "code": "1.1.1.1.gs-caf",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-15791"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-15791",
+      "parentId": "500:2"
     },
     {
       "id": "939:16534",
@@ -1223,8 +1223,8 @@
       "screen": "Getting started",
       "state": "Continue the conversation",
       "code": "1.1.1.1.gs-ctc",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-16534"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-16534",
+      "parentId": "500:2"
     },
     {
       "id": "939:17331",
@@ -1234,8 +1234,8 @@
       "screen": "Evidence preview",
       "state": "Inspect the transcript citation",
       "code": "O5.ep-ittc",
-      "groupId": "939:13560",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-17331"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=939-17331",
+      "parentId": "500:2"
     },
     {
       "id": "950:15620",
@@ -1245,8 +1245,8 @@
       "screen": "Orientation recording",
       "state": "Edit the transcript",
       "code": "1.1.1.1.1.or-ett",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-15620"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-15620",
+      "parentId": "500:2"
     },
     {
       "id": "950:16426",
@@ -1256,8 +1256,8 @@
       "screen": "Orientation recording",
       "state": "Correct transcript text",
       "code": "1.1.1.1.1.or-ctt",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-16426"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-16426",
+      "parentId": "500:2"
     },
     {
       "id": "950:17232",
@@ -1267,8 +1267,8 @@
       "screen": "Orientation recording",
       "state": "Saved transcript correction",
       "code": "1.1.1.1.1.or-stc",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-17232"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-17232",
+      "parentId": "500:2"
     },
     {
       "id": "950:18038",
@@ -1278,8 +1278,8 @@
       "screen": "Orientation recording",
       "state": "Select transcript text",
       "code": "1.1.1.1.1.or-stt",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-18038"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-18038",
+      "parentId": "500:2"
     },
     {
       "id": "950:18844",
@@ -1289,8 +1289,8 @@
       "screen": "Orientation recording",
       "state": "Add a comment while editing",
       "code": "1.1.1.1.1.or-aacwe",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-18844"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-18844",
+      "parentId": "500:2"
     },
     {
       "id": "950:19650",
@@ -1300,8 +1300,8 @@
       "screen": "Orientation recording",
       "state": "Compose the transcript comment",
       "code": "1.1.1.1.1.or-cttc",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-19650"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-19650",
+      "parentId": "500:2"
     },
     {
       "id": "950:20456",
@@ -1311,8 +1311,8 @@
       "screen": "Orientation recording",
       "state": "Comment posted — still editing",
       "code": "1.1.1.1.1.or-cpse",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-20456"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-20456",
+      "parentId": "500:2"
     },
     {
       "id": "950:21262",
@@ -1322,8 +1322,8 @@
       "screen": "Orientation recording",
       "state": "Saved transcript with comment",
       "code": "1.1.1.1.1.or-stwc",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-21262"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-21262",
+      "parentId": "500:2"
     },
     {
       "id": "950:22068",
@@ -1333,8 +1333,8 @@
       "screen": "Orientation recording",
       "state": "Add a margin note while editing",
       "code": "1.1.1.1.1.or-aamnwe",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-22068"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-22068",
+      "parentId": "500:2"
     },
     {
       "id": "950:22874",
@@ -1344,8 +1344,8 @@
       "screen": "Orientation recording",
       "state": "Compose the transcript note",
       "code": "1.1.1.1.1.or-cttn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-22874"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-22874",
+      "parentId": "500:2"
     },
     {
       "id": "950:23680",
@@ -1355,8 +1355,8 @@
       "screen": "Orientation recording",
       "state": "Margin note applied — still editing",
       "code": "1.1.1.1.1.or-mnase",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-23680"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-23680",
+      "parentId": "500:2"
     },
     {
       "id": "950:24486",
@@ -1366,8 +1366,8 @@
       "screen": "Orientation recording",
       "state": "Saved transcript with margin note",
       "code": "1.1.1.1.1.or-stwmn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-24486"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-24486",
+      "parentId": "500:2"
     },
     {
       "id": "966:17122",
@@ -1377,8 +1377,8 @@
       "screen": "Orientation recording",
       "state": "Select words inside a margin note",
       "code": "1.1.1.1.1.or-swiamn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-17122"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-17122",
+      "parentId": "500:2"
     },
     {
       "id": "966:17995",
@@ -1388,8 +1388,8 @@
       "screen": "Orientation recording",
       "state": "Add a link within the note",
       "code": "1.1.1.1.1.or-aalwtn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-17995"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-17995",
+      "parentId": "500:2"
     },
     {
       "id": "966:18868",
@@ -1399,8 +1399,8 @@
       "screen": "Orientation recording",
       "state": "Choose the linked wiki page",
       "code": "1.1.1.1.1.or-ctlwp",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-18868"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-18868",
+      "parentId": "500:2"
     },
     {
       "id": "966:19741",
@@ -1410,8 +1410,8 @@
       "screen": "Orientation recording",
       "state": "Link inserted in the draft note",
       "code": "1.1.1.1.1.or-liitdn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-19741"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-19741",
+      "parentId": "500:2"
     },
     {
       "id": "966:20614",
@@ -1421,8 +1421,8 @@
       "screen": "Orientation recording",
       "state": "Linked margin note — still editing",
       "code": "1.1.1.1.1.or-lmnse",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-20614"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-20614",
+      "parentId": "500:2"
     },
     {
       "id": "966:21447",
@@ -1432,8 +1432,8 @@
       "screen": "Orientation recording",
       "state": "Saved margin note with a link",
       "code": "1.1.1.1.1.or-smnwal",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-21447"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=966-21447",
+      "parentId": "500:2"
     },
     {
       "id": "969:16673",
@@ -1443,8 +1443,8 @@
       "screen": "Orientation recording",
       "state": "Edit the note link — cancel keeps the draft",
       "code": "1.1.1.1.1.or-etnlcktd",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=969-16673"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=969-16673",
+      "parentId": "500:2"
     },
     {
       "id": "971:17583",
@@ -1454,8 +1454,8 @@
       "screen": "Getting started",
       "state": "Open the guide linked from the note",
       "code": "1.1.1.1.gs-otglftn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=971-17583"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=971-17583",
+      "parentId": "500:2"
     },
     {
       "id": "1066:30542",
@@ -1465,8 +1465,8 @@
       "screen": "Orientation recording",
       "state": "Link context menu inside the note",
       "code": "1.1.1.1.1.or-lcmitn",
-      "groupId": "950:15619",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-30542"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1066-30542",
+      "parentId": "500:2"
     },
     {
       "id": "981:20800",
@@ -1476,8 +1476,8 @@
       "screen": "Getting started history",
       "state": "Page revisions after resolving the comment thread",
       "code": "1.1.1.1.gsh-prartct",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-20800"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-20800",
+      "parentId": "500:2"
     },
     {
       "id": "981:22692",
@@ -1487,8 +1487,8 @@
       "screen": "Getting started history",
       "state": "Page revisions after resolving the comment thread · Initial acceptance",
       "code": "1.1.1.1.gsh-prartctia",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-22692"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-22692",
+      "parentId": "500:2"
     },
     {
       "id": "981:24582",
@@ -1498,8 +1498,8 @@
       "screen": "Getting started history",
       "state": "Page revisions after resolving the comment thread · Human-edited acceptance",
       "code": "1.1.1.1.gsh-prartctha",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-24582"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=981-24582",
+      "parentId": "500:2"
     },
     {
       "id": "1109:139382",
@@ -1509,8 +1509,8 @@
       "screen": "Getting started history",
       "state": "Resolved thread selected from a page",
       "code": "1.1.1.1.gsh-rtsfap",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1109-139382"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1109-139382",
+      "parentId": "500:2"
     },
     {
       "id": "1109:140330",
@@ -1520,8 +1520,8 @@
       "screen": "Orientation recording history",
       "state": "Resolved thread selected from a transcript",
       "code": "1.1.1.1.1.orh-rtsfat",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1109-140330"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1109-140330",
+      "parentId": "500:2"
     },
     {
       "id": "1169:165829",
@@ -1531,8 +1531,8 @@
       "screen": "Getting started history",
       "state": "Resolved human conversation · Arranging hands-on training",
       "code": "1.1.1.1.gsh-rhcaht",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1169-165829"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1169-165829",
+      "parentId": "500:2"
     },
     {
       "id": "1169:166900",
@@ -1542,8 +1542,8 @@
       "screen": "Getting started history",
       "state": "Resolved human conversation · Where to keep session records",
       "code": "1.1.1.1.gsh-rhcwtksr",
-      "groupId": "981:20799",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1169-166900"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1169-166900",
+      "parentId": "500:2"
     },
     {
       "id": "988:16150",
@@ -1553,8 +1553,8 @@
       "screen": "Getting started",
       "state": "Find a source",
       "code": "1.1.1.1.gs-fas",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16150"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16150",
+      "parentId": "500:2"
     },
     {
       "id": "988:16427",
@@ -1564,8 +1564,8 @@
       "screen": "Getting started",
       "state": "Wiki search results",
       "code": "1.1.1.1.gs-wsr",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16427"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16427",
+      "parentId": "500:2"
     },
     {
       "id": "988:16711",
@@ -1575,8 +1575,8 @@
       "screen": "Getting started",
       "state": "Cite the whole transcript",
       "code": "1.1.1.1.gs-ctwt",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16711"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-16711",
+      "parentId": "500:2"
     },
     {
       "id": "988:17018",
@@ -1586,8 +1586,8 @@
       "screen": "Getting started",
       "state": "Select transcript text",
       "code": "1.1.1.1.gs-stt",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17018"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17018",
+      "parentId": "500:2"
     },
     {
       "id": "988:17326",
@@ -1597,8 +1597,8 @@
       "screen": "Getting started",
       "state": "Cite a selected passage",
       "code": "1.1.1.1.gs-casp",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17326"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17326",
+      "parentId": "500:2"
     },
     {
       "id": "988:17634",
@@ -1608,8 +1608,8 @@
       "screen": "Getting started",
       "state": "Recognized web URL",
       "code": "1.1.1.1.gs-rwu",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17634"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17634",
+      "parentId": "500:2"
     },
     {
       "id": "988:17927",
@@ -1619,8 +1619,8 @@
       "screen": "Getting started",
       "state": "Recognized DOI",
       "code": "1.1.1.1.gs-rd",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17927"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-17927",
+      "parentId": "500:2"
     },
     {
       "id": "988:18220",
@@ -1630,8 +1630,8 @@
       "screen": "Getting started",
       "state": "Source without a link",
       "code": "1.1.1.1.gs-swal",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18220"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18220",
+      "parentId": "500:2"
     },
     {
       "id": "988:18512",
@@ -1641,8 +1641,8 @@
       "screen": "Getting started",
       "state": "Source details ready",
       "code": "1.1.1.1.gs-sdr",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18512"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18512",
+      "parentId": "500:2"
     },
     {
       "id": "988:18804",
@@ -1652,8 +1652,8 @@
       "screen": "Getting started",
       "state": "Cite the audio recording",
       "code": "1.1.1.1.gs-ctar",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18804"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-18804",
+      "parentId": "500:2"
     },
     {
       "id": "988:19126",
@@ -1663,8 +1663,8 @@
       "screen": "Getting started",
       "state": "Cite an audio range",
       "code": "1.1.1.1.gs-caar",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19126"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19126",
+      "parentId": "500:2"
     },
     {
       "id": "988:19448",
@@ -1674,8 +1674,8 @@
       "screen": "Getting started",
       "state": "Citation added while editing",
       "code": "1.1.1.1.gs-cawe",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19448"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19448",
+      "parentId": "500:2"
     },
     {
       "id": "988:19539",
@@ -1685,8 +1685,8 @@
       "screen": "Getting started",
       "state": "Citation saved on the page",
       "code": "1.1.1.1.gs-csotp",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19539"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=988-19539",
+      "parentId": "500:2"
     },
     {
       "id": "989:21062",
@@ -1696,8 +1696,8 @@
       "screen": "Getting started",
       "state": "Choose a source type",
       "code": "1.1.1.1.gs-cast",
-      "groupId": "988:16149",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=989-21062"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=989-21062",
+      "parentId": "500:2"
     },
     {
       "id": "991:22577",
@@ -1707,8 +1707,8 @@
       "screen": "Getting started history",
       "state": "Earlier content revision",
       "code": "1.1.1.1.gsh-ecr",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22577"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22577",
+      "parentId": "500:2"
     },
     {
       "id": "991:22652",
@@ -1718,8 +1718,8 @@
       "screen": "Getting started history",
       "state": "Earlier content revision · Initial acceptance",
       "code": "1.1.1.1.gsh-initial-acceptance",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22652"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22652",
+      "parentId": "500:2"
     },
     {
       "id": "991:22727",
@@ -1729,8 +1729,8 @@
       "screen": "Getting started history",
       "state": "Earlier content revision · Human-edited acceptance",
       "code": "1.1.1.1.gsh-edited-acceptance",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22727"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22727",
+      "parentId": "500:2"
     },
     {
       "id": "991:22802",
@@ -1740,8 +1740,8 @@
       "screen": "Getting started history",
       "state": "Rejected suggestion — review event without a new revision",
       "code": "1.1.1.1.gsh-rsrewanr",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22802"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22802",
+      "parentId": "500:2"
     },
     {
       "id": "991:22877",
@@ -1751,8 +1751,8 @@
       "screen": "Getting started history",
       "state": "Published revision unchanged after rejection",
       "code": "1.1.1.1.gsh-pruar",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22877"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=991-22877",
+      "parentId": "500:2"
     },
     {
       "id": "994:20991",
@@ -1762,8 +1762,8 @@
       "screen": "Getting started history",
       "state": "Accepted revision with an open thread",
       "code": "1.1.1.1.gsh-arwaot",
-      "groupId": "991:21177",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=994-20991"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=994-20991",
+      "parentId": "500:2"
     },
     {
       "id": "1014:32826",
@@ -1773,8 +1773,8 @@
       "screen": "Getting started",
       "state": "Comment thread — citation and ordinary artifact link",
       "code": "1.1.1.1.gs-ctcaoal",
-      "groupId": "1014:32034",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-32826"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-32826",
+      "parentId": "500:2"
     },
     {
       "id": "1014:33883",
@@ -1784,8 +1784,8 @@
       "screen": "Getting started",
       "state": "Read cited passage beside the thread",
       "code": "1.1.1.1.gs-rcpbtt",
-      "groupId": "1014:32034",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-33883"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-33883",
+      "parentId": "500:2"
     },
     {
       "id": "1014:34042",
@@ -1795,8 +1795,8 @@
       "screen": "Orientation recording",
       "state": "Open linked artifact — return through Getting started",
       "code": "1.1.1.1.1.or-olartgs",
-      "groupId": "1014:32034",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-34042"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1014-34042",
+      "parentId": "500:2"
     },
     {
       "id": "1025:24955",
@@ -1806,8 +1806,8 @@
       "screen": "Evidence preview",
       "state": "Citation 1 — equipment and booking passage",
       "code": "O6.ep-c1eabp",
-      "groupId": "1025:21417",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1025-24955"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1025-24955",
+      "parentId": "500:2"
     },
     {
       "id": "1025:24968",
@@ -1817,8 +1817,8 @@
       "screen": "Evidence preview",
       "state": "Citation 3 — training passage",
       "code": "O7.ep-c3tp",
-      "groupId": "1025:21417",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1025-24968"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1025-24968",
+      "parentId": "500:2"
     },
     {
       "id": "1044:21735",
@@ -1828,8 +1828,8 @@
       "screen": "File picker",
       "state": "Open file for a new artifact",
       "code": "O8.fp-offana",
-      "groupId": "1044:21734",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21735"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21735",
+      "parentId": "500:2"
     },
     {
       "id": "1044:21886",
@@ -1839,8 +1839,8 @@
       "screen": "Getting started",
       "state": "Non-audio file attached — draft",
       "code": "1.1.1.1.gs-nfad",
-      "groupId": "1044:21734",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21886"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21886",
+      "parentId": "500:2"
     },
     {
       "id": "1044:21929",
@@ -1850,8 +1850,8 @@
       "screen": "File picker",
       "state": "Open file for agent chat",
       "code": "O9.fp-offac",
-      "groupId": "1044:21734",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21929"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1044-21929",
+      "parentId": "500:2"
     },
     {
       "id": "1079:24424",
@@ -1861,8 +1861,8 @@
       "screen": "Planning a microscope session",
       "state": "Planning and documenting a microscope session",
       "code": "1.1.1.2.pams-padams",
-      "groupId": "1079:24423",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1079-24424"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1079-24424",
+      "parentId": "500:2"
     },
     {
       "id": "1162:154668",
@@ -1872,8 +1872,8 @@
       "screen": "Planning a microscope session",
       "state": "Edit long documentation with persistent formatting",
       "code": "1.1.1.2.pams-eldwpf",
-      "groupId": "1079:24423",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1162-154668"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1162-154668",
+      "parentId": "500:2"
     },
     {
       "id": "1172:27898",
@@ -1883,8 +1883,8 @@
       "screen": "Getting started",
       "state": "Snapshot · Page revision 1 · Created by Brandon · 21 Oct 2026, 2:15 PM",
       "code": "1.1.1.1.gs-spr1cbb2o22p",
-      "groupId": "1172:27897",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-27898"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-27898",
+      "parentId": "500:2"
     },
     {
       "id": "1172:29498",
@@ -1894,8 +1894,8 @@
       "screen": "Getting started",
       "state": "Snapshot · Page revision 2 · Edited by Aslan French · 24 Oct 2026, 9:45 AM",
       "code": "1.1.1.1.gs-spr2ebaf2o29a",
-      "groupId": "1172:27897",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-29498"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-29498",
+      "parentId": "500:2"
     },
     {
       "id": "1172:30331",
@@ -1905,8 +1905,8 @@
       "screen": "Orientation recording",
       "state": "Snapshot · Transcript revision 1 · Reviewed by Aslan French · 24 Oct 2026, 9:50 AM",
       "code": "1.1.1.1.1.or-str1rbaf2o29a",
-      "groupId": "1172:27897",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-30331"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-30331",
+      "parentId": "500:2"
     },
     {
       "id": "1172:31238",
@@ -1916,8 +1916,8 @@
       "screen": "Orientation recording",
       "state": "Snapshot · Transcript revision 2 · Revised by Aslan French · 24 Oct 2026, 10:05 AM",
       "code": "1.1.1.1.1.or-str2rbaf2o21a",
-      "groupId": "1172:27897",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-31238"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-31238",
+      "parentId": "500:2"
     },
     {
       "id": "1172:32151",
@@ -1927,8 +1927,8 @@
       "screen": "Orientation audio note",
       "state": "Snapshot · Transcript revision 1 · Generated · 24 Oct 2026, 9:30 AM",
       "code": "1.1.1.1.2.oan-str1g2o29a",
-      "groupId": "1172:27897",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-32151"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1172-32151",
+      "parentId": "500:2"
     },
     {
       "id": "1267:25654",
@@ -1938,8 +1938,8 @@
       "screen": "Getting started",
       "state": "Citation source passage changed",
       "code": "1.1.1.1.gs-cspc",
-      "groupId": "1267:25653",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-25654"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-25654",
+      "parentId": "500:2"
     },
     {
       "id": "1267:25764",
@@ -1949,8 +1949,8 @@
       "screen": "Getting started",
       "state": "Citation checked against the revised transcript",
       "code": "1.1.1.1.gs-ccatrt",
-      "groupId": "1267:25653",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-25764"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-25764",
+      "parentId": "500:2"
     },
     {
       "id": "1267:27753",
@@ -1960,8 +1960,179 @@
       "screen": "Evidence preview",
       "state": "Inspect the cited source revision",
       "code": "O10.ep-itcsr",
-      "groupId": "1267:25653",
-      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-27753"
+      "url": "https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1267-27753",
+      "parentId": "500:2"
     }
-  ]
+  ],
+  "launcher": {
+    "id": "513:299",
+    "page_id": "500:2",
+    "name": "Workshop launcher",
+    "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=513-299&scaling=scale-down-width&hide-ui=1",
+    "starting_conditions": "Restart the prototype before choosing an entry to reset shared variable state. Use launcher actions for chat entry setup; a direct frame URL does not run those actions.",
+    "limitations": [
+      "File selection, typing, audio and agent replies use scripted examples.",
+      "Destination existence and rendered layout were checked; native playback of the refreshed entry paths remains unverified."
+    ],
+    "entries": [
+      {
+        "name": "Add and check a recording",
+        "action_node_id": "513:306",
+        "page_id": "500:2",
+        "board_id": "509:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=509-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start on Getting started. Add a recording, choose its type, then generate and review a transcript.",
+        "scenario": {
+          "reference": "F1",
+          "url": "https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085"
+        }
+      },
+      {
+        "name": "Review a proposed change",
+        "action_node_id": "513:311",
+        "page_id": "500:2",
+        "board_id": "510:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=510-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start with a pending suggestion. Inspect its source, request changes, then accept or reject.",
+        "scenario": {
+          "reference": "F4",
+          "url": "https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085"
+        }
+      },
+      {
+        "name": "Flag outdated instructions",
+        "action_node_id": "513:316",
+        "page_id": "500:2",
+        "board_id": "511:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=511-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start on the guide. Select text, comment and ask the agent for help; continue into shared review.",
+        "scenario": {
+          "reference": "F8",
+          "url": "https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085"
+        }
+      },
+      {
+        "name": "Explore The Lab",
+        "action_node_id": "661:3894",
+        "page_id": "500:2",
+        "board_id": "657:2968",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=657-2968&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start at wiki home; navigate the same connected prototype."
+      },
+      {
+        "name": "Read references and margin notes",
+        "action_node_id": "513:320",
+        "page_id": "500:2",
+        "board_id": "512:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=512-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Open the guide with its numbered sources and notes."
+      },
+      {
+        "name": "Inspect reused text and its source",
+        "action_node_id": "513:322",
+        "page_id": "500:2",
+        "board_id": "512:404",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=512-404&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Open an excerpt in the guide and follow its source."
+      },
+      {
+        "name": "Add a citation",
+        "action_node_id": "994:120079",
+        "page_id": "500:2",
+        "board_id": "988:16150",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=988-16150&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start in the guide editor with source selection open."
+      },
+      {
+        "name": "Review a recording",
+        "action_node_id": "994:120084",
+        "page_id": "500:2",
+        "board_id": "509:589",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=509-589&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Read its transcript, play the audio and inspect review history."
+      },
+      {
+        "name": "Read revision and decision history",
+        "action_node_id": "994:120089",
+        "page_id": "500:2",
+        "board_id": "981:20800",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=981-20800&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start with an accepted revision and its resolved thread."
+      },
+      {
+        "name": "Ask the agent for a source",
+        "action_node_id": "1015:21256",
+        "page_id": "500:2",
+        "board_id": "939:13562",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=939-13562&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Open chat; try the scripted question, answer and citation.",
+        "entry_setup": "Launcher action opens chat and selects Intake empty, Empty composer and Message Agent… draft. When using the direct frame URL, open Chat first."
+      },
+      {
+        "name": "Inspect a source cited in a comment",
+        "action_node_id": "1015:21261",
+        "page_id": "500:2",
+        "board_id": "1014:32826",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1014-32826&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start with a discussion containing a citation and artifact link."
+      },
+      {
+        "name": "Read endnotes",
+        "action_node_id": "1025:25029",
+        "page_id": "500:2",
+        "board_id": "512:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=512-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Open the guide, then expand Endnotes below the article."
+      },
+      {
+        "name": "Choose a file for an artifact",
+        "action_node_id": "1044:22032",
+        "page_id": "500:2",
+        "board_id": "509:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=509-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start on the guide; use Add artifact, then Upload file."
+      },
+      {
+        "name": "Choose a file for agent chat",
+        "action_node_id": "1044:22037",
+        "page_id": "500:2",
+        "board_id": "939:13562",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=939-13562&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Open chat, then Add file to chat to try the Finder picker.",
+        "entry_setup": "Launcher action opens chat and selects Intake empty, Empty composer and Message Agent… draft. When using the direct frame URL, open Chat first."
+      },
+      {
+        "name": "Read a long article",
+        "action_node_id": "1079:25340",
+        "page_id": "500:2",
+        "board_id": "1079:24424",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1079-24424&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Scroll through headings and try both contents controls."
+      },
+      {
+        "name": "Edit the guide",
+        "action_node_id": "1543:24258",
+        "page_id": "500:2",
+        "board_id": "657:3054",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=657-3054&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start in page editing mode; try formatting and track changes."
+      },
+      {
+        "name": "Edit and annotate a transcript",
+        "action_node_id": "1543:24263",
+        "page_id": "500:2",
+        "board_id": "950:15620",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=950-15620&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start in the transcript editor; try corrections and notes."
+      },
+      {
+        "name": "Add an audio note",
+        "action_node_id": "1543:24268",
+        "page_id": "500:2",
+        "board_id": "903:10624",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=903-10624&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start with an audio upload; choose Audio note and transcription."
+      }
+    ]
+  }
 }
