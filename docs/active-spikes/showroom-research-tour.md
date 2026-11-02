@@ -10,16 +10,16 @@ Present a short, linear account of how an agent could help maintain lab document
 The microscope scenario is illustrative. Research findings motivate the maintenance need and interaction choices; they do not validate this particular interface. The presentation distinguishes a finding, a design response, and a boundary or question to test. Narrowing the story does not settle the product's overall scope.
 
 ## Presentation and ownership
-The [seven-frame tour](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1646-2046&scaling=contain&hide-ui=1) lives on Showroom. Each 1920×1080 frame carries a Workshop-proposal label and a source-screen link. Frames run left to right, with Previous/Next and Restart navigation. The shared Cover links to its start.
+The [seven-frame tour](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1646-2046&scaling=contain&hide-ui=1) lives on Showroom. Each 1920×1080 frame carries a design-proposal footer, a slide number and a source-screen link. Frames run left to right, with Previous/Next and Restart navigation. The shared Cover links to its start.
 
 Screens are editable presentation snapshots of Aslan's Workshop, not promoted Prototype screens. Their source geometry, wording and rich-text diff styling are preserved in cropped copies. The presentation header and research panel are local shared components; navigation uses the existing compact-button component. Snapshot interactions are removed so clicking through a presentation does not accidentally change the example's state. Source-frame links lead to the working design for exploration.
 
 Erwin's pages and shared Component Library definitions remain outside the write scope. The final frame acknowledges the separate maintenance exploration and future integration; it does not claim that work has been merged or accepted. Team reconciliation still belongs in Staging before Prototype promotion.
 
 ## Presentation treatment
-The presentation uses a cool neutral backdrop, green headings and a pale green notes column to separate narration from the white wireframe examples. Research quotations appear in inset blocks with a left rule, quotation mark, italic text and attribution. Paraphrased findings are labelled as interview summaries. Two local shared annotation components carry those treatments; they do not alter the product's Component Library.
+The presentation uses a warm ivory backdrop, bold near-black headings, monospace labels and numbered slide badges. Crisp outlines and hard offset shadows distinguish the white wireframe examples from the surrounding commentary. Research quotations appear in pale lavender callouts with a left rule, quotation mark, italic text and attribution; paraphrased findings appear in pale mint callouts labelled as interview summaries. Two local shared annotation components carry those treatments. The presentation palette and component styling are confined to Showroom; the product UI and shared Component Library retain their existing styling.
 
-Research links are blue, underlined and paired with a link icon. The icon and attribution row open the same original source. Narration uses direct, everyday language and separates what participants said, why a feature is proposed, and what still needs testing. Quoted words and source destinations remain unchanged.
+Research links are dark blue, underlined and paired with a link icon. The icon and attribution row open the same original source. The final presentation text has a measured minimum contrast of 7.9:1 against its backgrounds; this check covers deck text, not the embedded product UI or a complete accessibility audit. Narration uses direct, everyday language and separates what participants said, why a feature is proposed, and what still needs testing. Quoted words and source destinations remain unchanged.
 
 ## Narrative map
 | Frame | Purpose | Workshop source |

@@ -7,7 +7,7 @@ Opened 2026-11-02. Slug: `showroom-research-tour`. [Purpose and screen map](show
 ## Scope
 Seven linked Showroom frames, checked research annotations, a Cover entry, a bounded native rehearsal, and a durable record of deferred Workshop work. Preserve Erwin's pages and shared library definitions. Repository records contain no participant quotations or private source material.
 
-## Implemented · ready for human QA
+## Implemented
 - [x] Build the seven-frame narrative around the maintenance need, captured evidence, explicit agent request, source inspection, review, decision history and evaluation questions.
 - [x] Add research annotations that distinguish evidence from the proposed design response, with participant codes and existing-source links in Figma.
 - [x] Label Workshop copies, connect the presentation linearly and add its start link to Cover.
@@ -20,7 +20,7 @@ Seven linked Showroom frames, checked research annotations, a Cover entry, a bou
 - [x] Check documentation links and verify the write scope.
 
 ## Ready for human QA
-- [ ] Review the narrative, research interpretation, presentation readability and class pacing. Agent checks do not imply team acceptance or usability validation.
+- [ ] Gather class feedback on the narrative, research interpretation and pacing. Aslan's visual approval does not imply team acceptance or usability validation.
 
 ## Rehearsal record
 Native Figma playback was exercised in Chrome at 1920×1000. The recording and comment-review portions were checked as two segments; this is not a claim of one uninterrupted recording-to-acceptance session. The presentation itself was traversed continuously.
@@ -39,7 +39,7 @@ Native Figma playback was exercised in Chrome at 1920×1000. The recording and c
 
 The selected scripted steps passed; this is not a whole-Workshop test or usability validation. File selection, typing, transcription and agent replies remain simulated. Research annotations motivate the design and identify limitations; they do not demonstrate that the design is effective. The example's citation does not establish that the spreadsheet has been retired, and the presentation calls that out before showing the acceptance mechanism.
 
-Local screenshots and native playback evidence are retained under the ignored `reference-material/showroom-research-tour/` directory. They are not publication artifacts. The repository checkpoint records the implemented tour and its scoped verification; human narrative and presentation QA remains pending.
+Local screenshots and native playback evidence are retained under the ignored `reference-material/showroom-research-tour/` directory. They are not publication artifacts. The repository checkpoint records the implemented tour and its scoped verification. Aslan has approved the visual treatment; class feedback on the narrative, research interpretation and pacing remains pending.
 
 ## Presentation polish · 2026-11-02
 The user accepted the rough walkthrough direction and requested clearer separation between wireframes and commentary, styled quotations, visible source-link icons, and friendlier plain-language narration.
@@ -52,4 +52,12 @@ The user accepted the rough walkthrough direction and requested clearer separati
 - [x] Verify that all seven source labels and icon rows agree on their URLs, and that Next/Previous/Restart destinations match the rehearsed route. No new native playback was needed for this visual/copy pass; the earlier rehearsal remains scoped as recorded above.
 - [x] Compare the eight copied wireframe subtrees before and after: their node identities, geometry and text match. Workshop originals, Erwin's pages and shared library definitions were not edited.
 
-The revised styling and narration remain ready for human review.
+## Reference styling and visual approval · 2026-11-02
+- [x] Apply the reference-inspired presentation treatment to all seven slides: warm ivory backgrounds, bold dark titles, monospace labels, slide-number badges, mint/lavender research callouts, crisp outlines and offset shadows.
+- [x] Inspect all seven layouts and verify that annotations, headers, footer navigation and slide badges fit their frames.
+- [x] Measure 126 presentation text runs against their backgrounds. Minimum contrast is 7.909:1, on a citation link in a lavender callout. This is a deck-text contrast check, not a full accessibility audit or an assessment of the embedded UI.
+- [x] Verify that all eight wireframe snapshot subtrees retain their node identities, geometry, text, typography and fills/strokes through the styling pass. Quotation text, research source URLs and navigation actions also match their prior values.
+- [x] Record Aslan's approval of the latest visual result. Research interpretation, class pacing and interface effectiveness remain separate review questions.
+- [x] Publish the completed work and scoped verification in the [progress update on issue #36](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/36#issuecomment-6573359933). The issue remains open for class feedback and refinements.
+
+The final styling pass changed only Showroom presentation elements. Workshop source screens, Erwin's pages and shared Component Library definitions were not edited. Native navigation was not rerun for these visual changes; the earlier playback results and unchanged-action checks retain the limits recorded above.
