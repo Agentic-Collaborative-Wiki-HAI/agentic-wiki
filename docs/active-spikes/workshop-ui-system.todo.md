@@ -134,3 +134,7 @@ This task covers Figma design-system work and the authorized connected Workshop 
 - [x] Refresh the single Workshop launcher with eighteen contextual entries, F1/F4/F8 source references, explicit simulation/restart guidance and repaired start actions. Replace copied Figma flow labels with actual distinct entry points.
 - [x] Reconcile the existing board map, file manifest and [project conventions](../design/wireframe-conventions.md). Erwin’s pages are unchanged.
 - [ ] Human walkthrough of the launcher entries, especially both chat starts, endnotes and shared-state reset. Agent evidence covers structural checks and the rendered launcher, not full native playback.
+
+## Publication verification · 2026-11-01
+- Published the convention application in `0cd6c9c`, adopting Wireframe Workflows `2b408d7` with its published Project Workflows pin `fea411f`.
+- A fresh recursive clone at `0cd6c9c` restored all three recorded dependencies cleanly. Both new skill files, the 178-board/18-entry record, manifest routing and onboarding/documentation links passed inspection. This is repository reproducibility evidence, separate from the remaining native prototype walkthrough.
