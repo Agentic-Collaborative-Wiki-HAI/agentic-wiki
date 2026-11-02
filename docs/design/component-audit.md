@@ -8,15 +8,13 @@ The inspected overrides are dimensions, names, reactions and variable bindings. 
 
 The [saved transcript correction](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=950-17232) uses Transcript view and Edit transcript returns to the correction editor at `950:16426`. The instance retains its host wrapper and dimensions. All 165 directly referenced destinations inspected across editing bars resolved before the repair; the repaired destination also resolves. Sticky wrappers were preserved, but runtime sticky behavior was not replayed in this pass.
 
-## Thread actions
-[Workshop/Thread actions](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1107-2453) has 68 Aslan instances when hidden descendants are included, 1 library specimen and 6 Archive instances. Erwin’s Workshop has none.
+## Thread and comment composition
+[Workshop/Comment thread](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1523-1503) has Open, Draft and Resolved variants with Messages and Reply slots. The 74 migrated Workshop instances comprise 29 Open, 9 Draft and 36 Resolved threads. Draft and Resolved variants omit resolution controls; Resolved also omits the reply composer. [Open thread actions](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1523-1504) contains the direct compact Resolve action, without a hidden kebab alternative. Resolution and acceptance/rejection remain separate operations.
 
-Of the 68 Aslan instances, 29 have resolution bindings. All 29 hide the associated active thread and expose a resolved-history link, with destinations `1109:139382` or `1109:140330`. The remaining 39 controls are hidden and have no active Resolve action, including draft and historical compositions. This is structural action verification, not a complete prototype playback test.
-
-The family description documents the direct compact Resolve thread action and separate acceptance/rejection semantics. The Closed variant is the current direct action; Menu is retained for compatibility. No thread behavior or shared visual source was changed.
+[Workshop/Comment body](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1528-243962) uses Reading and Editing variants with content/editor slots. Fourteen inline editors use this family. Suggestion status stays outside editable prose. Existing editing eligibility and route-specific actions remain host responsibilities.
 
 ## Component lifecycle descriptions
-Descriptions distinguish current Editing bar, Thread actions and Contextual endnotes from legacy Endnotes, Thread card, Message, Reply composer and Suggestion thread specimens. The legacy endnotes source remains because Archive uses it. Descriptions are maintenance guidance. The three separately approved retirements are recorded below; shared visual foundations remain unchanged.
+Descriptions distinguish current Editing bar, Thread actions and Contextual endnotes from legacy Endnotes, Thread card, Message, Reply composer and Suggestion thread specimens. Legacy source families remain for historical consumers, including Archive. Current Workshop uses the successors listed below. Descriptions are maintenance guidance. The three separately approved retirements are recorded below; shared visual foundations remain unchanged.
 
 ## Approved retirements
 The user approved C1–C3. Their instance-consumer checks were repeated before deletion; the preceding full-file scan found no prototype or component-property references, including hidden descendants. All three are absent from the Component Library after deletion.
@@ -46,3 +44,25 @@ All 67 obsolete evidence-role instances were deleted from Aslan’s Workshop, in
 The first slot badge was removed through its live instance handle; the remaining 66 were removed in a batch whose before/after visible-text and prototype-reaction checksums matched. No active visibility bindings or reactions were found on the removed badges. A representative recording view was rendered after cleanup.
 
 No Erwin page or shared visual foundation was changed. Checks do not establish external-file consumers, arbitrary detached visual copies, full override correctness outside the named families, or runtime scrolling and state persistence. The saved-transcript repair was visually checked.
+
+## Approved H1–H6 cleanup
+The implementation is scoped to Aslan’s Workshop and isolated successor components. Erwin’s pages, existing shared visual foundations, and historical Archive compositions were not edited. Old source components are retained for historical consumers; current successors do not require obsolete hidden UI.
+
+| Area | Current composition | Migration |
+| --- | --- | --- |
+| Header and metadata | [Wiki header · current](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1522-149119) and [Page metadata](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1522-149155), with metadata slot | 293 instances; no Shared with lab or obsolete metadata actions |
+| Document margin | [Document margin body](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1523-1476), References/Comments variants with Content slot | 146 instances; sticky host tabs own navigation |
+| Chat | [Chat drawer](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1525-2664) with Conversation slot and [conversation states](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1525-2576) | 157 drawers; one selected conversation stage |
+| Chat input | [Composer host](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1525-3189) with Composer slot and [Empty/Draft/Attachment draft](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1525-2663) variants | 155 viewport composer hosts |
+| Formatting | [Semantic formatting toolbar · current](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1526-1850) with shared anchored Paragraph, Lists and Insert popovers | 66 nested toolbars; sticky wrappers retained |
+| Lightweight links | [Link destination popover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1530-25336) with Content slot | Two instances omit obsolete hidden close control |
+| Citation authoring | [Unified source flow](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=988-16150&scaling=scale-down-width) | Old entry points lead to wiki search/URL/DOI and Enter source details; whole-source default and optional passage selection |
+
+The initial removal batch deleted 205 obsolete layers, including superseded page contents, old status badges and link fields. Current sticky contents and optional icon properties remain. Notification overlays and contextual endnotes were already shared and were retained.
+
+Chat stage, composer state and draft text use string variables; legacy routing booleans remain where existing routes still require them. Route-specific Finder and evidence-preview destinations belong on persistent Workshop hosts. Evidence preview currently has a conversation-level click target in answer states rather than a text-range-only target; that prototype affordance needs playback review. Do not assume editing a dynamically substituted variant descendant preserves an instance override after another state switch.
+
+## Verification and remaining QA
+Rendered the guide, active comment thread, chat drawer, agent-answer state and unified citation dialog. Checked dynamic variant switching and restoration of initial variable defaults. All 567 unique destinations referenced by Workshop prototype reactions resolve. This verifies destination existence, not full behavioral correctness. Full native prototype playback, sticky scrolling, typing simulation, and every route-state combination remain QA work under issue #35.
+
+One visible legacy “Checked against audio” text remains at node `512:548`; it was outside the approved hidden-layer removal and should be reviewed for current attribution wording. Historical and unrelated shared components were not globally purged. No application code, backend evidence enforcement, or published team library changed.

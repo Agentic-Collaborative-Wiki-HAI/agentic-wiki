@@ -8,7 +8,7 @@ Opened 2026-10-22. Slug: `workshop-ui-system`. [Purpose and scope](workshop-ui-s
 Sources live in the shared Component Library. Aslan’s Workshop references those components across the connected routes. The [2026-10-31 audit](../design/component-audit.md) checks editing bars, thread resolution and retirement candidates with invisible descendants included. Editing bars and thread actions have no Erwin consumers. Shared visual foundations remain unchanged.
 
 ## To Do
-- Review the audit’s cleanup candidates before changing shared sources; preserve Erwin’s consumers and Archive.
+- [x] Implement approved H1–H6 cleanup in Aslan’s Workshop using isolated successors; preserve Erwin’s consumers and Archive.
 - Complete a focused visual and interaction consistency pass; the usage inventory alone does not establish override or route-action correctness.
 
 ## Component reconciliation (2026-10-31)
@@ -121,3 +121,9 @@ This task covers Figma design-system work and the authorized connected Workshop 
 ## Evidence-label follow-up · 2026-10-26
 - [x] Remove the provisional evidence-pill treatment from Workshop. Following the user's decision, the standalone Primary/Secondary/Tertiary badges and tier color coding are no longer shown. **Primary recording** remains an object type in plain page metadata, consistent with **Audio note**. Removed tier wording from upload choices, chat intake, editing states, and history as well. Review the [recording with a transcript](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=509-589&scaling=scale-down-width) and [recording without a transcript](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=684-5590&scaling=scale-down-width). Structural inspection found no visible standalone tier labels or Secondary source wording in Workshop; rendered the recording and audio-note transcript pages after the change.
 - [x] Settle the user-facing evidence model: show object types, source links, generation method, and human review attribution; users should not need to classify objects as primary, secondary, or tertiary. The system must retain and validate typed provenance relationships, including which recording a transcript transcribes and which sources a summary or interpretation uses. Evidence-role handling belongs in the internal model, not a badge or a calculation based only on derivation depth. This is a product requirement; the current Figma work changes presentation and does not implement backend enforcement. Review the [audio note and its transcript](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=903-13933&scaling=scale-down-width).
+
+## H1–H6 implementation · 2026-10-31
+- Removed obsolete hidden UI and replaced superseded header, metadata, context, thread, chat and formatting compositions with the current families documented in the [audit](../design/component-audit.md).
+- Reconciled citation entry with the unified search/URL/DOI flow and optional manual details. Preserved current board identities and route-specific actions.
+- Rendered representative states and checked all 567 unique reaction destinations. Dynamic chat switching exposed lost descendant overrides; evidence preview now attaches to a persistent conversation host. Its broad answer-state hit target and full native playback remain QA items.
+- Repo documentation is prepared locally; no commit or push in this task. Posted and independently verified the [bounded cleanup report on issue #35](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/35#issuecomment-6550044945). The issue remains open; completed issue #32 was not reopened.

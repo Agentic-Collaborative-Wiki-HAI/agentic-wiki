@@ -35,6 +35,9 @@ Each discussion has one bordered card enclosing its messages, suggested edits an
 
 References use shared bordered citation and explanatory-note variants, with numbered link anchors for both. Numbers identify notes: repeated use of the same note reuses its number, while distinct notes about different passages of one source get distinct numbers. A note can also cite a source generally. Author/year information is optional; external citations may carry structured URL, DOI or print-source information. Page and artifact history views expose changes and review events. Collapsible endnotes provide a continuous list, citation-only filtering and return links. Conversation source links use descriptive labels rather than endnote numbers. Proposal scope beyond a discussion’s original anchor, superseding earlier suggestions and optional decision comments remain discussion choices.
 
+### Component state ownership
+The [component audit](../design/component-audit.md) maps current Workshop successors and migration coverage. Semantic states use variants; optional controls use properties; document/conversation content uses slots; temporary controls use anchored popovers or overlays. Route destinations stay on persistent host instances. Historical source families remain available for Archive; current Aslan routes use isolated successors so teammate consumers are unaffected.
+
 ### Interfaces
 Integrate the shared system into the maintained screens, preserving their sample copy, workflow decisions, native frame identities and positions, prototype destinations, and native comments. Keep the left-to-right branching canvas arrangement. The system is not complete merely because a specimen page exists; the actual working flows must use it.
 
