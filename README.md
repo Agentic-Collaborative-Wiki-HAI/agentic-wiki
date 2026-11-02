@@ -87,13 +87,14 @@ For local collaborator setup, use the adopted [Get started guidance](project-wor
 ## How we work
 People select contributions through the team's issues and project board. Those are the live coordination surface; [TODO.md](TODO.md) indexes repository spikes rather than duplicating every task. Some older planning entries retain historical dates, so use the current issue for scheduling and ownership.
 
-A spike is a bounded piece of work with a concept document and task record. Current guidance lives in `docs/policies/`; exploration stays in scratch material and completed records remain in the archive. See [the work vocabulary](docs/policies/0003-how-we-name-and-organize-work.md) and [AGENTS.md](AGENTS.md) for contribution, privacy and commit rules. Read project instructions before editing, and preserve other contributors' work.
+A spike is a bounded piece of work with a concept document and task record. Agent obligations are indexed in [docs/agent-policies/policy.index.md](docs/agent-policies/policy.index.md); shared product and team guidance remains in `docs/policies/`. Exploration stays in scratch material and completed records remain in the archive. See [the work vocabulary](docs/policies/0003-how-we-name-and-organize-work.md) and [AGENTS.md](AGENTS.md) for contribution, privacy and commit rules. Read project instructions before editing, and preserve other contributors' work.
 
 ## Repository layout
 ```text
 docs/
   active-spikes/      scoped work, reasoning and task records
-  policies/          current project guidance
+  agent-policies/    project-owned agent obligations and index
+  policies/          shared product and team guidance
   design/            wireframe conventions and board lookup
   scratch/           exploratory notes, not authoritative
   archive/           historical work records

@@ -1,0 +1,9 @@
+{
+  "files": {
+    ".github/PULL_REQUEST_TEMPLATE.md": {
+      "revision": "79dddf9742c282d184c65d5c5ef87a142900897f",
+      "source": "setup-project-workflows/assets/templates/github/PULL_REQUEST_TEMPLATE.md.template"
+    }
+  },
+  "schema_version": 1
+}

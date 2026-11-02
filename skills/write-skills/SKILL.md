@@ -58,9 +58,9 @@ Avoid auxiliary docs unless progressive disclosure is useful. If the skill appro
 Be explicit about where the skill applies:
 
 - **Global seed skill:** reusable fallback in the user's configured or discovered seed library.
-- **Repo-local skill:** project authority under `repo/skills/`.
+- **Repo-local skill:** project procedure under `repo/skills/`, subject to operative project obligations.
 - **Tool-specific skill:** lives beside the tool and owns that tool's mechanics.
-- **Vault-local skill:** project/vault authority inside the vault.
+- **Vault-local skill:** project/vault procedure inside the vault, subject to operative vault obligations.
 
 Write seed text as conditions, not deictic facts. "If the current repo already has..." is portable. "This repo's local skill..." is not portable when copied.
 
@@ -79,13 +79,14 @@ Every skill should make its non-goals discoverable:
 - when to ask the user instead of guessing
 - what writes are unsafe or require explicit approval
 
-For project workflow skills, coordinate with the shared taxonomy:
+For project workflow skills, coordinate with the shared taxonomy. For this project’s agent obligations, use the [project-owned agent policy index](../../docs/agent-policies/policy.index.md) and selected policy-management skills; this authoring procedure does not adopt or amend policy obligations:
 
 ```text
 docs/pinned-issues.md        unresolved things intentionally preserved for later
 docs/scratch/future-ideas.md conceptual someday material
 docs/scratch/misc.md         raw observed friction / issue intake
-docs/policies/               current durable rules, defaults, and procedures
+docs/agent-policies/         durable agent obligations and policy.index.md
+docs/policies/               shared product and team guidance
 docs/active-spikes/          active scoped work
 ```
 
