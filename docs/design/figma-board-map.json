@@ -1972,7 +1972,7 @@
     "starting_conditions": "Restart the prototype before choosing an entry to reset shared variable state. Use launcher actions for chat entry setup; a direct frame URL does not run those actions.",
     "limitations": [
       "File selection, typing, audio and agent replies use scripted examples.",
-      "Destination existence and rendered layout were checked; native playback of the refreshed entry paths remains unverified."
+      "All eighteen launcher destinations were exercised on 2026-11-01; route-completion coverage and remaining defects are recorded in docs/design/wireframe-conventions.md."
     ],
     "entries": [
       {
@@ -2129,10 +2129,20 @@
         "name": "Add an audio note",
         "action_node_id": "1543:24268",
         "page_id": "500:2",
-        "board_id": "903:10624",
-        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=903-10624&scaling=scale-down-width&hide-ui=1",
-        "starting_context": "Start with an audio upload; choose Audio note and transcription."
+        "board_id": "509:299",
+        "prototype_url": "https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=509-299&scaling=scale-down-width&hide-ui=1",
+        "starting_context": "Start on Getting started. Add artifact, choose an audio file, then choose Audio note; optionally generate a transcript."
       }
     ]
+  },
+  "canvas_layout": {
+    "verified_on": "2026-11-01",
+    "progression": "left-to-right",
+    "branches": "vertical",
+    "board_count": 178,
+    "local_connectors": 131,
+    "linked_cross_references": 42,
+    "record": "docs/design/wireframe-conventions.md#canvas-layout-and-native-playback--2026-11-01",
+    "scope": "Aslan Workshop root-board arrangement and annotations; screen contents and interaction wiring preserved."
   }
 }

@@ -138,3 +138,32 @@ This task covers Figma design-system work and the authorized connected Workshop 
 ## Publication verification · 2026-11-01
 - Published the convention application in `0cd6c9c`, adopting Wireframe Workflows `2b408d7` with its published Project Workflows pin `fea411f`.
 - A fresh recursive clone at `0cd6c9c` restored all three recorded dependencies cleanly. Both new skill files, the 178-board/18-entry record, manifest routing and onboarding/documentation links passed inspection. This is repository reproducibility evidence, separate from the remaining native prototype walkthrough.
+
+## Canvas arrangement and native walkthrough · 2026-11-01
+- [x] Reflow Aslan’s 178 Workshop boards into left-to-right progression and vertical branches. Replace inherited section-cluster layout and stale connectors; preserve screen identities, contents and reactions.
+- [x] Inspect the final canvas and resolve annotation overlaps. The screen and Erwin-page fingerprints match the baseline.
+- [x] Click all eighteen launcher actions and inspect the destination screens in the native Figma prototype player.
+- [x] Sample state and return behavior: artifact picker/dialog cancellation; page-editor cancellation; citation cancellation retaining editing mode; References/Comments preserving the pending suggestion; chat close/reopen and scripted follow-up; endnotes expansion and citation-only filtering.
+- [x] Correct the audio-note launcher context. Entry `1543:24268` starts on Getting started (`509:299`) and explains Add artifact → audio file → Audio note. Removed the modal’s standalone flow start. Native playback verifies Close and Cancel return to the originating guide, including Close with transcription disabled; reusable modal actions are unchanged.
+- [x] Finish native playback for transcript Cancel/Save and audio controls, history returns, suggestion Accept/Reject, the F8 comment → agent → evidence preview → acceptance sequence, thread resolution, and long-page reader/editor scrolling. The follow-up completed in the native player; outcomes and failures are recorded separately in the convention record.
+- [x] Reconcile transcript-history return context, accepted-history diff wording, resolved-thread history visibility/return, and top-aligned Resolve controls obscured by sticky tabs. See [walkthrough findings and disposition](../design/wireframe-conventions.md#walkthrough-findings-and-disposition) for affected states and verification.
+- [x] Record scroll-driven active-heading selection as a prototype fidelity limitation: the available trigger API has no scroll-position event. Clicking heading links works; automatic selection during manual scrolling remains unimplemented.
+- [ ] Human review of the revised canvas arrangement and launcher routes. Native comment #5 was located on the transcript-checked recording during the Chat investigation; this does not establish preservation of every historical comment attachment.
+
+The [convention record](../design/wireframe-conventions.md#canvas-layout-and-native-playback--2026-11-01) distinguishes structural, rendered and playback evidence. The layout pass preserved product-screen wiring; the follow-up changed only Aslan’s audio-note launcher entry, its explanatory label and its invalid standalone flow start. Shared components, Erwin’s pages, Cover, Scratchpad and Archive remain unchanged. Findings remain under existing Workshop QA; no new issue or public update was posted.
+
+## Chat toggle repair · 2026-11-02
+- [x] Reproduce the failed Chat click on the transcript-checked recording (`509:747`) identified by native Figma comment #5.
+- [x] Replace duplicate/conflicting click reactions on 310 local controls across all 155 Workshop screens with active Chat drawers. Each navigation control opens its drawer; the drawer-header control closes it. Preserve each drawer’s existing global or route-local visibility binding and non-click interactions.
+- [x] Verify all 310 controls structurally and exercise native open/close on the reported recording, pending-suggestion guide (`510:299`), dedicated chat route (`939:13562`) and scrolled long reader (`1079:24424`). The composer is visible; the drawer covers the navigation and margin without reflowing the document. Closing restores the Comments thread and the long reader’s scroll position; both before/after screenshots match exactly.
+- [ ] Human confirmation of the repaired Chat control. Existing prototype sessions may need reloading to receive the updated interactions.
+
+The repair changes local instance interactions only. Erwin’s pages and shared component definitions remain untouched. Profile and Settings intentionally omit Chat. This is four-screen native sampling plus full structural coverage of active Chat controls, not a complete replay of every Workshop route. The native review comment was read but not replied to or resolved. See the [verification record](../design/wireframe-conventions.md#chat-toggle-repair--2026-11-02).
+
+## History and Resolve follow-up · 2026-11-02
+- [x] Fix the eighteen obscured Resolve controls without changing the opaque sticky tabs or shared components.
+- [x] Preserve transcript-history callers and resolved-page callers through their return actions; inspect the persisted conditional wiring and exercise representative native round trips.
+- [x] Make all thirty-three existing archived thread alternatives display in their history slots, with live suggestion-changing controls unavailable in those archived copies.
+- [x] Reconcile the accepted-history diff with the actual accepted wording and inspect it through the guide’s Page history action.
+- [x] Record structural and native verification, including successful pending/accepted/rejected/transcript Resolve actions and preserved return state, in the [convention record](../design/wireframe-conventions.md#history-and-resolve-repairs--2026-11-02).
+- [ ] Human review of the repaired routes. Scroll-driven heading selection remains a documented prototype limitation. No shared-library change or public issue update is included in this repair.
