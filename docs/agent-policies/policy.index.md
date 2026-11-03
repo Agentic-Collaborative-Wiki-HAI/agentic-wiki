@@ -10,7 +10,7 @@ Load applicable adopted policies with their complete prerequisite closure. Every
 | PRESERVE-IDENTITY | [Preserve obligation identity](_PRESERVE-IDENTITY-retain-meaning-and-history.md) | kernel | Agent continuity, dependency impact and retirement of policy identities. | adopted | 2026-11-02 |
 | RESOLVE-DEPENDENCIES | [Resolve prerequisites before loading](_RESOLVE-DEPENDENCIES-load-prerequisites-once.md) | kernel | Agent discovery and loading of applicable adopted policy prerequisites. | adopted | 2026-11-02 |
 | BOUND-SCOPE | [Keep work within project scope](BOUND-SCOPE-keep-work-within-project-scope.md) | operational | Agent proposals and implementation for the term project. | adopted | 2026-11-02 |
-| FOLLOW-WORKFLOWS | [Follow project-owned workflows](FOLLOW-WORKFLOWS-follow-project-owned-workflows.md) | operational | Agent selection of project procedures, configuration and authority. | adopted | 2026-11-02 |
+| FOLLOW-WORKFLOWS | [Follow project-owned workflows](FOLLOW-WORKFLOWS-follow-project-owned-workflows.md) | operational | Agent selection of project procedures, configuration and authority. | adopted | 2026-11-03 |
 | KEEP-MODELS-SWAPPABLE | [Keep models swappable](KEEP-MODELS-SWAPPABLE-preserve-provider-independence.md) | operational | Agent architecture proposals and implementation of model access for this project. | adopted | 2026-11-02 |
 | ORGANIZE-WORK | [Follow shared work conventions](ORGANIZE-WORK-follow-shared-work-conventions.md) | operational | Agent work records and coordination in this shared team project. | adopted | 2026-11-02 |
 | PRESERVE-WORK | [Preserve shared team work](PRESERVE-WORK-preserve-shared-team-work.md) | operational | Agent changes and Git operations in this shared checkout. | adopted | 2026-11-02 |

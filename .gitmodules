@@ -1,7 +1,7 @@
 [submodule "project-workflows"]
 	path = project-workflows
 	url = https://github.com/jcklpe/project-workflows.git
-	branch = project/agentic-wiki
+	branch = main
 [submodule "wireframe-workflows"]
 	path = wireframe-workflows
 	url = https://github.com/jcklpe/wireframe-workflows.git

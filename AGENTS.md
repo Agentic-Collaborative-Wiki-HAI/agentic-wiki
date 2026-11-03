@@ -13,7 +13,7 @@ Follow [PROTECT-PRIVACY](docs/agent-policies/PROTECT-PRIVACY-protect-public-repo
 Read the project-owned [agent policy index](docs/agent-policies/policy.index.md) for status and scope. Load applicable adopted policies with their complete prerequisite closure, prerequisites first and each policy once. Proposed records are non-operative; package updates do not adopt policies. All current policies live in `docs/agent-policies/`, including the review boundary, model portability and work conventions. Their migration preserves project requirements and does not change human governance.
 
 ## Project workflow routing
-Follow [FOLLOW-WORKFLOWS](docs/agent-policies/FOLLOW-WORKFLOWS-follow-project-owned-workflows.md) for this scope.
+Read the project-owned [workflow.toml](docs/workflow.toml), then follow [FOLLOW-WORKFLOWS](docs/agent-policies/FOLLOW-WORKFLOWS-follow-project-owned-workflows.md) for this scope.
 
 ## Where Things Go
 | Path | What belongs there |
@@ -23,7 +23,8 @@ Follow [FOLLOW-WORKFLOWS](docs/agent-policies/FOLLOW-WORKFLOWS-follow-project-ow
 | `docs/scratch/` | Rough thinking, references, early notes. Not authoritative |
 | `docs/archive/` | Closed or superseded spikes. History, not current rules |
 | `TODO.md` | The spike index and coordination map. Keep it scannable |
-| `project-workflows/` | Adopted project procedures and configuration |
+| `project-workflows/` | Unchanged shared project procedures at an exact pin |
+| `docs/workflow.toml` | Project-owned workflow configuration |
 | `skills/` | Independent skill-authoring guidance |
 
 **Do not create a `README.md` inside `docs/` or its subfolders.** `TODO.md` is the index; `ls` handles the rest.
