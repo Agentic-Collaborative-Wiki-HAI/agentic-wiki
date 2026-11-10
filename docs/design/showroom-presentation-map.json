@@ -1,0 +1,182 @@
+{
+  "date": "2026-11-10",
+  "fileId": "fm5zX32mbG13hahShVgJwd",
+  "pageId": "1469:30532",
+  "status": "Presentation outline; joint review and final Prototype media pending",
+  "outlineSectionId": "1838:135",
+  "referenceSectionId": "2123:623",
+  "startFrameId": "2116:559",
+  "slideSize": {
+    "width": 1920,
+    "height": 1080
+  },
+  "sourcePolicy": "Retained illustrations are Workshop proposals. Staging sources inform the two routes. No Prototype promotion or final source assignment.",
+  "replacementGuidance": "Keep slide IDs, header, footer, annotations and navigation. Replace only nested product media within content containers; existing content containers also contain research annotations.",
+  "slides": [
+    {
+      "order": 1,
+      "id": "2116:559",
+      "title": "Project and audience",
+      "status": "Draft narrative",
+      "headerId": "2116:560",
+      "contentId": "2116:572",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 2,
+      "id": "2116:583",
+      "title": "Competitive context",
+      "status": "Outline · evidence selection pending",
+      "headerId": "2116:584",
+      "contentId": "2116:596",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 3,
+      "id": "1838:136",
+      "title": "Interview takeaways",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:292",
+      "contentId": "1838:141",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 4,
+      "id": "2116:607",
+      "title": "Interface orientation",
+      "status": "Outline · Prototype capture pending",
+      "headerId": "2116:608",
+      "contentId": "2116:620",
+      "stagingSourceId": "1934:4394",
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 5,
+      "id": "2116:633",
+      "title": "Journey one · file intake",
+      "status": "Route rehearsed · media pending",
+      "headerId": "2116:634",
+      "contentId": "2116:646",
+      "stagingSourceId": "1934:4394",
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 6,
+      "id": "2116:659",
+      "title": "Journey one · artifact and transcript",
+      "status": "Route rehearsed · media pending",
+      "headerId": "2116:660",
+      "contentId": "2116:672",
+      "stagingSourceId": "1939:25765",
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 7,
+      "id": "1838:583",
+      "title": "Journey two · ask in context",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:584",
+      "contentId": "1838:585",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 8,
+      "id": "1838:839",
+      "title": "Journey two · inspect evidence",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:840",
+      "contentId": "1838:841",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 9,
+      "id": "1838:910",
+      "title": "Journey two · review suggestion",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:911",
+      "contentId": "1838:912",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 10,
+      "id": "1838:1247",
+      "title": "Journey two · decision history",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:1248",
+      "contentId": "1838:1249",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 11,
+      "id": "1838:1442",
+      "title": "Targeted features · find information",
+      "status": "Existing research-linked snapshot",
+      "headerId": "1838:1443",
+      "contentId": "1838:1444",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 12,
+      "id": "2116:685",
+      "title": "Research-to-feature overview",
+      "status": "Outline · synthesis pending",
+      "headerId": "2116:686",
+      "contentId": "2116:698",
+      "stagingSourceId": null,
+      "researchMapSourceId": "1829:139",
+      "prototypeSourceId": null
+    },
+    {
+      "order": 13,
+      "id": "2116:711",
+      "title": "Future work",
+      "status": "Draft narrative",
+      "headerId": "2116:712",
+      "contentId": "2116:724",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    },
+    {
+      "order": 14,
+      "id": "2116:735",
+      "title": "Conclusion and discussion",
+      "status": "Outline · team conclusion pending",
+      "headerId": "2116:736",
+      "contentId": "2116:748",
+      "stagingSourceId": null,
+      "researchMapSourceId": null,
+      "prototypeSourceId": null
+    }
+  ],
+  "nativeChecks": {
+    "viewport": {
+      "width": 1920,
+      "height": 1000,
+      "deviceScaleFactor": 1
+    },
+    "next": "All thirteen forward transitions, P01 through P14",
+    "return": "P14 Previous to P13, P13 Next to P14, P14 Restart to P01",
+    "visual": "Representative P01, P07/P08, and P14 compositions; final P14 footer after typography adjustment",
+    "limits": "Not a complete slide content, research, accessibility or final product-media audit."
+  }
+}

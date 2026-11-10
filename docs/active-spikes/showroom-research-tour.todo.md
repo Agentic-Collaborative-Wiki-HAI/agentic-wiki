@@ -5,7 +5,28 @@ attention: live
 Opened 2026-11-02. Slug: `showroom-research-tour`. [Purpose and screen map](showroom-research-tour.md).
 
 ## Scope
-Seven linked Showroom frames, checked research annotations, a Cover entry, a bounded native rehearsal, and a durable record of deferred Workshop work. Preserve Erwin's pages and shared library definitions. Repository records contain no participant quotations or private source material.
+Fourteen linked outline frames organize the two presentation journeys and research sections, using the approved slide treatment. Earlier presentation studies remain available separately. Final product media waits for joint Staging review and Prototype approval. Preserve both Workshops, Erwin's pages and shared library definitions. Repository records contain no participant quotations or private source material.
+
+## Current outline · 2026-11-10
+- [x] Organize fourteen frames in shared-outline order, with audience/context, research, interface orientation, two continuous journeys, targeted features, synthesis, future work and conclusion.
+- [x] Preserve six existing research-linked slides and their source links; identify their Workshop illustrations as pending replacement after Prototype approval.
+- [x] Add eight draft/placeholder slides using the established ivory, black, mint and lavender presentation styling. Product UI styling is unchanged.
+- [x] Preserve the earlier seven-frame tour and unused studies in a separate reference group, with the needs map and reconciliation comparison below.
+- [x] Record frame/content/header IDs and pending media in the [presentation map](../design/showroom-presentation-map.json).
+- [x] Traverse every Next transition from P01 to P14 in native playback at 1920×1000, inspect representative first/middle/final compositions, and check P14 → Previous → P13 → Next → P14 → Restart → P01.
+- [x] Normalize footer-control typography and inspect the final native P14 render. This last visual change did not alter navigation.
+- [x] Rehearse the two selected product journeys separately in Staging; see the [scoped playback record](../design/staging-qa-2026-11-09.md#presentation-route-rehearsal--10-nov-2026).
+
+### Ready for joint review
+- [ ] Aslan and Erwin QA the selected Staging journeys and resolve comments before approving Prototype promotion.
+- [ ] Review the fourteen-slide order, narration, research interpretation and pacing.
+- [ ] Choose competitive-analysis evidence and complete the research-to-feature synthesis using verified shared sources.
+- [ ] Agree speaking roles, final takeaway and future-work commitments.
+- [ ] After promotion, replace the marked Workshop illustrations and media placeholders with approved Prototype captures, retaining the outer slide composition and research callouts.
+- [ ] Rehearse the resulting continuous demonstrations and finished presentation. The current outline's navigation check is not that final rehearsal.
+- [ ] Update the Cover entry to the agreed presentation start when the team adopts the outline; its existing link still opens the earlier study.
+
+Temporary native screenshots include `showroom-outline-native.png`, `showroom-outline-evidence.png`, `showroom-outline-conclusion.png`, `showroom-previous.png`, `showroom-next-back.png`, `showroom-restart.png` and `showroom-final-footer.png` under `/private/tmp/`. No private research source content is copied into the repository. The user authorized committing and publishing the scoped documentation and QA records on 2026-11-10. No external message was sent and no Prototype promotion occurred.
 
 ## Implemented
 - [x] Build the seven-frame narrative around the maintenance need, captured evidence, explicit agent request, source inspection, review, decision history and evaluation questions.
