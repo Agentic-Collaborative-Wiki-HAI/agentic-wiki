@@ -4054,5 +4054,53 @@
     "canonicalRecording": "1939:25765",
     "sourceMastersChanged": false,
     "reviewStatus": "Joint review pending; no promotion"
+  },
+  "presentationRouteRepair": {
+    "date": "2026-11-10",
+    "qa": "staging-qa-2026-11-09.md#presentation-route-rehearsal--10-nov-2026",
+    "scope": "Staging interactions only; separate Showroom outline tracked in showroom-presentation-map.json",
+    "currentLauncherOverride": {
+      "control": "1934:4134",
+      "destination": "1934:4394",
+      "activity": "Flag outdated instructions",
+      "nativeResult": "passed",
+      "note": "Current destination overrides the earlier dated launcherVerification record; initialization actions retained."
+    },
+    "editorContext": {
+      "collectionId": "VariableCollectionId:2104:34065",
+      "publishedInstructionVariableId": "VariableID:2104:34066",
+      "originScreenVariableId": "VariableID:2104:34067",
+      "editorFrameId": "1934:13459",
+      "boundTextId": "1934:13482",
+      "entryControlCount": 35,
+      "cancelControlId": "I1934:13488;1226:1419",
+      "saveControlId": "I1934:13488;1226:1420",
+      "nativeVerifiedOrigin": "1934:6251",
+      "behavior": "Ordinary editor entry receives the current instruction and caller. Cancel returns to caller. Save preserves current published fixtures, with the baseline reader retaining its existing scripted edited outcome.",
+      "limit": "Deeper annotation and Track changes fixtures are not generalized to accepted-page callers."
+    },
+    "acceptedResolvedThread": {
+      "origin": "1934:6251",
+      "control": "I1934:6277;1523:1484;1934:6305;979:978",
+      "revisionFrame": "1934:36812",
+      "behavior": "Resolved-comment entry opens the accepted revision and associated discussion together, setting its return caller."
+    },
+    "evidencePreview": {
+      "frame": "1934:13446",
+      "attributionText": "1934:13452",
+      "speakerText": "I1934:13453;580:447;1934:13457",
+      "basis": "Canonical recording fixture"
+    },
+    "nativePassed": [
+      "launcher → ordinary reader → comment → explicit agent request → proposal",
+      "proposal → citation preview → Close → same proposal",
+      "Accept → Edit page → Cancel; Edit page → Save → same accepted instruction",
+      "accepted page → revision history → Back to page",
+      "Resolve → resolved-comment link → accepted revision with discussion",
+      "separate proposal entry → Reject → original instruction retained",
+      "accepted page → empty Chat → Finder → attach → Send → classify → confirm → View artifact",
+      "canonical recording → Edit transcript → Cancel; Mark transcript as reviewed"
+    ],
+    "reviewStatus": "Selected scripted journeys ready for joint QA; not exhaustive verification or Prototype approval"
   }
 }

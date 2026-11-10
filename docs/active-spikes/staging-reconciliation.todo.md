@@ -9,7 +9,7 @@ The authorized reconciliation draft is implemented in Staging. It contains 230 n
 
 Authoring works after the client update. Native playback uses the explicitly allowed Chrome debugging connection and a dedicated tab for this file. The Figma connector constructs and inspects designs; it does not operate the native prototype player.
 
-Original Workshop material, Showroom and shared Component Library masters are unchanged. At the user’s direction, 25 misplaced Prototype copies were returned to a separate area in Erwin’s Workshop; Prototype is empty. Incoming Staging copies and three unadopted handover-writing screens are preserved in Archive. Cover’s Staging link now opens the launcher; its owner links remain. The user authorized committing and publishing the six reconciliation records on 2026-11-09. Figma promotion remains a separate decision.
+Original Workshop material and shared Component Library masters are unchanged. At the user’s direction, 25 misplaced Prototype copies were returned to a separate area in Erwin’s Workshop; Prototype is empty. Incoming Staging copies and three unadopted handover-writing screens are preserved in Archive. Cover’s Staging link opens the launcher; its owner links remain. Showroom has a separately authorized fourteen-frame presentation outline, tracked in [its own spike](showroom-research-tour.md). Figma promotion remains a separate decision.
 
 ## Completed
 - [x] Re-read current source boards and inventory concurrent changes, including the new F13 material.
@@ -67,6 +67,7 @@ Original Workshop material, Showroom and shared Component Library masters are un
 - [x] Restore reader/editor sample-text entry into the annotation menus; rehearse comment → @agent → suggestion → acceptance and all four editor menu options with cancellation.
 
 ## Ready for human QA · latest feedback
+- [ ] Aslan and Erwin review the two rehearsed presentation journeys: Chat file intake through the canonical recording, and selected text through agent suggestion, evidence, acceptance/rejection, resolution and history. See the [10 Nov presentation-route QA](../design/staging-qa-2026-11-09.md#presentation-route-rehearsal--10-nov-2026) for the exact entry steps and tested limits.
 - [ ] Review the compact recording layout and consistent wiki tree on the reader, reviewed state and transcript editor; native checks are recorded in the QA document, but visual acceptance remains with the reviewers.
 
 ## Joint review before promotion
@@ -79,7 +80,12 @@ Original Workshop material, Showroom and shared Component Library masters are un
 - [ ] Obtain explicit joint approval before promotion to Prototype.
 
 ## Remaining implementation and QA
-- [ ] Preserve accepted wording when entering Edit page from `1934:6251`; its current target `1934:13459` contains the pre-acceptance fixture.
+- [ ] Integrate the lower reconciliation rows into the shared canvas arrangement. The Search/Using the microscope, recording-note and Maintenance examples have incoming launcher/navigation links, but their placement below the copied Workshop material still reads as a separate island. Preserve node identities and interactions when arranging the connected routes.
+- [x] Preserve the current published instruction on ordinary editor entry from thirty-five guide states; rehearse accepted `1934:6251` → Edit page → Cancel and Save back to the same accepted wording.
+- [x] Route the launcher's Flag outdated instructions entry into the ordinary reader and rehearse its comment/request/proposal sequence.
+- [x] Link the accepted thread's resolved-comment entry to its revision and associated conversation; verify that entry and the history return in playback.
+- [x] Rehearse Chat → Finder → attach → Send → classify → confirm → View artifact while retaining the accepted page underneath; verify transcript Edit/Cancel and whole-transcript review.
+- [ ] Extend current-instruction and caller preservation through deeper selection/annotation and Track changes branches when entered from an already accepted page. The ordinary editor's entry/Save/Cancel repair does not generalize these scripted branches.
 - [ ] Discuss consolidating Home Needs attention into a summary linking the Maintenance queue; no redesign applied.
 - [ ] Review generalized chat responses on newly integrated pages; shared scripted examples do not establish context-specific agent answers.
 - [ ] Reconcile auxiliary Add page, Add artifact, chat-file intake and annotation edit contexts for every newly added caller. Existing Aslan routes remain accessible; broad caller preservation is not established.

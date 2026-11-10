@@ -195,3 +195,37 @@ The forms' downstream save branches, arbitrary document callers, narrower-revisi
 With explicit authorization, resolved native Figma comments #52–56 for the tree/toggle/recording-density repairs documented above. Read back each card's resolved state through the native interface. No replies were posted and no other review comments were changed. Resolving these bug reports does not represent joint design acceptance or authorization to promote Staging.
 
 Temporary screenshots include `staging-read-selection-menu.png`, `staging-comment-entry.png`, `staging-agent-request-result.png`, `staging-review-accept-entry.png`, `staging-edit-selection-menu.png`, `staging-citation-form-entry.png`, `staging-margin-form-entry.png`, and `staging-edit-comment-entry.png`. They are not committed to the public repository.
+
+## Presentation-route rehearsal · 10 Nov 2026
+The two selected presentation journeys are ready for joint review. Playback ran in a dedicated Chrome tab at 1920 × 1000 CSS pixels, device scale 1. The file still contains 230 Staging frames. This pass changed Staging interactions and separately organized Showroom; it did not edit either Workshop, shared Component Library masters or Prototype.
+
+### Repairs and entry instructions
+The launcher's **Flag outdated instructions** activity opens the ordinary Getting started reader `1934:4394`, preserving its initialization actions. Click the sentence beginning “Reserve the microscope” under Before your first session to open the scripted selection menu. Add comment → Reply posts the example comment. Clicking its reply field fills the example @agent request; Reply opens the proposal. These are simulated clicks/text states, not arbitrary selection or free typing.
+
+The ordinary editor `1934:13459` binds its instruction to the Staging-local **Published instruction** variable. Thirty-five Edit page entry controls set that text and **Origin screen** before navigation. Save/Cancel select the appropriate return state; the baseline ordinary page retains its existing scripted edited outcome. Accepted state `1934:6251` retains the accepted instruction through both returns. Deeper annotation and Track changes branches still use scripted fixtures and need separate context-preservation work.
+
+The accepted thread's resolved-comment link now opens revision `1934:36812`, with the inline diff and associated discussion together. The citation preview's reviewer/speaker wording matches the canonical recording fixture. The launcher's previous highlighted-state example remains accessible, with text-level entry reactions, but is no longer the primary comment-route entry.
+
+### Native outcomes
+| Path | Observed result |
+| --- | --- |
+| Launcher Flag outdated instructions → ordinary reader | Reaches `1934:4394`; the sample sentence starts the comment route. |
+| Reader → selection `1934:14632` → Add comment `1934:7420` → Reply `1934:7522` → reply field `1934:7637` → Reply | Reaches inline proposal `1934:12909` with the anchored request and agent response. |
+| Proposal → citation `1934:13446` → Close | Evidence opens without replacing the page; Close restores the pending proposal and discussion. Attribution text was aligned with the canonical fixture after this playback check; Close behavior was not changed. |
+| Proposal → Accept `1934:6251` | Shows “Use the booking calendar linked from the equipment page. Contact the equipment lead for hands-on training before your first session.” |
+| Accepted → Edit page → Cancel; accepted → Edit page → Save | Editor displays the accepted wording. Both returns preserve it and return to `1934:6251`. |
+| Accepted → Page history `1934:36812` → Back to page | History contains the inline diff and associated thread; Back returns to the accepted page. |
+| Accepted → Resolve → 1 resolved comment | Removes the thread from active Comments; the link opens its accepted revision and discussion in `1934:36812`. Verified after the resolved-link repair. |
+| Separate direct entry into proposal `1934:12909` → Reject | Reaches `1934:5943`, retains the original instruction and marks the proposal Rejected. The thread remains available. This alternative was checked separately from the continuous acceptance journey. |
+| Accepted page → Chat → Add file to chat → Finder MP3 → Open | Opens an empty global conversation, then places the selected file in the composer without sending it. The accepted article remains underneath. |
+| Send → Primary recording → confirmation → Add artifact | Shows title, Getting started destination and Generate transcript option, then confirms the added artifact. Underlying page content stays unchanged throughout intake. |
+| View artifact → `1939:25765` | Opens the canonical recording and closes the chat overlay. |
+| Recording → Edit transcript `1939:25848` → Cancel | Timestamped, attributed transcript remains available; Cancel returns to the same reader. |
+| Recording → Mark transcript as reviewed | Reaches `1939:25938`, showing Reviewed by Mei Chen. |
+
+The comment/request/evidence/acceptance/editor/history route was traversed continuously. Chat intake was then traversed from that accepted page through the recording. The rejection alternative and final resolved-revision link were separately rechecked. The earlier 9 Nov checks cover automatic transcription completion and independent transcript scrolling; those are not newly claimed as part of this pass.
+
+### Limits and evidence
+This is native playback verification of scripted examples, not actual file upload, transcription, audio playback, persistence or agent execution. It is not a full graph rescan, exhaustive check of all 230 states, or joint design acceptance. Auxiliary caller contexts, deeper accepted-page annotation/Track changes paths, maintenance/delegation branches and richer transcript-edit outcomes remain in the active task record. No Prototype promotion occurred.
+
+Temporary evidence is under `/private/tmp/`: `launcher-comment-entry2.png`, `ordinary-selection.png`, `agent-proposal.png`, `proposal-evidence.png`, `evidence-close.png`, `proposal-accepted.png`, `accepted-editor.png`, `accepted-cancel.png`, `accepted-saved.png`, `accepted-history.png`, `history-return.png`, `resolved-revision-final.png`, `proposal-rejected.png`, `global-chat-empty.png`, `chat-finder.png`, `chat-attached.png`, `chat-type-choice.png`, `chat-artifact-confirm.png`, `chat-added.png`, `chat-artifact-open.png`, `uploaded-transcript-edit.png`, `transcript-cancel.png`, and `transcript-reviewed.png`. These local screenshots are not repository publication artifacts and are not durable CI evidence.
