@@ -1,0 +1,3965 @@
+{
+  "date": "2026-11-09",
+  "fileId": "fm5zX32mbG13hahShVgJwd",
+  "pageId": "1469:31745",
+  "status": "Joint review draft; not promoted",
+  "launcher": "1934:4118",
+  "baseCopies": {
+    "513:299": "1934:4118",
+    "657:2968": "1934:4220",
+    "509:299": "1934:4394",
+    "512:299": "1934:4549",
+    "509:383": "1934:4811",
+    "509:427": "1934:4883",
+    "509:482": "1934:4971",
+    "509:537": "1934:5060",
+    "509:589": "1934:5121",
+    "509:667": "1934:5204",
+    "509:747": "1934:5291",
+    "510:299": "1934:5374",
+    "510:344": "1934:5482",
+    "510:407": "1934:5591",
+    "510:463": "1934:5709",
+    "510:526": "1934:5828",
+    "510:574": "1934:5943",
+    "510:619": "1934:6046",
+    "510:663": "1934:6148",
+    "510:709": "1934:6251",
+    "510:755": "1934:6354",
+    "510:810": "1934:6449",
+    "549:766": "1934:6540",
+    "511:569": "1934:6631",
+    "511:623": "1934:6734",
+    "511:728": "1934:6828",
+    "511:782": "1934:6931",
+    "511:833": "1934:7025",
+    "511:887": "1934:7128",
+    "511:674": "1934:7222",
+    "511:299": "1934:7325",
+    "511:346": "1934:7420",
+    "511:400": "1934:7522",
+    "511:454": "1934:7637",
+    "511:513": "1934:12909",
+    "512:353": "1934:13081",
+    "512:404": "1934:13208",
+    "512:464": "1934:13299",
+    "512:526": "1934:13374",
+    "512:576": "1934:13417",
+    "781:27591": "1934:13446",
+    "657:3054": "1934:13459",
+    "657:3139": "1934:13521",
+    "657:3224": "1934:13583",
+    "657:3309": "1934:13675",
+    "663:3823": "1934:13733",
+    "684:5356": "1934:13805",
+    "684:5590": "1934:13894",
+    "684:5789": "1934:13980",
+    "684:6009": "1934:14067",
+    "684:6544": "1934:14153",
+    "684:6684": "1934:14204",
+    "684:6806": "1934:14302",
+    "684:6928": "1934:14370",
+    "692:8833": "1934:14440",
+    "695:7357": "1934:14492",
+    "891:10599": "1934:14541",
+    "891:10660": "1934:14560",
+    "927:51060": "1934:14579",
+    "707:7431": "1934:14632",
+    "707:7592": "1934:14728",
+    "738:7644": "1934:14815",
+    "738:7756": "1934:14853",
+    "761:26929": "1934:14883",
+    "761:26987": "1934:14905",
+    "761:27078": "1934:14943",
+    "761:27171": "1934:14982",
+    "761:27229": "1934:15004",
+    "786:9450": "1934:15043",
+    "786:9920": "1934:15144",
+    "786:10390": "1934:15245",
+    "786:10860": "1934:15334",
+    "786:11317": "1934:15422",
+    "786:11787": "1934:15510",
+    "786:12257": "1934:15598",
+    "786:12727": "1934:15699",
+    "786:13184": "1934:15799",
+    "786:13654": "1934:15901",
+    "786:14124": "1934:16003",
+    "786:14594": "1934:16100",
+    "786:15051": "1934:16196",
+    "786:15521": "1934:16302",
+    "786:15991": "1934:16408",
+    "786:16461": "1934:16527",
+    "790:10435": "1934:22413",
+    "833:13467": "1934:22419",
+    "833:13975": "1934:22520",
+    "833:17355": "1934:22620",
+    "833:17863": "1934:22721",
+    "1066:31494": "1934:22821",
+    "1066:31581": "1934:22911",
+    "1144:32936": "1934:23001",
+    "1144:33913": "1934:23104",
+    "1144:34890": "1934:23207",
+    "1144:35867": "1934:23310",
+    "1144:36844": "1934:23412",
+    "1144:37821": "1934:23515",
+    "1144:38798": "1934:23618",
+    "1144:39748": "1934:23715",
+    "903:10624": "1934:23811",
+    "903:10716": "1934:23850",
+    "903:10808": "1934:23889",
+    "903:13933": "1934:23950",
+    "903:14136": "1934:24039",
+    "903:14301": "1934:24114",
+    "903:14503": "1934:24191",
+    "939:13562": "1934:24278",
+    "939:14305": "1934:24336",
+    "939:15048": "1934:24394",
+    "939:15791": "1934:24452",
+    "939:16534": "1934:24510",
+    "939:17331": "1934:24568",
+    "950:15620": "1934:24581",
+    "950:16426": "1934:24671",
+    "950:17232": "1934:24761",
+    "950:18038": "1934:24852",
+    "950:18844": "1934:24943",
+    "950:19650": "1934:25042",
+    "950:20456": "1934:25141",
+    "950:21262": "1934:25253",
+    "950:22068": "1934:25364",
+    "950:22874": "1934:25469",
+    "950:23680": "1934:25574",
+    "950:24486": "1934:25672",
+    "966:17122": "1934:25769",
+    "966:17995": "1934:25876",
+    "966:18868": "1934:26000",
+    "966:19741": "1934:26124",
+    "966:20614": "1934:26230",
+    "966:21447": "1934:26328",
+    "969:16673": "1934:26425",
+    "971:17583": "1934:26549",
+    "1066:30542": "1934:26605",
+    "981:20800": "1934:26712",
+    "981:22692": "1934:33997",
+    "981:24582": "1934:34078",
+    "1109:139382": "1934:34159",
+    "1109:140330": "1934:35036",
+    "1169:165829": "1934:35118",
+    "1169:166900": "1934:35180",
+    "988:16150": "1934:35242",
+    "988:16427": "1934:35330",
+    "988:16711": "1934:35418",
+    "988:17018": "1934:35506",
+    "988:17326": "1934:35594",
+    "988:17634": "1934:35682",
+    "988:17927": "1934:35770",
+    "988:18220": "1934:35858",
+    "988:18512": "1934:35946",
+    "988:18804": "1934:36034",
+    "988:19126": "1934:36122",
+    "988:19448": "1934:36210",
+    "988:19539": "1934:36319",
+    "989:21062": "1934:36427",
+    "991:22577": "1934:36515",
+    "991:22652": "1934:36567",
+    "991:22727": "1934:36619",
+    "991:22802": "1934:36671",
+    "991:22877": "1934:36761",
+    "994:20991": "1934:36812",
+    "1014:32826": "1934:36893",
+    "1014:33883": "1934:37066",
+    "1014:34042": "1934:37240",
+    "1025:24955": "1934:37323",
+    "1025:24968": "1934:37336",
+    "1044:21735": "1934:37349",
+    "1044:21886": "1934:37352",
+    "1044:21929": "1934:37355",
+    "1079:24424": "1934:37358",
+    "1162:154668": "1934:37485",
+    "1172:27898": "1934:37615",
+    "1172:29498": "1934:37676",
+    "1172:30331": "1934:37737",
+    "1172:31238": "1934:37823",
+    "1172:32151": "1934:37912",
+    "1267:25654": "1934:38004",
+    "1267:25764": "1934:38115",
+    "1267:27753": "1934:38225"
+  },
+  "extensions": {
+    "search": "1939:24863",
+    "using": "1939:24893",
+    "using_changed": "1939:24999",
+    "using_pending": "1939:25105",
+    "using_accepted": "1939:25214",
+    "using_rejected": "1939:25320",
+    "using_edit": "1939:25426",
+    "using_history": "1939:25488",
+    "using_rejected_history": "1939:25569",
+    "booking": "1939:25659",
+    "training": "1939:25765",
+    "training_edit": "1939:25848",
+    "training_reviewed": "1939:25938",
+    "training_note_chat": "1939:26021",
+    "training_note_draft": "1939:26079",
+    "training_note_added": "1939:26184",
+    "training_history": "1939:26281",
+    "maintenance": "1939:26351",
+    "checklog": "1939:26421",
+    "dismissed": "1939:26491",
+    "noissue": "1939:26561",
+    "handover": "1939:26631",
+    "handover_draft": "1939:26701",
+    "handover_published": "1939:26763",
+    "handover_accept": "1939:26869",
+    "handover_confirmed": "1939:26899",
+    "handover_declined": "1939:26929",
+    "onboarding": "1939:26959",
+    "delegation": "1939:27029",
+    "delegation_changed": "1939:27059",
+    "protection": "1939:27089",
+    "protection_assigned": "1939:27119",
+    "auto_history": "1939:27149",
+    "auto_undone": "1939:27230",
+    "wrong_pending": "1939:27311",
+    "wrong_evidence": "1939:27420",
+    "wrong_reason": "1939:27433",
+    "wrong_rejected": "1939:27551",
+    "wrong_accepted": "1939:27657",
+    "wrong_history": "1939:27763",
+    "wrong_rejected_history": "1939:27844",
+    "wrong_undo": "1939:27934",
+    "safety": "1939:28015",
+    "using_resolved": "1956:32706",
+    "using_rejected_resolved": "1956:32801",
+    "wrong_resolved": "1956:32896",
+    "wrong_rejected_resolved": "1956:32983",
+    "booking_history": "1956:33070",
+    "handover_history": "1956:33150",
+    "training_artifact_edit": "1974:33650",
+    "wrong_replied": "1974:35251",
+    "using_pending_history": "1974:35880",
+    "wrong_pending_history": "1974:36625",
+    "booking_evidence": "1975:34249",
+    "training_evidence": "1975:34276"
+  },
+  "additionalStates": [
+    {
+      "key": "using_resolved",
+      "id": "1956:32706",
+      "source": "1939:25214",
+      "name": "1.1.1.3 · Using the microscope · Accepted thread resolved"
+    },
+    {
+      "key": "using_rejected_resolved",
+      "id": "1956:32801",
+      "source": "1939:25320",
+      "name": "1.1.1.3 · Using the microscope · Rejected thread resolved"
+    },
+    {
+      "key": "wrong_resolved",
+      "id": "1956:32896",
+      "source": "1939:27657",
+      "name": "1.1.2.1 · Centrifuge safety · Accepted thread resolved"
+    },
+    {
+      "key": "wrong_rejected_resolved",
+      "id": "1956:32983",
+      "source": "1939:27551",
+      "name": "1.1.2.1 · Centrifuge safety · Rejected thread resolved"
+    },
+    {
+      "key": "booking_history",
+      "id": "1956:33070",
+      "source": "1939:25488",
+      "name": "1.1.1.4 · Booking sheet history · Source requirement changed"
+    },
+    {
+      "key": "handover_history",
+      "id": "1956:33150",
+      "source": "1939:25488",
+      "name": "5.1 · Max handover history · Published draft"
+    },
+    {
+      "key": "training_artifact_edit",
+      "id": "1974:33650",
+      "source": "1939:25765",
+      "name": "1.1.1.1.4 · Training recording · Edit title and description"
+    },
+    {
+      "key": "wrong_replied",
+      "id": "1974:35251",
+      "source": "1939:27433",
+      "name": "1.1.2.1 · Centrifuge safety · Reply posted with suggestion pending"
+    },
+    {
+      "key": "using_pending_history",
+      "id": "1974:35880",
+      "source": "1939:25569",
+      "name": "1.1.1.3 · Using the microscope history · Thread resolved with suggestion pending"
+    },
+    {
+      "key": "wrong_pending_history",
+      "id": "1974:36625",
+      "source": "1939:27844",
+      "name": "1.1.2.1 · Centrifuge safety history · Thread resolved with suggestion pending"
+    },
+    {
+      "key": "booking_evidence",
+      "id": "1975:34249",
+      "source": "1939:27420",
+      "name": "Booking sheet · Citation preview"
+    },
+    {
+      "key": "training_evidence",
+      "id": "1975:34276",
+      "source": "1939:27420",
+      "name": "Training recording · Citation preview"
+    }
+  ],
+  "sourceBoards": [
+    {
+      "id": "513:299",
+      "name": "P0 · Workshop launcher · Entry",
+      "x": 320,
+      "y": 18620,
+      "w": 1440,
+      "h": 935
+    },
+    {
+      "id": "509:299",
+      "name": "1.1.1.1 · Getting started · Begin on a wiki page",
+      "x": 5040,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:383",
+      "name": "1.1.1.1 · Getting started · Name the artifact and choose a file",
+      "x": 7400,
+      "y": 7080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:427",
+      "name": "1.1.1.1 · Getting started · File uploaded — choose its meaning",
+      "x": 12120,
+      "y": 8280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:482",
+      "name": "1.1.1.1 · Getting started · Primary recording selected — add and transcribe",
+      "x": 14480,
+      "y": 8420,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:537",
+      "name": "1.1.1.1.1 · Orientation recording · Recording saved — transcript preparing",
+      "x": 16840,
+      "y": 5380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:589",
+      "name": "1.1.1.1.1 · Orientation recording · One recording record — transcript ready",
+      "x": 19200,
+      "y": 5460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:667",
+      "name": "1.1.1.1.1 · Orientation recording · Check mode in the same recording",
+      "x": 19200,
+      "y": 10100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "509:747",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript checked — recording stays one record",
+      "x": 21560,
+      "y": 5480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:299",
+      "name": "1.1.1.1 · Getting started · A proposal is waiting on the guide",
+      "x": 19200,
+      "y": 31180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:344",
+      "name": "1.1.1.1 · Getting started · Inspect the exact proposed passage",
+      "x": 21560,
+      "y": 31740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:407",
+      "name": "1.1.1.1 · Getting started · Request a narrower revision",
+      "x": 23920,
+      "y": 29780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:463",
+      "name": "1.1.1.1 · Getting started · Review the revised proposal",
+      "x": 26280,
+      "y": 29620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:526",
+      "name": "1.1.1.1 · Getting started · Revised wording accepted into the page",
+      "x": 28640,
+      "y": 29260,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:574",
+      "name": "1.1.1.1 · Getting started · Rejected proposal leaves the page unchanged",
+      "x": 23920,
+      "y": 34740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:619",
+      "name": "1.1.1.1 · Getting started · Human edits the agent proposal before accepting",
+      "x": 23920,
+      "y": 33120,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:663",
+      "name": "1.1.1.1 · Getting started · Human-edited agent wording accepted",
+      "x": 26280,
+      "y": 33280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:709",
+      "name": "1.1.1.1 · Getting started · Initial proposal accepted without revision",
+      "x": 23920,
+      "y": 31500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:755",
+      "name": "1.1.1.1 · Getting started · Review a tracked human edit",
+      "x": 12120,
+      "y": 27380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "510:810",
+      "name": "1.1.1.1 · Getting started · Tracked human edit accepted",
+      "x": 14480,
+      "y": 26760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "549:766",
+      "name": "1.1.1.1 · Getting started · Human proposal rejected",
+      "x": 14480,
+      "y": 28380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:569",
+      "name": "1.1.1.1 · Getting started · Revised proposal accepted — comment thread still open",
+      "x": 31000,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:623",
+      "name": "1.1.1.1 · Getting started · Comment thread resolved — no open threads",
+      "x": 33360,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:728",
+      "name": "1.1.1.1 · Getting started · Initial wording accepted — comment thread still open",
+      "x": 26280,
+      "y": 31660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:782",
+      "name": "1.1.1.1 · Getting started · Initial wording — comment thread resolved",
+      "x": 28640,
+      "y": 31840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:833",
+      "name": "1.1.1.1 · Getting started · Edited wording accepted — comment thread still open",
+      "x": 28640,
+      "y": 33460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:887",
+      "name": "1.1.1.1 · Getting started · Edited wording — comment thread resolved",
+      "x": 31000,
+      "y": 33620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:674",
+      "name": "1.1.1.1 · Getting started · Rejected proposal — concern remains open",
+      "x": 26280,
+      "y": 34900,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:299",
+      "name": "1.1.1.1 · Getting started · Select an instruction that may be outdated",
+      "x": 7400,
+      "y": 28840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:346",
+      "name": "1.1.1.1 · Getting started · Write a comment on the selected passage",
+      "x": 12120,
+      "y": 29620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:400",
+      "name": "1.1.1.1 · Getting started · Comment posted — no agent request yet",
+      "x": 14480,
+      "y": 30000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:454",
+      "name": "1.1.1.1 · Getting started · Explicitly ask the agent for a proposed revision",
+      "x": 16840,
+      "y": 29780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "511:513",
+      "name": "1.1.1.1 · Getting started · Agent proposal ready — continue through F4 review",
+      "x": 19200,
+      "y": 29560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "512:299",
+      "name": "1.1.1.1 · Getting started · Inline citation, ordinary link and margin note",
+      "x": 7400,
+      "y": 15100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "512:353",
+      "name": "1.1.1.1 · Getting started · Comments use the same margin in a separate tab",
+      "x": 9760,
+      "y": 15100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "512:404",
+      "name": "1.1.1.1 · Getting started · Reused range — one handle, subtle highlight, linked source",
+      "x": 7400,
+      "y": 13480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "512:464",
+      "name": "1.1.1.1.1 · Orientation recording · Edit transcript from a reused excerpt",
+      "x": 12120,
+      "y": 13160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "512:526",
+      "name": "O1 · Evidence preview · Inspect the recording source",
+      "x": 12120,
+      "y": 14780,
+      "w": 980,
+      "h": 1080
+    },
+    {
+      "id": "512:576",
+      "name": "O2 · Source editor · Edit source in context",
+      "x": 9760,
+      "y": 13620,
+      "w": 980,
+      "h": 850
+    },
+    {
+      "id": "781:27591",
+      "name": "O3 · Evidence preview · Citation preview — transcript passage 00:18",
+      "x": 21560,
+      "y": 30920,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "657:2968",
+      "name": "1 · The Lab · Wiki home",
+      "x": 2680,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "657:3054",
+      "name": "1.1.1.1 · Getting started · Edit the page normally",
+      "x": 7400,
+      "y": 25220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "657:3139",
+      "name": "1.1.1.1 · Getting started · Direct edit ready to save",
+      "x": 9760,
+      "y": 25480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "657:3224",
+      "name": "1.1.1.1 · Getting started · Track changes — suggest the same edit",
+      "x": 9760,
+      "y": 27300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "657:3309",
+      "name": "1.1.1.1 · Getting started · Direct edit saved",
+      "x": 12120,
+      "y": 25760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "663:3823",
+      "name": "1.1.1.1 · Getting started · Remove uploaded file — keep entered context",
+      "x": 9760,
+      "y": 8140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:5356",
+      "name": "1.1.1.1 · Getting started · Add recording without generating a transcript",
+      "x": 14480,
+      "y": 6800,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:5590",
+      "name": "1.1.1.1.1 · Orientation recording · Recording saved without transcript",
+      "x": 16840,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:5789",
+      "name": "1.1.1.1.1 · Orientation recording · Edit recording title and description",
+      "x": 19200,
+      "y": 3840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:6009",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript revised by a human",
+      "x": 28640,
+      "y": 6880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:6544",
+      "name": "1.1.1.1.3 · Microscope care · New page saved",
+      "x": 12120,
+      "y": 17660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:6684",
+      "name": "1.1.1.1 · Getting started history · Page history — changes and review trail",
+      "x": 33360,
+      "y": 30380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:6806",
+      "name": "1.1.1.1.1 · Orientation recording history · Recording artifact history",
+      "x": 23920,
+      "y": 5360,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "684:6928",
+      "name": "1.1.1.1.1 · Orientation transcript history · Transcript revision history",
+      "x": 26280,
+      "y": 5300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "692:8833",
+      "name": "1.1.1.1.3 · Microscope care history · New page history",
+      "x": 12120,
+      "y": 19280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "695:7357",
+      "name": "1.1.1.1.1 · Orientation recording history · Recording history before transcription",
+      "x": 21560,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "891:10599",
+      "name": "1.1.1.1 · Getting started · Add page modal — empty",
+      "x": 7400,
+      "y": 17740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "891:10660",
+      "name": "1.1.1.1 · Getting started · Add page modal — ready to create",
+      "x": 9760,
+      "y": 17700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "927:51060",
+      "name": "1.1.1.1.3 · Microscope care · Edit the created page",
+      "x": 14480,
+      "y": 17600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "707:7431",
+      "name": "1.1.1.1 · Getting started · Selected text — add a comment",
+      "x": 9760,
+      "y": 29220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "707:7592",
+      "name": "1.1.1.1 · Getting started · Selected text while editing",
+      "x": 9760,
+      "y": 22400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "738:7644",
+      "name": "2 · Profile · Overview",
+      "x": 2680,
+      "y": 20600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "738:7756",
+      "name": "3 · Settings · Personal settings",
+      "x": 2680,
+      "y": 22220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "761:26929",
+      "name": "1.1.1.1 · Getting started · Full-screen empty artifact dialog",
+      "x": 7400,
+      "y": 5460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "761:26987",
+      "name": "1.1.1.1 · Getting started · Full-screen type artifact dialog",
+      "x": 12120,
+      "y": 5120,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "761:27078",
+      "name": "1.1.1.1 · Getting started · Full-screen ready artifact dialog",
+      "x": 14480,
+      "y": 5180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "761:27171",
+      "name": "1.1.1.1 · Getting started · Full-screen removed artifact dialog",
+      "x": 9760,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "761:27229",
+      "name": "1.1.1.1 · Getting started · Full-screen Add artifact without transcript",
+      "x": 14480,
+      "y": 3560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:9450",
+      "name": "1.1.1.1 · Getting started · Choose link",
+      "x": 12120,
+      "y": 20900,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:9920",
+      "name": "1.1.1.1 · Getting started · Complete link",
+      "x": 14480,
+      "y": 20660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:10390",
+      "name": "1.1.1.1 · Getting started · Apply link",
+      "x": 16840,
+      "y": 20400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:10860",
+      "name": "1.1.1.1 · Getting started · Saved link",
+      "x": 19200,
+      "y": 20080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:11317",
+      "name": "1.1.1.1 · Getting started · Choose citation",
+      "x": 21560,
+      "y": 12880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:11787",
+      "name": "1.1.1.1 · Getting started · Complete citation",
+      "x": 23920,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:12257",
+      "name": "1.1.1.1 · Getting started · Apply citation",
+      "x": 26280,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:12727",
+      "name": "1.1.1.1 · Getting started · Saved citation",
+      "x": 28640,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:13184",
+      "name": "1.1.1.1 · Getting started · Choose margin note",
+      "x": 12120,
+      "y": 24140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:13654",
+      "name": "1.1.1.1 · Getting started · Complete margin note",
+      "x": 14480,
+      "y": 24460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:14124",
+      "name": "1.1.1.1 · Getting started · Apply margin note",
+      "x": 16840,
+      "y": 24700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:14594",
+      "name": "1.1.1.1 · Getting started · Saved margin note",
+      "x": 19200,
+      "y": 24940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:15051",
+      "name": "1.1.1.1 · Getting started · Choose comment",
+      "x": 12120,
+      "y": 22520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:15521",
+      "name": "1.1.1.1 · Getting started · Complete comment",
+      "x": 14480,
+      "y": 22800,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:15991",
+      "name": "1.1.1.1 · Getting started · Apply comment",
+      "x": 16840,
+      "y": 23060,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "786:16461",
+      "name": "1.1.1.1 · Getting started · Saved comment",
+      "x": 19200,
+      "y": 23320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "790:10435",
+      "name": "O4 · Link preview · Link destination preview",
+      "x": 21560,
+      "y": 20600,
+      "w": 480,
+      "h": 168
+    },
+    {
+      "id": "833:13467",
+      "name": "1.1.1.1 · Getting started · Apply web citation",
+      "x": 23920,
+      "y": 14380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "833:13975",
+      "name": "1.1.1.1 · Getting started · Saved web citation",
+      "x": 26280,
+      "y": 14380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "833:17355",
+      "name": "1.1.1.1 · Getting started · Apply print citation",
+      "x": 23920,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "833:17863",
+      "name": "1.1.1.1 · Getting started · Saved print citation",
+      "x": 26280,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1066:31494",
+      "name": "1.1.1.1 · Getting started · Link context menu while editing",
+      "x": 19200,
+      "y": 21700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1066:31581",
+      "name": "1.1.1.1 · Getting started · Edit link destination",
+      "x": 21560,
+      "y": 21700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:32936",
+      "name": "1.1.1.1 · Getting started · Select note words to add a link",
+      "x": 16840,
+      "y": 26500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:33913",
+      "name": "1.1.1.1 · Getting started · Add link to the new note",
+      "x": 19200,
+      "y": 26560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:34890",
+      "name": "1.1.1.1 · Getting started · Choose the note link destination",
+      "x": 21560,
+      "y": 26440,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:35867",
+      "name": "1.1.1.1 · Getting started · Linked note ready to add",
+      "x": 23920,
+      "y": 26300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:36844",
+      "name": "1.1.1.1 · Getting started · Select the draft note link",
+      "x": 26280,
+      "y": 27720,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:37821",
+      "name": "1.1.1.1 · Getting started · Edit the selected note link",
+      "x": 28640,
+      "y": 27640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:38798",
+      "name": "1.1.1.1 · Getting started · New margin note with inline link",
+      "x": 26280,
+      "y": 26100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1144:39748",
+      "name": "1.1.1.1 · Getting started · Saved linked margin note",
+      "x": 28640,
+      "y": 26020,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:10624",
+      "name": "1.1.1.1 · Getting started · Add audio note and generate transcript",
+      "x": 14480,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:10716",
+      "name": "1.1.1.1 · Getting started · Add audio note without transcript",
+      "x": 14480,
+      "y": 320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:10808",
+      "name": "1.1.1.1.2 · Orientation audio note · Audio note saved — transcript preparing",
+      "x": 16840,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:13933",
+      "name": "1.1.1.1.2 · Orientation audio note · Audio note — transcript visible",
+      "x": 19200,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:14136",
+      "name": "1.1.1.1.2 · Orientation audio note · Edit the audio-note transcript",
+      "x": 21560,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:14301",
+      "name": "1.1.1.1.2 · Orientation audio note history · Audio-note history",
+      "x": 23920,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "903:14503",
+      "name": "1.1.1.1.2 · Orientation audio note · Edit the audio-note title and description",
+      "x": 19200,
+      "y": 320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:13562",
+      "name": "1.1.1.1 · Getting started · Open chat on the current page",
+      "x": 7400,
+      "y": 11860,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:14305",
+      "name": "1.1.1.1 · Getting started · Compose a question",
+      "x": 9760,
+      "y": 12000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:15048",
+      "name": "1.1.1.1 · Getting started · Read the agent’s cited answer",
+      "x": 12120,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:15791",
+      "name": "1.1.1.1 · Getting started · Compose a follow-up",
+      "x": 14480,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:16534",
+      "name": "1.1.1.1 · Getting started · Continue the conversation",
+      "x": 16840,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "939:17331",
+      "name": "O5 · Evidence preview · Inspect the transcript citation",
+      "x": 12120,
+      "y": 10720,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "950:15620",
+      "name": "1.1.1.1.1 · Orientation recording · Edit the transcript",
+      "x": 21560,
+      "y": 7100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:16426",
+      "name": "1.1.1.1.1 · Orientation recording · Correct transcript text",
+      "x": 23920,
+      "y": 7080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:17232",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript correction",
+      "x": 26280,
+      "y": 6920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:18038",
+      "name": "1.1.1.1.1 · Orientation recording · Select transcript text",
+      "x": 23920,
+      "y": 8700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:18844",
+      "name": "1.1.1.1.1 · Orientation recording · Add a comment while editing",
+      "x": 26280,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:19650",
+      "name": "1.1.1.1.1 · Orientation recording · Compose the transcript comment",
+      "x": 28640,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:20456",
+      "name": "1.1.1.1.1 · Orientation recording · Comment posted — still editing",
+      "x": 31000,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:21262",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript with comment",
+      "x": 33360,
+      "y": 10140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:22068",
+      "name": "1.1.1.1.1 · Orientation recording · Add a margin note while editing",
+      "x": 26280,
+      "y": 8540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:22874",
+      "name": "1.1.1.1.1 · Orientation recording · Compose the transcript note",
+      "x": 28640,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:23680",
+      "name": "1.1.1.1.1 · Orientation recording · Margin note applied — still editing",
+      "x": 31000,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "950:24486",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript with margin note",
+      "x": 33360,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:17122",
+      "name": "1.1.1.1.1 · Orientation recording · Select words inside a margin note",
+      "x": 31000,
+      "y": 6720,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:17995",
+      "name": "1.1.1.1.1 · Orientation recording · Add a link within the note",
+      "x": 33360,
+      "y": 6660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:18868",
+      "name": "1.1.1.1.1 · Orientation recording · Choose the linked wiki page",
+      "x": 35720,
+      "y": 6600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:19741",
+      "name": "1.1.1.1.1 · Orientation recording · Link inserted in the draft note",
+      "x": 38080,
+      "y": 6560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:20614",
+      "name": "1.1.1.1.1 · Orientation recording · Linked margin note — still editing",
+      "x": 40440,
+      "y": 6540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "966:21447",
+      "name": "1.1.1.1.1 · Orientation recording · Saved margin note with a link",
+      "x": 42800,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "969:16673",
+      "name": "1.1.1.1.1 · Orientation recording · Edit the note link — cancel keeps the draft",
+      "x": 40440,
+      "y": 8160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "971:17583",
+      "name": "1.1.1.1 · Getting started · Open the guide linked from the note",
+      "x": 45160,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1066:30542",
+      "name": "1.1.1.1.1 · Orientation recording · Link context menu inside the note",
+      "x": 38080,
+      "y": 8180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "981:20800",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread",
+      "x": 35720,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "981:22692",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread · Initial acceptance",
+      "x": 31000,
+      "y": 32000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "981:24582",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread · Human-edited acceptance",
+      "x": 33360,
+      "y": 33620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1109:139382",
+      "name": "1.1.1.1 · Getting started history · Resolved thread selected from a page",
+      "x": 38080,
+      "y": 27200,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1109:140330",
+      "name": "1.1.1.1.1 · Orientation recording history · Resolved thread selected from a transcript",
+      "x": 35720,
+      "y": 10140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1169:165829",
+      "name": "1.1.1.1 · Getting started history · Resolved human conversation · Arranging hands-on training",
+      "x": 40440,
+      "y": 28780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1169:166900",
+      "name": "1.1.1.1 · Getting started history · Resolved human conversation · Where to keep session records",
+      "x": 42800,
+      "y": 28780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "988:16150",
+      "name": "1.1.1.1 · Getting started · Find a source",
+      "x": 12120,
+      "y": 16280,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:16427",
+      "name": "1.1.1.1 · Getting started · Wiki search results",
+      "x": 14480,
+      "y": 16220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:16711",
+      "name": "1.1.1.1 · Getting started · Cite the whole transcript",
+      "x": 16840,
+      "y": 16100,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:17018",
+      "name": "1.1.1.1 · Getting started · Select transcript text",
+      "x": 19200,
+      "y": 15940,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:17326",
+      "name": "1.1.1.1 · Getting started · Cite a selected passage",
+      "x": 21560,
+      "y": 15940,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:17634",
+      "name": "1.1.1.1 · Getting started · Recognized web URL",
+      "x": 14480,
+      "y": 13220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:17927",
+      "name": "1.1.1.1 · Getting started · Recognized DOI",
+      "x": 16840,
+      "y": 13660,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:18220",
+      "name": "1.1.1.1 · Getting started · Source without a link",
+      "x": 14480,
+      "y": 19220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:18512",
+      "name": "1.1.1.1 · Getting started · Source details ready",
+      "x": 19200,
+      "y": 18700,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:18804",
+      "name": "1.1.1.1 · Getting started · Cite the audio recording",
+      "x": 19200,
+      "y": 17320,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:19126",
+      "name": "1.1.1.1 · Getting started · Cite an audio range",
+      "x": 21560,
+      "y": 17320,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:19448",
+      "name": "1.1.1.1 · Getting started · Citation added while editing",
+      "x": 23920,
+      "y": 16000,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "988:19539",
+      "name": "1.1.1.1 · Getting started · Citation saved on the page",
+      "x": 26280,
+      "y": 16000,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "989:21062",
+      "name": "1.1.1.1 · Getting started · Choose a source type",
+      "x": 16840,
+      "y": 18960,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "991:22577",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision",
+      "x": 38080,
+      "y": 28820,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "991:22652",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision · Initial acceptance",
+      "x": 33360,
+      "y": 32000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "991:22727",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision · Human-edited acceptance",
+      "x": 35720,
+      "y": 33640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "991:22802",
+      "name": "1.1.1.1 · Getting started history · Rejected suggestion — review event without a new revision",
+      "x": 28640,
+      "y": 35080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "991:22877",
+      "name": "1.1.1.1 · Getting started history · Published revision unchanged after rejection",
+      "x": 31000,
+      "y": 35240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "994:20991",
+      "name": "1.1.1.1 · Getting started history · Accepted revision with an open thread",
+      "x": 31000,
+      "y": 30380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1014:32826",
+      "name": "1.1.1.1 · Getting started · Comment thread — citation and ordinary artifact link",
+      "x": 16840,
+      "y": 28240,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1014:33883",
+      "name": "1.1.1.1 · Getting started · Read cited passage beside the thread",
+      "x": 19200,
+      "y": 28180,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1014:34042",
+      "name": "1.1.1.1.1 · Orientation recording · Open linked artifact — return through Getting started",
+      "x": 21560,
+      "y": 28180,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1025:24955",
+      "name": "O6 · Evidence preview · Citation 1 — equipment and booking passage",
+      "x": 9760,
+      "y": 9760,
+      "w": 760,
+      "h": 503
+    },
+    {
+      "id": "1025:24968",
+      "name": "O7 · Evidence preview · Citation 3 — training passage",
+      "x": 12120,
+      "y": 9900,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "1044:21735",
+      "name": "O8 · File picker · Open file for a new artifact",
+      "x": 9760,
+      "y": 5200,
+      "w": 1800,
+      "h": 900
+    },
+    {
+      "id": "1044:21886",
+      "name": "1.1.1.1 · Getting started · Non-audio file attached — draft",
+      "x": 12120,
+      "y": 3500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1044:21929",
+      "name": "O9 · File picker · Open file for agent chat",
+      "x": 9760,
+      "y": 10680,
+      "w": 1800,
+      "h": 900
+    },
+    {
+      "id": "1079:24424",
+      "name": "1.1.1.2 · Planning a microscope session · Planning and documenting a microscope session",
+      "x": 5040,
+      "y": 20240,
+      "w": 1800,
+      "h": 3683
+    },
+    {
+      "id": "1162:154668",
+      "name": "1.1.1.2 · Planning a microscope session · Edit long documentation with persistent formatting",
+      "x": 7400,
+      "y": 20240,
+      "w": 1800,
+      "h": 3683
+    },
+    {
+      "id": "1172:27898",
+      "name": "1.1.1.1 · Getting started · Snapshot · Page revision 1 · Created by Brandon · 21 Oct 2026, 2:15 PM",
+      "x": 38080,
+      "y": 30440,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1172:29498",
+      "name": "1.1.1.1 · Getting started · Snapshot · Page revision 2 · Edited by Aslan French · 24 Oct 2026, 9:45 AM",
+      "x": 40440,
+      "y": 30400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1172:30331",
+      "name": "1.1.1.1.1 · Orientation recording · Snapshot · Transcript revision 1 · Reviewed by Aslan French · 24 Oct 2026, 9:50 AM",
+      "x": 26280,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1172:31238",
+      "name": "1.1.1.1.1 · Orientation recording · Snapshot · Transcript revision 2 · Revised by Aslan French · 24 Oct 2026, 10:05 AM",
+      "x": 28640,
+      "y": 5260,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1172:32151",
+      "name": "1.1.1.1.2 · Orientation audio note · Snapshot · Transcript revision 1 · Generated · 24 Oct 2026, 9:30 AM",
+      "x": 26280,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1267:25654",
+      "name": "1.1.1.1 · Getting started · Citation source passage changed",
+      "x": 14480,
+      "y": 14600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1267:25764",
+      "name": "1.1.1.1 · Getting started · Citation checked against the revised transcript",
+      "x": 19200,
+      "y": 14320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1267:27753",
+      "name": "O10 · Evidence preview · Inspect the cited source revision",
+      "x": 16840,
+      "y": 15040,
+      "w": 760,
+      "h": 222
+    }
+  ],
+  "stageBoards": [
+    {
+      "id": "1934:4118",
+      "name": "P0 · Staging · Joint review launcher",
+      "x": 12320,
+      "y": 18000,
+      "w": 1440,
+      "h": 1483
+    },
+    {
+      "id": "1934:4220",
+      "name": "1 · The Lab · Wiki home",
+      "x": 14680,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:4394",
+      "name": "1.1.1.1 · Getting started · Begin on a wiki page",
+      "x": 17040,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:4549",
+      "name": "1.1.1.1 · Getting started · Inline citation, ordinary link and margin note",
+      "x": 19400,
+      "y": 15100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:4811",
+      "name": "1.1.1.1 · Getting started · Name the artifact and choose a file",
+      "x": 19400,
+      "y": 7080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:4883",
+      "name": "1.1.1.1 · Getting started · File uploaded — choose its meaning",
+      "x": 24120,
+      "y": 8280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:4971",
+      "name": "1.1.1.1 · Getting started · Primary recording selected — add and transcribe",
+      "x": 26480,
+      "y": 8420,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5060",
+      "name": "1.1.1.1.1 · Orientation recording · Recording saved — transcript preparing",
+      "x": 28840,
+      "y": 5380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5121",
+      "name": "1.1.1.1.1 · Orientation recording · One recording record — transcript ready",
+      "x": 31200,
+      "y": 5460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5204",
+      "name": "1.1.1.1.1 · Orientation recording · Check mode in the same recording",
+      "x": 31200,
+      "y": 10100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5291",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript checked — recording stays one record",
+      "x": 33560,
+      "y": 5480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5374",
+      "name": "1.1.1.1 · Getting started · A proposal is waiting on the guide",
+      "x": 31200,
+      "y": 31180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5482",
+      "name": "1.1.1.1 · Getting started · Inspect the exact proposed passage",
+      "x": 33560,
+      "y": 31740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5591",
+      "name": "1.1.1.1 · Getting started · Request a narrower revision",
+      "x": 35920,
+      "y": 29780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5709",
+      "name": "1.1.1.1 · Getting started · Review the revised proposal",
+      "x": 38280,
+      "y": 29620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5828",
+      "name": "1.1.1.1 · Getting started · Revised wording accepted into the page",
+      "x": 40640,
+      "y": 29260,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:5943",
+      "name": "1.1.1.1 · Getting started · Rejected proposal leaves the page unchanged",
+      "x": 35920,
+      "y": 34740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6046",
+      "name": "1.1.1.1 · Getting started · Human edits the agent proposal before accepting",
+      "x": 35920,
+      "y": 33120,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6148",
+      "name": "1.1.1.1 · Getting started · Human-edited agent wording accepted",
+      "x": 38280,
+      "y": 33280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6251",
+      "name": "1.1.1.1 · Getting started · Initial proposal accepted without revision",
+      "x": 35920,
+      "y": 31500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6354",
+      "name": "1.1.1.1 · Getting started · Review a tracked human edit",
+      "x": 24120,
+      "y": 27380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6449",
+      "name": "1.1.1.1 · Getting started · Tracked human edit accepted",
+      "x": 26480,
+      "y": 26760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6540",
+      "name": "1.1.1.1 · Getting started · Human proposal rejected",
+      "x": 26480,
+      "y": 28380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6631",
+      "name": "1.1.1.1 · Getting started · Revised proposal accepted — comment thread still open",
+      "x": 43000,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6734",
+      "name": "1.1.1.1 · Getting started · Comment thread resolved — no open threads",
+      "x": 45360,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6828",
+      "name": "1.1.1.1 · Getting started · Initial wording accepted — comment thread still open",
+      "x": 38280,
+      "y": 31660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:6931",
+      "name": "1.1.1.1 · Getting started · Initial wording — comment thread resolved",
+      "x": 40640,
+      "y": 31840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7025",
+      "name": "1.1.1.1 · Getting started · Edited wording accepted — comment thread still open",
+      "x": 40640,
+      "y": 33460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7128",
+      "name": "1.1.1.1 · Getting started · Edited wording — comment thread resolved",
+      "x": 43000,
+      "y": 33620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7222",
+      "name": "1.1.1.1 · Getting started · Rejected proposal — concern remains open",
+      "x": 38280,
+      "y": 34900,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7325",
+      "name": "1.1.1.1 · Getting started · Select an instruction that may be outdated",
+      "x": 19400,
+      "y": 28840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7420",
+      "name": "1.1.1.1 · Getting started · Write a comment on the selected passage",
+      "x": 24120,
+      "y": 29620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7522",
+      "name": "1.1.1.1 · Getting started · Comment posted — no agent request yet",
+      "x": 26480,
+      "y": 30000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:7637",
+      "name": "1.1.1.1 · Getting started · Explicitly ask the agent for a proposed revision",
+      "x": 28840,
+      "y": 29780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:12909",
+      "name": "1.1.1.1 · Getting started · Agent proposal ready — continue through F4 review",
+      "x": 31200,
+      "y": 29560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13081",
+      "name": "1.1.1.1 · Getting started · Comments use the same margin in a separate tab",
+      "x": 21760,
+      "y": 15100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13208",
+      "name": "1.1.1.1 · Getting started · Reused range — one handle, subtle highlight, linked source",
+      "x": 19400,
+      "y": 13480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13299",
+      "name": "1.1.1.1.1 · Orientation recording · Edit transcript from a reused excerpt",
+      "x": 24120,
+      "y": 13160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13374",
+      "name": "O1 · Evidence preview · Inspect the recording source",
+      "x": 24120,
+      "y": 14780,
+      "w": 980,
+      "h": 1080
+    },
+    {
+      "id": "1934:13417",
+      "name": "O2 · Source editor · Edit source in context",
+      "x": 21760,
+      "y": 13620,
+      "w": 980,
+      "h": 850
+    },
+    {
+      "id": "1934:13446",
+      "name": "O3 · Evidence preview · Citation preview — transcript passage 00:18",
+      "x": 33560,
+      "y": 30920,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "1934:13459",
+      "name": "1.1.1.1 · Getting started · Edit the page normally",
+      "x": 19400,
+      "y": 25220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13521",
+      "name": "1.1.1.1 · Getting started · Direct edit ready to save",
+      "x": 21760,
+      "y": 25480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13583",
+      "name": "1.1.1.1 · Getting started · Track changes — suggest the same edit",
+      "x": 21760,
+      "y": 27300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13675",
+      "name": "1.1.1.1 · Getting started · Direct edit saved",
+      "x": 24120,
+      "y": 25760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13733",
+      "name": "1.1.1.1 · Getting started · Remove uploaded file — keep entered context",
+      "x": 21760,
+      "y": 8140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13805",
+      "name": "1.1.1.1 · Getting started · Add recording without generating a transcript",
+      "x": 26480,
+      "y": 6800,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13894",
+      "name": "1.1.1.1.1 · Orientation recording · Recording saved without transcript",
+      "x": 28840,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:13980",
+      "name": "1.1.1.1.1 · Orientation recording · Edit recording title and description",
+      "x": 31200,
+      "y": 3840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14067",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript revised by a human",
+      "x": 40640,
+      "y": 6880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14153",
+      "name": "1.1.1.1.3 · Microscope care · New page saved",
+      "x": 24120,
+      "y": 17660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14204",
+      "name": "1.1.1.1 · Getting started history · Page history — changes and review trail",
+      "x": 45360,
+      "y": 30380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14302",
+      "name": "1.1.1.1.1 · Orientation recording history · Recording artifact history",
+      "x": 35920,
+      "y": 5360,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14370",
+      "name": "1.1.1.1.1 · Orientation transcript history · Transcript revision history",
+      "x": 38280,
+      "y": 5300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14440",
+      "name": "1.1.1.1.3 · Microscope care history · New page history",
+      "x": 24120,
+      "y": 19280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14492",
+      "name": "1.1.1.1.1 · Orientation recording history · Recording history before transcription",
+      "x": 33560,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14541",
+      "name": "1.1.1.1 · Getting started · Add page modal — empty",
+      "x": 19400,
+      "y": 17740,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14560",
+      "name": "1.1.1.1 · Getting started · Add page modal — ready to create",
+      "x": 21760,
+      "y": 17700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14579",
+      "name": "1.1.1.1.3 · Microscope care · Edit the created page",
+      "x": 26480,
+      "y": 17600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14632",
+      "name": "1.1.1.1 · Getting started · Selected text — add a comment",
+      "x": 21760,
+      "y": 29220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14728",
+      "name": "1.1.1.1 · Getting started · Selected text while editing",
+      "x": 21760,
+      "y": 22400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14815",
+      "name": "2 · Profile · Overview",
+      "x": 14680,
+      "y": 20600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14853",
+      "name": "3 · Settings · Personal settings",
+      "x": 14680,
+      "y": 22220,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14883",
+      "name": "1.1.1.1 · Getting started · Full-screen empty artifact dialog",
+      "x": 19400,
+      "y": 5460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14905",
+      "name": "1.1.1.1 · Getting started · Full-screen type artifact dialog",
+      "x": 24120,
+      "y": 5120,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14943",
+      "name": "1.1.1.1 · Getting started · Full-screen ready artifact dialog",
+      "x": 26480,
+      "y": 5180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:14982",
+      "name": "1.1.1.1 · Getting started · Full-screen removed artifact dialog",
+      "x": 21760,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15004",
+      "name": "1.1.1.1 · Getting started · Full-screen Add artifact without transcript",
+      "x": 26480,
+      "y": 3560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15043",
+      "name": "1.1.1.1 · Getting started · Choose link",
+      "x": 24120,
+      "y": 20900,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15144",
+      "name": "1.1.1.1 · Getting started · Complete link",
+      "x": 26480,
+      "y": 20660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15245",
+      "name": "1.1.1.1 · Getting started · Apply link",
+      "x": 28840,
+      "y": 20400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15334",
+      "name": "1.1.1.1 · Getting started · Saved link",
+      "x": 31200,
+      "y": 20080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15422",
+      "name": "1.1.1.1 · Getting started · Choose citation",
+      "x": 33560,
+      "y": 12880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15510",
+      "name": "1.1.1.1 · Getting started · Complete citation",
+      "x": 35920,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15598",
+      "name": "1.1.1.1 · Getting started · Apply citation",
+      "x": 38280,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15699",
+      "name": "1.1.1.1 · Getting started · Saved citation",
+      "x": 40640,
+      "y": 12760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15799",
+      "name": "1.1.1.1 · Getting started · Choose margin note",
+      "x": 24120,
+      "y": 24140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:15901",
+      "name": "1.1.1.1 · Getting started · Complete margin note",
+      "x": 26480,
+      "y": 24460,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16003",
+      "name": "1.1.1.1 · Getting started · Apply margin note",
+      "x": 28840,
+      "y": 24700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16100",
+      "name": "1.1.1.1 · Getting started · Saved margin note",
+      "x": 31200,
+      "y": 24940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16196",
+      "name": "1.1.1.1 · Getting started · Choose comment",
+      "x": 24120,
+      "y": 22520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16302",
+      "name": "1.1.1.1 · Getting started · Complete comment",
+      "x": 26480,
+      "y": 22800,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16408",
+      "name": "1.1.1.1 · Getting started · Apply comment",
+      "x": 28840,
+      "y": 23060,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:16527",
+      "name": "1.1.1.1 · Getting started · Saved comment",
+      "x": 31200,
+      "y": 23320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22413",
+      "name": "O4 · Link preview · Link destination preview",
+      "x": 33560,
+      "y": 20600,
+      "w": 480,
+      "h": 168
+    },
+    {
+      "id": "1934:22419",
+      "name": "1.1.1.1 · Getting started · Apply web citation",
+      "x": 35920,
+      "y": 14380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22520",
+      "name": "1.1.1.1 · Getting started · Saved web citation",
+      "x": 38280,
+      "y": 14380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22620",
+      "name": "1.1.1.1 · Getting started · Apply print citation",
+      "x": 35920,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22721",
+      "name": "1.1.1.1 · Getting started · Saved print citation",
+      "x": 38280,
+      "y": 18620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22821",
+      "name": "1.1.1.1 · Getting started · Link context menu while editing",
+      "x": 31200,
+      "y": 21700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:22911",
+      "name": "1.1.1.1 · Getting started · Edit link destination",
+      "x": 33560,
+      "y": 21700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23001",
+      "name": "1.1.1.1 · Getting started · Select note words to add a link",
+      "x": 28840,
+      "y": 26500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23104",
+      "name": "1.1.1.1 · Getting started · Add link to the new note",
+      "x": 31200,
+      "y": 26560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23207",
+      "name": "1.1.1.1 · Getting started · Choose the note link destination",
+      "x": 33560,
+      "y": 26440,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23310",
+      "name": "1.1.1.1 · Getting started · Linked note ready to add",
+      "x": 35920,
+      "y": 26300,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23412",
+      "name": "1.1.1.1 · Getting started · Select the draft note link",
+      "x": 38280,
+      "y": 27720,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23515",
+      "name": "1.1.1.1 · Getting started · Edit the selected note link",
+      "x": 40640,
+      "y": 27640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23618",
+      "name": "1.1.1.1 · Getting started · New margin note with inline link",
+      "x": 38280,
+      "y": 26100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23715",
+      "name": "1.1.1.1 · Getting started · Saved linked margin note",
+      "x": 40640,
+      "y": 26020,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23811",
+      "name": "1.1.1.1 · Getting started · Add audio note and generate transcript",
+      "x": 26480,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23850",
+      "name": "1.1.1.1 · Getting started · Add audio note without transcript",
+      "x": 26480,
+      "y": 320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23889",
+      "name": "1.1.1.1.2 · Orientation audio note · Audio note saved — transcript preparing",
+      "x": 28840,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:23950",
+      "name": "1.1.1.1.2 · Orientation audio note · Audio note — transcript visible",
+      "x": 31200,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24039",
+      "name": "1.1.1.1.2 · Orientation audio note · Edit the audio-note transcript",
+      "x": 33560,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24114",
+      "name": "1.1.1.1.2 · Orientation audio note history · Audio-note history",
+      "x": 35920,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24191",
+      "name": "1.1.1.1.2 · Orientation audio note · Edit the audio-note title and description",
+      "x": 31200,
+      "y": 320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24278",
+      "name": "1.1.1.1 · Getting started · Open chat on the current page",
+      "x": 19400,
+      "y": 11860,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24336",
+      "name": "1.1.1.1 · Getting started · Compose a question",
+      "x": 21760,
+      "y": 12000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24394",
+      "name": "1.1.1.1 · Getting started · Read the agent’s cited answer",
+      "x": 24120,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24452",
+      "name": "1.1.1.1 · Getting started · Compose a follow-up",
+      "x": 26480,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24510",
+      "name": "1.1.1.1 · Getting started · Continue the conversation",
+      "x": 28840,
+      "y": 11540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24568",
+      "name": "O5 · Evidence preview · Inspect the transcript citation",
+      "x": 24120,
+      "y": 10720,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "1934:24581",
+      "name": "1.1.1.1.1 · Orientation recording · Edit the transcript",
+      "x": 33560,
+      "y": 7100,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24671",
+      "name": "1.1.1.1.1 · Orientation recording · Correct transcript text",
+      "x": 35920,
+      "y": 7080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24761",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript correction",
+      "x": 38280,
+      "y": 6920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24852",
+      "name": "1.1.1.1.1 · Orientation recording · Select transcript text",
+      "x": 35920,
+      "y": 8700,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:24943",
+      "name": "1.1.1.1.1 · Orientation recording · Add a comment while editing",
+      "x": 38280,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25042",
+      "name": "1.1.1.1.1 · Orientation recording · Compose the transcript comment",
+      "x": 40640,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25141",
+      "name": "1.1.1.1.1 · Orientation recording · Comment posted — still editing",
+      "x": 43000,
+      "y": 10160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25253",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript with comment",
+      "x": 45360,
+      "y": 10140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25364",
+      "name": "1.1.1.1.1 · Orientation recording · Add a margin note while editing",
+      "x": 38280,
+      "y": 8540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25469",
+      "name": "1.1.1.1.1 · Orientation recording · Compose the transcript note",
+      "x": 40640,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25574",
+      "name": "1.1.1.1.1 · Orientation recording · Margin note applied — still editing",
+      "x": 43000,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25672",
+      "name": "1.1.1.1.1 · Orientation recording · Saved transcript with margin note",
+      "x": 45360,
+      "y": 8500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25769",
+      "name": "1.1.1.1.1 · Orientation recording · Select words inside a margin note",
+      "x": 43000,
+      "y": 6720,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:25876",
+      "name": "1.1.1.1.1 · Orientation recording · Add a link within the note",
+      "x": 45360,
+      "y": 6660,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26000",
+      "name": "1.1.1.1.1 · Orientation recording · Choose the linked wiki page",
+      "x": 47720,
+      "y": 6600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26124",
+      "name": "1.1.1.1.1 · Orientation recording · Link inserted in the draft note",
+      "x": 50080,
+      "y": 6560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26230",
+      "name": "1.1.1.1.1 · Orientation recording · Linked margin note — still editing",
+      "x": 52440,
+      "y": 6540,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26328",
+      "name": "1.1.1.1.1 · Orientation recording · Saved margin note with a link",
+      "x": 54800,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26425",
+      "name": "1.1.1.1.1 · Orientation recording · Edit the note link — cancel keeps the draft",
+      "x": 52440,
+      "y": 8160,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26549",
+      "name": "1.1.1.1 · Getting started · Open the guide linked from the note",
+      "x": 57160,
+      "y": 6520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26605",
+      "name": "1.1.1.1.1 · Orientation recording · Link context menu inside the note",
+      "x": 50080,
+      "y": 8180,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:26712",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread",
+      "x": 47720,
+      "y": 28760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:33997",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread · Initial acceptance",
+      "x": 43000,
+      "y": 32000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:34078",
+      "name": "1.1.1.1 · Getting started history · Page revisions after resolving the comment thread · Human-edited acceptance",
+      "x": 45360,
+      "y": 33620,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:34159",
+      "name": "1.1.1.1 · Getting started history · Resolved thread selected from a page",
+      "x": 50080,
+      "y": 27200,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:35036",
+      "name": "1.1.1.1.1 · Orientation recording history · Resolved thread selected from a transcript",
+      "x": 47720,
+      "y": 10140,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:35118",
+      "name": "1.1.1.1 · Getting started history · Resolved human conversation · Arranging hands-on training",
+      "x": 52440,
+      "y": 28780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:35180",
+      "name": "1.1.1.1 · Getting started history · Resolved human conversation · Where to keep session records",
+      "x": 54800,
+      "y": 28780,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:35242",
+      "name": "1.1.1.1 · Getting started · Find a source",
+      "x": 24120,
+      "y": 16280,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35330",
+      "name": "1.1.1.1 · Getting started · Wiki search results",
+      "x": 26480,
+      "y": 16220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35418",
+      "name": "1.1.1.1 · Getting started · Cite the whole transcript",
+      "x": 28840,
+      "y": 16100,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35506",
+      "name": "1.1.1.1 · Getting started · Select transcript text",
+      "x": 31200,
+      "y": 15940,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35594",
+      "name": "1.1.1.1 · Getting started · Cite a selected passage",
+      "x": 33560,
+      "y": 15940,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35682",
+      "name": "1.1.1.1 · Getting started · Recognized web URL",
+      "x": 26480,
+      "y": 13220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35770",
+      "name": "1.1.1.1 · Getting started · Recognized DOI",
+      "x": 28840,
+      "y": 13660,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35858",
+      "name": "1.1.1.1 · Getting started · Source without a link",
+      "x": 26480,
+      "y": 19220,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:35946",
+      "name": "1.1.1.1 · Getting started · Source details ready",
+      "x": 31200,
+      "y": 18700,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36034",
+      "name": "1.1.1.1 · Getting started · Cite the audio recording",
+      "x": 31200,
+      "y": 17320,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36122",
+      "name": "1.1.1.1 · Getting started · Cite an audio range",
+      "x": 33560,
+      "y": 17320,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36210",
+      "name": "1.1.1.1 · Getting started · Citation added while editing",
+      "x": 35920,
+      "y": 16000,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36319",
+      "name": "1.1.1.1 · Getting started · Citation saved on the page",
+      "x": 38280,
+      "y": 16000,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36427",
+      "name": "1.1.1.1 · Getting started · Choose a source type",
+      "x": 28840,
+      "y": 18960,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:36515",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision",
+      "x": 50080,
+      "y": 28820,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36567",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision · Initial acceptance",
+      "x": 45360,
+      "y": 32000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36619",
+      "name": "1.1.1.1 · Getting started history · Earlier content revision · Human-edited acceptance",
+      "x": 47720,
+      "y": 33640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36671",
+      "name": "1.1.1.1 · Getting started history · Rejected suggestion — review event without a new revision",
+      "x": 40640,
+      "y": 35080,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36761",
+      "name": "1.1.1.1 · Getting started history · Published revision unchanged after rejection",
+      "x": 43000,
+      "y": 35240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36812",
+      "name": "1.1.1.1 · Getting started history · Accepted revision with an open thread",
+      "x": 43000,
+      "y": 30380,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:36893",
+      "name": "1.1.1.1 · Getting started · Comment thread — citation and ordinary artifact link",
+      "x": 28840,
+      "y": 28240,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:37066",
+      "name": "1.1.1.1 · Getting started · Read cited passage beside the thread",
+      "x": 31200,
+      "y": 28180,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:37240",
+      "name": "1.1.1.1.1 · Orientation recording · Open linked artifact — return through Getting started",
+      "x": 33560,
+      "y": 28180,
+      "w": 1800,
+      "h": 960
+    },
+    {
+      "id": "1934:37323",
+      "name": "O6 · Evidence preview · Citation 1 — equipment and booking passage",
+      "x": 21760,
+      "y": 9760,
+      "w": 760,
+      "h": 503
+    },
+    {
+      "id": "1934:37336",
+      "name": "O7 · Evidence preview · Citation 3 — training passage",
+      "x": 24120,
+      "y": 9900,
+      "w": 760,
+      "h": 401
+    },
+    {
+      "id": "1934:37349",
+      "name": "O8 · File picker · Open file for a new artifact",
+      "x": 21760,
+      "y": 5200,
+      "w": 1800,
+      "h": 900
+    },
+    {
+      "id": "1934:37352",
+      "name": "1.1.1.1 · Getting started · Non-audio file attached — draft",
+      "x": 24120,
+      "y": 3500,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:37355",
+      "name": "O9 · File picker · Open file for agent chat",
+      "x": 21760,
+      "y": 10680,
+      "w": 1800,
+      "h": 900
+    },
+    {
+      "id": "1934:37358",
+      "name": "1.1.1.2 · Planning a microscope session · Planning and documenting a microscope session",
+      "x": 17040,
+      "y": 20240,
+      "w": 1800,
+      "h": 3683
+    },
+    {
+      "id": "1934:37485",
+      "name": "1.1.1.2 · Planning a microscope session · Edit long documentation with persistent formatting",
+      "x": 19400,
+      "y": 20240,
+      "w": 1800,
+      "h": 3683
+    },
+    {
+      "id": "1934:37615",
+      "name": "1.1.1.1 · Getting started · Snapshot · Page revision 1 · Created by Brandon · 21 Oct 2026, 2:15 PM",
+      "x": 50080,
+      "y": 30440,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:37676",
+      "name": "1.1.1.1 · Getting started · Snapshot · Page revision 2 · Edited by Aslan French · 24 Oct 2026, 9:45 AM",
+      "x": 52440,
+      "y": 30400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:37737",
+      "name": "1.1.1.1.1 · Orientation recording · Snapshot · Transcript revision 1 · Reviewed by Aslan French · 24 Oct 2026, 9:50 AM",
+      "x": 38280,
+      "y": 3680,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:37823",
+      "name": "1.1.1.1.1 · Orientation recording · Snapshot · Transcript revision 2 · Revised by Aslan French · 24 Oct 2026, 10:05 AM",
+      "x": 40640,
+      "y": 5260,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:37912",
+      "name": "1.1.1.1.2 · Orientation audio note · Snapshot · Transcript revision 1 · Generated · 24 Oct 2026, 9:30 AM",
+      "x": 38280,
+      "y": 1940,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:38004",
+      "name": "1.1.1.1 · Getting started · Citation source passage changed",
+      "x": 26480,
+      "y": 14600,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:38115",
+      "name": "1.1.1.1 · Getting started · Citation checked against the revised transcript",
+      "x": 31200,
+      "y": 14320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1934:38225",
+      "name": "O10 · Evidence preview · Inspect the cited source revision",
+      "x": 28840,
+      "y": 15040,
+      "w": 760,
+      "h": 222
+    },
+    {
+      "id": "1939:24863",
+      "name": "1 · Search · Microscope results",
+      "x": 17040,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:24893",
+      "name": "1.1.1.3 · Using the microscope · Read",
+      "x": 19400,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:24999",
+      "name": "1.1.1.3 · Using the microscope · Cited source changed",
+      "x": 21760,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25105",
+      "name": "1.1.1.3 · Using the microscope · Suggested booking correction",
+      "x": 24120,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25214",
+      "name": "1.1.1.3 · Using the microscope · Booking correction accepted",
+      "x": 26480,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25320",
+      "name": "1.1.1.3 · Using the microscope · Suggestion rejected",
+      "x": 26480,
+      "y": 40640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25426",
+      "name": "1.1.1.3 · Using the microscope · Propose a protected-page edit",
+      "x": 21760,
+      "y": 40640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25488",
+      "name": "1.1.1.3 · Using the microscope history · Accepted revision",
+      "x": 31200,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25569",
+      "name": "1.1.1.3 · Using the microscope history · Rejected suggestion",
+      "x": 31200,
+      "y": 40640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25659",
+      "name": "1.1.1.4 · Booking sheet · Source revision",
+      "x": 24120,
+      "y": 37360,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25765",
+      "name": "1.1.1.1.4 · Training recording · Transcript ready",
+      "x": 19400,
+      "y": 43920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25848",
+      "name": "1.1.1.1.4 · Training recording · Edit transcript",
+      "x": 21760,
+      "y": 43920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:25938",
+      "name": "1.1.1.1.4 · Training recording · Transcript reviewed",
+      "x": 24120,
+      "y": 43920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26021",
+      "name": "1.1.1.1.4 · Training recording · Ask agent to organize a note",
+      "x": 21760,
+      "y": 45560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26079",
+      "name": "1.1.1.1.4 · Training recording · Review timestamped margin note",
+      "x": 24120,
+      "y": 45560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26184",
+      "name": "1.1.1.1.4 · Training recording · Timestamped margin note saved",
+      "x": 26480,
+      "y": 45560,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26281",
+      "name": "1.1.1.1.4 · Training recording history · Transcript and note events",
+      "x": 26480,
+      "y": 43920,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26351",
+      "name": "4 · Maintenance · Needs review",
+      "x": 17040,
+      "y": 48840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26421",
+      "name": "4.1 · Maintenance check log · Recent run",
+      "x": 19400,
+      "y": 50480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26491",
+      "name": "4 · Maintenance · Flag dismissed",
+      "x": 21760,
+      "y": 50480,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26561",
+      "name": "4.1 · Maintenance check log · No content change",
+      "x": 21760,
+      "y": 48840,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26631",
+      "name": "5 · Handover · Prepare responsibility transfer",
+      "x": 17040,
+      "y": 53760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26701",
+      "name": "5.1 · Max handover · Review draft",
+      "x": 19400,
+      "y": 53760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26763",
+      "name": "5.1 · Max handover · Published documentation",
+      "x": 21760,
+      "y": 53760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26869",
+      "name": "5.2 · Reviewer handover · Invitation",
+      "x": 19400,
+      "y": 55400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26899",
+      "name": "5.2 · Reviewer handover · Accepted",
+      "x": 21760,
+      "y": 55400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26929",
+      "name": "5.2 · Reviewer handover · Declined",
+      "x": 21760,
+      "y": 57040,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:26959",
+      "name": "6 · Onboarding · Reading path",
+      "x": 24120,
+      "y": 53760,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27029",
+      "name": "3.1 · Agent settings · Delegation",
+      "x": 17040,
+      "y": 60320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27059",
+      "name": "3.1 · Agent settings · Updated preference",
+      "x": 19400,
+      "y": 60320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27089",
+      "name": "3.2 · Page protection · Reviewer eligibility",
+      "x": 17040,
+      "y": 61960,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27119",
+      "name": "3.2 · Page protection · Reviewer assigned",
+      "x": 19400,
+      "y": 61960,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27149",
+      "name": "1.1.1.4 · Booking sheet history · Delegated citation repair",
+      "x": 21760,
+      "y": 60320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27230",
+      "name": "1.1.1.4 · Booking sheet history · Repair undone",
+      "x": 24120,
+      "y": 60320,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27311",
+      "name": "1.1.2.1 · Centrifuge safety · Review incorrect suggestion",
+      "x": 17040,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27420",
+      "name": "O11 · Evidence preview · Different rotor model",
+      "x": 19400,
+      "y": 63600,
+      "w": 760,
+      "h": 394
+    },
+    {
+      "id": "1939:27433",
+      "name": "1.1.2.1 · Centrifuge safety · Reply with rejection reason",
+      "x": 19400,
+      "y": 66880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27551",
+      "name": "1.1.2.1 · Centrifuge safety · Rejected and unchanged",
+      "x": 24120,
+      "y": 66880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27657",
+      "name": "1.1.2.1 · Centrifuge safety · Accepted example",
+      "x": 19400,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27763",
+      "name": "1.1.2.1 · Centrifuge safety history · Accepted decision",
+      "x": 24120,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27844",
+      "name": "1.1.2.1 · Centrifuge safety history · Rejection with discussion",
+      "x": 28840,
+      "y": 66880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:27934",
+      "name": "1.1.2.1 · Centrifuge safety history · Reverted decision",
+      "x": 26480,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1939:28015",
+      "name": "1.1.2.1 · Centrifuge safety · Restored page",
+      "x": 28840,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:32706",
+      "name": "1.1.1.3 · Using the microscope · Accepted thread resolved",
+      "x": 28840,
+      "y": 39000,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:32801",
+      "name": "1.1.1.3 · Using the microscope · Rejected thread resolved",
+      "x": 28840,
+      "y": 40640,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:32896",
+      "name": "1.1.2.1 · Centrifuge safety · Accepted thread resolved",
+      "x": 21760,
+      "y": 65240,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:32983",
+      "name": "1.1.2.1 · Centrifuge safety · Rejected thread resolved",
+      "x": 26480,
+      "y": 66880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:33070",
+      "name": "1.1.1.4 · Booking sheet history · Source requirement changed",
+      "x": 26480,
+      "y": 37360,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1956:33150",
+      "name": "5.1 · Max handover history · Published draft",
+      "x": 24120,
+      "y": 55400,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1974:33650",
+      "name": "1.1.1.1.4 · Training recording · Edit title and description",
+      "x": 21760,
+      "y": 42280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1974:35251",
+      "name": "1.1.2.1 · Centrifuge safety · Reply posted with suggestion pending",
+      "x": 21760,
+      "y": 66880,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1974:35880",
+      "name": "1.1.1.3 · Using the microscope history · Thread resolved with suggestion pending",
+      "x": 26480,
+      "y": 42280,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1974:36625",
+      "name": "1.1.2.1 · Centrifuge safety history · Thread resolved with suggestion pending",
+      "x": 19400,
+      "y": 68520,
+      "w": 1800,
+      "h": 1200
+    },
+    {
+      "id": "1975:34249",
+      "name": "O12 · Booking sheet · Citation preview",
+      "x": 24120,
+      "y": 35900,
+      "w": 760,
+      "h": 262
+    },
+    {
+      "id": "1975:34276",
+      "name": "O13 · Training recording · Citation preview",
+      "x": 24120,
+      "y": 42280,
+      "w": 760,
+      "h": 288
+    }
+  ],
+  "structuralAudit": {
+    "counts": {
+      "boards": 233,
+      "reactions": 12779
+    },
+    "bad": [],
+    "foreignScroll": []
+  },
+  "excluded": [
+    {
+      "source": "1918:3898",
+      "name": "Agents overview",
+      "reason": "Held for next joint review by explicit user decision"
+    },
+    {
+      "source": "1918:4210",
+      "name": "Needs your input",
+      "reason": "Held for next joint review by explicit user decision"
+    }
+  ],
+  "archive": {
+    "integrationInputs": "1938:7238",
+    "procedureExploration": "1938:7239",
+    "procedureClone": "1938:7240",
+    "movedSectionIds": [
+      "1914:34269",
+      "1914:34585",
+      "1914:34920",
+      "1914:35242",
+      "1914:35554",
+      "1914:36019"
+    ]
+  },
+  "sourceContributions": {
+    "F2": {
+      "sourceBoards": [
+        "1425:3879",
+        "1425:4148",
+        "1425:4458",
+        "1425:4777",
+        "1425:5096"
+      ],
+      "entry": "1939:24863"
+    },
+    "F5": {
+      "sourceBoards": [
+        "1426:4661",
+        "1426:4948",
+        "1426:5289",
+        "1426:5606"
+      ],
+      "entry": "1939:25765"
+    },
+    "F9": {
+      "sourceBoards": [
+        "1426:5944",
+        "1426:6246",
+        "1426:6504",
+        "1426:6841"
+      ],
+      "entry": "1939:26351"
+    },
+    "F10": {
+      "sourceBoards": [
+        "1824:2171",
+        "1824:2456",
+        "1824:2697",
+        "1824:2949"
+      ],
+      "entry": "1939:26631"
+    },
+    "F11": {
+      "sourceBoards": [
+        "1871:2782",
+        "1871:3034",
+        "1871:3322",
+        "1871:3585",
+        "1871:3837"
+      ],
+      "entry": "1939:27311"
+    },
+    "F12": {
+      "sourceBoards": [
+        "1872:3590",
+        "1872:3945"
+      ],
+      "entry": "1939:27029"
+    }
+  },
+  "launcherVerification": {
+    "date": "2026-11-09",
+    "scope": "All 24 launcher entries clicked in native playback; expected node-id verified. Browser Back returned to the launcher between tests. This does not verify downstream routes or every initial variable combination.",
+    "repair": [
+      {
+        "control": "1934:4124",
+        "sourceControl": "513:306",
+        "destination": "1934:4394"
+      },
+      {
+        "control": "1934:4129",
+        "sourceControl": "513:311",
+        "destination": "1934:5374"
+      },
+      {
+        "control": "1934:4134",
+        "sourceControl": "513:316",
+        "destination": "1934:7325"
+      },
+      {
+        "control": "1934:4139",
+        "sourceControl": "661:3894",
+        "destination": "1934:4220"
+      },
+      {
+        "control": "1934:4142",
+        "sourceControl": "513:320",
+        "destination": "1934:4549"
+      },
+      {
+        "control": "1934:4146",
+        "sourceControl": "513:322",
+        "destination": "1934:13208"
+      },
+      {
+        "control": "1934:4151",
+        "sourceControl": "994:120079",
+        "destination": "1934:35242"
+      },
+      {
+        "control": "1934:4154",
+        "sourceControl": "994:120084",
+        "destination": "1934:5121"
+      },
+      {
+        "control": "1934:4157",
+        "sourceControl": "994:120089",
+        "destination": "1934:26712"
+      },
+      {
+        "control": "1934:4161",
+        "sourceControl": "1015:21256",
+        "destination": "1934:24278"
+      },
+      {
+        "control": "1934:4164",
+        "sourceControl": "1015:21261",
+        "destination": "1934:36893"
+      },
+      {
+        "control": "1934:4167",
+        "sourceControl": "1025:25029",
+        "destination": "1934:4549"
+      },
+      {
+        "control": "1934:4171",
+        "sourceControl": "1044:22032",
+        "destination": "1934:4394"
+      },
+      {
+        "control": "1934:4174",
+        "sourceControl": "1044:22037",
+        "destination": "1934:24278"
+      },
+      {
+        "control": "1934:4177",
+        "sourceControl": "1079:25340",
+        "destination": "1934:37358"
+      },
+      {
+        "control": "1934:4181",
+        "sourceControl": "1543:24258",
+        "destination": "1934:13459"
+      },
+      {
+        "control": "1934:4184",
+        "sourceControl": "1543:24263",
+        "destination": "1934:24581"
+      },
+      {
+        "control": "1934:4187",
+        "sourceControl": "1543:24268",
+        "destination": "1934:4394"
+      }
+    ],
+    "entries": [
+      {
+        "entry": 1,
+        "control": "1934:4124",
+        "name": "Action / Open route →",
+        "destination": "1934:4394",
+        "result": "passed"
+      },
+      {
+        "entry": 2,
+        "control": "1934:4129",
+        "name": "Action / Open route →",
+        "destination": "1934:5374",
+        "result": "passed"
+      },
+      {
+        "entry": 3,
+        "control": "1934:4134",
+        "name": "Action / Open route →",
+        "destination": "1934:7325",
+        "result": "passed"
+      },
+      {
+        "entry": 4,
+        "control": "1934:4139",
+        "name": "Explore The Lab",
+        "destination": "1934:4220",
+        "result": "passed"
+      },
+      {
+        "entry": 5,
+        "control": "1934:4142",
+        "name": "Read references and margin notes",
+        "destination": "1934:4549",
+        "result": "passed"
+      },
+      {
+        "entry": 6,
+        "control": "1934:4146",
+        "name": "Inspect reused text and its source",
+        "destination": "1934:13208",
+        "result": "passed"
+      },
+      {
+        "entry": 7,
+        "control": "1934:4151",
+        "name": "Add a citation",
+        "destination": "1934:35242",
+        "result": "passed"
+      },
+      {
+        "entry": 8,
+        "control": "1934:4154",
+        "name": "Review a recording",
+        "destination": "1934:5121",
+        "result": "passed"
+      },
+      {
+        "entry": 9,
+        "control": "1934:4157",
+        "name": "Read revision and decision history",
+        "destination": "1934:26712",
+        "result": "passed"
+      },
+      {
+        "entry": 10,
+        "control": "1934:4161",
+        "name": "Ask the agent for a source",
+        "destination": "1934:24278",
+        "result": "passed"
+      },
+      {
+        "entry": 11,
+        "control": "1934:4164",
+        "name": "Inspect a source cited in a comment",
+        "destination": "1934:36893",
+        "result": "passed"
+      },
+      {
+        "entry": 12,
+        "control": "1934:4167",
+        "name": "Read endnotes",
+        "destination": "1934:4549",
+        "result": "passed"
+      },
+      {
+        "entry": 13,
+        "control": "1934:4171",
+        "name": "Choose a file for an artifact",
+        "destination": "1934:4394",
+        "result": "passed"
+      },
+      {
+        "entry": 14,
+        "control": "1934:4174",
+        "name": "Choose a file for agent chat",
+        "destination": "1934:24278",
+        "result": "passed"
+      },
+      {
+        "entry": 15,
+        "control": "1934:4177",
+        "name": "Read a long article",
+        "destination": "1934:37358",
+        "result": "passed"
+      },
+      {
+        "entry": 16,
+        "control": "1934:4181",
+        "name": "Edit the guide",
+        "destination": "1934:13459",
+        "result": "passed"
+      },
+      {
+        "entry": 17,
+        "control": "1934:4184",
+        "name": "Edit and annotate a transcript",
+        "destination": "1934:24581",
+        "result": "passed"
+      },
+      {
+        "entry": 18,
+        "control": "1934:4187",
+        "name": "Add an audio note",
+        "destination": "1934:4394",
+        "result": "passed"
+      },
+      {
+        "entry": 19,
+        "control": "1951:32723",
+        "name": "Search and read current instructions",
+        "destination": "1939:24863",
+        "result": "passed"
+      },
+      {
+        "entry": 20,
+        "control": "1951:32730",
+        "name": "Review a training transcript and contribute a note",
+        "destination": "1939:25765",
+        "result": "passed"
+      },
+      {
+        "entry": 21,
+        "control": "1951:32737",
+        "name": "Review maintenance findings",
+        "destination": "1939:26351",
+        "result": "passed"
+      },
+      {
+        "entry": 22,
+        "control": "1951:32744",
+        "name": "Hand over review responsibility",
+        "destination": "1939:26631",
+        "result": "passed"
+      },
+      {
+        "entry": 23,
+        "control": "1951:32751",
+        "name": "Check a wrong-source suggestion",
+        "destination": "1939:27311",
+        "result": "passed"
+      },
+      {
+        "entry": 24,
+        "control": "1951:32758",
+        "name": "Set agent delegation and page protection",
+        "destination": "1939:27029",
+        "result": "passed"
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 The [file manifest](../../design-files.json) maps page roles and ownership. The shared collection's [numbering policy](../../wireframe-workflows/docs/agent-policies/ARRANGE-BOARDS-board-numbering-and-layout.md) and [Scratchpad/Archive policy](../../wireframe-workflows/docs/agent-policies/PRESERVE-EXPLORATION-scratchpad-and-archive.md) govern Aslan's migrated work. Erwin's pages retain their existing conventions until he chooses to adopt them.
 
 ## File orientation and page order
-The shared [Cover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1507-2) links to the current Workshop routes and repository setup. Staging and Prototype are unpopulated. Showroom contains a [seven-frame research walkthrough](../active-spikes/showroom-research-tour.md) built from labelled Workshop proposals; it does not represent a settled team prototype. Keep each person’s Workshop immediately followed by their Scratchpad, preserving the established owner order. Component Library remains shared and Archive stays last.
+The shared [Cover](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=1507-2) links to the current Workshop routes and repository setup. As of 2026-11-09, [Staging’s joint review launcher](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-4118&scaling=scale-down-width&hide-ui=1) opens the integrated draft. Its 233 editable frames retain the eighteen Aslan activities and add six joint entry activities. The [Staging board map](staging-board-map.json) and [QA record](staging-qa-2026-11-09.md) distinguish implementation from verification. Prototype contains 25 misplaced Erwin copies and is unchanged; those copies are not accepted work. The [Staging reconciliation](../active-spikes/staging-reconciliation.md) records the agreed basis, held F13 screens and remaining QA. Promotion awaits review by Aslan and Erwin. Showroom contains a [seven-frame research walkthrough](../active-spikes/showroom-research-tour.md) built from labelled Workshop proposals; it does not represent a settled team prototype. Keep each person’s Workshop immediately followed by their Scratchpad, preserving the established owner order. Component Library remains shared and Archive stays last.
 
 ## Scope and addresses
 Navigation addresses follow the existing wiki hierarchy. They locate the screen, not its place in a route walkthrough. Screen states, editing modes and history views retain the owning object's address and use descriptive names. This is the current prototype's address map, not a proposed permissions or routing implementation.
@@ -17,10 +17,19 @@ Navigation addresses follow the existing wiki hierarchy. They locate the screen,
 | `1.1.1.1.2` | Microscope orientation audio note and its transcript/history |
 | `1.1.1.1.3` | Microscope care, created from Getting started |
 | `1.1.1.2` | Planning a microscope session |
+| `1.1.1.1.4` | Staging: microscope training recording, transcript, notes and history |
+| `1.1.1.3` | Staging: Using the microscope documentation and review/history states |
+| `1.1.1.4` | Staging: booking sheet and its history |
+| `1.1.2.1` | Staging: centrifuge safety and wrong-source review |
 | `2` | Profile |
 | `3` | Personal settings |
-| `P0` | Workshop launcher, outside the product hierarchy |
-| `O1`–`O10` | Standalone overlay/partial demonstrations, identified individually in the board lookup |
+| `3.1` / `3.2` | Staging: agent delegation / page protection |
+| `4` / `4.1` | Staging: maintenance / check log |
+| `5` / `5.1` / `5.2` | Staging: handover preparation / handover document / reviewer invitation |
+| `6` | Staging: onboarding reading path |
+| `P0` | Launcher for its owning Workshop or Staging page, outside the product hierarchy |
+| `O1`–`O10` | Existing overlays/partials, identified individually in the board lookup |
+| `O11`–`O13` | Staging: wrong-model evidence, booking-sheet preview and training-transcript preview |
 
 The `O` family is local to this project; it is not a universal convention. Full-screen host states showing a modal keep the host's address. Viewport is an optional qualifier, not a hierarchy level. Intermediate hierarchy entries need not have a separate frame.
 
