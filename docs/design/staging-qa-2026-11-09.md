@@ -104,3 +104,42 @@ Native playback at 1920 × 842 CSS pixels, device scale 1:
 - Directly opened saved-note state `1939:26184` and clicked its Audio contents item. The player became visible while the note rail and collapsed endnotes remained present. This checks that anchor from a direct entry, not the complete note-creation sequence.
 
 Screenshots: `staging-audio-anchor-repaired.png`, `staging-history-comment-repaired.png`, `staging-note-audio-anchor-repaired.png`; return comparisons used `staging-audio-anchor-cancel.png` and `staging-history-comment-return.png`. These temporary images are not committed. The note-draft state received the matching structural correction but was not separately rehearsed. No actual audio playback or exhaustive route verification is claimed.
+
+## Interaction and layout repair batch · 9 Nov 2026
+Scope: the user authorized Staging repairs, returning misplaced Prototype material to Erwin’s Workshop, and keeping only reviewer transfer from the handover flow. Original Workshop material, Showroom and shared Component Library definitions remain unchanged. This batch does not promote Staging or settle the proposed Home/Maintenance consolidation.
+
+### Implementation
+- A Staging-local header component is used by 209 instances. Search is centered within the screen, breadcrumbs remain one line with truncation when necessary, and Maintenance joins the right-hand navigation controls. Existing route actions and visibility bindings were preserved. Page-contents toggle padding aligns the graphic with its labels.
+- References/Comments content begins below the sticky tab controls. This repairs both the empty hint bleeding behind the tabs and the tracked-edit thread header being covered. The reported fragment was rail content, not an intentional comment-count badge.
+- Staging-local conversation/composer components and variables isolate global chat from inherited scripted-state overrides. The same composition is used on 198 screens; the explicit timestamped-note drafting route retains its dedicated conversation. Launcher entries initialize a fresh activity. Existing conversation persists while moving around within an activity rather than being reset whenever the drawer closes.
+- Chat Finder selection attaches the MP3; Send begins classification and confirmation. View artifact closes chat and navigates to the canonical recording. Its missing navigation was discovered and repaired during this rehearsal.
+- Empty artifact title fields update only their title variable. The upload control’s outer container no longer advances the route. Both recording and audio-note preparation states have completion transitions; the recording transition was exercised below.
+- Seven rich recording states have a 360-pixel scrolling transcript window with audio immediately below. This includes the reader, reviewed state, editor, timestamped-note states and artifact editor. It is not a claim that every older passage-focused fixture has the same layout.
+- Endnote filters use dedicated Staging components with a full switch and label. The first attempted icon substitution retained the compact icon geometry in playback; the dedicated components resolve that sizing problem. Their host reactions retain the existing filter variables.
+- Centrifuge reply fields target the Centrifuge reply draft. Planning a microscope session has normal incoming tree links. Handover tree rows are removed; Settings opens reviewer transfer. The three handover-writing states are preserved in Archive `2043:77430`.
+- The recording shortcuts are labelled Related page: Using the microscope and Ask agent to draft a timestamped note. They were integration shortcuts, not new recording controls or verbatim imported source labels.
+- Seven misplaced Prototype sections containing 25 screens were moved intact to a separate area in Erwin’s Workshop. Prototype is empty. F13 remains held for joint review; moving those copies does not integrate or accept F13.
+
+### Native playback
+Used a dedicated native Figma tab at 1920 × 842 CSS pixels, device scale 1. The selected checks establish the behavior below, not exhaustive coverage of every state or caller.
+
+| Exercised path | Result |
+| --- | --- |
+| Guide `1934:4394` → Chat → Add file to chat → Finder MP3 → Open → Send → Primary recording → Add artifact | Chat initially opens empty; attachment and classification happen in the drawer. The underlying guide remains unchanged through confirmation. |
+| Planning page `1934:37358` → the same chat intake → View artifact | After repairing the missing navigation, reaches canonical recording `1939:25765` with chat closed. The Planning article remains unchanged before explicit View artifact navigation. |
+| Guide → Add artifact → click title | Title fills with Microscope orientation recording; the modal stays open, no file is selected, and Add remains disabled. |
+| That modal → Upload file → Finder MP3 → Primary recording → Add and transcribe | Shows Creating the transcript, then automatically displays the populated canonical recording. This is a timed fixture, not real transcription. |
+| Recording → outer scroll to transcript → wheel inside transcript | Transcript advances from introductory to training passages while the audio remains in the same visible position beneath the window. |
+| Recording → Edit transcript `1939:25848` → Audio contents link | Brings the player and transcript window into view; editing controls remain available above. |
+| Guide references `1934:4549` → expand Endnotes → Citations only switch | Full switch is visible. Turning it on leaves the citation and hides the ordinary endnote; the margin cards remain unchanged. |
+| Centrifuge pending `1939:27311` → reply text field | Reaches populated Centrifuge draft `1939:27433`, retaining the Centrifuge article and suggestion. This does not test every subsequent decision branch. |
+| Tracked edit `1934:13583` | Native screenshot shows the author, draft label and full reply area below the References/Comments tabs. |
+| Tracked edit’s wiki tree → Planning a microscope session | Opens `1934:37358`; it is reachable through ordinary navigation. |
+| Recording header → Settings → Transfer a reviewer role | Opens `1939:26631` with Settings / Page reviewers breadcrumbs and no wiki tree, page contents or chat. Invitation acceptance/refusal was not re-rehearsed in this batch. |
+
+The final graph scan covers 230 Staging frames and 12,143 reactions, with no missing/outside-Staging NODE destinations and no foreign scroll targets. It cannot detect omitted interactions or prove context preservation. The board map records the five local component definitions, retired states and preserved Prototype section identities.
+
+Temporary screenshots include `staging-batch-title-only.png`, `staging-batch-transcribing.png`, `staging-batch-transcript-completed.png`, `staging-batch-transcript-inner-scroll.png`, `staging-batch-editor-audio.png`, `staging-batch-citations-only.png`, `staging-batch-centrifuge-reply.png`, `staging-batch-edit-thread.png`, `staging-batch-planning-entry.png`, `staging-batch-chat-view-artifact.png`, and `staging-batch-reviewer-transfer.png`. They are not committed to this public repository.
+
+### Remaining boundaries
+The audio-note completion transition received structural verification, not a new full upload rehearsal. Global chat uses shared scripted examples; context-specific answers on every newly integrated page, reset behavior across all caller combinations, non-audio intake branches and alternate source/annotation editing routes remain bounded follow-up work. No real file upload, audio playback, transcription, agent execution or permission enforcement is claimed. Home Needs attention versus Maintenance remains a design discussion. Joint acceptance and promotion remain separate decisions.

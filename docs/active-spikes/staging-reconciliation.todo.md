@@ -5,11 +5,11 @@ attention: live
 Opened 2026-11-09. Slug: `staging-reconciliation`. [Decisions and integration](staging-reconciliation.md) · [Board map](../design/staging-board-map.json) · [QA](../design/staging-qa-2026-11-09.md).
 
 ## Current state
-The authorized reconciliation draft is implemented in Staging. It contains 233 native editable frames, with the eighteen Aslan launcher activities retained and six integrated entry activities added. Aslan and Erwin have not accepted the result or authorized promotion. F13 Agents overview and Needs your input are held for their next joint review.
+The authorized reconciliation draft is implemented in Staging. It contains 230 native editable frames, with the eighteen Aslan launcher activities retained and six integrated entry activities added. Aslan and Erwin have not accepted the result or authorized promotion. F13 Agents overview and Needs your input are held for their next joint review.
 
 Authoring works after the client update. Native playback uses the explicitly allowed Chrome debugging connection and a dedicated tab for this file. The Figma connector constructs and inspects designs; it does not operate the native prototype player.
 
-The source Workshops, Showroom, shared component masters and Prototype were not edited. Incoming Staging copies were preserved in Archive. Cover’s Staging link now opens the launcher; its owner links remain. The user authorized committing and publishing the six reconciliation records on 2026-11-09. Figma promotion remains a separate decision.
+Original Workshop material, Showroom and shared Component Library masters are unchanged. At the user’s direction, 25 misplaced Prototype copies were returned to a separate area in Erwin’s Workshop; Prototype is empty. Incoming Staging copies and three unadopted handover-writing screens are preserved in Archive. Cover’s Staging link now opens the launcher; its owner links remain. The user authorized committing and publishing the six reconciliation records on 2026-11-09. Figma promotion remains a separate decision.
 
 ## Completed
 - [x] Re-read current source boards and inventory concurrent changes, including the new F13 material.
@@ -45,27 +45,41 @@ The source Workshops, Showroom, shared component masters and Prototype were not 
 - [x] Repair Audio contents navigation by removing redundant nested scrolling in the transcript editor and two matching note states; verify the editor and saved-note Audio jumps in native playback.
 - [x] Fit the recording-history message slot to its card, verify the complete comment in playback, and verify history/editor returns preserve the reviewed caller.
 
+- [x] Repair Staging header alignment, single-line breadcrumbs and page-contents icon spacing without modifying shared masters.
+- [x] Clear the References/Comments tab overlap in empty and tracked-edit states.
+- [x] Isolate Staging chat state and components; rehearse Finder → attach → Send → classify → confirm → View artifact without replacing the underlying article.
+- [x] Keep artifact-title entry in the empty modal; rehearse file selection and automatic transcription completion.
+- [x] Keep the Centrifuge reply composer on its own page; verify the populated reply draft in playback.
+- [x] Bound the seven rich recording transcripts to scrollable windows; verify independent transcript scrolling with visible audio and the editor Audio anchor.
+- [x] Add full visible endnote switches and verify citations-only filtering in playback.
+- [x] Connect Planning a microscope session from normal wiki-tree navigation.
+- [x] Move reviewer transfer under Settings and remove handover-writing states from active routes.
+- [x] Scan the final 230-frame route graph: 12,143 reactions, no invalid NODE destinations or foreign scroll targets.
+
+- [x] Return the 25 misplaced Prototype screens to Erwin’s Workshop, preserving their node identities and original Workshop material. Prototype is empty pending joint acceptance.
+
 ## Joint review before promotion
 - [ ] Aslan and Erwin inspect the integrated metadata/action layout and References/Comments/chat behavior across the added documents.
-- [ ] Compare the compact example corpus against Erwin’s originals: exact excerpts, source scope, omitted details and handover content. The integration is not a claim of verbatim content equivalence.
+- [ ] Compare the compact example corpus against Erwin’s originals: exact excerpts, source scope, omitted details and reviewer-transfer wording. The integration is not a claim of verbatim content equivalence.
 - [ ] Review timestamp placement and attribution of all three recording notes, including the off-record recollection.
-- [ ] Review the protected-page/admin/delegation example and handover responsibility model.
+- [ ] Review the protected-page/admin/delegation example and reviewer-transfer model.
 - [ ] Review maintenance check/dismiss/no-change semantics and the wrong-model rejection/undo example.
 - [ ] Decide whether to include the held F13 screens in a subsequent pass.
 - [ ] Obtain explicit joint approval before promotion to Prototype.
 
 ## Remaining implementation and QA
+- [ ] Discuss consolidating Home Needs attention into a summary linking the Maintenance queue; no redesign applied.
+- [ ] Review generalized chat responses on newly integrated pages; shared scripted examples do not establish context-specific agent answers.
 - [ ] Reconcile auxiliary Add page, Add artifact, chat-file intake and annotation edit contexts for every newly added caller. Existing Aslan routes remain accessible; broad caller preservation is not established.
 - [ ] Audit visible reference kebabs and alternate link/citation/note editing controls on the new examples; avoid controls that lead to unrelated editors.
 - [ ] Add a changed-transcript outcome for the training passages and exact revision diff rather than only a save/return demonstration.
 - [ ] Verify all cross-event history returns and direct-entry defaults, not only the sampled resolved-thread round trip.
 - [ ] Harmonize fixture timestamps, conversation wording, citation ranges and alternative history branches across the new states.
-- [ ] Rehearse maintenance, handover invitation acceptance/refusal, delegation repair/undo and the new artifact metadata editor end to end.
+- [ ] Rehearse maintenance, reviewer invitation acceptance/refusal, delegation repair/undo and the new artifact metadata editor end to end.
 - [ ] Rehearse the downstream Aslan routes in Staging; all launcher entry clicks passed after repair, but this pass does not replace their prior Workshop QA.
 - [ ] Inspect long-page scrolling, every expanded endnote/filter state, note alignment, collapsed navigation, sticky controls and small viewport behavior in the combined file.
 - [ ] Compare non-editing tab and overlay transitions for content equality across the newly composed examples.
 - [ ] Validate the source maps against any subsequent concurrent author edits before promotion.
-- [ ] Decide how to relocate the misplaced Prototype material when promotion is authorized; preserve identities/comment anchors as appropriate.
 
 ## Source inspection record
 All 24 pre-F13 Erwin Workshop boards were visually inspected during the comparison. Original IDs remain in that Workshop.

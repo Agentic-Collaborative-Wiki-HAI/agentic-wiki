@@ -206,12 +206,6 @@
     "checklog": "1939:26421",
     "dismissed": "1939:26491",
     "noissue": "1939:26561",
-    "handover": "1939:26631",
-    "handover_draft": "1939:26701",
-    "handover_published": "1939:26763",
-    "handover_accept": "1939:26869",
-    "handover_confirmed": "1939:26899",
-    "handover_declined": "1939:26929",
     "onboarding": "1939:26959",
     "delegation": "1939:27029",
     "delegation_changed": "1939:27059",
@@ -233,13 +227,16 @@
     "wrong_resolved": "1956:32896",
     "wrong_rejected_resolved": "1956:32983",
     "booking_history": "1956:33070",
-    "handover_history": "1956:33150",
     "training_artifact_edit": "1974:33650",
     "wrong_replied": "1974:35251",
     "using_pending_history": "1974:35880",
     "wrong_pending_history": "1974:36625",
     "booking_evidence": "1975:34249",
-    "training_evidence": "1975:34276"
+    "training_evidence": "1975:34276",
+    "reviewer_transfer": "1939:26631",
+    "reviewer_invitation": "1939:26869",
+    "reviewer_accepted": "1939:26899",
+    "reviewer_declined": "1939:26929"
   },
   "additionalStates": [
     {
@@ -271,12 +268,6 @@
       "id": "1956:33070",
       "source": "1939:25488",
       "name": "1.1.1.4 · Booking sheet history · Source requirement changed"
-    },
-    {
-      "key": "handover_history",
-      "id": "1956:33150",
-      "source": "1939:25488",
-      "name": "5.1 · Max handover history · Published draft"
     },
     {
       "key": "training_artifact_edit",
@@ -3336,31 +3327,15 @@
     },
     {
       "id": "1939:26631",
-      "name": "5 · Handover · Prepare responsibility transfer",
+      "name": "3.3 · Reviewer settings · Transfer a reviewer role",
       "x": 17040,
       "y": 53760,
       "w": 1800,
       "h": 1200
     },
     {
-      "id": "1939:26701",
-      "name": "5.1 · Max handover · Review draft",
-      "x": 19400,
-      "y": 53760,
-      "w": 1800,
-      "h": 1200
-    },
-    {
-      "id": "1939:26763",
-      "name": "5.1 · Max handover · Published documentation",
-      "x": 21760,
-      "y": 53760,
-      "w": 1800,
-      "h": 1200
-    },
-    {
       "id": "1939:26869",
-      "name": "5.2 · Reviewer handover · Invitation",
+      "name": "3.3 · Reviewer settings · Invitation",
       "x": 19400,
       "y": 55400,
       "w": 1800,
@@ -3368,7 +3343,7 @@
     },
     {
       "id": "1939:26899",
-      "name": "5.2 · Reviewer handover · Accepted",
+      "name": "3.3 · Reviewer settings · Accepted",
       "x": 21760,
       "y": 55400,
       "w": 1800,
@@ -3376,7 +3351,7 @@
     },
     {
       "id": "1939:26929",
-      "name": "5.2 · Reviewer handover · Declined",
+      "name": "3.3 · Reviewer settings · Declined",
       "x": 21760,
       "y": 57040,
       "w": 1800,
@@ -3551,14 +3526,6 @@
       "h": 1200
     },
     {
-      "id": "1956:33150",
-      "name": "5.1 · Max handover history · Published draft",
-      "x": 24120,
-      "y": 55400,
-      "w": 1800,
-      "h": 1200
-    },
-    {
       "id": "1974:33650",
       "name": "1.1.1.1.1 · Orientation recording · Edit title and description",
       "x": 21760,
@@ -3609,8 +3576,8 @@
   ],
   "structuralAudit": {
     "counts": {
-      "boards": 233,
-      "reactions": 12601
+      "boards": 230,
+      "reactions": 12143
     },
     "bad": [],
     "foreignScroll": []
@@ -3638,7 +3605,16 @@
       "1914:35242",
       "1914:35554",
       "1914:36019"
-    ]
+    ],
+    "handoverNotes": {
+      "group": "2043:77430",
+      "boards": {
+        "handover_draft": "1939:26701",
+        "handover_published": "1939:26763",
+        "handover_history": "1956:33150"
+      },
+      "status": "Not adopted; reviewer transfer retained in Settings"
+    }
   },
   "sourceContributions": {
     "F2": {
@@ -4027,5 +4003,56 @@
     ],
     "returnImages": "Both returns byte-identical to reviewed baseline",
     "limits": "Note draft structurally corrected, not separately rehearsed. No real audio playback or exhaustive route traversal."
+  },
+  "prototypeReturn": {
+    "destinationPage": "325:298",
+    "sections": [
+      "1865:10219",
+      "1866:9674",
+      "1866:11580",
+      "1866:13352",
+      "1906:2948",
+      "1906:5385",
+      "1919:4171"
+    ],
+    "screenCount": 25,
+    "identityPreserved": true,
+    "originalWorkshopMaterialChanged": false,
+    "prototypeRemainingChildren": 0,
+    "f13Status": "Held for next joint review"
+  },
+  "stagingLocalComponents": [
+    {
+      "id": "2034:34200",
+      "name": "Staging / Wiki header"
+    },
+    {
+      "id": "2041:34233",
+      "name": "Staging / Global chat conversation"
+    },
+    {
+      "id": "2041:34384",
+      "name": "Staging / Global chat composer"
+    },
+    {
+      "id": "2054:34040",
+      "name": "Staging / Endnote citations filter / Off"
+    },
+    {
+      "id": "2054:34044",
+      "name": "Staging / Endnote citations filter / On"
+    }
+  ],
+  "interactionRepairBatch": {
+    "date": "2026-11-09",
+    "qa": "staging-qa-2026-11-09.md#interaction-and-layout-repair-batch--9-nov-2026",
+    "headerInstances": 209,
+    "chatScreenCompositions": 198,
+    "recordingScrollWindows": 7,
+    "reviewerSettings": "1939:26631",
+    "planningEntry": "1934:37358",
+    "canonicalRecording": "1939:25765",
+    "sourceMastersChanged": false,
+    "reviewStatus": "Joint review pending; no promotion"
   }
 }
