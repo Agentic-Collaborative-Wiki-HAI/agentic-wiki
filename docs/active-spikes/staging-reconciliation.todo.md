@@ -63,6 +63,9 @@ Original Workshop material, Showroom and shared Component Library masters are un
 - [x] Compact summary/transcript metadata in seven recording states; remove unsupported summary review status and undefined excerpt headings while retaining timestamps and speaker labels.
 - [x] Rehearse recording → Planning → Getting started → recording, transcript Audio/inner scrolling, and editor Cancel after the repairs.
 
+- [x] Resolve verified native review comments #52–56 with authorization and confirm their resolved state.
+- [x] Restore reader/editor sample-text entry into the annotation menus; rehearse comment → @agent → suggestion → acceptance and all four editor menu options with cancellation.
+
 ## Ready for human QA · latest feedback
 - [ ] Review the compact recording layout and consistent wiki tree on the reader, reviewed state and transcript editor; native checks are recorded in the QA document, but visual acceptance remains with the reviewers.
 
@@ -76,6 +79,7 @@ Original Workshop material, Showroom and shared Component Library masters are un
 - [ ] Obtain explicit joint approval before promotion to Prototype.
 
 ## Remaining implementation and QA
+- [ ] Preserve accepted wording when entering Edit page from `1934:6251`; its current target `1934:13459` contains the pre-acceptance fixture.
 - [ ] Discuss consolidating Home Needs attention into a summary linking the Maintenance queue; no redesign applied.
 - [ ] Review generalized chat responses on newly integrated pages; shared scripted examples do not establish context-specific agent answers.
 - [ ] Reconcile auxiliary Add page, Add artifact, chat-file intake and annotation edit contexts for every newly added caller. Existing Aslan routes remain accessible; broad caller preservation is not established.
@@ -110,5 +114,5 @@ Aslan source coverage is indexed in [the Workshop board map](../design/figma-boa
 - Remap hidden reactions as well as visible ones; validate SCROLL_TO stays inside its host.
 - Native playback may need reloading after authoring changes. A loading overlay is not proof that an underlying button has no reaction.
 - The prototype simulates input, file selection, audio and agent responses. Do not claim implementation or actual permissions/transcription behavior.
-- Publication is authorized only for the six reconciliation records. No issue comments, review-comment resolutions or Prototype promotion are included.
+- Publication of the scoped Staging reconciliation and QA updates is authorized. Verified resolved issues may be marked resolved in native Figma comments. Issue comments and Prototype promotion require separate authorization.
 

@@ -70,6 +70,9 @@ Original Workshop boards retain their identities. The six incoming Staging secti
 
 The seven returned Prototype sections contain 25 screens, including the held F13 additions. They sit separately from Erwin’s original Workshop sections and retain their original node identities. The three unadopted handover-writing screens are preserved in the attributed [Staging Archive group](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd?node-id=2043-77430). Shared Component Library masters were not edited. Showroom remains the research presentation of earlier Workshop proposals.
 
+## Annotation entry
+On Getting started, click the sentence beginning “Reserve the microscope” to open the simulated selection menu. Reading mode offers Add comment; Edit page followed by the same click offers link, citation, margin note and comment actions. The comment example continues through Reply → reply field → scripted @agent request → Reply → suggested revision. Exact playback coverage and limitations are in [the annotation-entry QA record](../design/staging-qa-2026-11-09.md#annotation-entry-repair-and-review-comment-resolution--10-nov-2026).
+
 ## Limits and review priorities
 This is a reviewable integration draft, not a fully accepted or exhaustively tested prototype. The [QA record](../design/staging-qa-2026-11-09.md) distinguishes graph checks, screenshots and actual playback.
 

@@ -167,3 +167,31 @@ Used a dedicated native Figma tab at 1920 × 1000 CSS pixels, device scale 1. Th
 | Transcript editor at the scrolled position → collapse/reopen → Cancel | Controls remain available; Cancel returns to the unreviewed reader `1939:25765`, retaining its tree and recording content. |
 
 Temporary evidence includes `staging-nav-repro.png`, `staging-nav-trial.png`, `staging-tree-planning-final.png`, `staging-tree-guide.png`, `staging-tree-recording.png`, `staging-recording-tree-hidden.png`, `staging-transcript-spacing-final.png`, `staging-editor-audio-compact.png`, `staging-editor-inner-scroll-compact.png`, `staging-editor-tree-hidden.png`, and `staging-editor-compact-cancel.png`. These files are not committed. Structural checks cover tree ordering across all 165 hosts and removal of local toggle click overrides across the 206 headers. Native checks sample the named reader/editor/navigation paths; no exhaustive upload-state, annotation, account, maintenance or responsive-layout claim is made. Human acceptance remains pending.
+
+
+## Annotation entry repair and review-comment resolution · 10 Nov 2026
+The ordinary Getting started reader `1934:4394` and normal editor `1934:13459` had no interaction on their sample sentence, although their selection-menu states and downstream routes existed. Added click navigation on text nodes `1934:4415` and `1934:13482` to the corresponding read/edit selection states. Only these two Staging nodes changed; Workshops, Prototype, Showroom and shared components are unchanged.
+
+### How to enter
+From [Getting started](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-4394&scaling=scale-down-width&hide-ui=1), click the sentence beginning “Reserve the microscope” under Before your first session. Reading mode offers Add comment. To try Add link, Add citation, Add margin note or Add comment while editing, choose Edit page first, then click that same sentence. The selected range is the scripted “using the shared spreadsheet” example. This simulates selection and its context menu with an ordinary click; arbitrary text selection, drag selection, right-click input and free typing are not implemented.
+
+### Native playback
+Used a dedicated native Figma tab at 1920 × 1000 CSS pixels, device scale 1.
+
+| Exercised path | Result |
+| --- | --- |
+| Reader → click sample sentence → Add comment | Opens selected-text state `1934:14632`, then comment draft `1934:7420`, retaining the article. |
+| Comment draft → Reply → reply field → Reply | Posts the first comment `1934:7522`, fills the scripted @agent request `1934:7637`, then opens the inline suggested revision and conversation `1934:12909`. |
+| Suggested revision → Accept | Applies the proposed wording in `1934:6251`; the thread remains open and its proposal is marked Accepted. |
+| Normal editor → click sample sentence | Opens the four-action selection menu `1934:14728` with editing controls visible. |
+| Selection menu → Add link → Cancel | Opens `1934:15043`; Cancel returns to `1934:14728` in edit mode. |
+| Selection menu → Add citation → Cancel | Opens `1934:35242`; Cancel returns to `1934:14728` in edit mode. |
+| Selection menu → Add margin note → Cancel | Opens `1934:15799`; Cancel returns to `1934:14728` in edit mode. |
+| Selection menu → Add comment → Cancel | Opens the comment composer `1934:16196` with editing controls visible; Cancel returns to `1934:14728`. |
+
+The forms' downstream save branches, arbitrary document callers, narrower-revision/rejection branches and history returns were not re-rehearsed in this pass. A separate fixture mismatch was observed: Edit page from accepted state `1934:6251` opens the ordinary editor with the pre-acceptance wording. That remains explicitly tracked for reconciliation rather than covered by this entry repair.
+
+### Review comments
+With explicit authorization, resolved native Figma comments #52–56 for the tree/toggle/recording-density repairs documented above. Read back each card's resolved state through the native interface. No replies were posted and no other review comments were changed. Resolving these bug reports does not represent joint design acceptance or authorization to promote Staging.
+
+Temporary screenshots include `staging-read-selection-menu.png`, `staging-comment-entry.png`, `staging-agent-request-result.png`, `staging-review-accept-entry.png`, `staging-edit-selection-menu.png`, `staging-citation-form-entry.png`, `staging-margin-form-entry.png`, and `staging-edit-comment-entry.png`. They are not committed to the public repository.
