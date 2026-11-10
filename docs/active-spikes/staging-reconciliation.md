@@ -14,7 +14,7 @@ Related work: [Wireframe Workshop](wireframe-workshop.md), [Workshop UI System](
 ## Agreed basis applied in Staging
 | Area | Joint decision and implementation |
 | --- | --- |
-| Shared tree and corpus | Getting started and Using the microscope remain distinct documentation pages. The orientation recording and training recording are distinct children of Getting started. Search, tree links, breadcrumbs, and source links expose those objects. |
+| Shared tree and corpus | Getting started and Using the microscope remain distinct documentation pages. Microscope orientation recording is one child of Getting started, containing introductory and training excerpts. Search, tree links, breadcrumbs, and source links refer to that same recording. |
 | Documentation type | Current pages use Documentation. Procedure is retained as an attributed future exploration in Archive. |
 | Metadata and actions · S1/S2 | Aslan’s integrated metadata and placement: page Edit/History with the title, creation actions above the reader, transcript actions within the transcript, and appropriate omissions on history/settings. |
 | References and chat · S3 | Aslan’s References/Comments margin and collapsed endnotes. Conversation citations use descriptive links. Chat is a separate full-height drawer with a bottom composer; opening a page does not generate a message. |
@@ -38,7 +38,7 @@ The canvas contains 233 native editable top-level frames: 178 Aslan source copie
 | Entry | Main contribution | Start |
 | --- | --- | --- |
 | Find current microscope instructions | Erwin F2 search, changed-source review, shared documentation and citations | [Search](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24863&scaling=scale-down-width&hide-ui=1) |
-| Contribute a recording note | Erwin F5 summary, transcript and attributed notes, using Aslan’s recording/annotation structure | [Training recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1) |
+| Contribute a recording note | Erwin F5 summary, transcript and attributed notes, using Aslan’s recording/annotation structure | [Orientation recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1) |
 | Check maintenance findings | Erwin F9 dashboard, checks, dismissed findings and shared suggestion review | [Maintenance](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26351&scaling=scale-down-width&hide-ui=1) |
 | Prepare a handover | Erwin F10 draft/publication, reviewer invitation, accept/decline and onboarding | [Handover](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26631&scaling=scale-down-width&hide-ui=1) |
 | Catch a wrong-source suggestion | Erwin F11 wrong rotor model, source comparison, reply/rejection, acceptance and later undo | [Suggested change](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-27311&scaling=scale-down-width&hide-ui=1) |
@@ -54,7 +54,7 @@ Use the launcher to initialize a scripted activity. A direct screen link is usef
 | Notes in body, bottom cards or side areas | Agreed difference | S3/S4 use the margin/endnote pattern, with timestamp association for recording notes. |
 | Passage checks versus whole-transcript review | Agreed difference | Whole-transcript review selected; summary and human notes retain separate provenance. |
 | Creator ownership versus transferable reviewers | Agreed difference | S5 uses protected pages and independent reviewer assignments. |
-| Getting started versus Using the microscope content | Agreed difference | S6 preserves distinct documents and distinct recording objects. |
+| Getting started versus Using the microscope content | Agreed difference | S6 preserves distinct documentation pages. Their recording citations refer to one shared orientation recording. |
 | Maintenance, handover, onboarding and delegation | Distinct scenario contribution | Added to the shared shell/tree rather than replacing existing recording/editing/intake routes. |
 | Navigation-triggered greetings | Settled behavior | Chat waits for a human prompt. |
 | Copied launcher controls lost navigation | Implementation drift | Restored the eighteen original ordered action lists with Staging destinations; all twenty-four launcher entry clicks passed. |
@@ -75,8 +75,8 @@ This is a reviewable integration draft, not a fully accepted or exhaustively tes
 
 - The new documentation is a compact shared example corpus. Its exact source excerpts, citation-to-claim scope, omitted source details and handover wording need comparison with Erwin’s originals before promotion. Do not treat a simplified example as proof that every source-content detail survived.
 - The original Aslan intake, note/link/citation editing and long-page routes remain accessible. Context preservation when starting those auxiliary flows from every newly added document, recording and chat caller is not fully reconciled or rehearsed. Visible reference kebabs and alternate editing paths need a targeted pass.
-- The recording uses a transcript excerpt from a longer recording. Audio controls, text entry, file selection and agent replies are scripted; they do not prove real transcription, playback, search, permission enforcement or agent behavior.
-- Whole-transcript review and artifact editing have distinct routes. A richer edited-transcript example and exact revision diff still need coverage for the new training object.
+- The recording combines introductory and training excerpts from one 18:04 fixture; passage-focused annotation/editing states retain their narrower scope. Audio controls, text entry, file selection and agent replies are scripted; they do not prove real transcription, playback, search, permission enforcement or agent behavior.
+- Whole-transcript review and artifact editing have distinct routes. A richer edited-transcript example and exact revision diff still need coverage for the training passages of the shared recording.
 - History examples cover accepted/rejected decisions, pending resolved discussions, reviews and undo. Cross-event return combinations and the consistency of timestamps, original thread wording and alternative review branches need further QA.
 - The global tree includes the combined objects. Search/account/dashboard layouts, note alignment after scrolling, and every collapsed/expanded combination need joint visual review.
 - Neither graph verification nor this implementation grants human acceptance. F13 and Prototype promotion remain separate decisions.

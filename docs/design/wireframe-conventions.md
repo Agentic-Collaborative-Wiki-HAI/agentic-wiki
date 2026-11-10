@@ -13,11 +13,10 @@ Navigation addresses follow the existing wiki hierarchy. They locate the screen,
 | `1.1` | Equipment |
 | `1.1.1` | Microscope |
 | `1.1.1.1` | Getting started with the microscope |
-| `1.1.1.1.1` | Microscope orientation recording, transcript and their history views |
+| `1.1.1.1.1` | Microscope orientation recording, introductory/training transcript passages, notes and history views |
 | `1.1.1.1.2` | Microscope orientation audio note and its transcript/history |
 | `1.1.1.1.3` | Microscope care, created from Getting started |
 | `1.1.1.2` | Planning a microscope session |
-| `1.1.1.1.4` | Staging: microscope training recording, transcript, notes and history |
 | `1.1.1.3` | Staging: Using the microscope documentation and review/history states |
 | `1.1.1.4` | Staging: booking sheet and its history |
 | `1.1.2.1` | Staging: centrifuge safety and wrong-source review |

@@ -16,7 +16,7 @@ The source Workshops, Showroom, shared component masters and Prototype were not 
 - [x] Record the six joint layout/content decisions and chat’s wait-for-prompt behavior.
 - [x] Preserve the original Workshop sources and incoming Staging material; retain Procedure as an attributed Archive exploration.
 - [x] Copy and remap all 178 Aslan boards into Staging.
-- [x] Build the shared tree with separate Getting started / Using the microscope documents and two child recordings.
+- [x] Build the shared tree with separate Getting started / Using the microscope documents and one shared child recording.
 - [x] Integrate Erwin F2 search/source changes, F5 notes, F9 maintenance, F10 handover/onboarding, F11 wrong-source review and F12 delegation.
 - [x] Apply integrated metadata, common action placement, margin/endnotes and full-height chat to the reconciled examples.
 - [x] Apply whole-transcript review; keep summary, transcript and human notes distinct.
@@ -36,6 +36,15 @@ The source Workshops, Showroom, shared component masters and Prototype were not 
 - [x] Update the spike, board mapping, orientation paragraph and QA record.
 - [x] Restore navigation on all eighteen copied launcher controls and click all twenty-four entries in native playback after the reported failure. Preserve variable initialization and record the exact tested destinations.
 
+- [x] Repair the collapsed contents labels and restore the fifty locally hidden Edit/History/Review action icons in Staging.
+- [x] Consolidate orientation/training into one recording, remove duplicate tree rows, converge normal entry navigation, and retain introductory/training excerpts and annotation states.
+- [x] Scan all 233 Staging frames after consolidation: 12,601 reactions, no invalid destinations, no foreign scroll targets, no duplicate recording rows, no old recording names, no missing requested icons, and no unbound direct contents labels.
+
+- [x] Rehearse the unified recording from the launcher; repair twenty-one Fill/Stretch contents labels after a native collapse/reopen failure, then verify review/history and editor cancellations with matching before/after screenshots.
+
+- [x] Repair Audio contents navigation by removing redundant nested scrolling in the transcript editor and two matching note states; verify the editor and saved-note Audio jumps in native playback.
+- [x] Fit the recording-history message slot to its card, verify the complete comment in playback, and verify history/editor returns preserve the reviewed caller.
+
 ## Joint review before promotion
 - [ ] Aslan and Erwin inspect the integrated metadata/action layout and References/Comments/chat behavior across the added documents.
 - [ ] Compare the compact example corpus against Erwin’s originals: exact excerpts, source scope, omitted details and handover content. The integration is not a claim of verbatim content equivalence.
@@ -48,7 +57,7 @@ The source Workshops, Showroom, shared component masters and Prototype were not 
 ## Remaining implementation and QA
 - [ ] Reconcile auxiliary Add page, Add artifact, chat-file intake and annotation edit contexts for every newly added caller. Existing Aslan routes remain accessible; broad caller preservation is not established.
 - [ ] Audit visible reference kebabs and alternate link/citation/note editing controls on the new examples; avoid controls that lead to unrelated editors.
-- [ ] Add a changed-training-transcript outcome and exact revision diff rather than only a save/return demonstration.
+- [ ] Add a changed-transcript outcome for the training passages and exact revision diff rather than only a save/return demonstration.
 - [ ] Verify all cross-event history returns and direct-entry defaults, not only the sampled resolved-thread round trip.
 - [ ] Harmonize fixture timestamps, conversation wording, citation ranges and alternative history branches across the new states.
 - [ ] Rehearse maintenance, handover invitation acceptance/refusal, delegation repair/undo and the new artifact metadata editor end to end.

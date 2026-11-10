@@ -282,7 +282,7 @@
       "key": "training_artifact_edit",
       "id": "1974:33650",
       "source": "1939:25765",
-      "name": "1.1.1.1.4 · Training recording · Edit title and description"
+      "name": "1.1.1.1.1 · Orientation recording · Edit title and description"
     },
     {
       "key": "wrong_replied",
@@ -3248,7 +3248,7 @@
     },
     {
       "id": "1939:25765",
-      "name": "1.1.1.1.4 · Training recording · Transcript ready",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript ready",
       "x": 19400,
       "y": 43920,
       "w": 1800,
@@ -3256,7 +3256,7 @@
     },
     {
       "id": "1939:25848",
-      "name": "1.1.1.1.4 · Training recording · Edit transcript",
+      "name": "1.1.1.1.1 · Orientation recording · Edit transcript",
       "x": 21760,
       "y": 43920,
       "w": 1800,
@@ -3264,7 +3264,7 @@
     },
     {
       "id": "1939:25938",
-      "name": "1.1.1.1.4 · Training recording · Transcript reviewed",
+      "name": "1.1.1.1.1 · Orientation recording · Transcript reviewed",
       "x": 24120,
       "y": 43920,
       "w": 1800,
@@ -3272,7 +3272,7 @@
     },
     {
       "id": "1939:26021",
-      "name": "1.1.1.1.4 · Training recording · Ask agent to organize a note",
+      "name": "1.1.1.1.1 · Orientation recording · Ask agent to organize a note",
       "x": 21760,
       "y": 45560,
       "w": 1800,
@@ -3280,7 +3280,7 @@
     },
     {
       "id": "1939:26079",
-      "name": "1.1.1.1.4 · Training recording · Review timestamped margin note",
+      "name": "1.1.1.1.1 · Orientation recording · Review timestamped margin note",
       "x": 24120,
       "y": 45560,
       "w": 1800,
@@ -3288,7 +3288,7 @@
     },
     {
       "id": "1939:26184",
-      "name": "1.1.1.1.4 · Training recording · Timestamped margin note saved",
+      "name": "1.1.1.1.1 · Orientation recording · Timestamped margin note saved",
       "x": 26480,
       "y": 45560,
       "w": 1800,
@@ -3296,7 +3296,7 @@
     },
     {
       "id": "1939:26281",
-      "name": "1.1.1.1.4 · Training recording history · Transcript and note events",
+      "name": "1.1.1.1.1 · Orientation recording history · Transcript and note events",
       "x": 26480,
       "y": 43920,
       "w": 1800,
@@ -3560,7 +3560,7 @@
     },
     {
       "id": "1974:33650",
-      "name": "1.1.1.1.4 · Training recording · Edit title and description",
+      "name": "1.1.1.1.1 · Orientation recording · Edit title and description",
       "x": 21760,
       "y": 42280,
       "w": 1800,
@@ -3610,7 +3610,7 @@
   "structuralAudit": {
     "counts": {
       "boards": 233,
-      "reactions": 12779
+      "reactions": 12601
     },
     "bad": [],
     "foreignScroll": []
@@ -3961,5 +3961,71 @@
         "result": "passed"
       }
     ]
+  },
+  "recordingConsolidation": {
+    "date": "2026-11-09",
+    "name": "Microscope orientation recording",
+    "address": "1.1.1.1.1",
+    "entry": "1939:25765",
+    "transcriptEditor": "1939:25848",
+    "reviewed": "1939:25938",
+    "filename": "microscope-orientation.mp3",
+    "duration": "18:04",
+    "scope": "One recording with introductory and training excerpts. Existing training* mapping keys retain migration provenance; they do not identify a second object. Source Workshop names and IDs remain historical source records.",
+    "removedDuplicateTreeRows": 188,
+    "normalTreeInstances": 194,
+    "restoredActionIcons": 50,
+    "contentsVisibilityBindingsAdded": 213,
+    "launcherChangedAfterPriorPlayback": {
+      "control": "1934:4154",
+      "destination": "1939:25765"
+    },
+    "visualCheck": "Canonical reader rendered with one selected tree row, restored title/transcript icons, readable contents, and introductory/training excerpt sections.",
+    "nativePlayback": "Passed scoped rehearsal from launcher: contents collapse/reopen and reviewed transition; history return; transcript and artifact editor cancellations; guide Edit page/Cancel. Four before/after return screenshots matched byte-for-byte. Audio contents-anchor navigation and history-comment wrapping also pass their subsequent scoped native checks.",
+    "removedDuplicateHomeSearchLinks": 2,
+    "contentsSizingRepaired": 21
+  },
+  "recordingNativeVerification": {
+    "date": "2026-11-09",
+    "viewport": {
+      "width": 1920,
+      "height": 842,
+      "deviceScale": 1
+    },
+    "entry": "1934:4154",
+    "destination": "1939:25765",
+    "reviewed": "1939:25938",
+    "history": "1939:26281",
+    "transcriptEditor": "1939:25848",
+    "artifactEditor": "1974:33650",
+    "contentsCollapseReopen": "passed after 21-label sizing correction",
+    "returnImageMatches": [
+      "history to reviewed recording",
+      "transcript Cancel to reviewed recording",
+      "artifact Cancel to reviewed recording",
+      "guide Cancel to reading page"
+    ],
+    "followups": [],
+    "limits": "Selected paths only. No Save, real audio playback or complete annotation-branch coverage."
+  },
+  "audioHistoryRepair": {
+    "date": "2026-11-09",
+    "scope": "Staging only; Workshops, Prototype and shared masters unchanged",
+    "overflowCorrectedFrames": [
+      "1939:25848",
+      "1939:26079",
+      "1939:26184"
+    ],
+    "historyFrame": "1939:26281",
+    "messageWidth": 314,
+    "nativePassed": [
+      "launcher → review → transcript editor → Audio contents jump",
+      "transcript editor Cancel → same reviewed recording",
+      "recording history comment fully visible",
+      "history Back to artifact → same reviewed recording",
+      "direct saved-note entry → Audio contents jump"
+    ],
+    "returnImages": "Both returns byte-identical to reviewed baseline",
+    "limits": "Note draft structurally corrected, not separately rehearsed. No real audio playback or exhaustive route traversal."
   }
 }
