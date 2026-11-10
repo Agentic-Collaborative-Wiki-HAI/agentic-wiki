@@ -143,3 +143,27 @@ Temporary screenshots include `staging-batch-title-only.png`, `staging-batch-tra
 
 ### Remaining boundaries
 The audio-note completion transition received structural verification, not a new full upload rehearsal. Global chat uses shared scripted examples; context-specific answers on every newly integrated page, reset behavior across all caller combinations, non-audio intake branches and alternate source/annotation editing routes remain bounded follow-up work. No real file upload, audio playback, transcription, agent execution or permission enforcement is claimed. Home Needs attention versus Maintenance remains a design discussion. Joint acceptance and promotion remain separate decisions.
+
+
+## Tree consistency and recording density · 9 Nov 2026
+Read the full native review comments #52–56 on Planning `1934:37358`, transcript editor `1939:25848`, reviewed recording `1939:25938`, and recording reader `1939:25765`. No review comment was posted, edited or resolved. This repair changes Staging only; Workshops, Prototype, Showroom and shared Component Library masters are unchanged.
+
+### Implementation
+- All 165 Staging screens with a wiki tree retain the existing recording beneath Getting started. Removed the obsolete upload-state visibility binding from the child group and added the missing group to five intake states. Draft and audio-note-specific rows remain scoped to their existing states.
+- The common order is Getting started → its recording children → Planning a microscope session → Using the microscope → Booking sheet. Parent indicators are consistent. The two Planning states link Getting started to its normal reader. A native switch exposed one remaining order mismatch after the first repair; the final identity-based order check passes all 165 trees.
+- The wiki toggle inherited its component's conditional action and also carried a copied local click action. Native hover/click left the tree unchanged. Removing the local click override restored a single toggle and retained the inherited hover label. Applied that correction to the Staging-local header and all 206 current header instances without editing the shared toggle component.
+- Seven rich recording states use compact summary/transcript gaps and metadata line heights. Summary provenance reads “AI-generated from the transcript”; it does not display an unsupported review status. Transcript review attribution and its history link remain separate.
+- Removed fourteen Introductory excerpt / Training excerpt headings from those seven transcript windows. These were reconciliation grouping labels with no defined product metadata model. Actual timestamps, speaker labels, transcript words and the 360-pixel scroll window remain; audio remains below the window.
+
+### Native playback
+Used a dedicated native Figma tab at 1920 × 1000 CSS pixels, device scale 1. The selected checks establish these behaviors, not all route combinations:
+
+| Exercised path | Result |
+| --- | --- |
+| Reviewed recording `1939:25938` → collapse wiki navigation → reopen | Tree hides and returns; hover labels follow Show/Hide state. The same action failed before removing the local override. |
+| Reviewed recording → Planning `1934:37358` → Getting started `1934:4394` → recording `1939:25765` | Ordinary tree clicks reach the expected destinations. The existing recording remains visible beneath Getting started; Planning follows that child group. |
+| Recording reader → collapse/reopen → Edit transcript `1939:25848` | Both toggle directions work; editor opens with timestamps and compact provenance. |
+| Transcript editor → Audio contents link → wheel inside transcript | Player is brought into view. Transcript scrolls from early passages to later training passages while the audio controls remain visible in the same position. |
+| Transcript editor at the scrolled position → collapse/reopen → Cancel | Controls remain available; Cancel returns to the unreviewed reader `1939:25765`, retaining its tree and recording content. |
+
+Temporary evidence includes `staging-nav-repro.png`, `staging-nav-trial.png`, `staging-tree-planning-final.png`, `staging-tree-guide.png`, `staging-tree-recording.png`, `staging-recording-tree-hidden.png`, `staging-transcript-spacing-final.png`, `staging-editor-audio-compact.png`, `staging-editor-inner-scroll-compact.png`, `staging-editor-tree-hidden.png`, and `staging-editor-compact-cancel.png`. These files are not committed. Structural checks cover tree ordering across all 165 hosts and removal of local toggle click overrides across the 206 headers. Native checks sample the named reader/editor/navigation paths; no exhaustive upload-state, annotation, account, maintenance or responsive-layout claim is made. Human acceptance remains pending.

@@ -58,6 +58,14 @@ Original Workshop material, Showroom and shared Component Library masters are un
 
 - [x] Return the 25 misplaced Prototype screens to Erwin’s Workshop, preserving their node identities and original Workshop material. Prototype is empty pending joint acceptance.
 
+- [x] Read native comments #52–56 and repair tree visibility/order across 165 Staging wiki trees, including the missing child groups and Planning return links.
+- [x] Remove copied local wiki-toggle click overrides from the Staging header and verify collapse/reopen in reader, reviewed and transcript-editing states.
+- [x] Compact summary/transcript metadata in seven recording states; remove unsupported summary review status and undefined excerpt headings while retaining timestamps and speaker labels.
+- [x] Rehearse recording → Planning → Getting started → recording, transcript Audio/inner scrolling, and editor Cancel after the repairs.
+
+## Ready for human QA · latest feedback
+- [ ] Review the compact recording layout and consistent wiki tree on the reader, reviewed state and transcript editor; native checks are recorded in the QA document, but visual acceptance remains with the reviewers.
+
 ## Joint review before promotion
 - [ ] Aslan and Erwin inspect the integrated metadata/action layout and References/Comments/chat behavior across the added documents.
 - [ ] Compare the compact example corpus against Erwin’s originals: exact excerpts, source scope, omitted details and reviewer-transfer wording. The integration is not a claim of verbatim content equivalence.
