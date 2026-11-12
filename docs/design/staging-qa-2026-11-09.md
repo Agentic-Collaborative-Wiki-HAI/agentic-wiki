@@ -4,6 +4,12 @@
 ## Scope
 Agent verification of the joint Staging draft in Figma file `fm5zX32mbG13hahShVgJwd`, page `1469:31745`. Human acceptance and Prototype promotion remain outstanding. This report separates native playback from structural and visual inspection.
 
+## Centrifuge overview and planning page cleanup · 12 Nov 2026
+- The wiki tree’s **Centrifuge** entry opens a dedicated [equipment overview](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2271-35182&scaling=scale-down-width) (`2271:35182`). The overview’s inline link and child tree entry both open **Centrifuge safety** (`1939:27311`). The parent tree entry on the safety page returns to the overview.
+- Removed the placeholder **Related Pages** section from both the [Planning a microscope session reader](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width) (`1934:37358`) and its editor (`1934:37485`).
+
+Checked the overview render and read back the persisted Staging interactions: 201 other Centrifuge tree instances navigate to the overview, and its selected row stays in place. Confirmed the safety destination and return path, and confirmed the placeholder is absent from both planning frames. No native playback was run for these two fixes. The Workshops and Prototype were unchanged.
+
 ## Structural results
 - 233 native editable top-level frames: 178 copied Aslan boards and 55 added reconciliation states/previews.
 - Latest recursive reaction scan after the recording consolidation, including hidden descendants and conditional actions: 12,601 reactions; no missing destinations, no non-variant NODE destinations outside Staging, and no SCROLL_TO targeting another frame.
