@@ -285,3 +285,14 @@ Removed both footer shortcuts across nine Staging orientation recording states. 
 Booking sheet Versions 1–3 have labeled sample copy in their history entries and page snapshots. In playback, selected Versions 1–4 from the timeline, opened each snapshot, and used Page history to return to the matching selected entry. Version 4 shows the earlier cited booking notice. [Booking sheet history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1956-33070&scaling=scale-down-width&hide-ui=1)
 
 Confirmed all thirteen review threads in this batch are resolved in Figma.
+
+## Booking suggestion and citation decision · 13 Nov 2026
+[Maintenance](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26351&scaling=scale-down-width&hide-ui=1) and Comments on [Using the microscope](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24893&scaling=scale-down-width&hide-ui=1) open the same agent-initiated booking suggestion. The thread explains the proposed wording and links to the exact Booking sheet revision 5 passage. The published citation opens the revision it cites, including the full source from the preview. Booking sheet history shows the source change.
+
+- **Pending:** Opened the suggestion from Maintenance and from the article’s Comments tab in native Figma playback. The thread’s evidence opened revision 5, and the published inline citation opened revision 4.
+- **Accept:** The article published “two working days ahead” as revision 8. The inline citation and References card opened revision 5. Open source showed the revision 5 wording. Returning through the wiki tree kept the accepted article, and Page history showed the wording diff and citation update in the same revision.
+- **Reject:** The article kept “at least one day ahead” at revision 7. The inline citation opened revision 4 and Open source showed the version 4 snapshot. Returning through the wiki tree kept the rejected state. Page history recorded the review event without a new content revision.
+- After either decision the booking suggestion left the pending Maintenance list. The Centrifuge safety entry remained visible.
+
+### Maintenance queue layout
+The [Staging Maintenance queue](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26351&scaling=scale-down-width&hide-ui=1) lists one descriptive link per pending suggestion. The check-log frames remain available on the Staging canvas. In native playback, opened the booking suggestion, accepted it, returned to Maintenance and confirmed that only the centrifuge link remained. Opened that link and confirmed it reached the Centrifuge safety suggestion thread.
