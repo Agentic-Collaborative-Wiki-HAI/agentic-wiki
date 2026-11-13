@@ -254,3 +254,18 @@ The References and Comments controls stay at the top of the right rail while its
 | Centrifuge → Centrifuge safety → Centrifuge | The overview linked to the safety page, and the wiki tree returned to the overview. |
 
 The count covers structural inspection. Playback sampled the routes above and did not exercise every state or every alternate branch. Joint review and Prototype promotion remain open.
+
+## Figma review comments · 13 Nov 2026
+Reviewed the open threads explicitly addressed to `@agent` against the current wireframes. Closed 68 matching root threads after applying the requested fixes or finding existing verification. Two additional follow-ups were addressed on threads whose parent was already resolved. Design edits were scoped to Staging.
+
+| Area | Result | Verification |
+| --- | --- | --- |
+| [Search](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24863&scaling=scale-down-width&hide-ui=1) | Results identify pages and recordings inline and use excerpts from their source content. | Opened the search mode control and exercised Keyword and Vector concept search in native playback. |
+| [Add page](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-14560&scaling=scale-down-width&hide-ui=1) | The draft uses the shared citation picker. The inline marker sits beside the selected words and can include an optional citation title. | Added wiki, web and manual print citations in playback. Each returned to the same draft and showed its inline marker and matching References card. |
+| [Centrifuge safety](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1974-35251&scaling=scale-down-width&hide-ui=1) | Accept and Reject preserve a submitted reply in the discussion, record the decision and clear the composer. Direct decisions have no scripted human reply. | Exercised both decisions from the reply state in playback. Inspected the history links for both resulting states. |
+| [Home](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-4220&scaling=scale-down-width&hide-ui=1) and [Maintenance](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26421&scaling=scale-down-width&hide-ui=1) | The Home hub has global Create controls without an empty context rail. Maintenance has check-specific links and hierarchical breadcrumbs. Staging navigation puts Maintenance before Notifications. | Opened Add artifact from Home, followed a Maintenance suggestion to its review and checked Notifications on the Maintenance check log in playback. |
+
+### Manual print citation playback
+From Add page, right-click “microscope care instructions” → Add citation → Enter source details → Source type → Book → Add citation. Selecting a source type now advances the picker within the draft. In playback, Book filled the scripted example, and Add citation closed the picker without leaving the draft. The inline `[1]` appeared immediately after “microscope care instructions”. References showed “Shared microscope handbook”, Book, and “The Lab · 2026 · Internal print edition · pp. 12–14”. All six source-type choices were checked in the design for the same in-place transition.
+
+Read back the comment statuses through the Figma connector. Playback used scripted examples and covered the routes listed above.
