@@ -269,3 +269,19 @@ Reviewed the open threads explicitly addressed to `@agent` against the current w
 From Add page, right-click “microscope care instructions” → Add citation → Enter source details → Source type → Book → Add citation. Selecting a source type now advances the picker within the draft. In playback, Book filled the scripted example, and Add citation closed the picker without leaving the draft. The inline `[1]` appeared immediately after “microscope care instructions”. References showed “Shared microscope handbook”, Book, and “The Lab · 2026 · Internal print edition · pp. 12–14”. All six source-type choices were checked in the design for the same in-place transition.
 
 Read back the comment statuses through the Figma connector. Playback used scripted examples and covered the routes listed above.
+
+## Staging follow-up review · 13 Nov 2026
+- [Microscope overview](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2300-35748&scaling=scale-down-width&hide-ui=1). The article clears the outline. Opened Using the microscope from its guide list in playback.
+- [Using the microscope](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24893&scaling=scale-down-width&hide-ui=1). The internal Booking sheet citation uses standard link styling. Opened the transcript citation preview and inspected its darker border and low-blur shadow in playback.
+- [Orientation recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1). Migrated 43 recording and audio-note outlines to the library outline in their existing sticky hosts. Removed the rich-text toolbar from 19 transcript edit states and kept the transcript actions. Playback covered opening the editor and using its Audio outline link.
+- [Add page](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-14560&scaling=scale-down-width&hide-ui=1). Right-click the sample phrase, choose Add margin note, and click the note field to fill the scripted example. Adding the note closes the dialog and places the number beside the selected phrase and its card in References.
+- [Planning a microscope session](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width&hide-ui=1). The read and edit states use the shared endnotes, thread and message components. Playback covered opening an inline yellow anchor, resolving its thread, and expanding endnotes and switching Citations only on. The example contains only citations, so all three entries remain when the filter is on.
+- [Getting started history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-35180&scaling=scale-down-width&hide-ui=1). The revision timeline stays above resolved threads when switching to Version 2.
+- [Booking sheet history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1956-33070&scaling=scale-down-width&hide-ui=1). Opened Version 4 from Version 5, viewed its snapshot with the earlier cited booking notice, and returned to the Version 4 history detail.
+
+### Recording footer and earlier Booking sheet revisions
+Removed both footer shortcuts across nine Staging orientation recording states. In playback, the Audio outline entry brought the player and endnotes into view without either shortcut. [Orientation recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1)
+
+Booking sheet Versions 1–3 have labeled sample copy in their history entries and page snapshots. In playback, selected Versions 1–4 from the timeline, opened each snapshot, and used Page history to return to the matching selected entry. Version 4 shows the earlier cited booking notice. [Booking sheet history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1956-33070&scaling=scale-down-width&hide-ui=1)
+
+Confirmed all thirteen review threads in this batch are resolved in Figma.
