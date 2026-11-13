@@ -235,3 +235,22 @@ The comment/request/evidence/acceptance/editor/history route was traversed conti
 This is native playback verification of scripted examples, not actual file upload, transcription, audio playback, persistence or agent execution. It is not a full graph rescan, exhaustive check of all 230 states, or joint design acceptance. Auxiliary caller contexts, deeper accepted-page annotation/Track changes paths, maintenance/delegation branches and richer transcript-edit outcomes remain in the active task record. No Prototype promotion occurred.
 
 Temporary evidence is under `/private/tmp/`: `launcher-comment-entry2.png`, `ordinary-selection.png`, `agent-proposal.png`, `proposal-evidence.png`, `evidence-close.png`, `proposal-accepted.png`, `accepted-editor.png`, `accepted-cancel.png`, `accepted-saved.png`, `accepted-history.png`, `history-return.png`, `resolved-revision-final.png`, `proposal-rejected.png`, `global-chat-empty.png`, `chat-finder.png`, `chat-attached.png`, `chat-type-choice.png`, `chat-artifact-confirm.png`, `chat-added.png`, `chat-artifact-open.png`, `uploaded-transcript-edit.png`, `transcript-cancel.png`, and `transcript-reviewed.png`. These local screenshots are not repository publication artifacts and are not durable CI evidence.
+
+## Shared wiki page shell and sticky tabs · 12 Nov 2026
+The Staging wiki states use one shared page-shell component with a Body slot. The canvas audit found the shell and both sticky context-tab states on all 168 in-scope screens. Of those screens, 85 use the standard title row and 83 retain their existing title treatment inside the Body slot, including editable titles and artifact-specific controls. History, standalone dialogs, Search, Settings and Maintenance retain their dedicated layouts. Both Workshops and Prototype are outside this rollout.
+
+The References and Comments controls stay at the top of the right rail while its contents scroll with the page. Existing populated rails keep their cards and annotation links. The rollout also restored transcript viewport sizing where moving content into the slot changed vertical fill behavior. The launcher resets the new empty-rail tab state when starting a scripted activity.
+
+### Native Figma playback
+| Path | Observed result |
+| --- | --- |
+| [Planning a microscope session](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width&hide-ui=1) → scroll → Comments | The tabs stayed in place, the article stayed at the same scroll position, and the comment card appeared at its position in the scrolling rail. |
+| Getting started → Edit page → Comments → References | The editable title and formatting bar stayed visible, with the same article body as the context rail switched. |
+| Getting started → select the sample sentence → Add comment | The simulated selection menu opened the comment composer on the same article with the original passage highlighted. |
+| Launcher → Review a proposed change → Accept → Page history → Back to page | The updated wording appeared in the reader. History showed the diff and associated thread, and Back returned to the accepted state. |
+| Launcher → Review a recording → Edit transcript → Comments → Audio | The editor kept timestamps and speaker labels. The Audio contents link brought the player into view while the selected tab remained visible. |
+| Generated recording → Comments → Add artifact | The transcript remained visible before the overlay opened, and the Create control still opened the artifact modal after switching tabs. |
+| Using the microscope → Comments → References → booking citation | Tab switching preserved the article. The inline citation selected its matching reference card. Edit page and Cancel also returned to the reader. |
+| Centrifuge → Centrifuge safety → Centrifuge | The overview linked to the safety page, and the wiki tree returned to the overview. |
+
+The count covers structural inspection. Playback sampled the routes above and did not exercise every state or every alternate branch. Joint review and Prototype promotion remain open.

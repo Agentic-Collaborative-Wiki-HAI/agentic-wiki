@@ -80,6 +80,7 @@ Original Workshop material and shared Component Library masters are unchanged. A
 - [ ] Obtain explicit joint approval before promotion to Prototype.
 
 ## Remaining implementation and QA
+- [x] Roll out the shared wiki page shell and sticky References/Comments tabs to all 168 in-scope Staging states and sample the main routes in [native playback](../design/staging-qa-2026-11-09.md#shared-wiki-page-shell-and-sticky-tabs--12-nov-2026).
 - [ ] Integrate the lower reconciliation rows into the shared canvas arrangement. The Search/Using the microscope, recording-note and Maintenance examples have incoming launcher/navigation links, but their placement below the copied Workshop material still reads as a separate island. Preserve node identities and interactions when arranging the connected routes.
 - [x] Preserve the current published instruction on ordinary editor entry from thirty-five guide states; rehearse accepted `1934:6251` → Edit page → Cancel and Save back to the same accepted wording.
 - [x] Route the launcher's Flag outdated instructions entry into the ordinary reader and rehearse its comment/request/proposal sequence.
