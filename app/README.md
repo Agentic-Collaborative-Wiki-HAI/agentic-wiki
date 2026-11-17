@@ -37,7 +37,7 @@ Portable export/restore and managed artifact import are approved directions but 
 
 The [documented app-owned sign-in flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in) uses ChatGPT plan access. This account’s entitlement and live generation remain to be verified. Credentials live in a separate protected `chatgpt/connection.json` beneath the app-data directory, with owner-only Unix permissions. They stay out of the frontend, repository, logs and export data. Reconnect ChatGPT is available if sign-in needs renewal. There is no API-key or paid fallback.
 
-The Rust adapter constructs one request from the explicitly selected passage, human request and chosen source excerpts. It advertises no tools and never loads global Codex instructions, skills, connectors or ambient files. Only complete, validated model output becomes a pending suggestion. Network errors, usage limits and malformed output are shown as errors, without substitute fixtures.
+The Rust adapter constructs one request from the explicitly selected passage, human request, exact previous draft when revising, and chosen source excerpts. The request panel discloses that previous draft; it does not silently include unrelated conversation or other files. It advertises no tools and never loads global Codex instructions, skills, connectors or ambient files. Only complete, validated model output becomes a pending suggestion. Network errors, usage limits and malformed output are shown as errors, without substitute fixtures.
 
 The separate Codex readiness probe remains available:
 ```sh

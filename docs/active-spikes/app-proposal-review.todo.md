@@ -17,7 +17,8 @@ Complete the live subscription-backed request and follow-up check after the user
 - [x] Persist anchored comments and replies, with independent discussion resolution.
 - [x] Implement proposed wording, exact evidence, human revisions and accept/reject decisions.
 - [x] Show saved revisions beside their conversation and preserve evidence return paths.
-- [x] Verify stale/repeated decisions and rollback in Rust; verify restart, rejection and Cancel after acceptance in the native app.
+- [x] Verify stale/repeated decisions and rollback in Rust; verify pending/decided restart, rejection, explicit stale refresh/reselection and Cancel after acceptance in the native app.
+- [x] Include the exact prior version in revision requests and disclose it before sending; reject obsolete or mismatched prior context.
 - [x] Activate the reviewed brief for the explicitly authorized review journey.
 
 ## Verification boundary

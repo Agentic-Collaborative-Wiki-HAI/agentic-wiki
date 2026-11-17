@@ -42,6 +42,7 @@ async fn candidate(
             &[source],
             a,
             base,
+            parent,
         )
         .await
         .unwrap();
@@ -289,4 +290,75 @@ async fn blank_editor_paragraphs_do_not_break_source_selection() {
             .any(|e| e.source.object_id == "orientation-recording")
     );
     assert!(!sources.iter().any(|e| e.source.block_id == "blank"));
+}
+
+#[tokio::test]
+async fn revision_requests_include_exact_previous_draft_and_reject_obsolete_context() {
+    let (_dir, s) = setup().await;
+    let d = pending(&s).await;
+    let original = &d.proposals[0];
+    let sources = original
+        .evidence
+        .iter()
+        .map(|e| e.source.clone())
+        .collect::<Vec<_>>();
+    let (mut context, evidence) = s
+        .proposal_context(
+            &d.id,
+            "Make that shorter.",
+            &sources,
+            &anchor(),
+            1,
+            Some(&original.id),
+        )
+        .await
+        .unwrap();
+    let prior = context.previous_proposal.as_ref().unwrap();
+    assert_eq!(prior.id, original.id);
+    assert_eq!(prior.proposed_wording, original.candidate.proposed_wording);
+    assert_eq!(prior.explanation, original.candidate.explanation);
+    let body = crate::subscription::request_body("selected-model", &context).unwrap();
+    let sent: serde_json::Value =
+        serde_json::from_str(body["input"][0]["content"].as_str().unwrap()).unwrap();
+    assert_eq!(
+        sent["previousProposal"]["proposedWording"],
+        original.candidate.proposed_wording
+    );
+    assert!(
+        s.proposal_context(&d.id, "Make that shorter.", &sources, &anchor(), 1, None)
+            .await
+            .is_err()
+    );
+    context.previous_proposal.as_mut().unwrap().proposed_wording =
+        "A different, unreviewed draft".into();
+    assert!(
+        s.record_candidate(CandidateSubmission {
+            thread_id: &d.id,
+            request: &context,
+            anchor: &anchor(),
+            evidence: &evidence,
+            candidate: &original.candidate,
+            parent_id: Some(&original.id),
+            origin: "test fixture"
+        })
+        .await
+        .is_err()
+    );
+    let revised = candidate(&s, &d, Some(&original.id), &anchor(), 1).await;
+    assert_eq!(
+        revised.proposals[0].candidate.proposed_wording,
+        original.candidate.proposed_wording
+    );
+    assert!(
+        s.proposal_context(
+            &d.id,
+            "Try again.",
+            &sources,
+            &anchor(),
+            1,
+            Some(&original.id)
+        )
+        .await
+        .is_err()
+    );
 }

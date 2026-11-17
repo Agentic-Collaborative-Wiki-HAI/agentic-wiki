@@ -1,6 +1,6 @@
 //! Persistent discussion and review. Only an explicit local decision can publish a candidate.
 use crate::{
-    agent::{ProposalCandidate, ProposalRequest, SourceExcerpt},
+    agent::{PreviousProposalContext, ProposalCandidate, ProposalRequest, SourceExcerpt},
     domain::*,
     store::{Page, Store},
 };
@@ -327,6 +327,7 @@ impl Store {
         selections: &[EvidenceSelection],
         anchor: &PassageAnchor,
         base: i32,
+        parent_id: Option<&str>,
     ) -> Result<(ProposalRequest, Vec<Evidence>), Error> {
         bounded(request_text)?;
         if selections.is_empty() || selections.len() > 8 {
@@ -339,6 +340,21 @@ impl Store {
             return Err(Error::Stale);
         }
         check_anchor(&page, anchor)?;
+        let pending = discussion.proposals.iter().find(|p| p.status == "pending");
+        let previous_proposal = match (pending, parent_id) {
+            (Some(p), Some(parent)) if p.id == parent => Some(PreviousProposalContext {
+                id: p.id.clone(),
+                proposed_wording: p.candidate.proposed_wording.clone(),
+                explanation: p.candidate.explanation.clone(),
+            }),
+            (None, None) => None,
+            _ => {
+                return Err(invalid(
+                    "The pending suggestion changed. Reopen it before requesting another version.",
+                ));
+            }
+        };
+
         let mut evidence = vec![];
         for s in selections {
             evidence.push(evidence_on(&mut conn, s).await?);
@@ -349,6 +365,7 @@ impl Store {
             block_id: anchor.block_id.clone(),
             selected_quote: anchor.quote.clone(),
             human_request: request_text.into(),
+            previous_proposal,
             sources: evidence
                 .iter()
                 .map(|e| SourceExcerpt {
@@ -412,12 +429,22 @@ impl Store {
         let pending = discussion.proposals.iter().find(|p| p.status == "pending");
         match (pending, parent_id) {
             (Some(p), Some(parent)) if p.id == parent => {
+                let prior = request
+                    .previous_proposal
+                    .as_ref()
+                    .ok_or_else(|| invalid("Missing previous proposal context."))?;
+                if prior.id != p.id
+                    || prior.proposed_wording != p.candidate.proposed_wording
+                    || prior.explanation != p.candidate.explanation
+                {
+                    return Err(invalid("The previous proposal context changed."));
+                }
                 sqlx::query("UPDATE proposals SET status='superseded' WHERE id=?")
                     .bind(parent)
                     .execute(&mut *tx)
                     .await?;
             }
-            (None, None) => {}
+            (None, None) if request.previous_proposal.is_none() => {}
             _ => {
                 return Err(invalid(
                     "The pending suggestion changed. Reopen it before requesting another version.",
@@ -454,7 +481,14 @@ impl Store {
             .map(|e| e.source.clone())
             .collect::<Vec<_>>();
         let (request, evidence) = self
-            .proposal_context(&thread_id, reason, &selections, &p.anchor, p.base_revision)
+            .proposal_context(
+                &thread_id,
+                reason,
+                &selections,
+                &p.anchor,
+                p.base_revision,
+                Some(proposal_id),
+            )
             .await?;
         let candidate = ProposalCandidate {
             proposed_wording: wording.into(),

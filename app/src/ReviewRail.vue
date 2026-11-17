@@ -39,7 +39,8 @@ const editingProposal = ref(''),
   reason = ref('')
 const preview = ref<Evidence | null>(null),
   evidenceDialog = ref<HTMLDialogElement>(),
-  commentBox = ref<HTMLTextAreaElement>()
+  commentBox = ref<HTMLTextAreaElement>(),
+  requestBox = ref<HTMLTextAreaElement>()
 const historyThread = ref<Discussion | null>(null),
   historyDialog = ref<HTMLDialogElement>()
 let poll: ReturnType<typeof setInterval> | undefined,
@@ -160,6 +161,9 @@ async function prepareRequest() {
   error.value = ''
   try {
     sources.value = await reviewApi.sources()
+    for (const e of pending.value?.evidence ?? []) {
+      if (!sources.value.some((source) => source.id === e.id)) sources.value.push(e)
+    }
     sourceIds.value = pending.value?.evidence.map((e) => e.id) ?? []
     requestText.value = ''
     showRequest.value = true
@@ -167,6 +171,8 @@ async function prepareRequest() {
       props.selection ??
       (pending.value?.stale ? null : (pending.value?.anchor ?? active.value.anchor))
     if (requestAnchor.value?.state === 'detached') requestAnchor.value = null
+    await nextTick()
+    requestBox.value?.focus()
     await refreshConnection()
   } catch (e) {
     error.value = String(e)
@@ -409,15 +415,24 @@ defineExpose({ reload, openCitation, openEvidence, focusComment, discussions, in
       <section v-if="showRequest" class="agent-request">
         <h3>{{ pending ? 'Request another version' : 'Ask the agent' }}</h3>
         <p class="muted">
-          Only this request, selected passage and chosen source excerpts will be sent.
+          Only this request, selected passage<span v-if="pending"
+            >, the previous suggestion shown below</span
+          >
+          and chosen source excerpts will be sent.
         </p>
         <blockquote v-if="requestAnchor">{{ requestAnchor.quote }}</blockquote>
         <p v-else class="review-warning">
           Select the current passage before requesting a refreshed suggestion.
         </p>
+        <div v-if="pending" class="previous-proposal-context">
+          <strong>Previous suggestion</strong>
+          <blockquote>{{ pending.candidate.proposedWording }}</blockquote>
+          <p>{{ pending.candidate.explanation }}</p>
+        </div>
         <button v-if="selection" @click="requestAnchor = selection">Use selected passage</button>
         <label
           >Your request<textarea
+            ref="requestBox"
             v-model="requestText"
             aria-label="Agent request"
             placeholder="What should the agent check or change?"

@@ -21,14 +21,14 @@ async function request(path, body, method = body === undefined ? 'GET' : 'POST')
     method,
     headers: { 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body),
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(35000),
   })
   const result = await response.json()
   if (!response.ok) throw Error(JSON.stringify(result.value))
   return result.value
 }
 async function until(fn, description) {
-  const end = Date.now() + 15000
+  const end = Date.now() + 45000
   while (Date.now() < end) {
     if (await fn()) return
     await delay(100)
@@ -86,7 +86,16 @@ async function launch() {
   }, 'native WebDriver startup')
   const created = await request('/session', { capabilities: { alwaysMatch: {} } })
   session = created.sessionId
-  await until(async () => !!(await value('h1')), 'native page load')
+  await request(endpoint('/timeouts'), { script: 10000 })
+  await until(async () => {
+    if (child.exitCode !== null) throw Error('The native app exited before its page loaded.')
+    try {
+      return !!(await value('h1'))
+    } catch (error) {
+      if (/timeout|timed out/i.test(String(error))) return false
+      throw error
+    }
+  }, 'native page load')
   assert.equal(await execute('return !!window.__TAURI_INTERNALS__'), true, 'real native IPC')
 }
 async function stop() {

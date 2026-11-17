@@ -15,12 +15,23 @@ pub struct SourceExcerpt {
 #[derive(Clone, Debug, Serialize, Deserialize, TS)]
 #[ts(export, export_to = "../../src/generated/")]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct PreviousProposalContext {
+    pub id: String,
+    pub proposed_wording: String,
+    pub explanation: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, TS)]
+#[ts(export, export_to = "../../src/generated/")]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct ProposalRequest {
     pub page_id: String,
     pub base_revision: i32,
     pub block_id: String,
     pub selected_quote: String,
     pub human_request: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub previous_proposal: Option<PreviousProposalContext>,
     pub sources: Vec<SourceExcerpt>,
 }
 
@@ -51,6 +62,13 @@ impl ProposalRequest {
                 > 32_000
         {
             return Err("The selected context exceeds the request limit.");
+        }
+        if let Some(previous) = &self.previous_proposal
+            && (previous.id.trim().is_empty()
+                || previous.proposed_wording.trim().is_empty()
+                || previous.explanation.trim().is_empty())
+        {
+            return Err("A prior proposal requires its identity, wording and explanation.");
         }
         let mut ids = HashSet::new();
         for source in &self.sources {
@@ -105,6 +123,7 @@ mod tests {
             block_id: "booking".into(),
             selected_quote: "Use the spreadsheet".into(),
             human_request: "Check against this source".into(),
+            previous_proposal: None,
             sources: vec![SourceExcerpt {
                 id: "recording-18".into(),
                 revision: 1,

@@ -21,14 +21,14 @@ async function request(path, body, method = body === undefined ? 'GET' : 'POST')
     method,
     headers: { 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body),
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(35000),
   })
   const result = await response.json()
   if (!response.ok) throw Error(JSON.stringify(result.value))
   return result.value
 }
 async function until(fn, description) {
-  const end = Date.now() + 15000
+  const end = Date.now() + 45000
   while (Date.now() < end) {
     if (await fn()) return
     await delay(100)
@@ -86,7 +86,16 @@ async function launch() {
   }, 'native WebDriver startup')
   const created = await request('/session', { capabilities: { alwaysMatch: {} } })
   session = created.sessionId
-  await until(async () => !!(await value('h1')), 'native page load')
+  await request(endpoint('/timeouts'), { script: 10000 })
+  await until(async () => {
+    if (child.exitCode !== null) throw Error('The native app exited before its page loaded.')
+    try {
+      return !!(await value('h1'))
+    } catch (error) {
+      if (/timeout|timed out/i.test(String(error))) return false
+      throw error
+    }
+  }, 'native page load')
   assert.equal(await execute('return !!window.__TAURI_INTERNALS__'), true, 'real native IPC')
 }
 async function stop() {
@@ -173,10 +182,31 @@ try {
   await screenshot('explicit-context-and-sign-in')
   await clickButton('Close request')
   await invoke('native_test_candidate', { threadId })
-  await reload()
+  await stop()
+  await launch()
+  await click('#comments-tab')
   await until(async () => !!(await value('.proposal-card')), 'test candidate visible')
   assert.match(await value('.proposal-card'), /Test fixture · no model call/)
   assert.equal(await value('[data-block-id=booking]'), original)
+  await clickButton('Ask for revision')
+  assert.equal(
+    await execute('return document.activeElement?.getAttribute("aria-label")'),
+    'Agent request',
+  )
+  assert.equal(
+    await execute(
+      'const r=document.activeElement.getBoundingClientRect();return r.top>=68 && r.bottom<=innerHeight',
+    ),
+    true,
+    'revision request is brought into view',
+  )
+  assert.match(
+    await value('.previous-proposal-context'),
+    /Check the equipment page for the current booking calendar/,
+  )
+  await type('[aria-label="Agent request"]', 'Make that shorter.')
+  await screenshot('revision-request-context')
+  await clickButton('Close request')
   await click('.proposal-card .text-link')
   assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
   assert.match(await value('.evidence-dialog[open]'), /Revision 1/)
@@ -270,6 +300,56 @@ try {
   await request(endpoint('/window/rect'), { width: 980, height: 760 })
   await screenshot('compact-review')
   assert.equal(await execute('return document.documentElement.scrollWidth<=innerWidth'), true)
+  await request(endpoint('/window/rect'), { width: 1440, height: 960 })
+  const staleThread = await createComment('Please check the booking instruction once more.')
+  await invoke('native_test_candidate', { threadId: staleThread })
+  await reload()
+  await click('.thread-list button:last-child')
+  await clickButton('Edit page')
+  await execute(
+    'const e=document.querySelector("[data-block-id=overview]");const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);return true',
+  )
+  await request(endpoint(`/element/${await element('.ProseMirror')}/value`), {
+    text: 'Plan your first microscope session using this guide.',
+  })
+  await clickButton('Save page')
+  await until(
+    async () => (await value('.metadata'))?.includes('Revision 3'),
+    'intervening page revision',
+  )
+  await until(
+    async () => (await value('.review-warning'))?.includes('page changed'),
+    'stale warning',
+  )
+  assert.equal(
+    await execute(
+      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept edit").disabled',
+    ),
+    true,
+  )
+  await clickButton('Refresh suggestion')
+  assert.match(await value('.agent-request'), /Select the current passage/)
+  await selectBooking()
+  await clickButton('Use selected passage')
+  await screenshot('stale-request-requires-reselection')
+  await clickButton('Close request')
+  await invoke('native_test_candidate', { threadId: staleThread })
+  await reload()
+  await click('.thread-list button:last-child')
+  assert.equal(
+    await execute(
+      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept edit").disabled',
+    ),
+    false,
+  )
+  assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
+  await clickButton('Accept edit')
+  await until(
+    async () => (await value('.metadata'))?.includes('Revision 4'),
+    'explicit refreshed acceptance',
+  )
+  assert.match(await value('[data-block-id=booking]'), /current booking calendar/)
+  assert.equal((await invoke('page_history', { id: 'getting-started' })).length, 4)
   await writeFile(
     join(artifacts, 'result.json'),
     JSON.stringify(
@@ -286,6 +366,9 @@ try {
           'reply',
           'resolve separate from acceptance',
           'human candidate revision',
+          'pending proposal survives process restart',
+          'revision request discloses previous draft',
+          'stale acceptance blocked and explicit refreshed review',
           'atomic acceptance',
           'inline citation',
           'cancel after acceptance',

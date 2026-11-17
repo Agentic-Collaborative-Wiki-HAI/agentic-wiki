@@ -153,6 +153,7 @@ pub async fn ask_agent(
             &request.sources,
             &request.anchor,
             request.base_revision,
+            request.parent_id.as_deref(),
         )
         .await
         .map_err(|e| e.to_string())?;
@@ -224,6 +225,12 @@ pub async fn native_test_candidate(
         .discussion(&thread_id)
         .await
         .map_err(|e| e.to_string())?;
+    let current = store.read(&d.page_id).await.map_err(|e| e.to_string())?;
+    let parent = d
+        .proposals
+        .iter()
+        .find(|p| p.status == "pending")
+        .map(|p| p.id.as_str());
     let (context, evidence) = store
         .proposal_context(
             &thread_id,
@@ -234,7 +241,8 @@ pub async fn native_test_candidate(
                 block_id: "passage-18".into(),
             }],
             &d.anchor,
-            d.base_revision,
+            current.revision,
+            parent,
         )
         .await
         .map_err(|e| e.to_string())?;
@@ -253,7 +261,7 @@ pub async fn native_test_candidate(
             anchor: &d.anchor,
             evidence: &evidence,
             candidate: &candidate,
-            parent_id: None,
+            parent_id: parent,
             origin: "Test fixture · no model call",
         })
         .await

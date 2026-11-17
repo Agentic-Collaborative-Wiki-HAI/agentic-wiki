@@ -8,6 +8,7 @@ fn request() -> ProposalRequest {
         block_id: "booking".into(),
         selected_quote: "Use the old spreadsheet".into(),
         human_request: "Check the booking instructions".into(),
+        previous_proposal: None,
         sources: vec![SourceExcerpt {
             id: "recording-18".into(),
             revision: 1,
