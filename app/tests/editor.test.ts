@@ -50,3 +50,25 @@ it('does not silently flatten pasted structures outside the bounded schema', () 
   expect(hasUnsupportedPaste('<ul><li>List item</li></ul>')).toBe(true)
   expect(hasUnsupportedPaste('<p>A <strong>supported</strong> paragraph</p>')).toBe(false)
 })
+
+it('numbers citations by first appearance, reuses numbers, and preserves stored identities', () => {
+  const content = {
+    type: 'doc',
+    content: [
+      {
+        type: 'paragraph',
+        attrs: { blockId: 'p1' },
+        content: [
+          { type: 'citation', attrs: { citationId: 'second-source' } },
+          { type: 'citation', attrs: { citationId: 'first-source' } },
+          { type: 'citation', attrs: { citationId: 'second-source' } },
+        ],
+      },
+    ],
+  }
+  editor = new Editor({ extensions: wikiExtensions, content })
+  expect(
+    [...editor.view.dom.querySelectorAll('[data-citation-id]')].map((e) => e.textContent),
+  ).toEqual(['[1]', '[2]', '[1]'])
+  expect(editor.getJSON()).toEqual(content)
+})

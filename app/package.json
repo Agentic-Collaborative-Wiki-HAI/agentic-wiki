@@ -17,7 +17,8 @@
     "check": "npm run test && npm run test:rust && npm run test:contract && npm run build",
     "test:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-smoke.mjs",
     "probe:codex": "cargo run --manifest-path src-tauri/Cargo.toml --no-default-features --bin codex-probe --",
-    "format:check": "prettier --check src tests scripts vite.config.ts"
+    "format:check": "prettier --check src tests scripts vite.config.ts",
+    "test:review:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-review.mjs"
   },
   "dependencies": {
     "@fontsource/roboto": "5.3.0",

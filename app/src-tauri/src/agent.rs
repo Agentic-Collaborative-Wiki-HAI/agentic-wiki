@@ -1,8 +1,10 @@
 //! Provider-independent proposal data. This module has no storage or canonical-write capability.
 use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
+use ts_rs::TS;
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, TS)]
+#[ts(export, export_to = "../../src/generated/")]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct SourceExcerpt {
     pub id: String,
@@ -10,7 +12,8 @@ pub struct SourceExcerpt {
     pub passage: String,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, TS)]
+#[ts(export, export_to = "../../src/generated/")]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct ProposalRequest {
     pub page_id: String,
@@ -21,7 +24,8 @@ pub struct ProposalRequest {
     pub sources: Vec<SourceExcerpt>,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, TS)]
+#[ts(export, export_to = "../../src/generated/")]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct ProposalCandidate {
     pub proposed_wording: String,
@@ -65,8 +69,13 @@ impl ProposalRequest {
 impl ProposalCandidate {
     pub fn validate_for(&self, request: &ProposalRequest) -> Result<(), &'static str> {
         request.validate()?;
-        if self.proposed_wording.trim().is_empty() || self.explanation.trim().is_empty() {
-            return Err("A candidate requires proposed wording and an explanation.");
+        if self.proposed_wording.trim().is_empty()
+            || self.explanation.trim().is_empty()
+            || self.cited_source_ids.is_empty()
+        {
+            return Err(
+                "A candidate requires proposed wording, an explanation and a selected source citation.",
+            );
         }
         if serde_json::to_vec(self)
             .map_err(|_| "Invalid candidate")?

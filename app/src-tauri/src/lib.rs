@@ -4,7 +4,12 @@ compile_error!("Native WebDriver instrumentation is only allowed in debug builds
 pub mod agent;
 pub mod codex;
 pub mod domain;
+pub mod review;
 pub mod store;
+pub mod subscription;
+
+#[cfg(feature = "desktop")]
+mod desktop_review;
 
 #[cfg(feature = "desktop")]
 mod desktop {
@@ -12,6 +17,7 @@ mod desktop {
         domain::RichDocument,
         store::{Draft, HistoryEntry, Page, Store},
     };
+    use crate::desktop_review::*;
     use tauri::{Manager, State};
     #[tauri::command]
     async fn read_page(store: State<'_, Store>, id: String) -> Result<Page, String> {
@@ -71,6 +77,10 @@ mod desktop {
                 std::fs::create_dir_all(&dir)?;
                 let store = tauri::async_runtime::block_on(Store::open(&dir.join("wiki.sqlite")))?;
                 app.manage(store);
+                app.manage(AgentRuntime {
+                    connection: crate::subscription::Subscription::open(dir.join("chatgpt"))?,
+                    requests: tokio::sync::Mutex::new(std::collections::HashMap::new()),
+                });
                 Ok(())
             })
             .invoke_handler(tauri::generate_handler![
@@ -79,7 +89,24 @@ mod desktop {
                 save_draft,
                 read_draft,
                 discard_draft,
-                page_history
+                page_history,
+                list_discussions,
+                start_discussion,
+                reply_discussion,
+                resolve_discussion,
+                decide_proposal,
+                revise_proposal,
+                available_evidence,
+                page_citations,
+                read_revision,
+                subscription_status,
+                subscription_sign_in,
+                subscription_cancel_sign_in,
+                subscription_models,
+                ask_agent,
+                cancel_agent,
+                #[cfg(feature = "native-e2e")]
+                native_test_candidate
             ])
             .run(tauri::generate_context!())
             .expect("unable to run Agentic Wiki");

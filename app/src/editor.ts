@@ -52,7 +52,7 @@ export const wikiExtensions = [
     renderHTML: ({ node }) => [
       'span',
       { 'data-citation-id': node.attrs.citationId, class: 'citation-marker' },
-      '[1]',
+      '[…]',
     ],
   }),
   Mark.create({
@@ -87,6 +87,42 @@ export const wikiExtensions = [
       'a',
       mergeAttributes(HTMLAttributes, { rel: 'noopener noreferrer' }),
       0,
+    ],
+  }),
+  Extension.create({
+    name: 'citationNumbers',
+    addProseMirrorPlugins: () => [
+      new Plugin({
+        view(view) {
+          const update = () => {
+            const numbers = new Map<string, number>()
+            for (const marker of view.dom.querySelectorAll<HTMLElement>('[data-citation-id]')) {
+              const id = marker.dataset.citationId!
+              if (!numbers.has(id)) numbers.set(id, numbers.size + 1)
+              const number = numbers.get(id)!
+              if (marker.textContent !== `[${number}]`) marker.textContent = `[${number}]`
+              marker.setAttribute('role', 'button')
+              marker.setAttribute('tabindex', '0')
+              marker.setAttribute('aria-label', `Open citation ${number}`)
+            }
+          }
+          update()
+          return { update }
+        },
+        props: {
+          handleKeyDown(_view, event) {
+            if (
+              (event.key === 'Enter' || event.key === ' ') &&
+              (event.target as HTMLElement)?.matches('[data-citation-id]')
+            ) {
+              event.preventDefault()
+              ;(event.target as HTMLElement).click()
+              return true
+            }
+            return false
+          },
+        },
+      }),
     ],
   }),
   Extension.create({

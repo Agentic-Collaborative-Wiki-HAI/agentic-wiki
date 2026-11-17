@@ -5,13 +5,14 @@ attention: live
 Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Concept](app-release-quality.md).
 
 ## Current scope
-M0 foundation and feasibility under approved D1–D5. D6–D8 remain deferred. No publication, Figma edits or standing policy changes are part of this work.
+M0 foundation and the authorized M1 passage-review batch under approved D1–D5. D6–D8 remain deferred. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
-No unfinished task in this initial foundation slice. Broader M1+ scope remains in the concept brief and requires the next bounded implementation pass.
+- [ ] Finish live subscription generation/cancellation verification after app sign-in.
+- [ ] Record human review of the complete passage-to-decision journey.
 
 ## Ready for Human QA
-- Review the native app’s layout, narrow-window behavior and editing feel. Source: `npm run desktop`; use fictional content. The automated checks do not constitute human QA.
+- Review the passage discussion, source preview, proposed wording, accept/reject and history interactions. Start with `npm run desktop` and use fictional content. The foundation appearance has been approved; the new review interactions have not.
 
 ## Done
 - [x] Establish repeatable frontend, Rust and cross-boundary checks for the foundation.
@@ -20,7 +21,7 @@ No unfinished task in this initial foundation slice. Broader M1+ scope remains i
 - [x] Promote the reviewed scratch brief into an active concept/task pair for the authorized foundation slice. Broader milestone criteria remain planned.
 
 ## Foundation result — 2026-11-17
-The foundation has repeatable frontend, Rust, cross-runtime and native-window checks. Human interaction/visual review is still pending; later feature/release acceptance criteria are not complete.
+The foundation has repeatable frontend, Rust, cross-runtime and native-window checks. Aslan approved the foundation appearance; later feature/release acceptance criteria are not complete.
 
 ## Foundation verification — 2026-11-17
 Tested environment: Apple Silicon macOS 15.5, Command Line Tools, Node 24.13.0, npm 11.6.2, Rust 1.100.0. Dependency locks record the exact packages. Tauri CLI/API 2.12.5, Rust Tauri 2.12.6, Vue 3.5.45, Tiptap 3.34.0, TypeScript 5.9.3 and SQLx 0.8.6 were used. TypeScript 7 was not compatible with the installed vue-tsc entrypoint; the supported 5.9 version is pinned. Rust was installed through rustup without changing shell profiles.
@@ -41,3 +42,11 @@ The core document, proposal-context and native tests are reproducible through [a
 
 ## Final preservation and build check
 The ordinary desktop debug build passes with the native test feature absent; its dependency graph excludes the WebDriver plugin. Clippy with warnings denied, Rust formatting, and the pinned frontend formatter pass. All nine pre-existing unrelated dirty files retain their original hashes, and the original TODO content remains byte-for-byte intact beneath the six scoped entries. All 22 app/planning records checked have valid local links. Git HEAD and submodule pins are unchanged. No files were staged or committed, and no push or Figma write occurred. Forty-five application text files were checked for private absolute paths, credential-like prefixes and trailing whitespace, with no findings.
+
+## Human feedback — 2026-11-17
+Aslan launched the native foundation and reported that it looks good. This confirms the initial visual check; the full review journey and its edge cases remain the next batch’s QA.
+
+## M1 review checkpoint — 2026-11-17
+The [native review QA record](../design/app-review-qa-2026-11-17.md) covers the persistent discussion, evidence, human revision, acceptance/rejection, original/current history and restart checks. Four frontend tests, 25 Rust behavior tests and 19 type-export checks pass, plus ten valid/four invalid cross-runtime patch fixtures. Native tests use actual Rust/SQLite and clearly labeled candidate injection in the debug-only test build; live model access is a separate pending check. Ordinary builds exclude WebDriver and candidate injection.
+
+Long-discussion screenshots revealed that sticking the whole rail was insufficient when its content exceeded the window. The rail now scrolls independently beneath sticky opaque tabs; the native review suite checks this populated state. A full history view displays the saved document next to its conversation. No screenshots, test databases or real connection credentials enter the repository.

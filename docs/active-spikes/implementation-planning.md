@@ -5,7 +5,7 @@ attention: live
 Opened 2026-11-17. Slug: `implementation-planning`. Owner: Aslan’s agent in the current implementation-planning conversation. [Planning tasks and verification](implementation-planning.todo.md). This spike coordinates a bounded planning phase; the approved foundation slice is active. Each child spike owns its execution details, and the map here records dependencies and integration outcomes.
 
 ## Purpose and authority
-Plan and begin the local Agentic Wiki desktop application after the course presentation. Aslan approved D1–D5 and authorized foundation work plus editor/Rust and Codex feasibility checks on 2026-11-17. Activate S01/S02/S03/S06 and the initial S12 verification work. Later implementation slices are not complete merely because they are planned. No Figma changes, external posts, commits, pushes or standing policy amendments are authorized by this foundation task.
+Plan and begin the local Agentic Wiki desktop application after the course presentation. Aslan approved D1–D5 and authorized foundation work plus editor/Rust and Codex feasibility checks on 2026-11-17. Activate S01/S02/S03/S06 and the initial S12 verification work. Later implementation slices are not complete merely because they are planned. The 2026-11-17 continuation authorizes a local foundation commit and the full M1 review journey, starting with model isolation. No Figma changes, external posts, pushes or standing policy amendments are authorized.
 
 The agreed foundation is the existing repository, `app/`, Tauri + Vue + Rust, initial operation on Aslan’s Mac with Codex subscription access, the approved Prototype as design baseline, and replaceable model access. The following decisions are approved implementation direction, not amendments to standing policies:
 
@@ -66,8 +66,8 @@ The existing `.gitignore` rule `scratch/` ignores these new briefs. They are loc
 | [S01 · Desktop foundation and shared interface](app-desktop-foundation.md) | M0–M1; extend through M4 | Independent feasibility/contracts |
 | [S02 · Knowledge records, revisions and local storage](app-knowledge-store.md) | M0–M1; migration and backup support through M5 | Independent feasibility/contracts |
 | [S03 · Rich-text editing and durable passage anchors](app-editor-anchors.md) | M0 feasibility; M1 editor; M3 broader authoring | S02 |
-| [S04 · Source evidence, citations and margin notes](../scratch/app-evidence-citations.md) | M1 minimum references; M2–M3 full authoring | S02, S03 |
-| [S05 · Suggestions, discussion, decisions and history](../scratch/app-proposal-review.md) | M1 first integrated milestone; M3 full review variants | S01, S02, S03, S04 |
+| [S04 · Source evidence, citations and margin notes](app-evidence-citations.md) | M1 minimum references; M2–M3 full authoring | S02, S03 |
+| [S05 · Suggestions, discussion, decisions and history](app-proposal-review.md) | M1 first integrated milestone; M3 full review variants | S01, S02, S03, S04 |
 | [S06 · Subscription-backed agent runtime and context boundary](app-agent-runtime.md) | M0 feasibility; M1 live proposal; later retrieval integration | Independent feasibility/contracts |
 | [S07 · Artifact intake, managed files and audio playback](../scratch/app-artifact-intake.md) | M2 | S01, S02 |
 | [S08 · Local transcription and whole-transcript review](../scratch/app-transcript-review.md) | M2 | S02, S03, S04, S07 |
@@ -213,3 +213,9 @@ Continues in: docs/active-spikes/app-editor-anchors.md
 Continues in: docs/active-spikes/app-agent-runtime.md
 
 Continues in: docs/active-spikes/app-release-quality.md
+
+## M1 continuation — 2026-11-17
+Aslan launched the foundation and approved its appearance, then authorized its local checkpoint and the full passage-to-review batch. The foundation is committed separately from the older design work; the mixed TODO index stays uncommitted. S04 and S05 are active. S06 implements the documented app-owned subscription connection with local boundary tests; real access remains pending user sign-in. The approved context boundary is unchanged. The remaining human QA is the complete review interaction, not a renewed foundation design decision.
+
+## Review implementation evidence
+Persistent passage comments, evidence previews, proposed wording, human revisions, accept/reject and original/current revision history are implemented. The native app checks persistence and return paths with labeled test candidates; the app-owned OAuth adapter passes identity/context/stream validation tests. [M1 QA record](../design/app-review-qa-2026-11-17.md) distinguishes these results from the still-pending live subscription check. M1 is not complete until the live request and human review pass.

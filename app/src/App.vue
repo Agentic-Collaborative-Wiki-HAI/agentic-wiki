@@ -3,9 +3,14 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { hasUnsupportedPaste, wikiExtensions } from './editor'
 import { api } from './api'
+import ReviewRail from './ReviewRail.vue'
+import type { PassageAnchor } from './generated/PassageAnchor'
+import type { Discussion } from './generated/Discussion'
+const selectionAnchor = ref<PassageAnchor | null>(null)
+const reviewRail = ref<InstanceType<typeof ReviewRail>>()
 import type { Page } from './generated/Page'
 import type { RichDocument } from './generated/RichDocument'
-import type { HistoryEntry } from './generated/HistoryEntry'
+import RevisionHistory from './RevisionHistory.vue'
 
 const page = ref<Page | null>(null)
 const editor = shallowRef<Editor>()
@@ -22,8 +27,7 @@ const error = ref(''),
   status = ref(''),
   draftState = ref(''),
   selectedText = ref('')
-const historyDialog = ref<HTMLDialogElement>(),
-  history = ref<HistoryEntry[]>([])
+const revisionHistory = ref<InstanceType<typeof RevisionHistory>>()
 const chatButton = ref<HTMLButtonElement>(),
   chatClose = ref<HTMLButtonElement>()
 let draftTimer: ReturnType<typeof setTimeout> | undefined
@@ -100,6 +104,8 @@ async function loadPage(id: string) {
     if (seq !== loadSequence) return
     editor.value?.destroy()
     page.value = loaded
+    selectionAnchor.value = null
+    selectedText.value = ''
     editor.value = new Editor({
       extensions: wikiExtensions,
       content: loaded.document.doc,
@@ -120,6 +126,27 @@ async function loadPage(id: string) {
           e.state.selection.to,
           ' ',
         )
+        const { $from, $to, empty } = e.state.selection
+        if (
+          !editing.value &&
+          !empty &&
+          $from.sameParent($to) &&
+          $from.parent.type.name === 'paragraph'
+        ) {
+          const quote = $from.parent.textBetween(
+            $from.parentOffset,
+            $to.parentOffset,
+            '',
+            (leaf) => (leaf.type.name === 'hardBreak' ? '\n' : '\uFFFC'),
+          )
+          selectionAnchor.value = {
+            blockId: $from.parent.attrs.blockId,
+            fromUtf16: $from.parentOffset,
+            toUtf16: $to.parentOffset,
+            quote,
+            state: 'attached',
+          }
+        }
       },
     })
     const draft = await api.draft(id)
@@ -147,6 +174,7 @@ async function beginEdit() {
       return
     }
     if (draft) editor.value?.commands.setContent(draft.document.doc)
+    selectionAnchor.value = null
     editing.value = true
     status.value = ''
     editor.value?.setEditable(true)
@@ -169,6 +197,7 @@ async function save() {
     editor.value?.setEditable(false)
     draftState.value = ''
     status.value = `Saved revision ${saved.revision}.`
+    void reviewRail.value?.reload()
   } catch (e) {
     error.value = String(e)
   } finally {
@@ -195,14 +224,10 @@ async function cancel() {
   }
 }
 async function openHistory() {
-  if (page.value) {
-    try {
-      history.value = await api.history(page.value.id)
-      await nextTick()
-      historyDialog.value?.showModal()
-    } catch (e) {
-      error.value = String(e)
-    }
+  try {
+    await revisionHistory.value?.open()
+  } catch (e) {
+    error.value = String(e)
   }
 }
 function scrollTo(id: string) {
@@ -214,6 +239,22 @@ async function toggleChat() {
   chatOpen.value = !chatOpen.value
   await nextTick()
   ;(chatOpen.value ? chatClose.value : chatButton.value)?.focus()
+}
+function clearSelection() {
+  selectionAnchor.value = null
+  selectedText.value = ''
+}
+async function startComment() {
+  activeTab.value = 'comments'
+  await nextTick()
+  await reviewRail.value?.focusComment()
+}
+function citationClick(event: MouseEvent) {
+  const marker = (event.target as HTMLElement).closest<HTMLElement>('[data-citation-id]')
+  if (marker?.dataset.citationId) void reviewRail.value?.openCitation(marker.dataset.citationId)
+}
+async function showHistoryThread(d: Discussion) {
+  await reviewRail.value?.inspectThread(d)
 }
 onMounted(() => loadPage('getting-started'))
 onBeforeUnmount(() => {
@@ -391,7 +432,16 @@ onBeforeUnmount(() => {
             ><button :disabled="busy" @click="cancel">Cancel</button
             ><button class="primary" :disabled="busy" @click="save">Save page</button>
           </div>
-          <EditorContent v-if="editor" :editor="editor" :class="{ editing }" />
+          <div v-if="selectionAnchor && !editing" class="passage-actions">
+            <span>Selected passage</span
+            ><button class="primary" @mousedown.prevent @click="startComment">Comment</button>
+          </div>
+          <EditorContent
+            v-if="editor"
+            :editor="editor"
+            :class="{ editing }"
+            @click="citationClick"
+          />
         </article>
       </main>
       <aside class="context-rail" aria-label="Page context">
@@ -427,21 +477,17 @@ onBeforeUnmount(() => {
             </button>
           </div>
         </div>
-        <div
-          v-if="activeTab === 'references'"
-          id="references-panel"
-          role="tabpanel"
-          aria-labelledby="references-tab"
-        >
-          <p>No references yet.</p>
-        </div>
-        <div v-else id="comments-panel" role="tabpanel" aria-labelledby="comments-tab">
-          <p>No comments yet.</p>
-          <p class="muted">
-            Passage discussion and proposal review are the next implementation milestone.
-          </p>
-          <blockquote v-if="selectedText">{{ selectedText }}</blockquote>
-        </div>
+        <ReviewRail
+          v-if="page"
+          ref="reviewRail"
+          :page="page"
+          :tab="activeTab"
+          :selection="selectionAnchor"
+          :editing="editing"
+          @published="loadPage(page!.id)"
+          @clear-selection="clearSelection"
+          @locate="(a) => scrollTo(a.blockId)"
+        />
       </aside>
     </div>
     <footer>The Lab <span>Development build · Fictional example workspace</span></footer>
@@ -463,17 +509,13 @@ onBeforeUnmount(() => {
       </p>
       <textarea aria-label="Message Agent" placeholder="Message Agent…" disabled></textarea>
     </aside>
-    <dialog ref="historyDialog" class="history-dialog">
-      <h2>Page history</h2>
-      <p>{{ page?.title }}</p>
-      <ol>
-        <li v-for="entry in history" :key="entry.revision">
-          Revision {{ entry.revision }} ·
-          {{ entry.actorId === 'local-operator' ? 'You' : 'Example workspace'
-          }}<time>{{ entry.createdAt }}</time>
-        </li>
-      </ol>
-      <button @click="historyDialog?.close()">Back to page</button>
-    </dialog>
+    <RevisionHistory
+      v-if="page"
+      ref="revisionHistory"
+      :page="page"
+      :discussions="reviewRail?.discussions ?? []"
+      @thread="showHistoryThread"
+      @evidence="(e) => reviewRail?.openEvidence(e)"
+    />
   </div>
 </template>

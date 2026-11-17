@@ -9,7 +9,7 @@ use ts_rs::TS;
 
 #[derive(Clone)]
 pub struct Store {
-    pool: SqlitePool,
+    pub(crate) pool: SqlitePool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, TS)]
@@ -142,6 +142,7 @@ impl Store {
         document.validate()?;
         let encoded = serde_json::to_string(document)?;
         let mut tx = self.pool.begin().await?;
+        crate::review::validate_citations(&mut tx, document).await?;
         let changed=sqlx::query("UPDATE objects SET current_revision=current_revision+1 WHERE id=? AND current_revision=?").bind(id).bind(base).execute(&mut *tx).await?;
         if changed.rows_affected() != 1 {
             return Err(Error::Stale);
@@ -162,6 +163,7 @@ impl Store {
     ) -> Result<(), Error> {
         document.validate()?;
         let mut tx = self.pool.begin().await?;
+        crate::review::validate_citations(&mut tx, document).await?;
         let current: Option<i32> =
             sqlx::query_scalar("SELECT current_revision FROM objects WHERE id=?")
                 .bind(id)

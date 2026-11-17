@@ -4,15 +4,15 @@ status: active
 opened: "2026-11-17"
 ---
 # S06 · Subscription-backed agent runtime and context boundary
-Active spike: `app-agent-runtime`. Aslan authorized foundation work and feasibility checks on 2026-11-17 after approving D1–D5. Later milestone scope remains planned, not implemented. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M0 feasibility; M1 live proposal; later retrieval integration. Owner: Aslan’s agent in the current foundation conversation. Contract ownership below belongs to this workstream; no teammate is assigned.
+Active spike: `app-agent-runtime`. Aslan authorized foundation work and feasibility checks on 2026-11-17 after approving D1–D5. The M1 local adapter and review integration are implemented; live subscription verification remains pending. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M0 feasibility; M1 live proposal; later retrieval integration. Owner: Aslan’s agent in the current foundation conversation. Contract ownership below belongs to this workstream; no teammate is assigned.
 
 ## Outcome
 Ask the agent for help from the app, see its progress and evidence, cancel it, and recover from account limits without losing work or starting an unexpected paid request.
 
 ## Scope
-A replaceable Rust adapter to a supported local Codex app-server process, with version/capability checks, explicit app session mapping, request IDs, streaming, cancellation, rate-limit state and validated candidate responses. Use a small application tool surface for permitted reads/search and proposal submission. Keep credentials and Codex runtime state outside the frontend, repository and portable exports.
+A replaceable Rust adapter using the documented app-owned Sign in with ChatGPT flow and Responses API. The app constructs explicit, tool-free requests from selected passage/source data and validates candidate output before S05 stores it. OAuth uses PKCE, state, nonce and signed identity validation; credentials stay in protected application storage outside the frontend, repository and portable exports. The installed Codex app-server remains a read-only readiness probe because its inherited instructions/tools failed D5 isolation.
 
-The authorized feasibility work permits a bounded synthetic model request only after D5 isolation is verified. Out of scope: no scraping subscription cookies/tokens, inherited unrestricted shell/filesystem access, silent API billing fallback, multi-agent orchestration, external connector activation, or assumption that this chat’s tools/permissions become the product’s.
+The authorized work permits a bounded synthetic model request after isolation verification and user sign-in. Out of scope: credential copying, inherited shell/filesystem access, API billing fallback, multi-agent orchestration and external connectors. Account entitlement and live generation must be demonstrated; a documented protocol alone does not prove them.
 
 ## Design basis
 [Ask within a passage](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-89154&scaling=scale-down-width&hide-ui=1) · [Global chat opened](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-93882&scaling=scale-down-width&hide-ui=1) · [Cited answer](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-94018&scaling=scale-down-width&hide-ui=1). Ordinary navigation waits for a human prompt. Attaching a file starts the intended intake path only after the relevant user action; chat does not begin in a pre-filled halfway state.
@@ -23,10 +23,10 @@ Completion prerequisites: No completed feature prerequisite; contracts can be dr
 Own AgentRun, streamed status/result events, cancellation and a provider-neutral candidate/result envelope. S05 owns proposals and decisions; S09 owns retrieval; S07 owns file intake. Model-readable context is a bounded snapshot identified by object/revision IDs. Enforce authorization in Rust handlers, not prompts. App conversations are independent of provider thread IDs so provider replacement does not erase the record.
 
 ## Rough task sequence
-1. Read the installed protocol schema and prove supported auth/capability configuration without assuming current documentation matches the binary.
-2. Demonstrate in a loopback request inspector that ambient instructions and unrelated tools are absent; current readiness is blocked here. Account metadata alone is insufficient.
-3. Once the boundary passes, run a tiny synthetic request through supported subscription access; test streaming, cancellation and unavailable-account behavior. Compare schema-constrained output with scoped tools before selecting either.
-4. Connect proposal generation, follow-up discussion and context disclosure; add S09 retrieval and file-intake orchestration later.
+1. Inspect the installed Codex boundary and retain its generation gate when inherited context cannot be excluded.
+2. Implement the supported app-owned OAuth and inference boundary, with explicit request inspection and identity/candidate validation tests.
+3. Complete sign-in in the native app; verify available models, a real synthetic suggestion, cancellation and recovery without a paid fallback.
+4. Connect follow-up proposals to the persistent review journey. Retrieval and artifact orchestration remain later workstreams.
 
 ## Acceptance criteria
 - A real user-requested run returns a validated candidate; the app shows the actual provider outcome rather than swapping in a fixture on failure.
@@ -42,13 +42,13 @@ Protocol transcript tests cover interleaved stream events, malformed candidates,
 Review the proposed outgoing-context disclosure, streaming/cancellation behavior and quota messaging. Confirm that prompt, retrieved evidence and generated claims remain distinguishable.
 
 ## Risks, choices and recommendation
-The read-only probe confirms ChatGPT sign-in on the tested installation. The model-generation path is gated: global instructions and additional tool namespaces survived the attempted isolation settings, so no real inference was attempted. Dynamic tools are documented as experimental. Recommend a minimal constrained request first and no ambient inherited workspace tools; if that boundary cannot be verified, stop this integration rather than broaden access. App-owned Sign in with ChatGPT is an alternative for later teammate distribution; direct API billing is not preapproved.
+The app-owned adapter avoids the general-purpose coding session’s ambient instructions and tools. Eight boundary tests cover context, credentials, identity and incomplete output. Live access, provider cancellation, account limits and refresh against the actual service remain unverified until the user signs in. No access token is copied from Codex; no API billing is configured.
 
 ## Independent work and gates
 Auth/protocol feasibility uses synthetic context and can run before S02–S05 are implemented. The live product route waits for S02–S05. It does not need embeddings or transcription to start.
 
 
 ## Current activation
-The first M0 foundation/check slice is implemented and documented in the companion task record. The native shell, persistence and bounded editor contract have passing evidence; Codex generation remains disabled because isolation was not proven. M1 and later acceptance criteria remain future scope. D6–D8 are deferred.
+The local review journey and app-owned subscription adapter are implemented. Native UI/persistence checks use clearly labeled test candidates; live inference and account availability remain pending. See [M1 verification](../design/app-review-qa-2026-11-17.md). D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md
