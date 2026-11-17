@@ -18,7 +18,8 @@
     "test:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-smoke.mjs",
     "probe:codex": "cargo run --manifest-path src-tauri/Cargo.toml --no-default-features --bin codex-probe --",
     "format:check": "prettier --check src tests scripts vite.config.ts",
-    "test:review:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-review.mjs"
+    "test:review:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-review.mjs",
+    "test:review:live": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-live-review.mjs"
   },
   "dependencies": {
     "@fontsource/roboto": "5.3.0",

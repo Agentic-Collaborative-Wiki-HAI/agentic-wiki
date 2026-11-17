@@ -1,5 +1,5 @@
 # Native passage review verification — 2026-11-17
-This record covers the M1 implementation checkpoint in `app/`, after the foundation was committed. It does not claim that live ChatGPT inference or the full Figma prototype has been completed.
+This record covers the M1 implementation checkpoint in `app/`, after the foundation was committed. It covers deterministic native checks and a separate live ChatGPT run. It does not claim that the full Figma prototype is implemented.
 
 ## Implemented route
 Getting started → select one paragraph’s passage → add an arbitrary comment → explicitly ask the agent using selected source excerpts → inspect a proposed replacement and its evidence → reply or revise → accept/reject → inspect the saved revision and conversation → restart.
@@ -19,10 +19,14 @@ The app owns its discussion and proposal records. Model output cannot publish a 
 
 The native review test injects an explicitly labeled **“Test fixture · no model call”** candidate through a command compiled only under `native-e2e`. It exercises the real persistence and decision logic; it is not evidence of live inference. The ordinary app has no candidate-injection command or fallback response. Screenshots and machine results are ignored local artifacts under `app/.artifacts/native-review/` and `app/.artifacts/native-smoke/`; each suite uses a temporary database. Synthetic identity test fixtures contain a public test key and signatures with no usable account credentials.
 
-## Model connection and remaining gate
+## Model connection and live verification
 The installed Codex app-server inherited global instructions and additional tools in the foundation experiment. Its generation path remains disabled. The implemented alternative is an app-owned Rust adapter for the documented [Sign in with ChatGPT flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in), using the user’s explicit browser consent and subscription entitlement. It does not read Codex credentials, global instructions, skills, connectors or API-key environment variables. Inference uses only the selected passage, request, exact prior draft when revising, and chosen source excerpts; requests advertise no tools and have no paid fallback.
 
-The local route is ready for human interaction QA. Browser sign-in, this account’s entitlement/model availability, live generation and live request cancellation remain unverified until Aslan completes the app sign-in. A request failure is shown as a failure; it never becomes fixture output. Partial model output cannot be accepted or silently published.
+Aslan completed the app-owned browser sign-in. The separate opt-in native live suite passed with `gpt-6.1-sol`: live model discovery, cancellation with no saved proposal, successful retry, a source-grounded suggestion, follow-up revision of the disclosed draft, rejection without a page revision, acceptance with the citation, history and process restart. This test uses real native controls and the production Rust adapter; it does not invoke candidate injection. The working wiki’s table contents were unchanged across the successful live run.
+
+The initial result directed readers to the guide and booking calendar linked from the equipment page. Its follow-up shortened that to checking the booking calendar on the equipment page. Both cited the selected recording excerpt at revision 1. The final accepted result preserved the same supported relationship. These fictional outputs were inspected for source support; this is one narrow example, not a broad model-quality evaluation.
+
+A request failure is shown as a failure; it never becomes fixture output. Partial model output cannot be accepted or silently published. Cancellation was verified at the app boundary: no candidate was saved and retry worked. The test does not establish whether provider-side computation stops immediately or how cancellation affects plan usage. Live quota exhaustion, token refresh after expiry and service outages were not forced. The local route remains ready for the requested hands-on interaction review.
 
 ## Limits
 - One local operator; no shared identity, permission enforcement or concurrent team editing.
@@ -37,3 +41,6 @@ A revision request includes the exact pending proposal’s wording and explanati
 
 ## Native test startup
 The WebDriver request timeout is longer than the driver’s script timeout. Initial page readiness may retry a timed-out read against the same still-running process within a bounded window; interaction commands are not replayed automatically. Both native suites pass after this change, and the ordinary desktop build is restored with the test feature absent.
+
+## Reproduction and data isolation
+Run `WIKI_RUN_LIVE_CHECK=1 npm run test:review:live` from `app/` only when live subscription verification is authorized. The native test build uses a temporary wiki and the signed-in app’s protected connection in place. It does not export credentials, capture account screenshots or copy working page content into the test. Test results and fictional model wording are ignored local artifacts. Ordinary builds ignore both test environment switches and have no WebDriver or candidate-injection command.

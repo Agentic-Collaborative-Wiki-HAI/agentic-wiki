@@ -48,6 +48,6 @@ Shell work can start against fixtures while S02 and S06 investigate independentl
 
 
 ## Current activation
-The first M0 foundation/check slice is implemented and documented in the companion task record. The native shell, persistence and bounded editor contract have passing evidence; Codex generation remains disabled because isolation was not proven. M1 and later acceptance criteria remain future scope. D6–D8 are deferred.
+The M0 foundation and bounded M1 review implementation are checked in the companion task records and [native review QA](../design/app-review-qa-2026-11-17.md). The full passage-to-decision route passes deterministic and live subscription checks. The Codex coding-session path remains disabled; product inference uses the isolated app-owned connection. Hands-on M1 review remains open. Broader milestones and D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md

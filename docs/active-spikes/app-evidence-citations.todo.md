@@ -20,4 +20,4 @@ Broader manual citation authoring and source-change review remain later slices o
 - [x] Activate the reviewed brief for the explicitly authorized review journey.
 
 ## Verification boundary
-The native suite exercises actual Tauri/SQLite persistence with an explicitly labeled test candidate. Live model generation remains gated on the app-owned sign-in; no failed request is replaced with fixture output.
+The deterministic native suite exercises Tauri/SQLite persistence with labeled test candidates. A separate opt-in native suite passes with real subscription-generated proposals and their pinned evidence. No failed request is replaced with fixture output; the live check leaves the working wiki unchanged.

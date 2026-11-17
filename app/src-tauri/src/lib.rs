@@ -69,16 +69,32 @@ mod desktop {
         let builder = builder.plugin(tauri_plugin_wdio_webdriver::init());
         builder
             .setup(|app| {
-                let dir = app.path().app_data_dir()?;
+                let app_dir = app.path().app_data_dir()?;
+                let dir = app_dir.clone();
                 #[cfg(feature = "native-e2e")]
                 let dir = std::env::var_os("WIKI_E2E_DATA_DIR")
                     .map(std::path::PathBuf::from)
                     .unwrap_or(dir);
+                let connection_dir = dir.join("chatgpt");
+                #[cfg(feature = "native-e2e")]
+                let connection_dir = if std::env::var("WIKI_E2E_LIVE_SUBSCRIPTION").as_deref()
+                    == Ok("1")
+                {
+                    if dir == app_dir || !dir.is_absolute() {
+                        return Err(
+                            "Live verification requires a separate absolute test workspace.".into(),
+                        );
+                    }
+                    // An explicit live test uses this app's connection in place, never a copy of Codex credentials.
+                    app_dir.join("chatgpt")
+                } else {
+                    connection_dir
+                };
                 std::fs::create_dir_all(&dir)?;
                 let store = tauri::async_runtime::block_on(Store::open(&dir.join("wiki.sqlite")))?;
                 app.manage(store);
                 app.manage(AgentRuntime {
-                    connection: crate::subscription::Subscription::open(dir.join("chatgpt"))?,
+                    connection: crate::subscription::Subscription::open(connection_dir)?,
                     requests: tokio::sync::Mutex::new(std::collections::HashMap::new()),
                 });
                 Ok(())

@@ -11,10 +11,10 @@ The planning pass produced thirteen workstream briefs and an approval slate. Asl
 D1–D5 approved on 2026-11-17. Seven workstreams are active for the foundation and M1 review journey; six remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
 
 ## To Do
-The foundation is committed and the M1 review journey is implemented with passing native checks. Complete the app-owned ChatGPT sign-in, live generation/cancellation verification and human interaction QA. Do not weaken D5 or activate deferred transcription, semantic retrieval or maintenance execution.
+The foundation is committed and the M1 review journey is implemented with passing native checks. App-owned sign-in and live generation/cancellation verification pass. Complete the remaining hands-on interaction QA. Do not weaken D5 or activate deferred transcription, semantic retrieval or maintenance execution.
 
 ## Ready for Human QA
-- Review the passage comment → explicit request → evidence → proposed wording → accept/reject → history journey. Foundation appearance is approved. Complete the app-owned sign-in for the live model check; D1–D5 do not need renewed approval.
+- Review the passage comment → explicit request → evidence → proposed wording → accept/reject → history journey. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
 
 ## Done
 - [x] Establish the first runnable foundation and record both feasibility outcomes in the child spikes. Native editing/storage/recovery checks pass. The editor/Rust contract passes ten valid and four invalid cases. The Codex readiness check confirms subscription sign-in but rejects the inherited-context boundary before model generation; M1 is not complete.
@@ -37,3 +37,6 @@ Aslan launched the native foundation and reported that it looks good. This confi
 
 ## Review implementation checkpoint — 2026-11-17
 The foundation checkpoint excludes the pre-existing design edits and mixed TODO index. The next batch adds persistent comments, source evidence, human-revised candidates, atomic accept/reject decisions and history. The native route passes with labeled test candidates. The app-owned subscription adapter passes local boundary tests; real access remains pending user sign-in. See [QA evidence and limits](../design/app-review-qa-2026-11-17.md). The native app is open for the sign-in and review check; no paid fallback, Figma write or push is authorized.
+
+## Live review checkpoint — 2026-11-17
+App-owned sign-in, live model discovery and the native passage-review journey pass. The check covers cancellation/retry, initial and revised model proposals, rejection, atomic wording/citation acceptance, history and restart in a temporary workspace. The working wiki and unrelated design edits are preserved. M1 awaits the requested hands-on interaction review; M2 and the deferred decisions remain outside this implementation batch.

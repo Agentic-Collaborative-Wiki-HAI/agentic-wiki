@@ -1,5 +1,5 @@
 # Agentic Wiki desktop app
-The local application uses Tauri 2, Vue 3/TypeScript and Rust. Its design baseline is the released Figma Prototype. The current checkpoint implements local editing and passage review. Live subscription inference still requires an account sign-in and verification; the complete wiki and both presentation demo routes are not implemented.
+The local application uses Tauri 2, Vue 3/TypeScript and Rust. Its design baseline is the released Figma Prototype. The current checkpoint implements local editing and passage review. App-owned ChatGPT sign-in and the live passage-review journey have been verified on the development Mac. The complete wiki and both presentation demo routes are not implemented.
 
 ## Run locally
 Prerequisites: Node 24.13 or newer, npm, Rust installed through rustup, and the [Tauri prerequisites for your operating system](https://v2.tauri.app/start/prerequisites/). Development has been checked on Apple Silicon macOS 15.5 with Command Line Tools. The Rust toolchain is pinned in `rust-toolchain.toml`; npm and Cargo dependencies have lockfiles. Other platforms are not verified.
@@ -35,7 +35,7 @@ Portable export/restore and managed artifact import are approved directions but 
 3. Click Continue with ChatGPT and complete the browser sign-in. The app uses its own registration and consent; it does not reuse or copy Codex credentials.
 4. Choose an available model and request a suggestion. Inspect the wording and exact source evidence before accepting. Cancel ends a pending request; a completed candidate still needs your decision.
 
-The [documented app-owned sign-in flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in) uses ChatGPT plan access. This account’s entitlement and live generation remain to be verified. Credentials live in a separate protected `chatgpt/connection.json` beneath the app-data directory, with owner-only Unix permissions. They stay out of the frontend, repository, logs and export data. Reconnect ChatGPT is available if sign-in needs renewal. There is no API-key or paid fallback.
+The [documented app-owned sign-in flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in) uses ChatGPT plan access. The native live check verifies model access, generation, follow-up revision, cancellation and retry using fictional content; other accounts and plan tiers are not thereby verified. Credentials live in a separate protected `chatgpt/connection.json` beneath the app-data directory, with owner-only Unix permissions. They stay out of the frontend, repository, logs and export data. Reconnect ChatGPT is available if sign-in needs renewal. There is no API-key or paid fallback.
 
 The Rust adapter constructs one request from the explicitly selected passage, human request, exact previous draft when revising, and chosen source excerpts. The request panel discloses that previous draft; it does not silently include unrelated conversation or other files. It advertises no tools and never loads global Codex instructions, skills, connectors or ambient files. Only complete, validated model output becomes a pending suggestion. Network errors, usage limits and malformed output are shown as errors, without substitute fixtures.
 
@@ -53,11 +53,17 @@ npm run test:review:native
 ```
 `check` runs frontend tests, Rust behavior/type-export tests, real ProseMirror-versus-Rust patch comparisons, TypeScript checks and the frontend production build. `test:native` compiles a debug-only WebDriver build and tests the actual native window and Rust/SQLite boundary. It uses its own temporary database and writes screenshots/results under ignored `.artifacts/native-smoke/`. The review suite uses port 4447 and `.artifacts/native-review/`; the foundation suite uses port 4446. Both ports must be free for their respective suite. The review suite injects explicitly labeled test candidates through a debug-only command, never through the product UI or as a fallback for failed inference. No browser-only IPC mock substitutes for these native checks.
 
-The native test feature is off by default and refuses release compilation. Its server binds only to loopback. `WIKI_E2E_DATA_DIR` is honored only in that feature build. After running native tests, rebuild without instrumentation before using or distributing that binary:
+The live review suite is opt-in and consumes ChatGPT plan usage:
+```sh
+WIKI_RUN_LIVE_CHECK=1 npm run test:review:live
+```
+Complete the app-owned sign-in first and run this while the ordinary app is not making model requests. The suite uses a disposable wiki on port 4448 and the existing app-owned connection in place; it does not copy credentials or edit the working wiki. It cancels one request, retries, revises a real result, rejects it, then accepts a fresh result and checks history after restart. It records only fictional candidate output and test outcomes under ignored `.artifacts/native-live-review/`, without screenshots, account identity or credential logs. This command is not part of `npm run check` and must not be run without explicit live-verification authorization.
+
+The native test feature is off by default and refuses release compilation. Its server binds only to loopback. `WIKI_E2E_DATA_DIR` and the live suite’s `WIKI_E2E_LIVE_SUBSCRIPTION=1` switch are honored only in that feature build. After running native tests, rebuild without instrumentation before using or distributing that binary:
 ```sh
 npm run tauri -- build --debug --no-bundle
 ```
-No installer, signing, updater or cross-platform release is configured. [Review verification and remaining gate](../docs/design/app-review-qa-2026-11-17.md) records the exact checked behavior. [Implementation planning](../docs/active-spikes/implementation-planning.md) links the thirteen workstreams and the deferred decisions.
+No installer, signing, updater or cross-platform release is configured. [Review verification and limits](../docs/design/app-review-qa-2026-11-17.md) records the exact checked behavior. [Implementation planning](../docs/active-spikes/implementation-planning.md) links the thirteen workstreams and the deferred decisions.
 
 ## Source layout
 ```text

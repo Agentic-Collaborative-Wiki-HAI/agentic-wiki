@@ -4,7 +4,7 @@ status: active
 opened: "2026-11-17"
 ---
 # S06 · Subscription-backed agent runtime and context boundary
-Active spike: `app-agent-runtime`. Aslan authorized foundation work and feasibility checks on 2026-11-17 after approving D1–D5. The M1 local adapter and review integration are implemented; live subscription verification remains pending. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M0 feasibility; M1 live proposal; later retrieval integration. Owner: Aslan’s agent in the current foundation conversation. Contract ownership below belongs to this workstream; no teammate is assigned.
+Active spike: `app-agent-runtime`. Aslan authorized foundation work and feasibility checks on 2026-11-17 after approving D1–D5. The M1 adapter and native review integration pass both deterministic and live subscription checks; hands-on interaction review remains open. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M0 feasibility; M1 live proposal; later retrieval integration. Owner: Aslan’s agent in the current foundation conversation. Contract ownership below belongs to this workstream; no teammate is assigned.
 
 ## Outcome
 Ask the agent for help from the app, see its progress and evidence, cancel it, and recover from account limits without losing work or starting an unexpected paid request.
@@ -36,19 +36,19 @@ Own AgentRun, streamed status/result events, cancellation and a provider-neutral
 - A fake provider passes the same interface tests without requiring the live service.
 
 ## Automated and integration checks
-Protocol transcript tests cover interleaved stream events, malformed candidates, process crashes and duplicate notifications. A later live smoke test proves account access; documentation and CLI help alone do not. Security tests use untrusted source text that requests unrelated actions. Record what token/limit data is actually available; do not invent per-call dollar costs for a subscription.
+Protocol transcript tests cover interleaved stream events, malformed candidates, process crashes and duplicate notifications. The opt-in native live suite proves the exercised account/model access; documentation and CLI help alone do not. Security tests use untrusted source text that requests unrelated actions. Record what token/limit data is actually available; do not invent per-call dollar costs for a subscription.
 
 ## Human QA
 Review the proposed outgoing-context disclosure, streaming/cancellation behavior and quota messaging. Confirm that prompt, retrieved evidence and generated claims remain distinguishable.
 
 ## Risks, choices and recommendation
-The app-owned adapter avoids the general-purpose coding session’s ambient instructions and tools. Eight boundary tests cover context, credentials, identity and incomplete output. Live access, provider cancellation, account limits and refresh against the actual service remain unverified until the user signs in. No access token is copied from Codex; no API billing is configured.
+The app-owned adapter avoids the general-purpose coding session’s ambient instructions and tools. Eight boundary tests cover context, credentials, identity and incomplete output. Live access, generation, follow-up requests and app-side cancellation/retry pass. Provider-side cancellation effects, actual quota exhaustion and expired-token refresh remain unverified against the service. No access token is copied from Codex; no API billing is configured.
 
 ## Independent work and gates
 Auth/protocol feasibility uses synthetic context and can run before S02–S05 are implemented. The live product route waits for S02–S05. It does not need embeddings or transcription to start.
 
 
 ## Current activation
-The local review journey and app-owned subscription adapter are implemented. Native UI/persistence checks use clearly labeled test candidates; live inference and account availability remain pending. See [M1 verification](../design/app-review-qa-2026-11-17.md). D6–D8 remain deferred.
+The local review journey and app-owned subscription adapter are implemented. Deterministic checks use clearly labeled test candidates, and a separate opt-in native suite verifies live inference, model availability and the complete decision/history route. See [M1 verification](../design/app-review-qa-2026-11-17.md). D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md

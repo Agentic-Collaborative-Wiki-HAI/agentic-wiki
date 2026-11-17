@@ -42,13 +42,13 @@ Use current Tauri/WebdriverIO documentation rather than assuming macOS is unsupp
 Aslan tests the first milestone and subsequent releases before feature expansion is declared accepted. Any future teammates test on their own supported environments before those platforms are advertised.
 
 ## Risks, choices and recommendation
-The current docs describe a macOS embedded WebDriver path, but it has not been exercised here. Accessibility and native media behavior still require real-device checks. Recommend a local unsigned/dev build first and a deliberate later decision on signed distribution and automatic updates.
+The embedded macOS WebDriver path passes native foundation, deterministic review and opt-in live review checks. Accessibility and native media behavior still require real-device checks. Recommend a local unsigned/dev build first and a deliberate later decision on signed distribution and automatic updates.
 
 ## Independent work and gates
 Harness and failure catalog start at M0. A milestone is not blocked by unbuilt future features; release claims are explicitly scoped. Full backup/media tests wait for S07, and final integration waits for the features included in the chosen release.
 
 
 ## Current activation
-The first M0 foundation/check slice is implemented and documented in the companion task record. The native shell, persistence and bounded editor contract have passing evidence; Codex generation remains disabled because isolation was not proven. M1 and later acceptance criteria remain future scope. D6–D8 are deferred.
+The M0 foundation and bounded M1 review implementation are checked in the companion task records and [native review QA](../design/app-review-qa-2026-11-17.md). The full passage-to-decision route passes deterministic and live subscription checks. The Codex coding-session path remains disabled; product inference uses the isolated app-owned connection. Hands-on M1 review remains open. Broader milestones and D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md

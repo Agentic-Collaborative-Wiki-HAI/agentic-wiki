@@ -8,13 +8,13 @@ Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Conc
 M0 foundation and the authorized M1 passage-review batch under approved D1–D5. D6–D8 remain deferred. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
-- [ ] Finish live subscription generation/cancellation verification after app sign-in.
 - [ ] Record human review of the complete passage-to-decision journey.
 
 ## Ready for Human QA
 - Review the passage discussion, source preview, proposed wording, accept/reject and history interactions. Start with `npm run desktop` and use fictional content. The foundation appearance has been approved; the new review interactions have not.
 
 ## Done
+- [x] Finish live subscription generation/cancellation verification after app sign-in. The opt-in native suite passed cancellation/retry, live initial/revised candidates, rejection, acceptance, history and process restart.
 - [x] Establish repeatable frontend, Rust and cross-boundary checks for the foundation.
 - [x] Probe native macOS test automation and exercise the compiled app.
 - [x] Record exact tested behavior and remaining M1 work without claiming later milestones complete.
@@ -55,3 +55,6 @@ Long-discussion screenshots revealed that sticking the whole rail was insufficie
 The native review suite additionally verifies pending-proposal persistence after process restart, disclosure of the draft being revised, disabled acceptance after an intervening page revision, explicit passage reselection and acceptance only after a refreshed proposal is reviewed. The Rust context test confirms that a request such as “Make that shorter” includes the actual prior draft and rejects a mismatched or obsolete version. These tests remain separate from the pending live inference check.
 
 The follow-up native review and foundation suites pass. The request field receives focus and is brought into view when requesting another version. The test client now waits longer than its configured WebDriver script timeout and retries only the initial read-only readiness observation against the same live process. Frontend formatting, Rust formatting and the ordinary desktop debug build pass.
+
+## Live subscription verification — 2026-11-17
+Aslan completed app-owned sign-in. The isolated native live test passed with `gpt-6.1-sol`, using the actual UI and Rust subscription adapter. It did not use candidate injection. Inspection confirmed that the initial and shortened proposals accurately refer to the selected recording excerpt. Table-content hashes confirmed the working wiki was unchanged during the successful run. This verifies application cancellation and retry, not provider-side compute termination or quota refunds. The [QA record](../design/app-review-qa-2026-11-17.md) records reproduction and limits. The requested hands-on review remains open.
