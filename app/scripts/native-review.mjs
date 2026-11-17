@@ -132,6 +132,60 @@ async function type(selector, text, clear = false) {
   if (clear) await request(endpoint(`/element/${id}/clear`), {})
   await request(endpoint(`/element/${id}/value`), { text })
 }
+async function checkSelectionPopup() {
+  await request(endpoint('/window/rect'), { width: 1440, height: 700 })
+  const before = await execute(
+    'return document.querySelector("[data-block-id=booking]").getBoundingClientRect().top',
+  )
+  await execute(
+    'const e=document.querySelector("[data-block-id=booking]");const r=document.createRange();r.setStart(e.firstChild,8);r.setEnd(e.firstChild,28);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
+  )
+  await until(async () => !!(await value('.passage-actions')), 'anchored popup')
+  const geometry = () =>
+    execute(
+      'const p=document.querySelector(".passage-actions").getBoundingClientRect();const s=getSelection().getRangeAt(0).getBoundingClientRect();return {popup:{top:p.top,bottom:p.bottom,left:p.left,right:p.right,width:p.width},selection:{top:s.top,bottom:s.bottom,left:s.left,right:s.right},fixed:getComputedStyle(document.querySelector(".passage-actions")).position,articleTop:document.querySelector("[data-block-id=booking]").getBoundingClientRect().top}',
+    )
+  await until(async () => {
+    const { popup, selection } = await geometry()
+    return (
+      Math.abs(selection.top - popup.bottom - 8) < 2 ||
+      Math.abs(popup.top - selection.bottom - 8) < 2
+    )
+  }, 'popup measured beside the highlight')
+  const initial = await geometry()
+  assert.equal(initial.fixed, 'fixed')
+  assert.equal(initial.articleTop, before, 'opening the popup does not move the article')
+  assert.ok(initial.popup.width < 180, 'compact action instead of a full-width bar')
+  assert.ok(
+    Math.abs(initial.selection.top - initial.popup.bottom - 8) < 2 ||
+      Math.abs(initial.popup.top - initial.selection.bottom - 8) < 2,
+    'popup beside the actual highlight',
+  )
+  assert.ok(
+    initial.popup.right >= initial.selection.left && initial.popup.left <= initial.selection.right,
+  )
+  await screenshot('selection-popup')
+  const scrolled = await execute(
+    'const w=document.querySelector(".workspace");w.scrollTop=80;return w.scrollTop',
+  )
+  assert.ok(scrolled > 0, 'actual article scroll')
+  await delay(100)
+  const after = await geometry()
+  assert.ok(Math.abs(initial.selection.top - after.selection.top - scrolled) < 2)
+  assert.ok(
+    Math.abs(after.selection.top - after.popup.bottom - 8) < 2 ||
+      Math.abs(after.popup.top - after.selection.bottom - 8) < 2,
+    'popup follows the highlight while scrolling',
+  )
+  await execute(
+    'document.dispatchEvent(new KeyboardEvent("keydown", {key:"Escape",bubbles:true}));return true',
+  )
+  assert.equal(await execute('return !!document.querySelector(".passage-actions")'), false)
+  await execute(
+    'getSelection().collapseToEnd();document.querySelector(".workspace").scrollTop=0;return true',
+  )
+  await request(endpoint('/window/rect'), { width: 1440, height: 960 })
+}
 async function selectBooking() {
   await execute(
     'document.querySelector(".ProseMirror").focus(); const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
@@ -160,6 +214,7 @@ try {
     if (e.message.startsWith('Test port')) throw e
   }
   await launch()
+  await checkSelectionPopup()
   const before = await invoke('read_page', { id: 'getting-started' })
   const original = await value('[data-block-id=booking]')
   const comment = 'This booking instruction may be out of date. Please check the recording.'
@@ -381,6 +436,7 @@ try {
         database: data,
         model: 'Test-only candidate injection; no live model inference',
         checks: [
+          'selection-anchored floating action without article reflow; scroll and Escape',
           'passage comment',
           'linked evidence context disclosed in the thread',
           'inline preview and cancelled human edit do not alter canonical JSON',

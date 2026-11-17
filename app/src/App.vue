@@ -5,6 +5,7 @@ import { hasUnsupportedPaste, wikiExtensions } from './editor'
 import { api } from './api'
 import ReviewRail from './ReviewRail.vue'
 import AgentSettings from './AgentSettings.vue'
+import SelectionActions from './SelectionActions.vue'
 import { showInlineReview, type InlineReviewState } from './inlineReview'
 const settingsOpen = ref(false)
 const reviewPreview = shallowRef<InlineReviewState>({
@@ -489,10 +490,12 @@ onBeforeUnmount(() => {
             ><button :disabled="busy" @click="cancel">Cancel</button
             ><button class="primary" :disabled="busy" @click="save">Save page</button>
           </div>
-          <div v-if="selectionAnchor && !editing" class="passage-actions">
-            <span>Selected passage</span
-            ><button class="primary" @mousedown.prevent @click="startComment">Comment</button>
-          </div>
+          <SelectionActions
+            v-if="editor"
+            :editor="editor"
+            :enabled="!editing && !settingsOpen && !chatOpen"
+            @comment="startComment"
+          />
           <EditorContent
             v-if="editor"
             :editor="editor"

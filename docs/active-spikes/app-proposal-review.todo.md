@@ -8,12 +8,13 @@ Opened 2026-11-17. Owner: Aslan’s agent in this implementation conversation. [
 Authorized M1 batch under D1–D5. Transcription, semantic retrieval, maintenance execution, shared operation and Figma writes remain outside this batch.
 
 ## To Do
-The bounded M1 interaction uses thread mentions and inline suggestions. Human acceptance of this interaction remains open; broader review variants remain later work.
+The bounded M1 interaction uses thread mentions and inline suggestions. Aslan confirmed that this interaction looks good and requested the selection popup correction recorded below. The corrected popup is ready for hands-on review; broader review variants remain later work.
 
 ## Ready for Human QA
 - Review passage selection → comment/reply with `@agent` → inline suggestion and evidence → revise/accept/reject → history in the native app. Also check Settings sign-in and returning to an unfinished reply. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
 
 ## Done
+- [x] Anchor a compact floating Comment action to the selected passage instead of reserving a full-width bar in the article. Native checks cover placement, no reflow, scrolling, dismissal and the complete existing review journey.
 - [x] Align requests with the Prototype comment thread and show pending edits inline in the article. Keep auth/model preferences in Settings and preserve unfinished requests across that round trip.
 - [x] Complete the live subscription-backed request and follow-up check after the user signs in. The native live suite also passed cancellation/retry, rejection, acceptance, history and restart.
 - [x] Persist anchored comments and replies, with independent discussion resolution.

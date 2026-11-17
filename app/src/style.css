@@ -655,19 +655,21 @@ dialog::backdrop {
   background: #17232d55;
 }
 .passage-actions {
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  position: fixed;
+  z-index: 30;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 14px;
+  padding: 4px;
   background: white;
   border: 1px solid var(--border);
-  box-shadow: 0 3px 12px #0001;
-  font-size: 13px;
-  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 3px 12px #0002;
 }
+.passage-actions button {
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
 .citation-marker {
   color: var(--link);
   cursor: pointer;
