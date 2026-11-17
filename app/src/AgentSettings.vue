@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import SourceSettings from './SourceSettings.vue'
 import { reviewApi } from './reviewApi'
 import { connection, models, model, agentBusy, refreshConnection } from './subscriptionState'
 const emit = defineEmits<{ back: [] }>()
@@ -47,12 +48,12 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-  <main class="settings-page" aria-label="Agent connection settings">
+  <main class="settings-page" aria-label="Workspace settings">
     <button class="text-link" @click="emit('back')">Back to page</button>
     <nav class="settings-breadcrumb" aria-label="Settings breadcrumb">
-      Settings / Agent connection
+      Settings / Connections and sources
     </nav>
-    <h1>Agent connection</h1>
+    <h1>Settings</h1>
     <p>Connect your ChatGPT subscription to use the agent in this workspace.</p>
     <p v-if="error" class="review-error" role="alert">{{ error }}</p>
     <section class="settings-card">
@@ -77,6 +78,7 @@ onBeforeUnmount(() => {
         Requests use your subscription’s limits. There is no automatic switch to paid API usage.
       </p>
     </section>
+    <SourceSettings />
     <section>
       <h2>When the agent responds</h2>
       <p>

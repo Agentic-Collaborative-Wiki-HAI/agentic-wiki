@@ -81,7 +81,13 @@ defineExpose({ open })
         @click="select(entry.revision)"
       >
         Revision {{ entry.revision }} ·
-        {{ entry.actorId === 'local-operator' ? 'You' : 'Example workspace' }}
+        {{
+          entry.actorId === 'local-operator'
+            ? 'You'
+            : entry.actorId === 'local-import'
+              ? 'You · source import'
+              : 'Example workspace'
+        }}
         <time>{{ new Date(entry.createdAt).toLocaleString() }}</time>
       </button>
     </nav>

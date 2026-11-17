@@ -6,6 +6,12 @@ import { api } from './api'
 import ReviewRail from './ReviewRail.vue'
 import AgentSettings from './AgentSettings.vue'
 import SelectionActions from './SelectionActions.vue'
+import ImportSource from './ImportSource.vue'
+import { sourceApi } from './sourceApi'
+import type { ImportedSource } from './generated/ImportedSource'
+const importedSources = ref<ImportedSource[]>([])
+const importer = ref<InstanceType<typeof ImportSource>>()
+const currentSource = computed(() => importedSources.value.find((s) => s.id === page.value?.id))
 import { showInlineReview, type InlineReviewState } from './inlineReview'
 const settingsOpen = ref(false)
 const reviewPreview = shallowRef<InlineReviewState>({
@@ -299,7 +305,30 @@ function citationClick(event: MouseEvent) {
 async function showHistoryThread(d: Discussion) {
   await reviewRail.value?.inspectThread(d)
 }
-onMounted(() => loadPage('getting-started'))
+async function refreshSources() {
+  importedSources.value = await sourceApi.imported()
+}
+async function imported(source: Page) {
+  chatOpen.value = false
+  await refreshSources()
+  await loadPage(source.id)
+}
+async function openOriginal() {
+  if (!page.value) return
+  try {
+    await sourceApi.openOriginal(page.value.id)
+  } catch (e) {
+    error.value = String(e)
+  }
+}
+onMounted(async () => {
+  await loadPage('getting-started')
+  try {
+    await refreshSources()
+  } catch (e) {
+    error.value = String(e)
+  }
+})
 onBeforeUnmount(() => {
   clearTimeout(draftTimer)
   editor.value?.destroy()
@@ -321,7 +350,11 @@ onBeforeUnmount(() => {
         </button>
         <button class="brand" @click="goHome">The Lab</button>
         <nav v-if="settingsOpen" class="breadcrumbs" aria-label="Breadcrumb">
-          <span>Settings</span><span>/</span><span class="crumb-current">Agent connection</span>
+          <span>Settings</span><span>/</span
+          ><span class="crumb-current">Connections and sources</span>
+        </nav>
+        <nav v-else-if="currentSource" class="breadcrumbs" aria-label="Breadcrumb">
+          <span>Sources</span><span>/</span><span class="crumb-current">{{ page?.title }}</span>
         </nav>
         <nav v-else class="breadcrumbs" aria-label="Breadcrumb">
           <span>Equipment</span><span>/</span><span>Microscope</span><span>/</span
@@ -438,6 +471,19 @@ onBeforeUnmount(() => {
         <button class="tree-row" disabled title="This route is planned for a later milestone">
           Onboarding
         </button>
+        <template v-if="importedSources.length">
+          <h2 class="tree-sources-title">Sources</h2>
+          <button
+            v-for="source in importedSources"
+            :key="source.id"
+            class="tree-row imported-source"
+            :class="{ selected: page?.id === source.id }"
+            :aria-current="page?.id === source.id ? 'page' : undefined"
+            @click="loadPage(source.id)"
+          >
+            {{ source.title }}
+          </button>
+        </template>
       </aside>
       <aside class="page-contents" aria-label="On this page">
         <button
@@ -465,7 +511,9 @@ onBeforeUnmount(() => {
             <div class="page-actions">
               <button v-if="!editing" class="compact" @click="beginEdit" :disabled="busy">
                 <img :src="icon('edit')" alt="" />{{
-                  page.kind === 'recording' ? 'Edit transcript' : 'Edit page'
+                  page.kind === 'recording' || currentSource?.kind === 'transcript'
+                    ? 'Edit transcript'
+                    : 'Edit page'
                 }}</button
               ><button class="compact" @click="openHistory">
                 <img :src="icon('history')" alt="" />Page history
@@ -474,13 +522,43 @@ onBeforeUnmount(() => {
           </div>
           <p class="metadata">
             {{
-              page.kind === 'recording'
-                ? 'Primary recording · Example transcript excerpt'
-                : 'Documentation'
+              currentSource
+                ? currentSource.kind === 'transcript'
+                  ? 'Imported transcript'
+                  : 'Imported notes'
+                : page.kind === 'recording'
+                  ? 'Primary recording · Example transcript excerpt'
+                  : 'Documentation'
             }}
-            · {{ page.revision === 1 ? 'Example workspace' : 'Edited by you' }} · Revision
+            ·
+            {{
+              currentSource
+                ? 'Saved on this device'
+                : page.revision === 1
+                  ? 'Example workspace'
+                  : 'Edited by you'
+            }}
+            · Revision
             {{ page.revision }}
           </p>
+          <div v-if="currentSource" class="source-provenance">
+            <p>
+              Imported from
+              {{ currentSource.provider === 'drive' ? 'Google Drive' : 'a local file' }}:
+              {{ currentSource.sourceName }} · Source snapshot saved with revision
+              {{ currentSource.importedRevision }}.
+            </p>
+            <button v-if="currentSource.sourceUrl" class="text-link" @click="openOriginal">
+              Open original Google Doc ↗
+            </button>
+            <button
+              v-if="currentSource.parentId"
+              class="text-link"
+              @click="loadPage(currentSource.parentId)"
+            >
+              Open linked page
+            </button>
+          </div>
           <p v-if="status" class="status" role="status">{{ status }}</p>
           <div v-if="editing" class="editor-toolbar" aria-label="Editing controls">
             <span>Editing</span
@@ -509,11 +587,7 @@ onBeforeUnmount(() => {
           <div class="create-actions">
             <button class="compact" disabled title="Page creation is planned for a later milestone">
               <img :src="icon('plus')" alt="" />Add page</button
-            ><button
-              class="compact"
-              disabled
-              title="Artifact intake is planned for a later milestone"
-            >
+            ><button class="compact" :disabled="editing || busy" @click="importer?.open()">
               <img :src="icon('plus')" alt="" />Add artifact
             </button>
           </div>
@@ -552,7 +626,7 @@ onBeforeUnmount(() => {
         />
       </aside>
     </div>
-    <footer>The Lab <span>Development build · Fictional example workspace</span></footer>
+    <footer>The Lab <span>Local workspace · Includes fictional starter pages</span></footer>
     <aside
       v-if="chatOpen"
       class="chat-drawer"
@@ -570,8 +644,12 @@ onBeforeUnmount(() => {
         Global chat is planned for a later milestone. You can already ask @agent in a passage’s
         comment thread.
       </p>
+      <button class="text-link" :disabled="editing || busy" @click="importer?.open()">
+        Import a transcript or notes
+      </button>
       <textarea aria-label="Message Agent" placeholder="Message Agent…" disabled></textarea>
     </aside>
+    <ImportSource ref="importer" :page="page" @imported="imported" @settings="openSettings" />
     <RevisionHistory
       v-if="page"
       ref="revisionHistory"

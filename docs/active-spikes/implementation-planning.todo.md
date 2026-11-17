@@ -8,10 +8,10 @@ Opened 2026-11-17. Slug: `implementation-planning`. [Concept, map and drafts](im
 The planning pass produced thirteen workstream briefs and an approval slate. Aslan approved D1–D5 and authorized the foundation plus editor/Rust and Codex feasibility checks on 2026-11-17. This coordinating record tracks those decisions and the child evidence. D6–D8 remain deferred. Figma changes, publication and standing-policy amendments are outside this continuation.
 
 ## Current state
-D1–D5 approved on 2026-11-17. Seven workstreams are active for the foundation and M1 review journey; six remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
+D1–D5 approved on 2026-11-17. Eight workstreams are active for the foundation, M1 review journey and S07 source imports; five remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
 
 ## To Do
-The foundation is committed and the M1 review journey is implemented with passing native checks. App-owned sign-in and live generation/cancellation verification pass. Complete the remaining hands-on interaction QA. Do not weaken D5 or activate deferred transcription, semantic retrieval or maintenance execution.
+The foundation is committed and the M1 review journey is implemented with passing native checks. App-owned sign-in and live generation/cancellation verification pass. Complete the remaining hands-on interaction QA. S07 source-folder settings and Agent Hands imports are authorized separately; transcription, semantic retrieval and maintenance execution remain deferred. Preserve D5’s explicit context boundary.
 
 ## Ready for Human QA
 - Review the passage comment → `@agent` reply → inline proposed wording and evidence → accept/reject → history journey, including Settings and returning to the unfinished request. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
@@ -43,3 +43,6 @@ App-owned sign-in, live model discovery and the native passage-review journey pa
 
 ## Interaction alignment — 2026-11-17
 The user’s hands-on check confirmed the live mechanics but requested Prototype-aligned interaction. The app uses `@agent` in normal passage comments/replies, inline proposed wording, and Settings for the ChatGPT connection/model. S05 and S06 retain the implementation detail; the QA record distinguishes automated verification from the remaining human review. No later milestone is activated.
+
+## Source-import checkpoint — 2026-11-17
+The approved S07 slice imports existing Meet documents through Agent Hands and UTF-8 exports through a local source-folder setting. The [active intake spike](app-artifact-intake.md) owns implementation and the [import QA record](../design/app-import-qa-2026-11-17.md) separates fixture UI checks from real provider verification. Chat and Add artifact share explicit preview/confirmation. Import does not invoke a model, ingest the private vault, or activate the deferred transcription and retrieval decisions. The mixed TODO index remains untouched.

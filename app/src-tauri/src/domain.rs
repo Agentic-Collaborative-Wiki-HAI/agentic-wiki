@@ -4,6 +4,8 @@ use ts_rs::TS;
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("{0}")]
+    Import(String),
     #[error("Invalid document: {0}")]
     Invalid(String),
     #[error("This document has changed. Reload before saving or reviewing this change.")]

@@ -3,7 +3,7 @@ A collaborative knowledge workspace for small academic and research teams, explo
 
 Term project for **INF 385T.13 Human-AI Interaction**, UT Austin iSchool, Fall 2026.
 
-**Current phase:** a local desktop implementation is beginning after the course presentation. The approved Figma Prototype remains the design baseline. The [Tauri + Vue + Rust foundation](app/README.md) runs locally with editable, persistent example pages; agent generation and the full review journeys are not yet implemented. The [implementation map](docs/active-spikes/implementation-planning.md) separates that work into thirteen bounded workstreams.
+**Current phase:** a local desktop implementation is beginning after the course presentation. The approved Figma Prototype remains the design baseline. The [Tauri + Vue + Rust app](app/README.md) runs locally with persistent editing, subscription-backed passage suggestions, human acceptance/rejection and history, plus Meet/local transcript and notes imports. The complete Prototype and both presentation routes are not implemented. The [implementation map](docs/active-spikes/implementation-planning.md) separates that work into thirteen bounded workstreams.
 
 [Figma wireframes](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd/Agentic-Collaborative-Wiki) · [User flows and scenarios](https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085) · [Current issues](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues) · [Spike index](TODO.md)
 
@@ -53,7 +53,7 @@ Current follow-up work includes [wireframe QA](https://github.com/Agentic-Collab
 ## Technical questions
 The [agent-stack investigation](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues/9) remains open. Capability experiments may examine intake/classification, organization, retrieval, citation, bounded proposals, review and maintenance. The choice of a wiki substrate or custom interface serves a specific experiment; it is not an up-front gate for design or evaluation.
 
-Architecture work should explain the interface, knowledge storage, agent execution, retrieval/context, model access, provenance and review/history layers, including what was tested and what remains hypothetical. The [desktop foundation guide](app/README.md) defines local setup, validation and the current Codex feasibility limit. Shared deployment and model-backed product behavior remain future work.
+Architecture work should explain the interface, knowledge storage, agent execution, retrieval/context, model access, provenance and review/history layers, including what was tested and what remains hypothetical. The [desktop app guide](app/README.md) defines local setup, import sources, validation and app-owned ChatGPT sign-in. Shared deployment and the remaining Prototype routes remain future work.
 
 <h2><img src="assets/agent-hands-head-thumbs-up.png" height="32" alt="Robot head giving a thumbs-up"> Get set up with your agent</h2>
 

@@ -918,3 +918,117 @@ dialog::backdrop {
   font: inherit;
   max-width: 100%;
 }
+
+.source-settings fieldset,
+.import-dialog fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.source-settings label,
+.import-dialog label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 16px 0 8px;
+  font-size: 14px;
+}
+.source-settings input,
+.import-dialog input:not([type='checkbox']),
+.import-dialog select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 9px 10px;
+  font: inherit;
+  color: inherit;
+  background: white;
+}
+.import-dialog {
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px #20283226;
+  width: min(760px, calc(100vw - 48px));
+  max-height: calc(100vh - 64px);
+  padding: 24px;
+  font-size: 15px;
+  line-height: 22px;
+}
+.import-heading,
+.import-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.import-heading {
+  justify-content: space-between;
+}
+.import-heading h2 {
+  font-size: 24px;
+  margin: 0;
+}
+.import-controls {
+  margin-top: 16px;
+}
+.import-controls button,
+.import-direct button {
+  padding: 8px 12px;
+}
+.import-preview {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 16px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  font: inherit;
+}
+.import-source-url {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.import-dialog .import-parent {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.source-list {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.source-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+.source-list button {
+  text-align: left;
+  color: var(--link);
+}
+.source-list button:disabled {
+  color: var(--secondary);
+}
+.source-provenance {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--secondary);
+  margin: -12px 0 20px;
+}
+.source-provenance p {
+  margin: 8px 0;
+}
+.source-provenance button {
+  margin-right: 16px;
+}
+.tree-sources-title {
+  font-size: 13px;
+  color: var(--secondary);
+  padding: 16px 24px 0;
+}

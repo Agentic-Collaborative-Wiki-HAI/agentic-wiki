@@ -4,10 +4,16 @@ compile_error!("Native WebDriver instrumentation is only allowed in debug builds
 pub mod agent;
 pub mod codex;
 pub mod domain;
+#[cfg(test)]
+mod import_tests;
+pub mod imports;
 pub mod review;
+pub mod sources;
 pub mod store;
 pub mod subscription;
 
+#[cfg(feature = "desktop")]
+mod desktop_imports;
 #[cfg(feature = "desktop")]
 mod desktop_review;
 
@@ -17,6 +23,7 @@ mod desktop {
         domain::RichDocument,
         store::{Draft, HistoryEntry, Page, Store},
     };
+    use crate::desktop_imports::*;
     use crate::desktop_review::*;
     use tauri::{Manager, State};
     #[tauri::command]
@@ -93,6 +100,7 @@ mod desktop {
                 std::fs::create_dir_all(&dir)?;
                 let store = tauri::async_runtime::block_on(Store::open(&dir.join("wiki.sqlite")))?;
                 app.manage(store);
+                app.manage(ImportRuntime::default());
                 app.manage(AgentRuntime {
                     connection: crate::subscription::Subscription::open(connection_dir)?,
                     requests: tokio::sync::Mutex::new(std::collections::HashMap::new()),
@@ -100,6 +108,15 @@ mod desktop {
                 Ok(())
             })
             .invoke_handler(tauri::generate_handler![
+                open_import_original,
+                source_settings,
+                save_source_settings,
+                installed_drive_tool,
+                list_import_sources,
+                preview_source_import,
+                confirm_source_import,
+                cancel_source_import,
+                imported_sources,
                 read_page,
                 save_page,
                 save_draft,

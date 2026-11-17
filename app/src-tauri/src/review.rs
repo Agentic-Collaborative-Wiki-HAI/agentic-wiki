@@ -213,7 +213,7 @@ impl Store {
     pub async fn evidence(&self, selection: &EvidenceSelection) -> Result<Evidence, Error> {
         evidence_on(&mut *self.pool.acquire().await?, selection).await
     }
-    /// Bounded context from this page's citations and directly attached recording artifacts. No workspace-wide retrieval.
+    /// Bounded context from this page's citations and directly attached recording or imported text sources. No workspace-wide retrieval.
     pub async fn discussion_evidence(&self, page_id: &str) -> Result<Vec<Evidence>, Error> {
         let page = self.read(page_id).await?;
         let citations = self.page_citations(page_id, page.revision).await?;
@@ -225,7 +225,7 @@ impl Store {
                 out.push(e);
             }
         }
-        let rows = sqlx::query("SELECT id,current_revision FROM objects WHERE kind='recording' AND (parent_id=? OR id=?) ORDER BY title,id")
+        let rows = sqlx::query("SELECT id,current_revision FROM objects WHERE (kind='recording' OR EXISTS(SELECT 1 FROM imported_sources s WHERE s.object_id=objects.id)) AND (parent_id=? OR id=?) ORDER BY title,id")
             .bind(page_id)
             .bind(page_id)
             .fetch_all(&mut *conn)

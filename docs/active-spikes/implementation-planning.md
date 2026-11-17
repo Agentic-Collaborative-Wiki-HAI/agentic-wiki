@@ -15,7 +15,7 @@ The agreed foundation is the existing repository, `app/`, Tauri + Vue + Rust, in
 - D4: Any change to a proposal’s base document revision initially requires refreshing and reviewing it before acceptance.
 - D5: The agent receives only context selected or retrieved through permitted app workspace tools, with no ambient laptop/LifeOS/connector/shell access and no automatic paid API fallback.
 
-D6 transcription, D7 semantic-search delivery and D8 maintenance execution remain deferred for a later discussion. This continuation does not expand teammates’ course commitments or assign them work.
+S07’s source-import slice is authorized: a local source-folder setting plus Agent Hands exports of existing Meet transcripts. This precedes local transcription. D6 transcription, D7 semantic-search delivery and D8 maintenance execution remain deferred for a later discussion. This continuation does not expand teammates’ course commitments or assign them work.
 
 ## Evidence and freshness
 Checked 2026-11-17. Local `main` and its local `origin/main` reference point to `71f4a1e`; GitHub’s actual `main` is `fda5d75241f22be61c9bf614f40df9c77d1f3dbc`. The checkout has ten pre-existing modified files. Planning preserves them, with only an additive entry in `TODO.md`. No pull, reset, checkout switch or submodule update was used to reconcile evidence. A later implementation start must integrate against the current published baseline while preserving this checkout’s work.
@@ -57,7 +57,7 @@ The first `app/` implementation runs as a native macOS window. It has the shared
 The Codex check produced a negative isolation result, not a failed subscription login. ChatGPT sign-in is available, but this installed app-server build inherits global instructions and a loopback-only request inspection still sees additional tools. The Codex generation path remains disconnected. S06 uses a separately authorized app-owned connection with explicit context and no tools. Its live native verification is recorded below; the inherited coding session is not used for product inference.
 
 ## Proposed workstreams
-S01–S06 and the initial S12 checks are active. The other six children remain draft scratch briefs. The IDs below are planning references, not Figma numbering or permanent product identities. Future work is not active or assigned merely because it appears here.
+S01–S07 and the initial S12 checks are active. S07 currently covers existing text-source import; its media work remains later scope. The other five children remain draft scratch briefs. The IDs below are planning references, not Figma numbering or permanent product identities. Future work is not active or assigned merely because it appears here.
 
 The existing `.gitignore` rule `scratch/` ignores these new briefs. They are local planning records at this stage. Before a later publication, deliberately include the reviewed drafts or promote them and repair the map links; do not publish an index that depends on missing files. This planning phase does not change ignore rules or stage files.
 
@@ -69,7 +69,7 @@ The existing `.gitignore` rule `scratch/` ignores these new briefs. They are loc
 | [S04 · Source evidence, citations and margin notes](app-evidence-citations.md) | M1 minimum references; M2–M3 full authoring | S02, S03 |
 | [S05 · Suggestions, discussion, decisions and history](app-proposal-review.md) | M1 first integrated milestone; M3 full review variants | S01, S02, S03, S04 |
 | [S06 · Subscription-backed agent runtime and context boundary](app-agent-runtime.md) | M0 feasibility; M1 live proposal; later retrieval integration | Independent feasibility/contracts |
-| [S07 · Artifact intake, managed files and audio playback](../scratch/app-artifact-intake.md) | M2 | S01, S02 |
+| [S07 · Artifact intake and source imports](app-artifact-intake.md) | M2 | S01, S02 |
 | [S08 · Local transcription and whole-transcript review](../scratch/app-transcript-review.md) | M2 | S02, S03, S04, S07 |
 | [S09 · Wiki search, source finding and grounded answers](../scratch/app-search-retrieval.md) | M3; semantic retrieval is a separate gate within this spike | S01, S02, S04 |
 | [S10 · Maintenance queue, source changes and delegated repairs](../scratch/app-maintenance.md) | M4; narrow automation after its authority gate | S02, S04, S05, S06, S11 |
@@ -121,7 +121,7 @@ flowchart LR
 | --- | --- | --- |
 | M0 · Resolve integration risks | App window and test harness start; document JSON/anchor/patch round trip has a verified contract; a bounded subscription request is proven after approval. Failure yields a concrete alternative before dependent implementation. | Thin S01/S02 foundations; S03 editor probe and S06 access probe are independent; S12 harness starts here. |
 | M1 · First integrated product checkpoint | Getting started: select booking instruction → comment → explicitly ask agent → inspect evidence and proposal → revise/accept/reject → history → restart. Deterministic fixtures and a real model request have separately recorded results. | Minimum S02/S03/S04 contracts → S05 route; S06 joins once the review engine is safe. S11 contributes a minimal local actor check, not the whole settings UI. |
-| M2 · Real evidence intake | Drop a non-sensitive recording into Chat, confirm type/title, add, generate transcript, play/correct/review, annotate and cite it. Retry/cancel/restart are real. | S07 media lifecycle → S08 processing; extend S04 evidence and S06 orchestration. The no-transcript branch works independently. |
+| M2 · Real evidence intake | First import an existing Meet transcript or local text export, confirm its meaning and preserve a revisioned original. Later, drop a non-sensitive recording into Chat, confirm type/title, add, generate transcript, play/correct/review, annotate and cite it. Retry/cancel/restart are real. | S07 media lifecycle → S08 processing; extend S04 evidence and S06 orchestration. The no-transcript branch works independently. |
 | M3 · Usable local wiki | Create/edit pages, browse real overviews, find sources, author citations/notes, read long pages, ask cited questions and exercise human tracked proposals. | Finish broader S01/S03/S04 authoring and S09 lexical retrieval; semantic retrieval remains a measured gate, not a fake mode. |
 | M4 · Maintenance and controlled delegation | Queue points to the same page proposal; changed-source acceptance/rejection is correct. Local protection/reviewer settings work. Narrow automatic repair is enabled only after its separate authority gate. | S11 settings + S10 queue/checks; the existing S05 engine is reused. |
 | M5 · Dependable local release | Scoped routes pass native desktop checks, backup restores into a fresh directory, failure recovery and migrations are tested, and a Mac package is reproducible. | S12 collects feature-owned evidence throughout M0–M4, then verifies the complete included release. |
