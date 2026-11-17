@@ -134,7 +134,7 @@ async function type(selector, text, clear = false) {
 }
 async function selectBooking() {
   await execute(
-    'const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
+    'document.querySelector(".ProseMirror").focus(); const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
   )
   await until(async () => !!(await value('.passage-actions')), 'selection action')
   await clickButton('Comment')
@@ -165,48 +165,45 @@ try {
   const comment = 'This booking instruction may be out of date. Please check the recording.'
   const threadId = await createComment(comment)
   assert.deepEqual((await invoke('read_page', { id: 'getting-started' })).document, before.document)
-  await clickButton('Ask agent')
-  await until(async () => !!(await value('.connection-card')), 'honest disconnected sign-in')
-  assert.match(await value('.connection-card'), /ChatGPT/)
+  const requestText =
+    '@agent Compare this passage with the orientation transcript and suggest a revision.'
+  await type('[aria-label="Reply to discussion"]', requestText)
+  await click('.request-context summary')
+  assert.match(await value('.request-context'), /Microscope orientation recording/)
+  assert.doesNotMatch(await value('.request-context'), /Sources to include/)
+  await clickButton('Reply')
+  await until(
+    async () => !!(await value('.connection-prompt')),
+    'settings link for disconnected request',
+  )
+  assert.equal((await invoke('list_discussions', { id: 'getting-started' }))[0].proposals.length, 0)
+  await click('.connection-prompt button')
+  await until(async () => !!(await value('.settings-page')), 'connection settings')
+  assert.match(await value('.settings-page'), /Continue with ChatGPT/)
+  await screenshot('connection-settings')
+  await clickButton('Back to page')
   assert.equal(
-    await execute(
-      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Request suggestion").disabled',
-    ),
-    true,
+    await execute('return document.querySelector(arguments[0]).value', [
+      '[aria-label="Reply to discussion"]',
+    ]),
+    requestText,
+    'settings preserves request draft',
   )
-  await type(
-    '[aria-label="Agent request"]',
-    'Compare this passage with the booking-calendar guidance.',
-  )
-  await click('.source-choice input')
-  await screenshot('explicit-context-and-sign-in')
-  await clickButton('Close request')
+  assert.equal(await execute('return !!document.querySelector(".agent-request")'), false)
   await invoke('native_test_candidate', { threadId })
   await stop()
   await launch()
   await click('#comments-tab')
   await until(async () => !!(await value('.proposal-card')), 'test candidate visible')
   assert.match(await value('.proposal-card'), /Test fixture · no model call/)
-  assert.equal(await value('[data-block-id=booking]'), original)
-  await clickButton('Ask for revision')
-  assert.equal(
-    await execute('return document.activeElement?.getAttribute("aria-label")'),
-    'Agent request',
-  )
-  assert.equal(
-    await execute(
-      'const r=document.activeElement.getBoundingClientRect();return r.top>=68 && r.bottom<=innerHeight',
-    ),
-    true,
-    'revision request is brought into view',
-  )
-  assert.match(
-    await value('.previous-proposal-context'),
-    /Check the equipment page for the current booking calendar/,
-  )
-  await type('[aria-label="Agent request"]', 'Make that shorter.')
-  await screenshot('revision-request-context')
-  await clickButton('Close request')
+  assert.equal(await value('.suggested-deletion'), original)
+  assert.match(await value('.ProseMirror .suggested-insertion'), /current booking calendar/)
+  assert.deepEqual((await invoke('read_page', { id: 'getting-started' })).document, before.document)
+  await screenshot('inline-suggestion-and-thread')
+  await type('[aria-label="Reply to discussion"]', '@agent Make that shorter.')
+  await click('.request-context summary')
+  assert.match(await value('.previous-proposal-context'), /current booking calendar/)
+  await screenshot('reply-with-prior-context')
   await click('.proposal-card .text-link')
   assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
   assert.match(await value('.evidence-dialog[open]'), /Revision 1/)
@@ -215,23 +212,29 @@ try {
   await type(
     '[aria-label="Reply to discussion"]',
     'The source supports a calendar link; keep the instructions brief.',
+    true,
   )
-  await click('.reply-composer button')
+  await clickButton('Reply')
   await clickButton('Resolve thread')
   assert.match(await value('.discussion-heading'), /Resolved/)
   assert.match(await value('.proposal-card'), /Suggested edit/)
   await clickButton('Reopen thread')
-  await clickButton('Edit suggestion')
+  assert.equal(await execute('return !!document.querySelector(".reply-composer")'), true)
+  await clickButton('Edit suggested text')
   const wording =
     'Check the equipment page for current booking instructions before your first session.'
+  await type('[aria-label="Edit proposed wording"]', 'A version to discard.', true)
+  await clickButton('Cancel edits')
+  assert.match(await value('.suggested-insertion'), /current booking calendar/)
+  assert.deepEqual((await invoke('read_page', { id: 'getting-started' })).document, before.document)
+  await clickButton('Edit suggested text')
   await type('[aria-label="Edit proposed wording"]', wording, true)
-  await type('[aria-label="Reason for proposal revision"]', 'Keep the wording concise.')
-  await clickButton('Save proposal revision')
-  await until(
-    async () => (await value('.proposal-diff ins')) === wording,
-    'human candidate revision',
+  assert.equal(
+    await execute(
+      'return document.querySelector(".ProseMirror").contains(document.querySelector(".inline-wording"))',
+    ),
+    true,
   )
-  assert.equal(await value('[data-block-id=booking]'), original)
   const tabsTop = await execute(
     'return document.querySelector(".tabs").getBoundingClientRect().top',
   )
@@ -240,12 +243,15 @@ try {
   assert.equal(
     await execute('return document.querySelector(".tabs").getBoundingClientRect().top'),
     tabsTop,
-    'tabs remain visible with a long discussion',
   )
-  await screenshot('review-before-accept')
-  await clickButton('Accept edit')
-  await until(async () => (await value('.metadata'))?.includes('Revision 2'), 'accepted revision')
+  await screenshot('inline-human-edit')
+  await clickButton('Accept edited')
+  await until(
+    async () => (await value('.metadata'))?.includes('Revision 2'),
+    'accepted edited revision',
+  )
   assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
+  assert.equal(await execute('return !!document.querySelector(".inline-suggestion")'), false)
   await click('[data-citation-id]')
   assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
   await clickButton('Back to discussion')
@@ -276,7 +282,11 @@ try {
     async () => (await value('.discussion'))?.includes(comment),
     'persistent conversation',
   )
-  assert.match(await value('.discussion'), /human revision/)
+  assert.match(await value('.discussion'), /You · Edited suggestion/)
+  assert.equal(
+    (await invoke('list_discussions', { id: 'getting-started' }))[0].proposals.at(-1).origin,
+    'human revision',
+  )
   const accepted = await invoke('read_page', { id: 'getting-started' })
   const rejectedThread = await createComment(
     'Check this again, but do not publish a change until I accept.',
@@ -297,6 +307,9 @@ try {
   await until(async () => !!(await value('.thread-list')), 'reopened threads')
   await click('.thread-list button:last-child')
   assert.match(await value('.proposal-card'), /Rejected edit/)
+  await selectBooking()
+  assert.ok(await value('.comment-composer'), 'same passage can be selected again after rejection')
+  await click('.comment-composer button[type=button]')
   await request(endpoint('/window/rect'), { width: 980, height: 760 })
   await screenshot('compact-review')
   assert.equal(await execute('return document.documentElement.scrollWidth<=innerWidth'), true)
@@ -323,27 +336,36 @@ try {
   )
   assert.equal(
     await execute(
-      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept edit").disabled',
+      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept").disabled',
     ),
     true,
   )
-  await clickButton('Refresh suggestion')
-  assert.match(await value('.agent-request'), /Select the current passage/)
+  assert.equal(
+    await execute('return !!document.querySelector(".inline-suggestion")'),
+    false,
+    'stale changes are not projected onto the article',
+  )
+  await type('[aria-label="Reply to discussion"]', '@agent Refresh this suggestion.')
+  await click('.request-context summary')
+  assert.match(await value('.request-context'), /Select the current passage/)
   await selectBooking()
-  await clickButton('Use selected passage')
+  assert.ok((await value('.request-context')).includes(wording))
   await screenshot('stale-request-requires-reselection')
-  await clickButton('Close request')
+  await click('.comment-composer button[type=button]')
   await invoke('native_test_candidate', { threadId: staleThread })
   await reload()
   await click('.thread-list button:last-child')
   assert.equal(
     await execute(
-      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept edit").disabled',
+      'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept").disabled',
     ),
     false,
   )
-  assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
-  await clickButton('Accept edit')
+  assert.deepEqual(
+    (await invoke('read_page', { id: 'getting-started' })).document,
+    (await invoke('read_revision', { id: 'getting-started', revision: 3 })).document,
+  )
+  await clickButton('Accept')
   await until(
     async () => (await value('.metadata'))?.includes('Revision 4'),
     'explicit refreshed acceptance',
@@ -360,7 +382,10 @@ try {
         model: 'Test-only candidate injection; no live model inference',
         checks: [
           'passage comment',
-          'explicit source context',
+          'linked evidence context disclosed in the thread',
+          'inline preview and cancelled human edit do not alter canonical JSON',
+          'Settings round trip preserves reply draft',
+          'ordinary replies do not invoke the agent',
           'sign-in required',
           'evidence and return',
           'reply',
@@ -375,6 +400,7 @@ try {
           'original and accepted revision views',
           'restart persistence',
           'rejection preserves wording and citations',
+          'repeat passage selection after rejection and cancelled comment',
           'compact layout',
         ],
       },
@@ -389,6 +415,10 @@ try {
   try {
     if (session) await screenshot('failure')
   } catch {}
+  await writeFile(
+    join(artifacts, 'result.json'),
+    JSON.stringify({ passed: false, error: String(error) }, null, 2),
+  )
   throw error
 } finally {
   await stop()

@@ -10,12 +10,15 @@ Active spike: `app-agent-runtime`. Aslan authorized foundation work and feasibil
 Ask the agent for help from the app, see its progress and evidence, cancel it, and recover from account limits without losing work or starting an unexpected paid request.
 
 ## Scope
-A replaceable Rust adapter using the documented app-owned Sign in with ChatGPT flow and Responses API. The app constructs explicit, tool-free requests from selected passage/source data and validates candidate output before S05 stores it. OAuth uses PKCE, state, nonce and signed identity validation; credentials stay in protected application storage outside the frontend, repository and portable exports. The installed Codex app-server remains a read-only readiness probe because its inherited instructions/tools failed D5 isolation.
+A replaceable Rust adapter using the documented app-owned Sign in with ChatGPT flow and Responses API. The app constructs explicit, tool-free requests from the selected passage and bounded linked source data and validates candidate output before S05 stores it. OAuth uses PKCE, state, nonce and signed identity validation; credentials stay in protected application storage outside the frontend, repository and portable exports. The installed Codex app-server remains a read-only readiness probe because its inherited instructions/tools failed D5 isolation.
 
 The authorized work permits a bounded synthetic model request after isolation verification and user sign-in. Out of scope: credential copying, inherited shell/filesystem access, API billing fallback, multi-agent orchestration and external connectors. Account entitlement and live generation must be demonstrated; a documented protocol alone does not prove them.
 
 ## Design basis
 [Ask within a passage](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-89154&scaling=scale-down-width&hide-ui=1) · [Global chat opened](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-93882&scaling=scale-down-width&hide-ui=1) · [Cited answer](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-94018&scaling=scale-down-width&hide-ui=1). Ordinary navigation waits for a human prompt. Attaching a file starts the intended intake path only after the relevant user action; chat does not begin in a pre-filled halfway state.
+
+## Current app entry points
+ChatGPT connection, renewal and model preference live in Settings. An explicit `@agent` mention in an initial passage comment or thread reply starts a request. The thread discloses the passage, linked source excerpts and exact prior draft. Context is bounded to the page’s pinned citations and directly attached recordings; unrelated workspace objects are excluded. Follow-up suggestions retain pinned prior evidence. No source picker, separate request form or ambient workspace access is required.
 
 ## Dependencies and interface ownership
 Completion prerequisites: No completed feature prerequisite; contracts can be drafted against fixtures. These are completion dependencies, not a ban on early contract/design work. Read the coordinating map for the smaller M0/M1 handoffs.

@@ -275,7 +275,7 @@ async fn concurrent_repeated_acceptance_publishes_once() {
 #[tokio::test]
 async fn blank_editor_paragraphs_do_not_break_source_selection() {
     let (_dir, s) = setup().await;
-    let mut page = s.read("getting-started").await.unwrap();
+    let mut page = s.read("orientation-recording").await.unwrap();
     page.document.doc.content.push(Block::Paragraph {
         attrs: BlockAttrs {
             block_id: "blank".into(),
@@ -283,7 +283,7 @@ async fn blank_editor_paragraphs_do_not_break_source_selection() {
         content: vec![],
     });
     s.save(&page.id, 1, &page.document).await.unwrap();
-    let sources = s.available_evidence().await.unwrap();
+    let sources = s.discussion_evidence("getting-started").await.unwrap();
     assert!(
         sources
             .iter()
@@ -361,4 +361,31 @@ async fn revision_requests_include_exact_previous_draft_and_reject_obsolete_cont
         .await
         .is_err()
     );
+}
+
+#[tokio::test]
+async fn discussion_context_excludes_unrelated_objects_and_keeps_cited_revision() {
+    let (_dir, s) = setup().await;
+    let source = s.read("orientation-recording").await.unwrap();
+    sqlx::query("INSERT INTO objects(id,title,kind,current_revision) VALUES('unrelated','Unrelated recording','recording',1)").execute(&s.pool).await.unwrap();
+    sqlx::query("INSERT INTO revisions(object_id,revision,document_json,actor_id) VALUES('unrelated',1,?,'example-seed')").bind(serde_json::to_string(&source.document).unwrap()).execute(&s.pool).await.unwrap();
+    let sources = s.discussion_evidence("getting-started").await.unwrap();
+    assert_eq!(sources.len(), 1);
+    assert_eq!(sources[0].source.object_id, "orientation-recording");
+    let d = pending(&s).await;
+    s.decide_proposal(&d.proposals[0].id, true).await.unwrap();
+    assert_eq!(
+        s.discussion_evidence("getting-started")
+            .await
+            .unwrap()
+            .len(),
+        1
+    );
+    s.save("orientation-recording", 1, &source.document)
+        .await
+        .unwrap();
+    let sources = s.discussion_evidence("getting-started").await.unwrap();
+    assert!(sources.iter().any(|e| e.source.revision == 1));
+    assert!(sources.iter().any(|e| e.source.revision == 2));
+    assert!(!sources.iter().any(|e| e.source.object_id == "unrelated"));
 }

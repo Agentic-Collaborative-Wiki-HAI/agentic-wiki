@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { hasUnsupportedPaste, wikiExtensions } from './editor'
 import { api } from './api'
 import ReviewRail from './ReviewRail.vue'
+import AgentSettings from './AgentSettings.vue'
+import { showInlineReview, type InlineReviewState } from './inlineReview'
+const settingsOpen = ref(false)
+const reviewPreview = shallowRef<InlineReviewState>({
+  proposal: null,
+  anchor: null,
+  editing: false,
+})
 import type { PassageAnchor } from './generated/PassageAnchor'
 import type { Discussion } from './generated/Discussion'
 const selectionAnchor = ref<PassageAnchor | null>(null)
@@ -33,6 +41,16 @@ const chatButton = ref<HTMLButtonElement>(),
 let draftTimer: ReturnType<typeof setTimeout> | undefined
 let draftWrites = Promise.resolve()
 let loadSequence = 0
+watch(
+  () => [editor.value, editing.value, reviewPreview.value] as const,
+  () => {
+    if (editor.value)
+      showInlineReview(
+        editor.value,
+        editing.value ? { proposal: null, anchor: null, editing: false } : reviewPreview.value,
+      )
+  },
+)
 const headings = computed(
   () =>
     page.value?.document.doc.content
@@ -103,6 +121,7 @@ async function loadPage(id: string) {
     const loaded = await api.read(id)
     if (seq !== loadSequence) return
     editor.value?.destroy()
+    reviewPreview.value = { proposal: null, anchor: null, editing: false }
     page.value = loaded
     selectionAnchor.value = null
     selectedText.value = ''
@@ -111,7 +130,7 @@ async function loadPage(id: string) {
       content: loaded.document.doc,
       editable: false,
       editorProps: {
-        attributes: { 'aria-label': 'Page content', role: 'document' },
+        attributes: { 'aria-label': 'Page content', role: 'document', tabindex: '0' },
         handlePaste: (_view, event) => {
           if (!hasUnsupportedPaste(event.clipboardData?.getData('text/html') ?? '')) return false
           error.value =
@@ -240,10 +259,33 @@ async function toggleChat() {
   await nextTick()
   ;(chatOpen.value ? chatClose.value : chatButton.value)?.focus()
 }
-function clearSelection() {
+function goHome() {
+  settingsOpen.value = false
+  void loadPage('getting-started')
+}
+function openSettings() {
+  settingsOpen.value = true
+}
+async function closeSettings() {
+  settingsOpen.value = false
+  await nextTick()
+  document.querySelector<HTMLButtonElement>('.settings-button')?.focus()
+}
+async function clearSelection() {
+  const e = editor.value
+  const position = e?.state.selection.to
   selectionAnchor.value = null
   selectedText.value = ''
+  await nextTick()
+  if (e && e === editor.value && position !== undefined) {
+    // Return focus after removing the composer; removing a focused textarea can otherwise discard the restored browser selection.
+    e.view.dom.focus({ preventScroll: true })
+    e.commands.setTextSelection(position)
+    const { node, offset } = e.view.domAtPos(position)
+    window.getSelection()?.collapse(node, offset)
+  }
 }
+
 async function startComment() {
   activeTab.value = 'comments'
   await nextTick()
@@ -276,8 +318,11 @@ onBeforeUnmount(() => {
         >
           <img :src="icon('tree')" alt="" />
         </button>
-        <button class="brand" @click="loadPage('getting-started')">The Lab</button>
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <button class="brand" @click="goHome">The Lab</button>
+        <nav v-if="settingsOpen" class="breadcrumbs" aria-label="Breadcrumb">
+          <span>Settings</span><span>/</span><span class="crumb-current">Agent connection</span>
+        </nav>
+        <nav v-else class="breadcrumbs" aria-label="Breadcrumb">
           <span>Equipment</span><span>/</span><span>Microscope</span><span>/</span
           ><span class="crumb-current">{{ page?.title ?? 'Getting started' }}</span>
         </nav>
@@ -291,7 +336,7 @@ onBeforeUnmount(() => {
       /></label>
       <nav class="global-actions" aria-label="Workspace actions">
         <button
-          v-for="name in ['maintenance', 'notifications', 'profile', 'settings'] as const"
+          v-for="name in ['maintenance', 'notifications', 'profile'] as const"
           :key="name"
           class="compact"
           disabled
@@ -299,12 +344,24 @@ onBeforeUnmount(() => {
         >
           <img :src="icon(name)" alt="" />{{ name[0].toUpperCase() + name.slice(1) }}
         </button>
+        <button
+          class="compact settings-button"
+          :aria-current="settingsOpen ? 'page' : undefined"
+          @click="openSettings"
+        >
+          <img :src="icon('settings')" alt="" />Settings
+        </button>
         <button ref="chatButton" class="compact" :aria-expanded="chatOpen" @click="toggleChat">
           <img :src="icon('chat')" alt="" />Chat
         </button>
       </nav>
     </header>
-    <div class="workspace" :class="{ 'tree-hidden': !treeOpen, 'contents-hidden': !contentsOpen }">
+    <AgentSettings v-if="settingsOpen" @back="closeSettings" />
+    <div
+      v-show="!settingsOpen"
+      class="workspace"
+      :class="{ 'tree-hidden': !treeOpen, 'contents-hidden': !contentsOpen }"
+    >
       <aside v-if="treeOpen" id="wiki-tree" class="wiki-tree" aria-label="Wiki pages">
         <div class="branch">
           <button
@@ -485,6 +542,8 @@ onBeforeUnmount(() => {
           :selection="selectionAnchor"
           :editing="editing"
           @published="loadPage(page!.id)"
+          @preview="reviewPreview = $event"
+          @settings="openSettings"
           @clear-selection="clearSelection"
           @locate="(a) => scrollTo(a.blockId)"
         />
@@ -505,7 +564,8 @@ onBeforeUnmount(() => {
       </div>
       <p>Ask the agent about your workspace.</p>
       <p class="muted">
-        Chat is not connected yet. The subscription integration is being checked separately.
+        Global chat is planned for a later milestone. You can already ask @agent in a passage’s
+        comment thread.
       </p>
       <textarea aria-label="Message Agent" placeholder="Message Agent…" disabled></textarea>
     </aside>

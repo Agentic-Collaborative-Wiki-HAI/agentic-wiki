@@ -11,7 +11,7 @@ M0 foundation and the authorized M1 passage-review batch under approved D1–D5.
 - [ ] Record human review of the complete passage-to-decision journey.
 
 ## Ready for Human QA
-- Review the passage discussion, source preview, proposed wording, accept/reject and history interactions. Start with `npm run desktop` and use fictional content. The foundation appearance has been approved; the new review interactions have not.
+- Review the passage discussion with `@agent` replies, source preview, inline proposed wording, accept/reject and history interactions. Check Settings and the return to an unfinished request. Start with `npm run desktop` and use fictional content. The foundation appearance has been approved; the new review interactions have not.
 
 ## Done
 - [x] Finish live subscription generation/cancellation verification after app sign-in. The opt-in native suite passed cancellation/retry, live initial/revised candidates, rejection, acceptance, history and process restart.
@@ -58,3 +58,10 @@ The follow-up native review and foundation suites pass. The request field receiv
 
 ## Live subscription verification — 2026-11-17
 Aslan completed app-owned sign-in. The isolated native live test passed with `gpt-6.1-sol`, using the actual UI and Rust subscription adapter. It did not use candidate injection. Inspection confirmed that the initial and shortened proposals accurately refer to the selected recording excerpt. Table-content hashes confirmed the working wiki was unchanged during the successful run. This verifies application cancellation and retry, not provider-side compute termination or quota refunds. The [QA record](../design/app-review-qa-2026-11-17.md) records reproduction and limits. The requested hands-on review remains open.
+
+## Prototype interaction verification — 2026-11-17
+The revised route follows the Prototype: `@agent` requests use the comment/reply composer, pending wording is rendered inline without changing canonical JSON, and the thread holds explanation, evidence and decision controls. Human edits happen inline with Accept edited / Cancel edits. ChatGPT sign-in and model preference live in Settings. A Settings round trip preserves the request draft.
+
+Eight frontend tests, 27 Rust behavior tests and 20 type-export checks pass, along with the ten valid/four invalid editor-contract fixtures. The real native review and foundation suites pass. The review suite includes repeat selection after cancelling a comment, inline-edit cancellation, human-edited acceptance, rejection, stale review, history and restart. The live native run with `gpt-6.2-sol` passes initial-comment and reply mentions, cancellation/retry, follow-up revision, inline preview, acceptance/rejection and restart. Exact fictional outputs were checked against their pinned recording excerpt. No fixture substitutes for a live result.
+
+Frontend formatting, Rust formatting, Clippy with warnings denied and the ordinary native debug build pass. The ordinary build excludes the native test feature. Working-wiki table hashes and all ten unrelated dirty-file hashes are unchanged. The [QA record](../design/app-review-qa-2026-11-17.md) supplies the design links, reproduction and limits. Human acceptance of the corrected interaction remains open; broader Prototype parity and later milestones are not claimed.

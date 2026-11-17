@@ -127,7 +127,7 @@ async function type(selector, text, clear = false) {
 }
 async function selectBooking() {
   await execute(
-    'const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
+    'document.querySelector(".ProseMirror").focus(); const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
   )
   await until(async () => !!(await value('.passage-actions')), 'selection action')
   await clickButton('Comment')
@@ -139,24 +139,8 @@ async function createComment(text) {
   await until(async () => (await value('.discussion'))?.includes(text), 'comment persisted')
   return execute('return document.querySelector(".discussion").dataset.threadId')
 }
-async function chooseRecording() {
-  const index = await execute(
-    'return [...document.querySelectorAll(".source-choice")].findIndex(e=>e.textContent.includes("Microscope orientation recording") && e.textContent.includes("booking calendar"))',
-  )
-  assert.ok(index >= 0, 'booking evidence is available')
-  await click(`.source-choice:nth-of-type(${index + 1}) input`)
-}
-async function readyRequest(text, chooseSource = true) {
-  await clickButton('Ask agent')
-  await until(async () => {
-    const failure = await value('.review-error')
-    if (failure) throw Error(failure)
-    return await execute('return !!document.querySelector(arguments[0])?.value', [
-      '[aria-label="Suggestion model"]',
-    ])
-  }, 'live model catalog')
-  await type('[aria-label="Agent request"]', text)
-  if (chooseSource) await chooseRecording()
+async function readyRequest(text) {
+  await type('[aria-label="Reply to discussion"]', '@agent ' + text, true)
 }
 async function discussion(id) {
   return (await invoke('list_discussions', { id: 'getting-started' })).find((d) => d.id === id)
@@ -201,16 +185,30 @@ try {
   await readyRequest(
     'Replace the outdated spreadsheet instruction with one concise sentence supported by the selected recording excerpt.',
   )
+  await click('.settings-button')
+  await until(
+    async () =>
+      await execute('return !!document.querySelector(arguments[0])?.value', [
+        '[aria-label="Suggestion model"]',
+      ]),
+    'model catalog in Settings',
+  )
   const model = await execute('return document.querySelector(arguments[0]).value', [
     '[aria-label="Suggestion model"]',
   ])
+  await clickButton('Back to page')
+  assert.match(
+    await execute('return document.querySelector(arguments[0]).value', [
+      '[aria-label="Reply to discussion"]',
+    ]),
+    /^@agent /,
+  )
   console.log('Connected model:', model)
-  checks.push('app-owned sign-in and live model catalog')
+  checks.push('app-owned sign-in and model catalog in Settings; request draft survives return')
 
-  await clickButton('Request suggestion')
+  await clickButton('Reply')
   await until(
-    async () =>
-      (await discussion(threadId)).messages.some((m) => m.body.startsWith('Asked agent:')),
+    async () => (await discussion(threadId)).messages.some((m) => m.body.startsWith('@agent')),
     'live request started',
   )
   await delay(750)
@@ -227,26 +225,26 @@ try {
   checks.push('live request cancellation saves no proposal and leaves the page unchanged')
   console.log('PASS live request cancellation')
 
-  await clickButton('Request suggestion')
+  await clickButton('Reply')
   const first = await pendingProposal(threadId)
   assert.deepEqual(
     (await invoke('read_page', { id: 'getting-started' })).document,
     original.document,
   )
   outputs.push({ step: 'initial', ...first.candidate })
-  checks.push('retry after cancellation returns a real cited proposal without publishing')
+  checks.push('@agent reply and retry return a real cited inline proposal without publishing')
   console.log('PASS live proposal and explicit source evidence')
   await click('.proposal-card .text-link')
   assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
   await clickButton('Back to discussion')
 
-  await clickButton('Ask for revision')
-  assert.ok((await value('.previous-proposal-context')).includes(first.candidate.proposedWording))
-  await type(
-    '[aria-label="Agent request"]',
+  assert.equal(await value('.ProseMirror .suggested-insertion'), first.candidate.proposedWording)
+  await readyRequest(
     'Make that shorter, keeping the booking calendar and equipment page. Use a single concise sentence.',
   )
-  await clickButton('Request suggestion')
+  await click('.request-context summary')
+  assert.ok((await value('.previous-proposal-context')).includes(first.candidate.proposedWording))
+  await clickButton('Reply')
   const revised = await pendingProposal(threadId, first.id)
   assert.equal(revised.parentId, first.id)
   assert.equal(
@@ -268,15 +266,18 @@ try {
     original.document,
   )
   assert.equal((await invoke('page_history', { id: 'getting-started' })).length, 1)
+  assert.equal(await execute('return !!document.querySelector(".inline-suggestion")'), false)
   checks.push('rejecting live output preserves wording, citations and revision count')
 
-  await readyRequest(
-    'Write one brief replacement directing readers to the booking calendar linked from the equipment page, as stated in the chosen excerpt.',
+  const acceptedThread = await createComment(
+    '@agent Write one brief replacement directing readers to the booking calendar linked from the equipment page, as stated in the orientation transcript.',
   )
-  await clickButton('Request suggestion')
-  const acceptedCandidate = await pendingProposal(threadId)
+  const acceptedCandidate = await pendingProposal(acceptedThread)
+  const posted = await discussion(acceptedThread)
+  assert.equal(posted.messages.length, 1, 'an initial @agent comment is stored once')
+  checks.push('an @agent mention in the initial passage comment also requests a suggestion')
   outputs.push({ step: 'accepted', ...acceptedCandidate.candidate })
-  await clickButton('Accept edit')
+  await clickButton('Accept')
   await until(
     async () => (await value('.metadata'))?.includes('Revision 2'),
     'live wording and citation accepted',
@@ -303,8 +304,11 @@ try {
     await value('[data-block-id=booking]'),
     acceptedCandidate.candidate.proposedWording + '[1]',
   )
-  const restored = await discussion(threadId)
-  assert.equal(restored.proposals.find((p) => p.id === revised.id).status, 'rejected')
+  const restored = await discussion(acceptedThread)
+  assert.equal(
+    (await discussion(threadId)).proposals.find((p) => p.id === revised.id).status,
+    'rejected',
+  )
   assert.equal(restored.proposals.find((p) => p.id === acceptedCandidate.id).status, 'accepted')
   checks.push('accepted page and all review decisions survive process restart')
   await writeFile(

@@ -213,12 +213,23 @@ impl Store {
     pub async fn evidence(&self, selection: &EvidenceSelection) -> Result<Evidence, Error> {
         evidence_on(&mut *self.pool.acquire().await?, selection).await
     }
-    pub async fn available_evidence(&self) -> Result<Vec<Evidence>, Error> {
+    /// Bounded context from this page's citations and directly attached recording artifacts. No workspace-wide retrieval.
+    pub async fn discussion_evidence(&self, page_id: &str) -> Result<Vec<Evidence>, Error> {
+        let page = self.read(page_id).await?;
+        let citations = self.page_citations(page_id, page.revision).await?;
         let mut conn = self.pool.acquire().await?;
-        let rows = sqlx::query("SELECT id,current_revision FROM objects ORDER BY title")
+        let mut out = vec![];
+        for citation in citations {
+            let e = evidence_on(&mut conn, &citation.source).await?;
+            if !out.iter().any(|old: &Evidence| old.id == e.id) {
+                out.push(e);
+            }
+        }
+        let rows = sqlx::query("SELECT id,current_revision FROM objects WHERE kind='recording' AND (parent_id=? OR id=?) ORDER BY title,id")
+            .bind(page_id)
+            .bind(page_id)
             .fetch_all(&mut *conn)
             .await?;
-        let mut out = vec![];
         for r in rows {
             let p = page_at(&mut conn, r.get("id"), Some(r.get("current_revision"))).await?;
             for b in p.document.doc.content {
@@ -231,19 +242,25 @@ impl Store {
                         .trim()
                         .is_empty()
                 {
-                    out.push(
-                        evidence_on(
-                            &mut conn,
-                            &EvidenceSelection {
-                                object_id: p.id.clone(),
-                                revision: p.revision,
-                                block_id: b.id().into(),
-                            },
-                        )
-                        .await?,
-                    );
+                    let e = evidence_on(
+                        &mut conn,
+                        &EvidenceSelection {
+                            object_id: p.id.clone(),
+                            revision: p.revision,
+                            block_id: b.id().into(),
+                        },
+                    )
+                    .await?;
+                    if !out.iter().any(|old| old.id == e.id) {
+                        out.push(e);
+                    }
                 }
             }
+        }
+        if out.len() > 8 {
+            return Err(invalid(
+                "This page has more source passages than this build can send. Narrower source retrieval is not available yet.",
+            ));
         }
         Ok(out)
     }

@@ -3,6 +3,7 @@ import { Plugin } from '@tiptap/pm/state'
 import { history, undo, redo } from '@tiptap/pm/history'
 import { keymap } from '@tiptap/pm/keymap'
 import { baseKeymap } from '@tiptap/pm/commands'
+import { inlineReview } from './inlineReview.ts'
 
 const blockAttrs = () => ({
   blockId: {
@@ -13,6 +14,7 @@ const blockAttrs = () => ({
 })
 
 export const wikiExtensions = [
+  inlineReview,
   Node.create({ name: 'doc', topNode: true, content: 'block+' }),
   Node.create({ name: 'text', group: 'inline' }),
   Node.create({

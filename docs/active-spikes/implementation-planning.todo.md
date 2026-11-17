@@ -14,7 +14,7 @@ D1–D5 approved on 2026-11-17. Seven workstreams are active for the foundation 
 The foundation is committed and the M1 review journey is implemented with passing native checks. App-owned sign-in and live generation/cancellation verification pass. Complete the remaining hands-on interaction QA. Do not weaken D5 or activate deferred transcription, semantic retrieval or maintenance execution.
 
 ## Ready for Human QA
-- Review the passage comment → explicit request → evidence → proposed wording → accept/reject → history journey. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
+- Review the passage comment → `@agent` reply → inline proposed wording and evidence → accept/reject → history journey, including Settings and returning to the unfinished request. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
 
 ## Done
 - [x] Establish the first runnable foundation and record both feasibility outcomes in the child spikes. Native editing/storage/recovery checks pass. The editor/Rust contract passes ten valid and four invalid cases. The Codex readiness check confirms subscription sign-in but rejects the inherited-context boundary before model generation; M1 is not complete.
@@ -40,3 +40,6 @@ The foundation checkpoint excludes the pre-existing design edits and mixed TODO 
 
 ## Live review checkpoint — 2026-11-17
 App-owned sign-in, live model discovery and the native passage-review journey pass. The check covers cancellation/retry, initial and revised model proposals, rejection, atomic wording/citation acceptance, history and restart in a temporary workspace. The working wiki and unrelated design edits are preserved. M1 awaits the requested hands-on interaction review; M2 and the deferred decisions remain outside this implementation batch.
+
+## Interaction alignment — 2026-11-17
+The user’s hands-on check confirmed the live mechanics but requested Prototype-aligned interaction. The app uses `@agent` in normal passage comments/replies, inline proposed wording, and Settings for the ChatGPT connection/model. S05 and S06 retain the implementation detail; the QA record distinguishes automated verification from the remaining human review. No later milestone is activated.

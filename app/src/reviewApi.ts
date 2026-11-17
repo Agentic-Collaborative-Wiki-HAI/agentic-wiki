@@ -16,6 +16,7 @@ export interface AskRequest {
   baseRevision: number
   parentId: string | null
   model: string
+  messageId?: string | null
 }
 export const reviewApi = {
   threads: (id: string) => invoke<Discussion[]>('list_discussions', { id }),
@@ -27,7 +28,7 @@ export const reviewApi = {
   decide: (id: string, accept: boolean) => invoke<Discussion>('decide_proposal', { id, accept }),
   revise: (id: string, wording: string, reason: string) =>
     invoke<Discussion>('revise_proposal', { id, wording, reason }),
-  sources: () => invoke<Evidence[]>('available_evidence'),
+  sources: (id: string) => invoke<Evidence[]>('discussion_evidence', { id }),
   citations: (id: string, revision: number) =>
     invoke<Evidence[]>('page_citations', { id, revision }),
   revision: (id: string, revision: number) => invoke<Page>('read_revision', { id, revision }),

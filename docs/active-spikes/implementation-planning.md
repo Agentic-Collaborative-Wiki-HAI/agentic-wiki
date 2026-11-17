@@ -219,3 +219,6 @@ Aslan launched the foundation and approved its appearance, then authorized its l
 
 ## Review implementation evidence
 Persistent passage comments, evidence previews, proposed wording, human revisions, accept/reject and original/current revision history are implemented. The native app checks persistence and return paths with labeled test candidates; the app-owned OAuth adapter passes identity/context/stream validation tests. [M1 QA record](../design/app-review-qa-2026-11-17.md) distinguishes those fixture checks from the separate passing live subscription run. The live run covers cancellation/retry, revision, rejection, acceptance and restart; M1 awaits the requested hands-on interaction review.
+
+## Prototype interaction alignment — 2026-11-17
+Aslan confirmed that the live mechanics worked and requested the Prototype’s interaction: `@agent` in the passage discussion and proposed wording inline in the article. These are implemented, with connection/model preferences under Settings and draft-preserving return to the discussion. The article preview never changes stored JSON; acceptance remains the explicit wording-and-citation transaction. The bounded source context uses page citations and attached recordings, disclosed before sending. Human acceptance of the corrected interaction remains open; this is not completion of the broader Prototype.

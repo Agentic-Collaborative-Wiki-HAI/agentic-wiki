@@ -15,8 +15,8 @@ If rustup is installed but `cargo` is not on your PATH, load the environment scr
 - Getting started and an orientation-transcript excerpt are seeded as explicitly fictional example records. Switching pages, the independent wiki/page contents controls, References/Comments tabs and an empty Chat drawer work.
 - The bounded editor supports paragraphs, headings, basic inline formatting, links and citation identities. Save publishes a revision; Cancel discards the draft and preserves the saved document. Unsupported pasted structures are rejected with an explanation.
 - Drafts autosave after a 250 ms idle period. Wait for “Draft saved on this device” before closing if you need to recover that draft. Restarting restores the saved page and offers the saved draft when editing resumes.
-- Passage comments and replies persist. Select a passage, click Comment, and add your note. The agent waits for an explicit request; the source picker shows exactly which excerpts will be sent.
-- Proposed wording stays separate from the saved page. Evidence previews show the pinned source revision. You can reply, revise, accept or reject; resolving the thread is a separate action. Accept publishes wording and citations together. A stale suggestion cannot be accepted until it is refreshed and reviewed.
+- Passage comments and replies persist. Select a passage, click Comment, and add your note. Mention `@agent` in that comment or a later reply to request a suggestion; ordinary comments do not invoke the agent. Expand Context sent to the agent to inspect the passage, linked source excerpts and prior draft before sending.
+- Proposed wording appears inline in the article as deleted and inserted text, while remaining separate from the saved document. The thread holds the explanation, pinned evidence and decision controls. You can reply with `@agent` for another version, edit the proposed wording inline, accept or reject; resolving the thread is a separate action. Accept publishes wording and citations together. A stale suggestion cannot be accepted until it is refreshed and reviewed.
 - History shows saved page revisions alongside associated discussions and decisions. Comments, original and revised candidates, citations and decisions survive restart. References/Comments tabs remain visible while scrolling a long discussion.
 - SQLite transactions enforce document validation, revision preconditions, idempotent decisions and rollback.
 
@@ -30,14 +30,16 @@ Document schema version 1 is validated in Rust before storage. Rust owns the typ
 Portable export/restore and managed artifact import are approved directions but are not built yet. Use only disposable example content until the release/recovery work is complete. Application databases, test artifacts, dependency caches and credentials are not repository content.
 
 ## Connect your subscription
-1. On Getting started, select the booking sentence, click Comment, and add a note.
-2. Choose Ask agent. Enter your request and explicitly select the source excerpts to include.
-3. Click Continue with ChatGPT and complete the browser sign-in. The app uses its own registration and consent; it does not reuse or copy Codex credentials.
-4. Choose an available model and request a suggestion. Inspect the wording and exact source evidence before accepting. Cancel ends a pending request; a completed candidate still needs your decision.
+1. Open Settings → Agent connection. Click Continue with ChatGPT, complete browser sign-in and choose an available model. The app uses its own registration and consent; it does not reuse or copy Codex credentials.
+2. Back on Getting started, select the booking sentence, click Comment and add a note.
+3. Reply in that thread with `@agent Compare this passage with the orientation transcript and suggest a revision.` You can also mention `@agent` in the initial comment. Inspect Context sent to the agent before sending if needed.
+4. Review the inline replacement, explanation and source evidence. Ask for another version in the same reply composer, or use Edit suggested text to revise the proposed wording in the article. Accept or Accept edited publishes wording and citations together; Reject preserves the saved page. Cancel edits discards only the unsaved proposed wording.
+
+If a request needs sign-in, its Settings link preserves the comment draft so you can return and send it. Cancel request stops waiting for a pending result; a completed suggestion still needs your decision.
 
 The [documented app-owned sign-in flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in) uses ChatGPT plan access. The native live check verifies model access, generation, follow-up revision, cancellation and retry using fictional content; other accounts and plan tiers are not thereby verified. Credentials live in a separate protected `chatgpt/connection.json` beneath the app-data directory, with owner-only Unix permissions. They stay out of the frontend, repository, logs and export data. Reconnect ChatGPT is available if sign-in needs renewal. There is no API-key or paid fallback.
 
-The Rust adapter constructs one request from the explicitly selected passage, human request, exact previous draft when revising, and chosen source excerpts. The request panel discloses that previous draft; it does not silently include unrelated conversation or other files. It advertises no tools and never loads global Codex instructions, skills, connectors or ambient files. Only complete, validated model output becomes a pending suggestion. Network errors, usage limits and malformed output are shown as errors, without substitute fixtures.
+The Rust adapter constructs one request from the selected passage, human request, exact previous draft when revising, and bounded linked source excerpts. Context comes from that page’s pinned citations and directly attached recordings, not an all-workspace source picker. Follow-up requests retain the pending suggestion’s pinned evidence. The thread discloses the exact context before sending; it does not silently include unrelated conversation or other files. It advertises no tools and never loads global Codex instructions, skills, connectors or ambient files. Only complete, validated model output becomes a pending suggestion. Network errors, usage limits and malformed output are shown as errors, without substitute fixtures.
 
 The separate Codex readiness probe remains available:
 ```sh

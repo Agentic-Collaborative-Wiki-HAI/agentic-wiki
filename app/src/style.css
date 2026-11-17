@@ -637,39 +637,6 @@ blockquote {
 .thread-list [aria-pressed='true'] {
   background: var(--selected);
 }
-.agent-request {
-  border-top: 1px solid var(--border);
-  margin-top: 16px;
-  padding-top: 8px;
-}
-.agent-request fieldset {
-  border: 1px solid var(--border);
-  max-height: 240px;
-  overflow: auto;
-  padding: 10px;
-}
-.agent-request .source-choice {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
-}
-.source-choice small {
-  display: block;
-  color: var(--secondary);
-  line-height: 1.4;
-  margin-top: 4px;
-}
-.source-choice input {
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-.connection-card {
-  background: var(--subtle);
-  padding: 12px;
-  margin: 12px 0;
-  font-size: 14px;
-}
 .evidence-dialog,
 .discussion-history {
   width: min(720px, 90vw);
@@ -770,4 +737,182 @@ dialog::backdrop {
   margin: 0 auto;
   max-height: 90vh;
   overflow: auto;
+}
+
+/* Conversation and inline tracked changes follow the settled Prototype. */
+.discussion {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 20px;
+}
+.comment-composer {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-top: 16px;
+}
+.discussion-heading {
+  font-size: 12px;
+}
+.discussion-heading .compact {
+  font-size: 11px;
+  padding: 2px;
+}
+.passage-location {
+  font-size: 12px;
+}
+.message-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.message-author > img {
+  flex: 0 0 32px;
+}
+.person-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--selected);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #3b6082;
+}
+.thread-message {
+  margin: 20px 0;
+}
+.thread-message time {
+  font-size: 11px;
+  margin: 0;
+}
+.context-rail .thread-message p {
+  margin: 8px 0;
+}
+.context-rail .proposal-card {
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.proposal-status {
+  font-size: 13px;
+  font-weight: 500;
+}
+.mention {
+  color: #704087;
+  background: #eedff5;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+.context-rail .review-actions {
+  margin: 8px 0;
+  gap: 6px;
+}
+.context-rail .review-actions button {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 4px;
+  min-height: 24px;
+}
+.context-rail .proposal-decisions {
+  justify-content: flex-start;
+}
+.context-rail textarea {
+  min-height: 72px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.evidence-links .text-link {
+  font-size: 13px;
+}
+.earlier-suggestion,
+.request-context,
+.discussion-history-link {
+  font-size: 12px;
+  margin: 12px 0;
+}
+.request-context summary,
+.earlier-suggestion summary {
+  cursor: pointer;
+  color: var(--secondary);
+}
+.request-context blockquote {
+  font-size: 12px;
+}
+.agent-progress {
+  background: var(--subtle);
+  padding: 10px;
+  font-size: 13px;
+}
+.agent-progress button {
+  display: block;
+}
+.discussion-anchor {
+  background: var(--selected);
+}
+.suggested-deletion {
+  color: #a6424e;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.suggested-insertion {
+  color: #246c50;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.suggestion-citation {
+  padding: 0 3px;
+  font-size: 14px;
+}
+.inline-wording {
+  display: block;
+  width: 100%;
+  min-height: 90px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  line-height: inherit;
+  color: #246c50;
+  resize: vertical;
+  background: #f7f9fb;
+}
+.settings-page {
+  overflow-y: auto;
+  flex: 1;
+  padding: 32px max(24px, calc((100vw - 820px) / 2));
+  font-size: 16px;
+  line-height: 24px;
+}
+.settings-page h1 {
+  margin-top: 20px;
+}
+.settings-page h2 {
+  font-size: 22px;
+  line-height: 32px;
+}
+.settings-page .primary {
+  padding: 8px 12px;
+}
+.settings-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.model-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0;
+}
+.model-setting select {
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--border);
+  color: inherit;
+  font: inherit;
+  max-width: 100%;
 }

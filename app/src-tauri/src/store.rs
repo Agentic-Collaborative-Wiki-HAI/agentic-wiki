@@ -112,11 +112,12 @@ impl Store {
             ),
         ] {
             let result = sqlx::query(
-                "INSERT OR IGNORE INTO objects(id,title,kind,current_revision) VALUES(?,?,?,1)",
+                "INSERT OR IGNORE INTO objects(id,title,kind,parent_id,current_revision) VALUES(?,?,?,?,1)",
             )
             .bind(id)
             .bind(title)
             .bind(kind)
+            .bind(if kind == "recording" { Some("getting-started") } else { None })
             .execute(&mut *tx)
             .await?;
             if result.rows_affected() == 1 {

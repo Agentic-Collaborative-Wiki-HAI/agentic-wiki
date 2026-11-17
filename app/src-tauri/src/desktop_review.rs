@@ -76,8 +76,14 @@ pub async fn revise_proposal(
         .map_err(|e| e.to_string())
 }
 #[tauri::command]
-pub async fn available_evidence(store: State<'_, Store>) -> Result<Vec<Evidence>, String> {
-    store.available_evidence().await.map_err(|e| e.to_string())
+pub async fn discussion_evidence(
+    store: State<'_, Store>,
+    id: String,
+) -> Result<Vec<Evidence>, String> {
+    store
+        .discussion_evidence(&id)
+        .await
+        .map_err(|e| e.to_string())
 }
 #[tauri::command]
 pub async fn page_citations(
@@ -135,6 +141,8 @@ pub struct AskRequest {
     pub base_revision: i32,
     pub parent_id: Option<String>,
     pub model: String,
+    #[serde(default)]
+    pub message_id: Option<String>,
 }
 
 #[tauri::command]
@@ -157,6 +165,19 @@ pub async fn ask_agent(
         )
         .await
         .map_err(|e| e.to_string())?;
+    if let Some(message_id) = &request.message_id {
+        let discussion = store
+            .discussion(&request.thread_id)
+            .await
+            .map_err(|e| e.to_string())?;
+        if !discussion.messages.iter().any(|m| {
+            &m.id == message_id
+                && m.actor_id == "local-operator"
+                && m.body == request.request_text.trim()
+        }) {
+            return Err("The request does not match the posted comment.".into());
+        }
+    }
     let (tx, mut cancel) = oneshot::channel();
     {
         let mut pending = runtime.requests.lock().await;
@@ -166,13 +187,12 @@ pub async fn ask_agent(
         pending.insert(request.run_id.clone(), tx);
     }
     let result = async {
-        store
-            .reply(
-                &request.thread_id,
-                &format!("Asked agent: {}", request.request_text),
-            )
-            .await
-            .map_err(|e| e.to_string())?;
+        if request.message_id.is_none() {
+            store
+                .reply(&request.thread_id, &request.request_text)
+                .await
+                .map_err(|e| e.to_string())?;
+        }
         let generation = runtime.connection.generate(&request.model, &context);
         let candidate: ProposalCandidate = tokio::select! {
             biased;

@@ -8,12 +8,13 @@ Opened 2026-11-17. Owner: Aslan’s agent in this implementation conversation. [
 Authorized M1 batch under D1–D5. Transcription, semantic retrieval, maintenance execution, shared operation and Figma writes remain outside this batch.
 
 ## To Do
-No unimplemented item remains in the bounded M1 slice. Hands-on interaction review is still open; broader review variants remain later work.
+The bounded M1 interaction uses thread mentions and inline suggestions. Human acceptance of this interaction remains open; broader review variants remain later work.
 
 ## Ready for Human QA
-- Review passage selection, the discussion and evidence presentation, and the accept/reject/history journey in the native app. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
+- Review passage selection → comment/reply with `@agent` → inline suggestion and evidence → revise/accept/reject → history in the native app. Also check Settings sign-in and returning to an unfinished reply. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
 
 ## Done
+- [x] Align requests with the Prototype comment thread and show pending edits inline in the article. Keep auth/model preferences in Settings and preserve unfinished requests across that round trip.
 - [x] Complete the live subscription-backed request and follow-up check after the user signs in. The native live suite also passed cancellation/retry, rejection, acceptance, history and restart.
 - [x] Persist anchored comments and replies, with independent discussion resolution.
 - [x] Implement proposed wording, exact evidence, human revisions and accept/reject decisions.

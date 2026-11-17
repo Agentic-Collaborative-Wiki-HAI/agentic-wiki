@@ -17,6 +17,11 @@ Out of scope: No acceptance from merely resolving a thread, agent-controlled can
 ## Design basis
 [Comment posted](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-89035&scaling=scale-down-width&hide-ui=1) → [Explicit agent request](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-89154&scaling=scale-down-width&hide-ui=1) → [Proposal](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-89285&scaling=scale-down-width&hide-ui=1) → [History](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-98958&scaling=scale-down-width&hide-ui=1). A separate [Using the microscope booking proposal](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2621-100896&scaling=scale-down-width&hide-ui=1) updates the cited Booking sheet r4/r5 requirement; do not conflate this with the Getting started transcript/calendar example.
 
+## Implemented interaction
+The initial passage comment or a later thread reply can explicitly mention `@agent`. The agent’s explanation, evidence and Accept/Reject controls appear in that conversation. The article displays the exact proposed deletion and replacement without changing persisted document JSON. Edit suggested text opens the replacement inline; Accept edited records the human revision and accepts it, while Cancel edits leaves the pending suggestion intact. Thread resolution remains independent.
+
+Connection and model preferences live in Settings. A disconnected request links there and preserves the draft. The bounded source context is drawn from page citations and directly attached recordings; the thread discloses the exact excerpts and prior proposal before submission. Human review of this corrected interaction remains open.
+
 ## Dependencies and interface ownership
 Completion prerequisites: S01, S02, S03, S04. These are completion dependencies, not a ban on early contract/design work. Read the coordinating map for the smaller M0/M1 handoffs.
 

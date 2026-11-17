@@ -112,7 +112,7 @@ mod desktop {
                 resolve_discussion,
                 decide_proposal,
                 revise_proposal,
-                available_evidence,
+                discussion_evidence,
                 page_citations,
                 read_revision,
                 subscription_status,
