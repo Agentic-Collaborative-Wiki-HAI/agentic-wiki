@@ -240,6 +240,7 @@ pub async fn cancel_agent(
 pub async fn native_test_candidate(
     store: State<'_, Store>,
     thread_id: String,
+    sources: Option<Vec<EvidenceSelection>>,
 ) -> Result<Discussion, String> {
     let d = store
         .discussion(&thread_id)
@@ -251,15 +252,19 @@ pub async fn native_test_candidate(
         .iter()
         .find(|p| p.status == "pending")
         .map(|p| p.id.as_str());
+    let sources = sources.unwrap_or_else(|| {
+        vec![EvidenceSelection {
+            range: None,
+            object_id: "orientation-recording".into(),
+            revision: 1,
+            block_id: "passage-18".into(),
+        }]
+    });
     let (context, evidence) = store
         .proposal_context(
             &thread_id,
             "Check the recording's booking-calendar guidance.",
-            &[EvidenceSelection {
-                object_id: "orientation-recording".into(),
-                revision: 1,
-                block_id: "passage-18".into(),
-            }],
+            &sources,
             &d.anchor,
             current.revision,
             parent,

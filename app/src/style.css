@@ -1032,3 +1032,78 @@ dialog::backdrop {
   color: var(--secondary);
   padding: 16px 24px 0;
 }
+
+/* Workspace authoring controls share the existing document palette. */
+.workspace-dialog {
+  width: min(760px, 90vw);
+  max-height: 85vh;
+  overflow: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 24px;
+  color: #25303c;
+}
+.workspace-dialog::backdrop {
+  background: #13253b66;
+}
+.workspace-dialog label,
+.backup-settings label {
+  display: block;
+  margin: 16px 0;
+}
+.workspace-dialog input:not([type='checkbox']),
+.workspace-dialog select,
+.backup-settings input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: white;
+  color: inherit;
+  font: inherit;
+}
+.picker-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.passage-results {
+  max-height: 32vh;
+  overflow: auto;
+  border-block: 1px solid #d3dce5;
+}
+.passage-results article,
+.passage-picker section article {
+  padding: 12px;
+  border-bottom: 1px solid #d3dce5;
+}
+.excerpt-preview {
+  padding: 12px;
+  background: #f5f7fa;
+}
+.excerpt-preview blockquote {
+  white-space: pre-wrap;
+  max-height: 24vh;
+  overflow: auto;
+}
+.search-launch {
+  text-align: left;
+  justify-content: start;
+  gap: 10px;
+  color: #586779;
+}
+.page-endnotes {
+  border-top: 1px solid #d3dce5;
+  padding: 24px 0;
+}
+.page-endnotes blockquote {
+  color: #586779;
+}
+.backup-settings form {
+  margin-block: 24px;
+}
+.backup-settings li {
+  margin-block: 12px;
+}

@@ -133,6 +133,7 @@ async function type(selector, text, clear = false) {
   await request(endpoint(`/element/${id}/value`), { text })
 }
 async function checkSelectionPopup() {
+  await invoke('native_test_focus')
   await request(endpoint('/window/rect'), { width: 1440, height: 700 })
   const before = await execute(
     'return document.querySelector("[data-block-id=booking]").getBoundingClientRect().top',
@@ -155,7 +156,7 @@ async function checkSelectionPopup() {
   const initial = await geometry()
   assert.equal(initial.fixed, 'fixed')
   assert.equal(initial.articleTop, before, 'opening the popup does not move the article')
-  assert.ok(initial.popup.width < 180, 'compact action instead of a full-width bar')
+  assert.ok(initial.popup.width < 260, 'compact action instead of a full-width bar')
   assert.ok(
     Math.abs(initial.selection.top - initial.popup.bottom - 8) < 2 ||
       Math.abs(initial.popup.top - initial.selection.bottom - 8) < 2,
@@ -187,6 +188,7 @@ async function checkSelectionPopup() {
   await request(endpoint('/window/rect'), { width: 1440, height: 960 })
 }
 async function selectBooking() {
+  await invoke('native_test_focus')
   await execute(
     'document.querySelector(".ProseMirror").focus(); const e=document.querySelector("[data-block-id=booking]"); const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',
   )
@@ -202,7 +204,7 @@ async function createComment(text) {
 }
 async function reload() {
   await clickButton('Microscope orientation recording')
-  await clickButton('Getting started')
+  await clickButton('Getting started with the microscope')
   await click('#comments-tab')
   await until(async () => !!(await value('.discussion')), 'reloaded discussion')
 }

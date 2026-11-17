@@ -219,3 +219,6 @@ tmp/
 
 # Private working references; never publish meeting or research source material.
 /reference-material/
+
+# Private app workspace exports
+*.wiki-backup

@@ -71,7 +71,7 @@ The existing `.gitignore` rule `scratch/` ignores these new briefs. They are loc
 | [S06 · Subscription-backed agent runtime and context boundary](app-agent-runtime.md) | M0 feasibility; M1 live proposal; later retrieval integration | Independent feasibility/contracts |
 | [S07 · Artifact intake and source imports](app-artifact-intake.md) | M2 | S01, S02 |
 | [S08 · Local transcription and whole-transcript review](../scratch/app-transcript-review.md) | M2 | S02, S03, S04, S07 |
-| [S09 · Wiki search, source finding and grounded answers](../scratch/app-search-retrieval.md) | M3; semantic retrieval is a separate gate within this spike | S01, S02, S04 |
+| [S09 · Wiki search, source finding and grounded answers](app-search-retrieval.md) | M3; semantic retrieval is a separate gate within this spike | S01, S02, S04 |
 | [S10 · Maintenance queue, source changes and delegated repairs](../scratch/app-maintenance.md) | M4; narrow automation after its authority gate | S02, S04, S05, S06, S11 |
 | [S11 · Settings, reviewer responsibility and action authority](../scratch/app-settings-reviewers.md) | M1 minimal actor guard; M4 local settings; shared operation in S13 | S02 |
 | [S12 · Continuous verification, recovery and desktop release](app-release-quality.md) | M0 harness; checks at every milestone; M5 release | S01, S02 |
@@ -222,3 +222,6 @@ Persistent passage comments, evidence previews, proposed wording, human revision
 
 ## Prototype interaction alignment — 2026-11-17
 Aslan confirmed that the live mechanics worked and requested the Prototype’s interaction: `@agent` in the passage discussion and proposed wording inline in the article. These are implemented, with connection/model preferences under Settings and draft-preserving return to the discussion. The article preview never changes stored JSON; acceptance remains the explicit wording-and-citation transaction. The bounded source context uses page citations and attached recordings, disclosed before sending. Human acceptance of the corrected interaction remains open; this is not completion of the broader Prototype.
+
+## N1–N3 continuation — 2026-11-17
+Approved: dynamic page tree and page creation/rename/move (S01/S02), manual citations and local keyword passage search (S04/S09), explicit source selection for requests (S06/S09), and portable backup/restore into separate local copies (S02/S12). Linked sources are the default; additional sources require explicit selection. Shareable links are captured under S13, without activating hosting or publication. Each owning spike tracks its portion and the shared native journey verifies integration.

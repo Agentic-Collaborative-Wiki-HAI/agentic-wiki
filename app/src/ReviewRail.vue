@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import PassagePicker from './PassagePicker.vue'
+import { workspaceApi } from './workspaceApi'
 import { reviewApi } from './reviewApi'
 import { connection, model, agentBusy, refreshConnection } from './subscriptionState'
 import { mentionsAgent } from './threadText'
@@ -34,7 +36,22 @@ const activeId = ref(''),
   working = ref(false)
 const active = computed(() => discussions.value.find((d) => d.id === activeId.value))
 const pending = computed(() => active.value?.proposals.find((p) => p.status === 'pending'))
-const sources = computed(() => pending.value?.evidence ?? pageSources.value)
+const chosenSources = ref<Evidence[] | null>(null)
+const linkedIds = ref<string[]>([]),
+  contextNotice = ref('')
+const picker = ref<InstanceType<typeof PassagePicker>>()
+const commentSources = computed(() => chosenSources.value ?? pageSources.value)
+const sources = computed(() => chosenSources.value ?? pending.value?.evidence ?? pageSources.value)
+function chooseSources(context: Evidence[]) {
+  chosenSources.value = context
+  sourcesError.value = ''
+}
+function openSourcePicker(forComment: boolean) {
+  void picker.value?.open('evidence', {
+    linkedIds: linkedIds.value,
+    selected: forComment ? commentSources.value : sources.value,
+  })
+}
 const sourcesError = ref(''),
   loadingSources = ref(false),
   needsConnection = ref(false)
@@ -76,6 +93,7 @@ watch(reply, (value) => {
   if (activeId.value) drafts.set(activeId.value, value)
 })
 watch(activeId, (id) => {
+  chosenSources.value = null
   reply.value = drafts.get(id) ?? ''
   editingProposal.value = ''
   error.value = ''
@@ -85,6 +103,7 @@ watch(
   () => [props.page.id, props.page.revision],
   (current, old) => {
     if (current[0] !== old?.[0]) {
+      chosenSources.value = null
       activeId.value = ''
       comment.value = ''
       needsConnection.value = false
@@ -108,23 +127,48 @@ async function reload() {
     error.value = String(e)
   }
 }
+let sourceTimer: ReturnType<typeof setTimeout> | undefined
 watch(
-  () => [props.page.id, props.page.revision],
-  async () => {
+  () => [
+    props.page.id,
+    props.page.revision,
+    props.selection?.quote,
+    active.value?.anchor.quote,
+    comment.value,
+    reply.value,
+  ],
+  () => {
     const seq = ++sourceSequence
-    pageSources.value = []
+    clearTimeout(sourceTimer)
     sourcesError.value = ''
     loadingSources.value = true
-    try {
-      const evidence = await reviewApi.sources(props.page.id)
-      if (seq === sourceSequence) pageSources.value = evidence
-    } catch (e) {
-      if (seq === sourceSequence) sourcesError.value = String(e)
-    } finally {
-      if (seq === sourceSequence) loadingSources.value = false
-    }
+    sourceTimer = setTimeout(async () => {
+      try {
+        const text = Array.from(
+          `${props.selection?.quote ?? active.value?.anchor.quote ?? ''} ${props.selection ? comment.value : reply.value}`,
+        )
+          .slice(0, 1000)
+          .join('')
+        const context = await workspaceApi.context(props.page.id, text)
+        if (seq === sourceSequence) {
+          pageSources.value = context.evidence
+          linkedIds.value = context.linkedIds
+          contextNotice.value = context.notice
+        }
+      } catch (e) {
+        if (seq === sourceSequence) sourcesError.value = String(e)
+      } finally {
+        if (seq === sourceSequence) loadingSources.value = false
+      }
+    }, 250)
   },
   { immediate: true },
+)
+watch(
+  () => props.selection?.quote,
+  () => {
+    chosenSources.value = null
+  },
 )
 watch(
   () =>
@@ -171,7 +215,7 @@ async function readyForAgent(context = sources.value) {
   }
   needsConnection.value = !connection.value?.connected || !!connection.value.waiting || !model.value
   if (needsConnection.value) return false
-  if (loadingSources.value || sourcesError.value || !context.length) {
+  if ((!chosenSources.value && (loadingSources.value || sourcesError.value)) || !context.length) {
     error.value =
       sourcesError.value ||
       (loadingSources.value
@@ -188,8 +232,8 @@ async function postComment() {
     baseRevision = props.page.revision
   if (!anchor || !text || agentBusy.value || working.value) return
   const asks = mentionsAgent(text)
-  if (asks && !(await readyForAgent(pageSources.value))) return
-  const sourceContext = pageSources.value
+  if (asks && !(await readyForAgent(commentSources.value))) return
+  const sourceContext = commentSources.value
   if (pageId !== props.page.id || baseRevision !== props.page.revision) return
   let d: Discussion | undefined
   await action(async () => {
@@ -338,11 +382,21 @@ async function inspectThread(d: Discussion) {
 onBeforeUnmount(() => {
   ++sequence
   ++sourceSequence
+  clearTimeout(sourceTimer)
   if (runId.value) void reviewApi.cancel(runId.value)
 })
-defineExpose({ reload, openCitation, openEvidence, focusComment, discussions, inspectThread })
+defineExpose({
+  reload,
+  openCitation,
+  openEvidence,
+  focusComment,
+  discussions,
+  citations,
+  inspectThread,
+})
 </script>
 <template>
+  <PassagePicker ref="picker" @evidence="chooseSources" />
   <p v-if="error" class="review-error" role="alert">{{ error }}</p>
   <p v-if="notice" class="review-notice" role="status">{{ notice }}</p>
   <p v-if="needsConnection" class="connection-prompt">
@@ -382,16 +436,25 @@ defineExpose({ reload, openCitation, openEvidence, focusComment, discussions, in
       ></textarea>
       <details v-if="mentionsAgent(comment)" class="request-context">
         <summary>Context sent to the agent</summary>
-        <p>Your comment, the selected passage above, and these linked sources:</p>
+        <p>Your comment, the selected passage above, and these source excerpts:</p>
         <p v-if="loadingSources">Loading linked sources…</p>
         <p v-if="sourcesError" class="review-warning">{{ sourcesError }}</p>
-        <div v-for="e in pageSources" :key="e.id">
+        <p>{{ chosenSources ? 'Using your selected excerpts.' : contextNotice }}</p>
+        <button
+          type="button"
+          class="text-link"
+          :disabled="agentBusy"
+          @click="openSourcePicker(true)"
+        >
+          Choose sources
+        </button>
+        <div v-for="e in commentSources" :key="e.id">
           <button type="button" class="text-link" @click="openEvidence(e)">
             {{ e.title }} · revision {{ e.source.revision }}
           </button>
           <blockquote>{{ e.quote }}</blockquote>
         </div>
-        <p v-if="!loadingSources && !pageSources.length">
+        <p v-if="!loadingSources && !commentSources.length">
           No linked source excerpts are available.
         </p>
       </details>
@@ -558,6 +621,23 @@ defineExpose({ reload, openCitation, openEvidence, focusComment, discussions, in
         ></textarea>
         <details v-if="mentionsAgent(reply)" class="request-context">
           <summary>Context sent to the agent</summary>
+          <p>
+            {{
+              chosenSources
+                ? 'Using your selected excerpts.'
+                : pending
+                  ? 'Using the sources pinned to this pending suggestion.'
+                  : contextNotice
+            }}
+          </p>
+          <button
+            type="button"
+            class="text-link"
+            :disabled="agentBusy"
+            @click="openSourcePicker(false)"
+          >
+            Choose sources
+          </button>
           <p>
             Your reply and this passage<span v-if="pending">, with the previous suggestion</span>:
           </p>

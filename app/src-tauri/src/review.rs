@@ -26,7 +26,17 @@ fn bounded(value: &str) -> Result<(), Error> {
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, TS)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 #[ts(export, export_to = "../../src/generated/")]
+pub struct EvidenceRange {
+    pub from_utf16: usize,
+    pub to_utf16: usize,
+}
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, TS)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[ts(export, export_to = "../../src/generated/")]
 pub struct EvidenceSelection {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[ts(optional)]
+    pub range: Option<EvidenceRange>,
     pub object_id: String,
     pub revision: i32,
     pub block_id: String,
@@ -108,7 +118,7 @@ pub(crate) async fn page_at(
         document,
     })
 }
-fn check_anchor(page: &Page, anchor: &PassageAnchor) -> Result<(), Error> {
+pub(crate) fn check_anchor(page: &Page, anchor: &PassageAnchor) -> Result<(), Error> {
     if anchor.state != AnchorState::Attached || anchor.from_utf16 >= anchor.to_utf16 {
         return Err(invalid("Select a passage in one paragraph."));
     }
@@ -121,7 +131,7 @@ fn check_anchor(page: &Page, anchor: &PassageAnchor) -> Result<(), Error> {
     })?;
     Ok(())
 }
-async fn evidence_on(
+pub(crate) async fn evidence_on(
     conn: &mut SqliteConnection,
     selection: &EvidenceSelection,
 ) -> Result<Evidence, Error> {
@@ -138,9 +148,22 @@ async fn evidence_on(
         .iter()
         .map(Inline::plain)
         .collect::<String>();
+    let (quote, suffix) = if let Some(range) = &selection.range {
+        if range.from_utf16 >= range.to_utf16 {
+            return Err(invalid("Choose a nonempty source passage."));
+        }
+        let start = utf16_boundary(&quote, range.from_utf16)?;
+        let end = utf16_boundary(&quote, range.to_utf16)?;
+        (
+            quote[start..end].to_owned(),
+            format!(":{}-{}", range.from_utf16, range.to_utf16),
+        )
+    } else {
+        (quote, String::new())
+    };
     bounded(&quote)?;
     Ok(Evidence {
-        id: format!("{}:{}:{}", page.id, page.revision, block.id()),
+        id: format!("{}:{}:{}{}", page.id, page.revision, block.id(), suffix),
         source: selection.clone(),
         title: page.title,
         quote,
@@ -215,55 +238,9 @@ impl Store {
     }
     /// Bounded context from this page's citations and directly attached recording or imported text sources. No workspace-wide retrieval.
     pub async fn discussion_evidence(&self, page_id: &str) -> Result<Vec<Evidence>, Error> {
-        let page = self.read(page_id).await?;
-        let citations = self.page_citations(page_id, page.revision).await?;
-        let mut conn = self.pool.acquire().await?;
-        let mut out = vec![];
-        for citation in citations {
-            let e = evidence_on(&mut conn, &citation.source).await?;
-            if !out.iter().any(|old: &Evidence| old.id == e.id) {
-                out.push(e);
-            }
-        }
-        let rows = sqlx::query("SELECT id,current_revision FROM objects WHERE (kind='recording' OR EXISTS(SELECT 1 FROM imported_sources s WHERE s.object_id=objects.id)) AND (parent_id=? OR id=?) ORDER BY title,id")
-            .bind(page_id)
-            .bind(page_id)
-            .fetch_all(&mut *conn)
-            .await?;
-        for r in rows {
-            let p = page_at(&mut conn, r.get("id"), Some(r.get("current_revision"))).await?;
-            for b in p.document.doc.content {
-                if matches!(b, Block::Paragraph { .. })
-                    && !b
-                        .content()
-                        .iter()
-                        .map(Inline::plain)
-                        .collect::<String>()
-                        .trim()
-                        .is_empty()
-                {
-                    let e = evidence_on(
-                        &mut conn,
-                        &EvidenceSelection {
-                            object_id: p.id.clone(),
-                            revision: p.revision,
-                            block_id: b.id().into(),
-                        },
-                    )
-                    .await?;
-                    if !out.iter().any(|old| old.id == e.id) {
-                        out.push(e);
-                    }
-                }
-            }
-        }
-        if out.len() > 8 {
-            return Err(invalid(
-                "This page has more source passages than this build can send. Narrower source retrieval is not available yet.",
-            ));
-        }
-        Ok(out)
+        Ok(self.default_evidence(page_id, "").await?.evidence)
     }
+
     pub async fn discussions(&self, page_id: &str) -> Result<Vec<Discussion>, Error> {
         let mut conn = self.pool.acquire().await?;
         let ids: Vec<String> =
@@ -571,7 +548,7 @@ impl Store {
                     return Err(invalid("The cited passage cannot be verified."));
                 }
                 let citation_id = id();
-                sqlx::query("INSERT INTO citations(id,source_id,source_revision,block_id,quote) VALUES(?,?,?,?,?)").bind(&citation_id).bind(&evidence.source.object_id).bind(evidence.source.revision).bind(&evidence.source.block_id).bind(&evidence.quote).execute(&mut *tx).await?;
+                sqlx::query("INSERT INTO citations(id,source_id,source_revision,block_id,quote,range_json) VALUES(?,?,?,?,?,?)").bind(&citation_id).bind(&evidence.source.object_id).bind(evidence.source.revision).bind(&evidence.source.block_id).bind(&evidence.quote).bind(evidence.source.range.as_ref().map(serde_json::to_string).transpose()?).execute(&mut *tx).await?;
                 replacement.push(Inline::Citation {
                     attrs: CitationAttrs { citation_id },
                 });
@@ -623,6 +600,10 @@ impl Store {
                             object_id: r.get("source_id"),
                             revision: r.get("source_revision"),
                             block_id: r.get("block_id"),
+                            range: r
+                                .get::<Option<String>, _>("range_json")
+                                .map(|v| serde_json::from_str(&v))
+                                .transpose()?,
                         },
                     )
                     .await?;

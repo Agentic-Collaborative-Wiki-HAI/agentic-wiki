@@ -5,3 +5,8 @@ src-tauri/gen/
 .artifacts/
 .runtime/
 *.sqlite*
+
+# Private workspace exports and alternate SQLite filenames
+*.wiki-backup
+*.db
+*.db-*

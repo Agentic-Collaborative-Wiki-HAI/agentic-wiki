@@ -122,6 +122,8 @@ try {
     if (e.message.startsWith('Test port')) throw e
   }
   await launch()
+  await execute('window.__TAURI_INTERNALS__.invoke("native_test_focus");return true')
+  await until(async () => await execute('return document.hasFocus()'), 'native window focus')
   assert.equal(await value('h1'), 'Getting started with the microscope')
   await screenshot('getting-started')
   const original = await value('[data-block-id=booking]')
@@ -144,7 +146,7 @@ try {
   assert.equal(await value('.chat-drawer'), null)
   await clickButton('Microscope orientation recording')
   assert.equal(await value('h1'), 'Microscope orientation recording')
-  await clickButton('Getting started')
+  await clickButton('Getting started with the microscope')
   assert.equal(await value('[data-block-id=booking]'), original)
   await execute(
     'const r=document.createRange();r.selectNodeContents(document.querySelector("[data-block-id=booking]"));const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event("selectionchange"));return true',

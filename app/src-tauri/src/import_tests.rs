@@ -139,6 +139,7 @@ async fn import_retry_refresh_history_and_original_bytes_are_atomic() {
             .any(|e| e.source.object_id == first.id)
     );
     let old = EvidenceSelection {
+        range: None,
         object_id: first.id.clone(),
         revision: 1,
         block_id: "import-1".into(),

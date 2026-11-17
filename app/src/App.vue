@@ -26,6 +26,70 @@ const reviewRail = ref<InstanceType<typeof ReviewRail>>()
 import type { Page } from './generated/Page'
 import type { RichDocument } from './generated/RichDocument'
 import RevisionHistory from './RevisionHistory.vue'
+import WikiTree from './WikiTree.vue'
+import PageDetails from './PageDetails.vue'
+import PassagePicker from './PassagePicker.vue'
+import { workspaceApi } from './workspaceApi'
+import { ancestors } from './wikiTree'
+import type { WikiRecord } from './generated/WikiRecord'
+import type { PassageResult } from './generated/PassageResult'
+import type { Evidence } from './generated/Evidence'
+const records = ref<WikiRecord[]>([])
+const pageDetails = ref<InstanceType<typeof PageDetails>>()
+const passagePicker = ref<InstanceType<typeof PassagePicker>>()
+const breadcrumb = computed(() => ancestors(records.value, page.value?.id ?? ''))
+const record = computed(() => records.value.find((r) => r.id === page.value?.id))
+let citationTarget: { pageId: string; revision: number; anchor: PassageAnchor; id: string } | null =
+  null
+async function detailsSaved(saved: Page, created: boolean) {
+  await refreshSources()
+  await loadPage(saved.id)
+  if (created) await beginEdit()
+}
+async function openSearchHit(hit: PassageResult) {
+  await loadPage(hit.source.objectId)
+  await nextTick()
+  if (page.value?.id !== hit.source.objectId) return
+  if (page.value.revision !== hit.source.revision) {
+    error.value = 'This page changed since the search. Search again for its current wording.'
+    return
+  }
+  scrollTo(hit.source.blockId)
+  status.value = 'Opened the matching passage.'
+}
+async function startCitation() {
+  if (!page.value || !selectionAnchor.value || editing.value) return
+  citationTarget = {
+    pageId: page.value.id,
+    revision: page.value.revision,
+    anchor: { ...selectionAnchor.value },
+    id: crypto.randomUUID(),
+  }
+  await passagePicker.value?.open('cite')
+}
+async function cite(evidence: Evidence) {
+  const target = citationTarget
+  if (!target || busy.value) return
+  busy.value = true
+  try {
+    await workspaceApi.cite(
+      target.id,
+      target.pageId,
+      target.revision,
+      target.anchor,
+      evidence.source,
+    )
+    busy.value = false
+    activeTab.value = 'references'
+    await loadPage(target.pageId)
+    status.value = 'Citation saved with its source revision.'
+    citationTarget = null
+  } catch (e) {
+    error.value = String(e)
+  } finally {
+    busy.value = false
+  }
+}
 
 const page = ref<Page | null>(null)
 const editor = shallowRef<Editor>()
@@ -34,9 +98,6 @@ const editing = ref(false),
   treeOpen = ref(true),
   contentsOpen = ref(true),
   chatOpen = ref(false)
-const equipmentOpen = ref(true),
-  microscopeOpen = ref(true),
-  guideOpen = ref(true)
 const activeTab = ref<'references' | 'comments'>('references')
 const error = ref(''),
   status = ref(''),
@@ -298,6 +359,13 @@ async function startComment() {
   await nextTick()
   await reviewRail.value?.focusComment()
 }
+function returnToCitation(id: string) {
+  const marker = document.querySelector<HTMLElement>(
+    `.ProseMirror [data-citation-id="${CSS.escape(id)}"]`,
+  )
+  marker?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  marker?.focus({ preventScroll: true })
+}
 function citationClick(event: MouseEvent) {
   const marker = (event.target as HTMLElement).closest<HTMLElement>('[data-citation-id]')
   if (marker?.dataset.citationId) void reviewRail.value?.openCitation(marker.dataset.citationId)
@@ -306,7 +374,9 @@ async function showHistoryThread(d: Discussion) {
   await reviewRail.value?.inspectThread(d)
 }
 async function refreshSources() {
-  importedSources.value = await sourceApi.imported()
+  const [sources, pages] = await Promise.all([sourceApi.imported(), workspaceApi.records()])
+  importedSources.value = sources
+  records.value = pages
 }
 async function imported(source: Page) {
   chatOpen.value = false
@@ -353,21 +423,23 @@ onBeforeUnmount(() => {
           <span>Settings</span><span>/</span
           ><span class="crumb-current">Connections and sources</span>
         </nav>
-        <nav v-else-if="currentSource" class="breadcrumbs" aria-label="Breadcrumb">
-          <span>Sources</span><span>/</span><span class="crumb-current">{{ page?.title }}</span>
-        </nav>
         <nav v-else class="breadcrumbs" aria-label="Breadcrumb">
-          <span>Equipment</span><span>/</span><span>Microscope</span><span>/</span
-          ><span class="crumb-current">{{ page?.title ?? 'Getting started' }}</span>
+          <template v-for="(r, index) in breadcrumb" :key="r.id"
+            ><span v-if="index">/</span
+            ><button :class="{ 'crumb-current': r.id === page?.id }" @click="loadPage(r.id)">
+              {{ r.title }}
+            </button></template
+          >
         </nav>
       </div>
-      <label class="search"
-        ><img :src="icon('search')" alt="" /><input
-          placeholder="Search wiki"
-          disabled
-          aria-label="Search wiki — available in a later milestone"
-          title="Search will be available in a later milestone"
-      /></label>
+      <button
+        class="search search-launch"
+        aria-label="Search wiki"
+        :disabled="editing || busy"
+        @click="passagePicker?.open('navigate')"
+      >
+        <img :src="icon('search')" alt="" />Search wiki
+      </button>
       <nav class="global-actions" aria-label="Workspace actions">
         <button
           v-for="name in ['maintenance', 'notifications', 'profile'] as const"
@@ -397,93 +469,7 @@ onBeforeUnmount(() => {
       :class="{ 'tree-hidden': !treeOpen, 'contents-hidden': !contentsOpen }"
     >
       <aside v-if="treeOpen" id="wiki-tree" class="wiki-tree" aria-label="Wiki pages">
-        <div class="branch">
-          <button
-            class="chevron"
-            aria-label="Expand or collapse Equipment"
-            :aria-expanded="equipmentOpen"
-            @click="equipmentOpen = !equipmentOpen"
-          >
-            <img :src="icon('chevron')" alt="" /></button
-          ><span>Equipment</span>
-        </div>
-        <div v-if="equipmentOpen">
-          <div class="branch depth-one">
-            <button
-              class="chevron"
-              aria-label="Expand or collapse Microscope"
-              :aria-expanded="microscopeOpen"
-              @click="microscopeOpen = !microscopeOpen"
-            >
-              <img :src="icon('chevron')" alt="" /></button
-            ><span>Microscope</span>
-          </div>
-          <div v-if="microscopeOpen">
-            <div class="branch depth-two" :class="{ selected: page?.id === 'getting-started' }">
-              <button
-                class="chevron"
-                aria-label="Expand or collapse Getting started"
-                :aria-expanded="guideOpen"
-                @click="guideOpen = !guideOpen"
-              >
-                <img :src="icon('chevron')" alt="" /></button
-              ><button
-                @click="loadPage('getting-started')"
-                :aria-current="page?.id === 'getting-started' ? 'page' : undefined"
-              >
-                Getting started
-              </button>
-            </div>
-            <button
-              v-if="guideOpen"
-              class="tree-row depth-three"
-              :class="{ selected: page?.id === 'orientation-recording' }"
-              :aria-current="page?.id === 'orientation-recording' ? 'page' : undefined"
-              @click="loadPage('orientation-recording')"
-            >
-              Microscope orientation recording
-            </button>
-            <button
-              v-for="name in [
-                'Planning a microscope session',
-                'Using the microscope',
-                'Booking sheet',
-              ]"
-              :key="name"
-              class="tree-row depth-two"
-              disabled
-              title="This route is planned for a later milestone"
-            >
-              {{ name }}
-            </button>
-          </div>
-          <div class="branch depth-one">
-            <img :src="icon('chevron')" alt="" /><span>Centrifuge</span>
-          </div>
-          <button
-            class="tree-row depth-two"
-            disabled
-            title="This route is planned for a later milestone"
-          >
-            Centrifuge safety
-          </button>
-        </div>
-        <button class="tree-row" disabled title="This route is planned for a later milestone">
-          Onboarding
-        </button>
-        <template v-if="importedSources.length">
-          <h2 class="tree-sources-title">Sources</h2>
-          <button
-            v-for="source in importedSources"
-            :key="source.id"
-            class="tree-row imported-source"
-            :class="{ selected: page?.id === source.id }"
-            :aria-current="page?.id === source.id ? 'page' : undefined"
-            @click="loadPage(source.id)"
-          >
-            {{ source.title }}
-          </button>
-        </template>
+        <WikiTree :records="records" :active="page?.id" @open="loadPage" />
       </aside>
       <aside class="page-contents" aria-label="On this page">
         <button
@@ -509,6 +495,14 @@ onBeforeUnmount(() => {
           <div class="title-row">
             <h1>{{ page.title }}</h1>
             <div class="page-actions">
+              <button
+                v-if="record && !editing"
+                class="compact"
+                :disabled="busy"
+                @click="pageDetails?.open(record)"
+              >
+                Rename / move
+              </button>
               <button v-if="!editing" class="compact" @click="beginEdit" :disabled="busy">
                 <img :src="icon('edit')" alt="" />{{
                   page.kind === 'recording' || currentSource?.kind === 'transcript'
@@ -534,7 +528,8 @@ onBeforeUnmount(() => {
             {{
               currentSource
                 ? 'Saved on this device'
-                : page.revision === 1
+                : page.revision === 1 &&
+                    ['getting-started', 'orientation-recording'].includes(page.id)
                   ? 'Example workspace'
                   : 'Edited by you'
             }}
@@ -573,6 +568,7 @@ onBeforeUnmount(() => {
             :editor="editor"
             :enabled="!editing && !settingsOpen && !chatOpen"
             @comment="startComment"
+            @citation="startCitation"
           />
           <EditorContent
             v-if="editor"
@@ -580,12 +576,26 @@ onBeforeUnmount(() => {
             :class="{ editing }"
             @click="citationClick"
           />
+          <details v-if="reviewRail?.citations.length && !editing" class="page-endnotes">
+            <summary>Endnotes ({{ reviewRail.citations.length }})</summary>
+            <article v-for="(e, index) in reviewRail.citations" :key="e.id">
+              <button class="text-link" @click="reviewRail?.openEvidence(e)">
+                {{ index + 1 }} · {{ e.title }} · Revision {{ e.source.revision }}
+              </button>
+              <blockquote>{{ e.quote }}</blockquote>
+              <button class="text-link" @click="returnToCitation(e.id)">Return to citation</button>
+            </article>
+          </details>
         </article>
       </main>
       <aside class="context-rail" aria-label="Page context">
         <div class="rail-sticky">
           <div class="create-actions">
-            <button class="compact" disabled title="Page creation is planned for a later milestone">
+            <button
+              class="compact"
+              :disabled="editing || busy"
+              @click="pageDetails?.open(null, page?.id ?? null)"
+            >
               <img :src="icon('plus')" alt="" />Add page</button
             ><button class="compact" :disabled="editing || busy" @click="importer?.open()">
               <img :src="icon('plus')" alt="" />Add artifact
@@ -649,6 +659,8 @@ onBeforeUnmount(() => {
       </button>
       <textarea aria-label="Message Agent" placeholder="Message Agent…" disabled></textarea>
     </aside>
+    <PageDetails ref="pageDetails" :records="records" @saved="detailsSaved" />
+    <PassagePicker ref="passagePicker" @navigate="openSearchHit" @cite="cite" />
     <ImportSource ref="importer" :page="page" @imported="imported" @settings="openSettings" />
     <RevisionHistory
       v-if="page"

@@ -31,6 +31,7 @@ async fn candidate(
     base: i32,
 ) -> Discussion {
     let source = EvidenceSelection {
+        range: None,
         object_id: "orientation-recording".into(),
         revision: 1,
         block_id: "passage-18".into(),
@@ -254,6 +255,7 @@ async fn rejects_invalid_selection_unknown_evidence_and_dangling_citations() {
     assert!(s.put_draft(&page.id, 1, &page.document).await.is_err());
     assert!(
         s.evidence(&EvidenceSelection {
+            range: None,
             object_id: "orientation-recording".into(),
             revision: 99,
             block_id: "passage-18".into()

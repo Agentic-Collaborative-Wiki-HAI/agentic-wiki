@@ -2,15 +2,22 @@
 compile_error!("Native WebDriver instrumentation is only allowed in debug builds.");
 
 pub mod agent;
+pub mod backup;
 pub mod codex;
+#[cfg(feature = "desktop")]
+mod desktop_workspace;
 pub mod domain;
 #[cfg(test)]
 mod import_tests;
 pub mod imports;
+pub mod navigation;
 pub mod review;
+pub mod search;
 pub mod sources;
 pub mod store;
 pub mod subscription;
+#[cfg(test)]
+mod workspace_tests;
 
 #[cfg(feature = "desktop")]
 mod desktop_imports;
@@ -25,6 +32,7 @@ mod desktop {
     };
     use crate::desktop_imports::*;
     use crate::desktop_review::*;
+    use crate::desktop_workspace::*;
     use tauri::{Manager, State};
     #[tauri::command]
     async fn read_page(store: State<'_, Store>, id: String) -> Result<Page, String> {
@@ -70,6 +78,17 @@ mod desktop {
         store.history(&id).await.map_err(|e| e.to_string())
     }
 
+    #[cfg(feature = "native-e2e")]
+    #[tauri::command]
+    fn native_test_focus(app: tauri::AppHandle) -> Result<(), String> {
+        let window = app
+            .get_webview_window("main")
+            .ok_or("Test window missing")?;
+        window.set_focus().map_err(|e| e.to_string())?;
+        let webview: &tauri::Webview = window.as_ref();
+        webview.set_focus().map_err(|e| e.to_string())
+    }
+
     pub fn run() {
         let builder = tauri::Builder::default();
         #[cfg(feature = "native-e2e")]
@@ -82,12 +101,22 @@ mod desktop {
                 let dir = std::env::var_os("WIKI_E2E_DATA_DIR")
                     .map(std::path::PathBuf::from)
                     .unwrap_or(dir);
+                let workspace_root = dir;
+                #[cfg(feature = "native-e2e")]
+                let isolated_test_root = workspace_root != app_dir && workspace_root.is_absolute();
+                let workspace_id = crate::backup::selected(&workspace_root)?;
+                let database = crate::backup::database(&workspace_root, &workspace_id)?;
+                let dir = database.parent().unwrap().to_path_buf();
+                app.manage(crate::backup::WorkspaceRuntime {
+                    root: workspace_root,
+                    active: workspace_id,
+                });
                 let connection_dir = dir.join("chatgpt");
                 #[cfg(feature = "native-e2e")]
                 let connection_dir = if std::env::var("WIKI_E2E_LIVE_SUBSCRIPTION").as_deref()
                     == Ok("1")
                 {
-                    if dir == app_dir || !dir.is_absolute() {
+                    if !isolated_test_root {
                         return Err(
                             "Live verification requires a separate absolute test workspace.".into(),
                         );
@@ -108,6 +137,17 @@ mod desktop {
                 Ok(())
             })
             .invoke_handler(tauri::generate_handler![
+                wiki_records,
+                create_wiki_page,
+                organize_wiki_page,
+                search_passages,
+                select_evidence,
+                default_evidence,
+                add_manual_citation,
+                export_workspace,
+                restore_workspace,
+                workspace_copies,
+                select_workspace,
                 open_import_original,
                 source_settings,
                 save_source_settings,
@@ -139,7 +179,9 @@ mod desktop {
                 ask_agent,
                 cancel_agent,
                 #[cfg(feature = "native-e2e")]
-                native_test_candidate
+                native_test_candidate,
+                #[cfg(feature = "native-e2e")]
+                native_test_focus
             ])
             .run(tauri::generate_context!())
             .expect("unable to run Agentic Wiki");

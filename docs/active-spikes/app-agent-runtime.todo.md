@@ -5,7 +5,7 @@ attention: live
 Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Concept](app-agent-runtime.md).
 
 ## Current scope
-M0 foundation and feasibility under approved D1–D5. D6–D8 remain deferred. No publication, Figma edits or standing policy changes are part of this work.
+The bounded subscription-backed passage-review runtime and approved N2 source-selection integration. Linked sources are the default; other saved sources require explicit selection. No ambient file access, additional provider or publication is enabled.
 
 ## To Do
 The implemented M1 runtime has passed its bounded live check. Expiry/refresh, quota-exhaustion and service-outage cases remain release-hardening work; they were not provoked against the real account.
@@ -27,3 +27,6 @@ The implemented request/candidate types are provider-independent, size-bounded a
 
 ## Current verification
 The app-owned connection passed a real native review loop with `gpt-6.2-sol` using `@agent` comments/replies and inline proposals. The [M1 QA record](../design/app-review-qa-2026-11-17.md) distinguishes deterministic fixtures from actual generation and records cancellation limits. The user’s working wiki was unchanged, and no fixture replaced a live result. Hands-on interaction review remains open.
+
+## Approved N2 source context — 2026-11-17
+Requests use bounded excerpts from linked sources by default. The thread’s context disclosure offers Choose sources, with other workspace pages available only through explicit opt-in. Pending-suggestion follow-ups preserve their pinned evidence unless the reviewer changes it. The Rust adapter still accepts only explicit revision-bound selections, advertises no tools and rejects oversized or malformed requests. No provider, external search or standing policy changed.

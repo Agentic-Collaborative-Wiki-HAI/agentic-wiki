@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import BackupSettings from './BackupSettings.vue'
 import SourceSettings from './SourceSettings.vue'
 import { reviewApi } from './reviewApi'
 import { connection, models, model, agentBusy, refreshConnection } from './subscriptionState'
@@ -79,6 +80,7 @@ onBeforeUnmount(() => {
       </p>
     </section>
     <SourceSettings />
+    <BackupSettings />
     <section>
       <h2>When the agent responds</h2>
       <p>

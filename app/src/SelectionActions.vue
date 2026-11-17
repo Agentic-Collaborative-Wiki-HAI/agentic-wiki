@@ -2,7 +2,7 @@
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { Editor } from '@tiptap/core'
 const props = defineProps<{ editor: Editor; enabled: boolean }>()
-const emit = defineEmits<{ comment: [] }>()
+const emit = defineEmits<{ comment: []; citation: [] }>()
 const popup = ref<HTMLElement>()
 const position = ref<{ left: number; top: number } | null>(null)
 let frame = 0,
@@ -86,6 +86,10 @@ function pointerUp() {
 function keyDown(event: KeyboardEvent) {
   if (event.key === 'Escape') hide()
 }
+function citation() {
+  hide()
+  emit('citation')
+}
 function comment() {
   hide()
   emit('comment')
@@ -145,6 +149,7 @@ onBeforeUnmount(() => {
       :style="{ left: position.left + 'px', top: position.top + 'px' }"
     >
       <button class="compact" @mousedown.prevent @click="comment">Comment</button>
+      <button class="compact" @mousedown.prevent @click="citation">Add citation</button>
     </div>
   </Teleport>
 </template>

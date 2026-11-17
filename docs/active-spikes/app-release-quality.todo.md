@@ -5,7 +5,7 @@ attention: live
 Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Concept](app-release-quality.md).
 
 ## Current scope
-M0 foundation and the authorized M1 passage-review batch under approved D1–D5. D6–D8 remain deferred. No publication, Figma edits or standing policy changes are part of this work.
+The local app foundation, passage-review and source-import journeys, and approved N1–N3 workspace authoring/recovery checks. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
 - [ ] Record human review of the complete passage-to-decision journey.
@@ -65,3 +65,10 @@ The revised route follows the Prototype: `@agent` requests use the comment/reply
 Eight frontend tests, 27 Rust behavior tests and 20 type-export checks pass, along with the ten valid/four invalid editor-contract fixtures. The real native review and foundation suites pass. The review suite includes repeat selection after cancelling a comment, inline-edit cancellation, human-edited acceptance, rejection, stale review, history and restart. The live native run with `gpt-6.2-sol` passes initial-comment and reply mentions, cancellation/retry, follow-up revision, inline preview, acceptance/rejection and restart. Exact fictional outputs were checked against their pinned recording excerpt. No fixture substitutes for a live result.
 
 Frontend formatting, Rust formatting, Clippy with warnings denied and the ordinary native debug build pass. The ordinary build excludes the native test feature. Working-wiki table hashes and all ten unrelated dirty-file hashes are unchanged. The [QA record](../design/app-review-qa-2026-11-17.md) supplies the design links, reproduction and limits. Human acceptance of the corrected interaction remains open; broader Prototype parity and later milestones are not claimed.
+
+## Approved N1–N3 continuation — 2026-11-17
+The integrated workspace checkpoint covers create → import → search/cite → review → restart → backup/restore. The first deterministic native journey passed, using labeled candidates and disposable data. Backend checks include content recovery, credential exclusion, corrupt archives and bounded source selection.
+
+- [x] Add the isolated native workspace suite and document reproduction and data boundaries.
+- [ ] Complete the final live imported-source check and regression playback with an unlocked desktop. The current run is blocked at native editor focus; no live candidate has been requested in this batch.
+- [ ] Human QA of page organization, source relevance and restored workspace behavior. See the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).

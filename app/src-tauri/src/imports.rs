@@ -274,7 +274,7 @@ impl Store {
                 return Err(Error::Stale);
             }
             sqlx::query(
-                "UPDATE objects SET title=?,current_revision=current_revision+1 WHERE id=?",
+                "UPDATE objects SET title=?,current_revision=current_revision+1,metadata_version=metadata_version+1 WHERE id=?",
             )
             .bind(title)
             .bind(&id)
