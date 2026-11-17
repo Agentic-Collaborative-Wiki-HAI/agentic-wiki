@@ -1,0 +1,488 @@
+:root {
+  font-family: Roboto, sans-serif;
+  color: #202833;
+  background: #fff;
+  font-synthesis: none;
+  --border: #d5dae0;
+  --subtle: #f7f9fb;
+  --secondary: #697582;
+  --link: #1875be;
+  --selected: #e9f0f6;
+  --header-height: 68px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  border-radius: 4px;
+}
+button:hover:not(:disabled) {
+  background: var(--selected);
+}
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.ProseMirror:focus-visible {
+  outline: 2px solid #2468a0;
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+img {
+  display: block;
+  flex-shrink: 0;
+}
+.wiki-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+  background: white;
+  position: relative;
+  z-index: 5;
+}
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  width: calc(50% - 207px);
+}
+.icon-button {
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 0;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--secondary);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.crumb-current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 375px;
+  height: 36px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 12px;
+}
+.search input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+}
+.global-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+.compact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  min-height: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.application {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.workspace {
+  --tree: 280px;
+  --contents: 180px;
+  --rail: 400px;
+  display: grid;
+  grid-template-columns: var(--tree) var(--contents) minmax(0, 1fr) var(--rail);
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  align-items: start;
+}
+.workspace.tree-hidden {
+  --tree: 0px;
+}
+.workspace.contents-hidden {
+  --contents: 52px;
+}
+.wiki-tree {
+  grid-column: 1;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  min-height: calc(100vh - 96px);
+  background: var(--subtle);
+  padding: 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.branch,
+.tree-row {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 12px;
+  padding: 8px;
+  gap: 6px;
+}
+.branch button:not(.chevron) {
+  text-align: left;
+  padding: 0;
+}
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  padding: 0;
+}
+.chevron[aria-expanded='false'] {
+  transform: rotate(-90deg);
+}
+.depth-one {
+  padding-left: 20px;
+}
+.depth-two {
+  padding-left: 32px;
+}
+.depth-three {
+  padding-left: 44px;
+}
+.selected {
+  background: var(--selected);
+  font-weight: 700;
+  border-radius: 4px;
+}
+.page-contents {
+  grid-column: 2;
+  position: sticky;
+  top: 0;
+  padding: 64px 20px 20px;
+  min-width: 0;
+}
+.contents-toggle {
+  justify-content: flex-start;
+  padding-left: 0;
+  margin-bottom: 12px;
+}
+.page-contents h2 {
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--secondary);
+  margin: 0 0 12px;
+}
+.page-contents nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.page-contents nav button {
+  font-size: 13px;
+  line-height: 19px;
+  text-align: left;
+  color: var(--secondary);
+  padding: 0;
+}
+.document-column {
+  grid-column: 3;
+  padding: 64px 24px 80px 32px;
+  min-width: 0;
+  width: 100%;
+}
+article {
+  max-width: 884px;
+  margin: 0 auto;
+}
+.title-row {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+h1 {
+  font-size: 30px;
+  line-height: 44px;
+  margin: 0;
+  font-weight: 700;
+  flex: 1;
+}
+.page-actions {
+  display: flex;
+  gap: 16px;
+  min-height: 40px;
+  align-items: center;
+}
+.metadata {
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 20px;
+  margin: 22px 0;
+}
+.ProseMirror {
+  font-size: 18px;
+  line-height: 26px;
+  overflow-wrap: anywhere;
+}
+.ProseMirror h2 {
+  font-size: 22px;
+  line-height: 32px;
+  margin: 22px 0;
+}
+.ProseMirror p {
+  max-width: min(720px, 85ch);
+  margin: 22px 0;
+}
+.ProseMirror [data-block-id] {
+  scroll-margin-top: 24px;
+}
+.ProseMirror a,
+.citation-marker {
+  color: var(--link);
+  text-decoration: underline;
+}
+.ProseMirror:focus {
+  outline: none;
+}
+.editing .ProseMirror {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 16px;
+}
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 12px 0;
+  z-index: 2;
+}
+.editor-toolbar button {
+  padding: 6px;
+}
+.draft-status {
+  margin-left: auto;
+  color: var(--secondary);
+  font-size: 12px;
+}
+.primary {
+  background: var(--selected);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+.context-rail {
+  grid-column: 4;
+  padding-right: 24px;
+  position: sticky;
+  top: 0;
+  min-width: 0;
+  background: white;
+  font-size: 14px;
+  line-height: 20px;
+}
+.rail-sticky {
+  background: white;
+  padding-bottom: 1px;
+}
+.create-actions {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.tabs {
+  display: flex;
+  background: white;
+}
+.tabs button {
+  width: 50%;
+  height: 40px;
+  color: var(--link);
+  border-radius: 0;
+}
+.tabs button[aria-selected='true'] {
+  color: #202833;
+  font-weight: 500;
+  border-bottom: 2px solid #2468a0;
+}
+.context-rail p {
+  margin: 16px 0;
+}
+.muted {
+  color: var(--secondary);
+}
+.status {
+  font-size: 13px;
+  padding: 8px 12px;
+  background: var(--subtle);
+  border-left: 3px solid #2468a0;
+}
+.error {
+  background: #fff2ef;
+  color: #8f2a20;
+  padding: 12px;
+  border: 1px solid #cf8b80;
+  border-radius: 4px;
+  font-size: 14px;
+}
+footer {
+  height: 28px;
+  border-top: 1px solid var(--border);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+.chat-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 400px;
+  background: white;
+  box-shadow: -2px 0 8px #0002;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.chat-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-title h2 {
+  font-size: 20px;
+}
+.chat-drawer textarea {
+  margin-top: auto;
+  min-height: 100px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 4px;
+}
+.history-dialog {
+  position: fixed;
+  inset: 20% 10% auto;
+  z-index: 20;
+  max-width: 640px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 8px 40px #0003;
+}
+.history-dialog time {
+  display: block;
+  color: var(--secondary);
+  font-size: 12px;
+  margin: 6px 0 16px;
+}
+.history-dialog button {
+  padding: 8px 12px;
+  background: var(--selected);
+}
+blockquote {
+  border-left: 3px solid #2468a0;
+  margin: 16px 0;
+  padding: 8px 12px;
+  background: var(--subtle);
+}
+@media (max-width: 1600px) {
+  .workspace {
+    --tree: 240px;
+    --contents: 160px;
+    --rail: 300px;
+  }
+  .title-row {
+    flex-wrap: wrap;
+  }
+  .page-actions {
+    min-height: 24px;
+  }
+  .global-actions {
+    gap: 6px;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+}
+@media (max-width: 1150px) {
+  .workspace {
+    --tree: 210px;
+    --contents: 130px;
+    --rail: 240px;
+  }
+  .document-column {
+    padding-left: 20px;
+  }
+  .global-actions button:disabled {
+    display: none;
+  }
+  .search {
+    width: 300px;
+  }
+  .wiki-tree {
+    padding: 16px 8px;
+  }
+  .page-contents {
+    padding-left: 16px;
+    padding-right: 12px;
+  }
+}
+
+.history-dialog::backdrop {
+  background: #20283355;
+}

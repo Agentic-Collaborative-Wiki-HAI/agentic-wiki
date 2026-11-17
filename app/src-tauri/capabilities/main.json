@@ -1,0 +1,6 @@
+{
+  "identifier": "main-window",
+  "description": "The local wiki window can call only the bounded application commands.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

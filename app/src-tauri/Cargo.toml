@@ -1,0 +1,43 @@
+[package]
+name = "agentic-wiki"
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0-only"
+default-run = "agentic-wiki"
+
+[lib]
+name = "agentic_wiki"
+crate-type = ["rlib", "staticlib", "cdylib"]
+
+[features]
+default = ["desktop"]
+desktop = ["dep:tauri"]
+native-e2e = ["desktop", "dep:tauri-plugin-wdio-webdriver"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", optional = true, features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "process", "io-util", "time"] }
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "sqlite", "migrate", "macros"] }
+tauri-plugin-wdio-webdriver = { version = "1", optional = true }
+ts-rs = { version = "11", features = ["serde-compat", "no-serde-warnings"] }
+
+tempfile = "3"
+
+[[bin]]
+name = "agentic-wiki"
+path = "src/main.rs"
+required-features = ["desktop"]
+
+[[bin]]
+name = "editor-contract"
+path = "src/bin/editor-contract.rs"
+
+[[bin]]
+name = "codex-probe"
+path = "src/bin/codex-probe.rs"

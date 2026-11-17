@@ -1,0 +1,41 @@
+{
+  "name": "agentic-wiki-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vue-tsc --noEmit && vite build",
+    "test": "vitest run",
+    "tauri": "tauri",
+    "desktop": "tauri dev",
+    "test:rust": "cargo test --manifest-path src-tauri/Cargo.toml --no-default-features",
+    "test:contract": "node scripts/check-editor-contract.mjs",
+    "check": "npm run test && npm run test:rust && npm run test:contract && npm run build",
+    "test:native": "tauri build --debug --no-bundle --features native-e2e && node scripts/native-smoke.mjs",
+    "probe:codex": "cargo run --manifest-path src-tauri/Cargo.toml --no-default-features --bin codex-probe --",
+    "format:check": "prettier --check src tests scripts vite.config.ts"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "5.3.0",
+    "@tauri-apps/api": "^2.10.1",
+    "@tiptap/core": "3.34.0",
+    "@tiptap/pm": "3.34.0",
+    "@tiptap/vue-3": "3.34.0",
+    "vue": "3.5.45"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.5",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "6.0.11",
+    "jsdom": "^27.0.0",
+    "prettier": "3.10.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.0",
+    "vue-tsc": "3.3.14"
+  }
+}
