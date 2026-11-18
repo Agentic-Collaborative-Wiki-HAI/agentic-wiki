@@ -55,3 +55,8 @@ Auth/protocol feasibility uses synthetic context and can run before S02–S05 ar
 The local review journey and app-owned subscription adapter are implemented. Deterministic checks use clearly labeled test candidates, and a separate opt-in native suite verifies live inference, model availability and the complete decision/history route. See [M1 verification](../design/app-review-qa-2026-11-17.md). D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+Settings exposes separate editable workspace instructions for passage editing and global Chat, with restore-default and explicit save controls. Instructions persist with the workspace and apply to future requests. The app adds its fixed response-format and authorization contract separately; request tools remain empty, context remains bounded, and publication still requires human action. Source IDs are validated when supplied, but an editorial rewrite or conversational response need not cite an external source. Context is an inspectable disclosure, not a required question-specific form.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

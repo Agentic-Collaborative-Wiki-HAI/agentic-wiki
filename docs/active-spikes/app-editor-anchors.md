@@ -51,3 +51,8 @@ The editor probe can use in-memory records before S02 persistence is ready. Pers
 The M0 foundation and bounded M1 review implementation are checked in the companion task records and [native review QA](../design/app-review-qa-2026-11-17.md). The full passage-to-decision route passes deterministic and live subscription checks. The Codex coding-session path remains disabled; product inference uses the isolated app-owned connection. Hands-on M1 review remains open. Broader milestones and D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+Page titles are edited alongside the document and saved as one revision. Draft recovery includes the title, and Cancel preserves the saved title and document. The selection popup offers explicit citations and margin notes in both read and edit modes. In edit mode these insert immutable reference identities into the unpublished draft; Save publishes them and Cancel discards their occurrences. Registering reference metadata alone does not change a page. Paragraph and inline-node offsets remain shared with Rust.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

@@ -23,7 +23,7 @@ Completion prerequisites: S02, S03. These are completion dependencies, not a ban
 Own SourceRef (object/revision plus optional passage/time/page locator), citation occurrence IDs, source metadata and provenance edges. S03 supplies current anchor placement; S02 stores identity and pinned revisions. S05 consumes immutable evidence references; S08 supplies timecoded transcript passages; S09 resolves selectable sources.
 
 ## Rough task sequence
-1. Implement seeded, revision-pinned evidence previews and a citation change accompanying the first proposal.
+1. Implement revision-pinned discussion evidence and explicit article-citation authoring.
 2. Add common rendering for inline references, margin notes and endnotes with actual scroll/return behavior.
 3. Implement source selection and manual entry, then whole-transcript and audio-range variants.
 4. Integrate transcript edits and source-change findings; retain old evidence snapshots and connect review proposals rather than silently advancing references.
@@ -32,7 +32,7 @@ Own SourceRef (object/revision plus optional passage/time/page locator), citatio
 - The inline marker, margin entry and endnote open the same evidence at the cited revision.
 - A plain link, source citation and human margin note remain distinguishable and editable through their proper controls.
 - Manual print citations save without a URL; missing network metadata does not prevent an explicit manual citation.
-- Changing a source does not invalidate historical evidence or silently replace it. Updating a claim and citation through a proposal is atomic.
+- Changing a source does not invalidate historical evidence or silently replace it. A proposed wording change does not automatically create or update an article citation.
 - Notes follow their passages while scrolling; the citation-only switch visibly changes state and filtering.
 
 ## Automated and integration checks
@@ -49,3 +49,8 @@ Rendering can start from fixed S02 records. Manual source entry need not wait fo
 
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+Citations and margin notes are explicit authoring actions. Both have inline identities and appear in document order in the reference rail and endnotes. The endnotes provide a Citations only filter. Notes store their title and body; citations retain their exact source revision. Accepting a proposed text revision does not create article citations from its supporting evidence. Existing explicit citations and notes survive bounded rewrites, including selections containing their inline atoms. Discussion evidence stays inspectable in the discussion and history. Media timestamp alignment and external/manual-print citations remain later capabilities.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

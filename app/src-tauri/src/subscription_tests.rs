@@ -209,3 +209,30 @@ fn identity_requires_signature_issuer_audience_expiry_and_nonce() {
         .is_err()
     );
 }
+
+#[test]
+fn custom_task_instructions_preserve_the_application_boundary() {
+    let base = request_body("test", &request()).unwrap();
+    let custom = with_instructions(
+        base.clone(),
+        "Use short sentences and preserve the author's tone.",
+    )
+    .unwrap();
+    assert!(
+        custom["instructions"]
+            .as_str()
+            .unwrap()
+            .starts_with("Application contract:")
+    );
+    assert!(
+        custom["instructions"]
+            .as_str()
+            .unwrap()
+            .ends_with("preserve the author's tone.")
+    );
+    assert_eq!(custom["tools"], json!([]));
+    assert_eq!(custom["input"], base["input"]);
+    assert_eq!(custom["store"], false);
+    assert!(with_instructions(base.clone(), "").is_err());
+    assert!(with_instructions(base, &"x".repeat(12001)).is_err());
+}

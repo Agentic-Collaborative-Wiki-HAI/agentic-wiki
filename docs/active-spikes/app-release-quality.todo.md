@@ -87,4 +87,8 @@ Successful functional checks do not establish full Prototype fidelity; that is a
 - [x] Inspect macOS names/roles/states and actual native keys; record inline-citation activation failure, nonstandard tab navigation and an unnamed History dialog.
 - [x] Check wide/default/compact layout and diagnostic text enlargement/reflow/spacing. A small outer scrollWidth is not evidence that all content remains visible.
 - [x] Record exact findings, deliberate differences and unreached states in the [Prototype audit](../design/app-prototype-audit-2026-11-17.md).
-- [ ] Scope and implement the corrective UI batch after review. The functional N4–N6 checkpoint does not close these findings.
+- [x] Implement the approved U1–U3 correction batch and accompanying authoring requests; record bounded verification and the remaining capability gaps in the interface QA record.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

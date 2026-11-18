@@ -34,7 +34,7 @@ Own proposal states (pending, accepted, rejected, superseded/stale), independent
 4. Add safe revert, wrong-source rejection, resolved-pending discussion, and fuller tracked-human-edit variants.
 
 ## Acceptance criteria
-- Accept publishes the exact reviewed wording and evidence references together; Reject leaves both unchanged and records the decision without a content revision.
+- Accept publishes the reviewed wording and decision together, preserving existing explicit article references. Supporting evidence remains in the discussion; Reject leaves the article unchanged and records the decision without a content revision.
 - Reply, revise, reject, accept and resolve are separate actions. A resolved thread can still contain a pending proposal.
 - Acceptance is idempotent and checks the current base revision, evidence identities and actor eligibility. A stale proposal remains inspectable and cannot overwrite intervening work.
 - History retains the request, proposed alternatives, evidence and final decision. Revert creates a new revision and cannot silently erase later edits.
@@ -54,3 +54,8 @@ The complete deterministic route can be built before live model access. Live end
 
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+Open discussions render as passage-aligned cards, with highlighted text rather than numbered comment links. The sidebar has no thread-switcher tabs. Resolve removes a thread from the active margin and clears its highlight; its record remains in history. History is a separate page with a revision list, saved document, associated discussion and Back to page. Proposed wording remains an inline review layer; acceptance changes wording while retaining existing explicit references, and rejection leaves the article unchanged. Requests can be editorial instructions without source excerpts.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

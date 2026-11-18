@@ -2,6 +2,7 @@
 compile_error!("Native WebDriver instrumentation is only allowed in debug builds.");
 
 pub mod agent;
+pub mod authoring;
 pub mod backup;
 pub mod chat;
 #[cfg(test)]
@@ -50,9 +51,10 @@ mod desktop {
         id: String,
         base_revision: i32,
         document: RichDocument,
+        title: Option<String>,
     ) -> Result<Page, String> {
         store
-            .save(&id, base_revision, &document)
+            .save_edit(&id, base_revision, &document, title.as_deref())
             .await
             .map_err(|e| e.to_string())
     }
@@ -62,9 +64,10 @@ mod desktop {
         id: String,
         base_revision: i32,
         document: RichDocument,
+        title: Option<String>,
     ) -> Result<(), String> {
         store
-            .put_draft(&id, base_revision, &document)
+            .put_edit_draft(&id, base_revision, &document, title.as_deref())
             .await
             .map_err(|e| e.to_string())
     }
@@ -153,6 +156,12 @@ mod desktop {
                 chat_page_origin,
                 #[cfg(feature = "native-e2e")]
                 native_test_chat,
+                read_agent_instructions,
+                default_agent_instructions,
+                save_agent_instructions,
+                register_citation,
+                register_margin_note,
+                document_references,
                 wiki_records,
                 create_wiki_page,
                 organize_wiki_page,

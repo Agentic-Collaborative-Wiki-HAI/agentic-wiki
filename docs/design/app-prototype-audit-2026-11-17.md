@@ -79,3 +79,14 @@ This is a bounded audit, not a WCAG conformance claim. Criteria references: [WCA
 
 ## Not reached or not established
 No complete test of every one of the 246 Prototype states, no new Figma playback claim, no real media/transcript review, no semantic retrieval benchmark, no role/permission exercise, no cross-platform coverage, and no completed human acceptance. The evidence supports specific findings above and the separately documented native functional journeys. It does not establish full design parity or release readiness.
+
+## Approved correction follow-up — 2026-11-17
+The table above records the inspected pre-correction build. U1–U3 and the user's accompanying authoring corrections have been implemented; see [interface QA](app-interface-qa-2026-11-17.md) for current evidence and limits.
+
+- A1–A3: breadcrumbs, title/actions and Chat space are corrected for the checked window sizes.
+- A4: ordinary notes and discussion cards align with passage markers/highlights, share the document scroll surface and avoid overlapping cards. Timestamp/media alignment remains deferred.
+- A5: History is a dedicated page with saved titles/content, references and associated discussion. Full manual-revision comparison remains open.
+- A7/A9: title editing, explicit citation/margin-note authoring during editing and endnote filtering are implemented. The richer toolbar and additional citation intake types remain open.
+- A10/A11: native keyboard citation/note activation and tab navigation pass; History is a named page and picker/dialog labels are distinct. Full assistive-technology coverage remains open.
+- A12: responsive layout, relative line heights and enlarged-header reflow address the observed overlap/content loss in the bounded checks. This is not a conformance claim.
+- A6/A8 and the other deferred capabilities remain outside this batch.

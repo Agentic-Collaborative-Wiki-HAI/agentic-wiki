@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { Editor } from '@tiptap/core'
-const props = defineProps<{ editor: Editor; enabled: boolean }>()
-const emit = defineEmits<{ comment: []; citation: [] }>()
+const props = defineProps<{ editor: Editor; enabled: boolean; editing?: boolean }>()
+const emit = defineEmits<{ comment: []; citation: []; note: [] }>()
 const popup = ref<HTMLElement>()
 const position = ref<{ left: number; top: number } | null>(null)
 let frame = 0,
@@ -137,6 +137,10 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', schedule, true)
   window.removeEventListener('resize', schedule)
 })
+function note() {
+  hide()
+  emit('note')
+}
 </script>
 <template>
   <Teleport to="body">
@@ -148,8 +152,17 @@ onBeforeUnmount(() => {
       aria-label="Selected text actions"
       :style="{ left: position.left + 'px', top: position.top + 'px' }"
     >
-      <button class="compact" @mousedown.prevent @click="comment">Comment</button>
+      <button
+        class="compact"
+        @mousedown.prevent
+        @click="comment"
+        :disabled="editing"
+        :title="editing ? 'Save the page to start a discussion' : undefined"
+      >
+        Comment
+      </button>
       <button class="compact" @mousedown.prevent @click="citation">Add citation</button>
+      <button class="compact" @mousedown.prevent @click="note">Add margin note</button>
     </div>
   </Teleport>
 </template>

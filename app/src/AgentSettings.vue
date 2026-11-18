@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import AgentInstructionsSettings from './AgentInstructionsSettings.vue'
 import BackupSettings from './BackupSettings.vue'
 import SourceSettings from './SourceSettings.vue'
 import { reviewApi } from './reviewApi'
@@ -52,7 +53,7 @@ onBeforeUnmount(() => {
   <main class="settings-page" aria-label="Workspace settings">
     <button class="text-link" @click="emit('back')">Back to page</button>
     <nav class="settings-breadcrumb" aria-label="Settings breadcrumb">
-      Settings / Connections and sources
+      Settings / Agent and workspace
     </nav>
     <h1>Settings</h1>
     <p>Connect your ChatGPT subscription to use the agent in this workspace.</p>
@@ -79,6 +80,7 @@ onBeforeUnmount(() => {
         Requests use your subscription’s limits. There is no automatic switch to paid API usage.
       </p>
     </section>
+    <AgentInstructionsSettings />
     <SourceSettings />
     <BackupSettings />
     <section>
@@ -95,8 +97,8 @@ onBeforeUnmount(() => {
       <p>Suggested edits stay pending until you accept or reject them.</p>
       <p>
         Global Chat responds only when you send a message. Answers use excerpts from the current
-        page and linked sources by default; Choose sources lets you include other saved material.
-        You can turn an answer into a draft, review it and save it as a page.
+        page and linked sources by default; Context lets you include other saved material. You can
+        turn an answer into a draft, review it and save it as a page.
       </p>
     </section>
   </main>

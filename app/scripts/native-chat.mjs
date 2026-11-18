@@ -237,7 +237,7 @@ try {
     assert.ok(answer.answer.paragraphs.length, 'real sourced answer')
   } else {
     answer = await fixture(question)
-    await clickButton('Close chat')
+    await clickButton('Hide chat')
     await openChat()
   }
   await until(async () => !!(await value('.chat-answer')), 'rendered answer')
@@ -304,7 +304,7 @@ try {
   await screenshot('06-published-page')
   await clickButton('View originating Chat answer')
   await until(async () => !!(await value('.chat-answer')), 'originating answer')
-  await clickButton('Close chat')
+  await clickButton('Hide chat')
   await stop()
   await launch()
   await focus()
@@ -332,7 +332,7 @@ try {
     }, 'missing-evidence answer')
   } else {
     await fixture(unknown, true)
-    await clickButton('Close chat')
+    await clickButton('Hide chat')
     await openChat()
   }
   const missing = (await invoke('chat_turns')).at(-1)

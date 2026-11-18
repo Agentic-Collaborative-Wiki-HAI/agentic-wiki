@@ -212,24 +212,16 @@ try {
   await launch()
   console.log('Native app ready.')
   const parent = await create('Session planning', 'Plan the next session.')
-  await clickButton('Rename / move')
-  await choose('[aria-label="Parent page"]', '')
-  await clickButton('Save details')
-  await until(
-    async () =>
-      (await invoke('wiki_records')).some((r) => r.id === parent.id && r.parentId === null),
-    'root move',
-  )
   const child = await create(
     'Working notes',
     'Reserve the microscope using the shared spreadsheet before your first session.',
   )
   assert.equal(child.parentId, parent.id)
-  await clickButton('Rename / move')
+  await clickButton('Edit page')
   await type('[aria-label="Page title"]', 'Booking notes', true)
-  await clickButton('Save details')
+  await clickButton('Save page')
   await until(async () => (await value('h1')) === 'Booking notes', 'rename')
-  assert.equal((await invoke('read_page', { id: child.id })).revision, 2)
+  assert.equal((await invoke('read_page', { id: child.id })).revision, 3)
   await click('.settings-button')
   await type('[aria-label="Local source folder"]', local, true)
   await clickButton('Save source settings')
@@ -251,7 +243,7 @@ try {
   await until(async () => (await value('h1')) === 'Session transcript', 'import')
   const source = (await invoke('imported_sources'))[0]
   assert.equal(source.parentId, child.id)
-  console.log('Created, moved, renamed, and imported.')
+  console.log('Created pages, edited a title, and imported a transcript.')
   await click('[aria-label="Search wiki"]')
   await type('.passage-picker[open] [aria-label="Search passages"]', 'retired')
   await until(
@@ -282,8 +274,8 @@ try {
   await clickButton('Cite this excerpt')
   await until(async () => (await value('.status'))?.includes('Citation saved'), 'citation saved')
   const cited = await invoke('read_page', { id: child.id })
-  assert.equal(cited.revision, 3)
-  assert.equal((await invoke('page_citations', { id: child.id, revision: 3 })).length, 1)
+  assert.equal(cited.revision, 4)
+  assert.equal((await invoke('page_citations', { id: child.id, revision: 4 })).length, 1)
   assert.match(await value('.page-endnotes'), /Session transcript/)
   console.log('Ready for passage comment.')
   await selectPassage(blockId)
@@ -291,7 +283,9 @@ try {
   await type('[aria-label="New passage comment"]', 'Please check these booking instructions.')
   await clickButton('Add comment')
   await until(async () => !!(await value('.discussion')), 'discussion')
-  const threadId = await execute('return document.querySelector(".discussion").dataset.threadId')
+  const threadId = await execute(
+    'return document.querySelector(".discussion[data-active=true]").dataset.threadId',
+  )
   await type(
     '[aria-label="Reply to discussion"]',
     '@agent Update this booking instruction using the selected transcript evidence. Keep it one sentence.',
@@ -360,11 +354,7 @@ try {
     await reloadPage('Booking notes')
   }
   assert.ok(await value('.inline-suggestion'), 'suggested wording is inline in the real article')
-  assert.match(
-    await value('.inline-suggestion'),
-    /proposed source 1/,
-    'proposed sources have a distinct label',
-  )
+  assert.equal(await value('.suggestion-citation'), null, 'evidence belongs in the discussion')
   assert.equal(
     await value('[data-citation-id]'),
     '[1]',
@@ -374,12 +364,16 @@ try {
   console.log('Suggestion ready.')
   await clickButton('Accept')
   await until(
-    async () => (await invoke('read_page', { id: child.id })).revision === 4,
+    async () => (await invoke('read_page', { id: child.id })).revision === 5,
     'accept commits',
   )
   const accepted = await invoke('read_page', { id: child.id })
-  const acceptedCitations = await invoke('page_citations', { id: child.id, revision: 4 })
-  assert.ok(acceptedCitations.length >= 2)
+  const acceptedCitations = await invoke('page_citations', { id: child.id, revision: 5 })
+  assert.equal(
+    acceptedCitations.length,
+    1,
+    'rewrite preserves the explicit citation without adding one',
+  )
   assert.ok(acceptedCitations.every((e) => e.source.objectId === source.id))
   console.log('Ready for passage comment.')
   await selectPassage(blockId)
@@ -390,30 +384,36 @@ try {
   )
   await clickButton('Add comment')
   await until(
-    async () => (await value('.discussion'))?.includes('Consider another'),
+    async () => (await value('#comments-panel'))?.includes('Consider another'),
     'second thread',
   )
-  const secondId = await execute('return document.querySelector(".discussion").dataset.threadId')
+  const secondId = await execute(
+    'return document.querySelector(".discussion[data-active=true]").dataset.threadId',
+  )
   await invoke('native_test_candidate', {
     threadId: secondId,
     sources: context.evidence.map((e) => e.source),
   })
   await reloadPage('Booking notes')
+  await execute(
+    'document.querySelector(`[data-thread-id="${arguments[0]}"] button.text-link:last-child`)?.click();return true',
+    [secondId],
+  )
   await clickButton('Reject')
-  await until(async () => (await value('.discussion'))?.includes('Rejected edit'), 'reject')
+  await until(async () => (await value('#comments-panel'))?.includes('Rejected edit'), 'reject')
   assert.deepEqual((await invoke('read_page', { id: child.id })).document, accepted.document)
-  assert.deepEqual(await invoke('page_citations', { id: child.id, revision: 4 }), acceptedCitations)
+  assert.deepEqual(await invoke('page_citations', { id: child.id, revision: 5 }), acceptedCitations)
   await stop()
   await launch()
   await clickButton('Booking notes')
   assert.deepEqual((await invoke('read_page', { id: child.id })).document, accepted.document)
   await clickButton('Page history')
   await until(
-    async () => (await value('.revision-list'))?.includes('Revision 4'),
+    async () => (await value('.revision-list'))?.includes('Revision 5'),
     'history after restart',
   )
   await screenshot('history-after-restart')
-  await click('.history-dialog button')
+  await click('.history-page button')
   await click('.settings-button')
   await type('[aria-label="Backup destination"]', backupPath, true)
   await clickButton('Create backup')
@@ -440,13 +440,13 @@ try {
   assert.equal((await invoke('source_settings')).localFolder, '')
   await clickButton('Booking notes')
   assert.deepEqual((await invoke('read_page', { id: child.id })).document, accepted.document)
-  assert.deepEqual(await invoke('page_citations', { id: child.id, revision: 4 }), acceptedCitations)
+  assert.deepEqual(await invoke('page_citations', { id: child.id, revision: 5 }), acceptedCitations)
   const discussions = await invoke('list_discussions', { id: child.id })
   assert.ok(discussions.some((d) => d.proposals.some((p) => p.status === 'accepted')))
   assert.ok(discussions.some((d) => d.proposals.some((p) => p.status === 'rejected')))
-  await clickButton('Rename / move')
+  await clickButton('Edit page')
   await type('[aria-label="Page title"]', 'Restored-only name', true)
-  await clickButton('Save details')
+  await clickButton('Save page')
   await until(async () => (await value('h1')) === 'Restored-only name', 'restored writable')
   await invoke('select_workspace', { id: 'original' })
   await stop()
@@ -460,7 +460,7 @@ try {
         verifiedAt: new Date().toISOString(),
         liveImportedSource: process.env.WIKI_RUN_LIVE_CHECK === '1',
         checks: [
-          'create/rename/move stable ID',
+          'create and edit page title with stable ID',
           'import linked long transcript',
           'search breadcrumb/open passage',
           'manual pinned citation/endnotes',

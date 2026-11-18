@@ -193,7 +193,12 @@ pub async fn ask_agent(
                 .await
                 .map_err(|e| e.to_string())?;
         }
-        let generation = runtime.connection.generate(&request.model, &context);
+        let instructions = store.instructions().await.map_err(|e| e.to_string())?;
+        let generation = runtime.connection.generate_with_instructions(
+            &request.model,
+            &context,
+            &instructions.proposal,
+        );
         let candidate: ProposalCandidate = tokio::select! {
             biased;
             _ = &mut cancel => return Err("Request cancelled. No suggestion was saved.".into()),
@@ -277,7 +282,10 @@ pub async fn native_test_candidate(
                 .into(),
         explanation: "The orientation transcript names the booking calendar on the equipment page."
             .into(),
-        cited_source_ids: vec![evidence[0].id.clone()],
+        cited_source_ids: evidence
+            .first()
+            .map(|e| vec![e.id.clone()])
+            .unwrap_or_default(),
     };
     store
         .record_candidate(CandidateSubmission {

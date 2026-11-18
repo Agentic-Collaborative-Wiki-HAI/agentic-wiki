@@ -125,7 +125,7 @@ async function send() {
     if (!chosen.value) await refreshContext()
     if (contextError.value && !chosen.value) throw Error(contextError.value)
     if (props.page?.id !== pageId || question.value.trim() !== text)
-      throw Error('The page or question changed. Review the sources and send again.')
+      throw Error('The page or message changed. Review the sources and send again.')
     const request = {
       id: crypto.randomUUID(),
       pageId,
@@ -210,12 +210,14 @@ defineExpose({ reload, focusTurn, focus: () => composer.value?.focus() })
   >
     <div class="chat-title">
       <h2>Agent global chat</h2>
-      <button class="compact" @click="emit('close')">Close chat</button>
+      <button class="compact" @click="emit('close')">
+        <img src="/assets/83771.svg" alt="" />Hide chat
+      </button>
     </div>
     <div ref="scroller" class="chat-messages" aria-live="polite" aria-relevant="additions">
       <template v-if="!turns.length && !run"
-        ><h3>Ask about the wiki</h3>
-        <p>Ask a question, discuss a page, or import a transcript.</p></template
+        ><h3>Work with the wiki</h3>
+        <p>Ask a question, request a rewrite, discuss a page, or import a transcript.</p></template
       >
       <p v-if="turns.length === 50" class="muted">Showing the most recent 50 exchanges.</p>
       <article v-for="t in turns" :key="t.id" class="chat-exchange" :data-turn-id="t.id">
@@ -262,7 +264,7 @@ defineExpose({ reload, focusTurn, focus: () => composer.value?.focus() })
           <summary>Context used</summary>
           <p class="muted">
             {{ t.request.history.length }} earlier exchanges were included for conversation context.
-            Only these source excerpts support the answer:
+            These excerpts were available as context:
           </p>
           <button v-for="e in t.evidence" :key="e.id" class="text-link" @click="preview?.open(e)">
             {{ e.title }} · Revision {{ e.source.revision }}
@@ -273,18 +275,18 @@ defineExpose({ reload, focusTurn, focus: () => composer.value?.focus() })
       <article v-if="run" class="chat-exchange">
         <p class="chat-context-label">{{ run.pageTitle }}</p>
         <p class="chat-question">{{ run.question }}</p>
-        <p role="status">Looking through the selected sources…</p>
+        <p role="status">Agent is responding…</p>
         <button @click="cancel">Cancel request</button>
       </article>
     </div>
     <div class="chat-composer">
       <p v-if="error" class="review-error" role="alert">{{ error }}</p>
       <p v-if="needsConnection" class="review-warning">
-        Connect ChatGPT in Settings to send this question.
+        Connect ChatGPT in Settings to send this message.
         <button class="text-link" @click="emit('settings')">Open Settings</button>
       </p>
       <details class="chat-context">
-        <summary>Sources for this question ({{ sources.length }})</summary>
+        <summary>Context</summary>
         <p class="muted">
           {{
             chosen

@@ -100,3 +100,55 @@ pub fn workspace_copies(
 pub fn select_workspace(runtime: State<'_, WorkspaceRuntime>, id: String) -> Result<(), String> {
     runtime.select(&id).map_err(|e| e.to_string())
 }
+
+#[tauri::command]
+pub async fn read_agent_instructions(
+    store: State<'_, Store>,
+) -> Result<crate::authoring::AgentInstructions, String> {
+    store.instructions().await.map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub fn default_agent_instructions() -> crate::authoring::AgentInstructions {
+    Default::default()
+}
+#[tauri::command]
+pub async fn save_agent_instructions(
+    store: State<'_, Store>,
+    instructions: crate::authoring::AgentInstructions,
+) -> Result<(), String> {
+    store
+        .save_instructions(&instructions)
+        .await
+        .map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub async fn register_citation(
+    store: State<'_, Store>,
+    source: EvidenceSelection,
+) -> Result<crate::authoring::ReferenceEntry, String> {
+    store
+        .register_citation(&source)
+        .await
+        .map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub async fn register_margin_note(
+    store: State<'_, Store>,
+    title: String,
+    body: String,
+) -> Result<crate::authoring::ReferenceEntry, String> {
+    store
+        .register_note(&title, &body)
+        .await
+        .map_err(|e| e.to_string())
+}
+#[tauri::command]
+pub async fn document_references(
+    store: State<'_, Store>,
+    document: crate::domain::RichDocument,
+) -> Result<Vec<crate::authoring::ReferenceEntry>, String> {
+    store
+        .references_for(&document)
+        .await
+        .map_err(|e| e.to_string())
+}

@@ -37,6 +37,14 @@ const document = (content) => ({
 })
 const fixtures = [
   {
+    name: 'keep margin note through adjacent rewrite',
+    content: [text('Old'), { type: 'note', attrs: { noteId: 'note-1' } }],
+    from: 0,
+    to: 3,
+    quote: 'Old',
+    replacement: [text('New')],
+  },
+  {
     name: 'plain replacement',
     content: [text('Use the spreadsheet.')],
     from: 8,

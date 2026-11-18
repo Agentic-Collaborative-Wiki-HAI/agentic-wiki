@@ -51,3 +51,8 @@ Shell work can start against fixtures while S02 and S06 investigate independentl
 The M0 foundation and bounded M1 review implementation are checked in the companion task records and [native review QA](../design/app-review-qa-2026-11-17.md). The full passage-to-decision route passes deterministic and live subscription checks. The Codex coding-session path remains disabled; product inference uses the isolated app-owned connection. Hands-on M1 review remains open. Broader milestones and D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+The shared shell retains breadcrumbs at laptop widths and reflows the title/actions without Rename / move. Chat uses the reference-column width on wide screens, reserves space at intermediate widths, and uses an explicit full-width drawer on small screens. Hiding Chat keeps its conversation and draft; its control reuses the Chat icon. Narrow windows collapse the navigation into an explicit drawer. Readable text widths, opaque sticky References/Comments tabs and keyboard tab navigation are retained.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

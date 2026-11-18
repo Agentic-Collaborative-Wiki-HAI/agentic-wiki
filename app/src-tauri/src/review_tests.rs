@@ -75,7 +75,7 @@ async fn setup() -> (tempfile::TempDir, Store) {
     (dir, store)
 }
 #[tokio::test]
-async fn accept_commits_wording_citation_decision_and_survives_restart() {
+async fn accept_commits_wording_keeps_evidence_in_discussion_and_survives_restart() {
     let (dir, s) = setup().await;
     let d = pending(&s).await;
     let pid = &d.proposals[0].id;
@@ -86,8 +86,8 @@ async fn accept_commits_wording_citation_decision_and_survives_restart() {
     let page = s.read("getting-started").await.unwrap();
     assert_eq!(page.revision, 2);
     let cites = s.page_citations(&page.id, 2).await.unwrap();
-    assert_eq!(cites.len(), 1);
-    assert_eq!(cites[0].source.revision, 1);
+    assert!(cites.is_empty());
+    assert_eq!(accepted.proposals[0].evidence[0].source.revision, 1);
     let block = page
         .document
         .doc
@@ -99,7 +99,7 @@ async fn accept_commits_wording_citation_decision_and_survives_restart() {
         block.content()[0].plain(),
         accepted.proposals[0].candidate.proposed_wording
     );
-    assert!(matches!(block.content()[1], Inline::Citation { .. }));
+    assert_eq!(block.content().len(), 1);
     s.decide_proposal(pid, true).await.unwrap();
     assert_eq!(s.history(&page.id).await.unwrap().len(), 2);
     drop(s);
@@ -111,9 +111,16 @@ async fn accept_commits_wording_citation_decision_and_survives_restart() {
     let again = reopened.discussion(&d.id).await.unwrap();
     assert_eq!(again.messages.len(), 1);
     assert_eq!(again.proposals[0].status, "accepted");
+    assert!(
+        reopened
+            .page_citations(&page.id, 2)
+            .await
+            .unwrap()
+            .is_empty()
+    );
     assert_eq!(
-        reopened.page_citations(&page.id, 2).await.unwrap()[0].quote,
-        cites[0].quote
+        serde_json::to_value(&again.proposals[0].evidence).unwrap(),
+        serde_json::to_value(&accepted.proposals[0].evidence).unwrap()
     );
 }
 #[tokio::test]
@@ -228,7 +235,9 @@ async fn source_edits_do_not_change_pinned_evidence() {
     source.document.doc.content[1] = paragraph("passage-18", "Changed source text.");
     s.save(&source.id, 1, &source.document).await.unwrap();
     s.decide_proposal(&d.proposals[0].id, true).await.unwrap();
-    let e = s.page_citations("getting-started", 2).await.unwrap();
+    let e = s.discussion(&d.id).await.unwrap().proposals[0]
+        .evidence
+        .clone();
     assert_eq!(e[0].source.revision, 1);
     assert!(e[0].quote.contains("booking calendar"));
     assert_eq!(s.revision(&source.id, 1).await.unwrap().revision, 1);
@@ -383,6 +392,22 @@ async fn discussion_context_excludes_unrelated_objects_and_keeps_cited_revision(
             .len(),
         1
     );
+    let current = s.read("getting-started").await.unwrap();
+    let wording = d.proposals[0].candidate.proposed_wording.clone();
+    let a = PassageAnchor {
+        quote: wording.clone(),
+        to_utf16: wording.encode_utf16().count(),
+        ..anchor()
+    };
+    s.manual_citation(
+        &uuid::Uuid::new_v4().to_string(),
+        &current.id,
+        2,
+        &a,
+        &d.proposals[0].evidence[0].source,
+    )
+    .await
+    .unwrap();
     s.save("orientation-recording", 1, &source.document)
         .await
         .unwrap();

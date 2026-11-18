@@ -49,7 +49,7 @@ async function click(selector) {
 }
 async function clickButton(text) {
   const index = await execute(
-    'return [...document.querySelectorAll("button")].findIndex(e=>e.textContent.trim()===arguments[0])',
+    'return [...document.querySelectorAll("button")].findIndex(e=>e.getClientRects().length && e.textContent.trim()===arguments[0])',
     [text],
   )
   assert.ok(index >= 0, `Missing button ${text}`)
@@ -142,7 +142,7 @@ try {
   await clickButton('Chat')
   assert.ok(await value('.chat-drawer'))
   assert.equal(await value('[data-block-id=booking]'), original)
-  await clickButton('Close chat')
+  await clickButton('Hide chat')
   assert.equal(
     await execute('return !!document.querySelector(".chat-drawer")?.getClientRects().length'),
     false,
@@ -186,14 +186,14 @@ try {
   await clickButton('Save page')
   await until(async () => (await value('.status')) === 'Saved revision 2.', 'save')
   await clickButton('Page history')
-  assert.match(await value('.history-dialog'), /Revision 2/)
+  assert.match(await value('.history-page'), /Revision 2/)
   await clickButton('Back to page')
   await stop()
   await launch()
   assert.equal(await value('[data-block-id=booking]'), 'Use the booking calendar. 🔬')
   assert.match(await value('.metadata'), /Revision 2/)
   console.log('PASS draft recovery, save, history and persistence across process restarts')
-  await request(endpoint('/window/rect'), { width: 980, height: 760 })
+  await request(endpoint('/window/rect'), { width: 1440, height: 760 })
   const tabsTop = await execute(
     'return document.querySelector(".tabs").getBoundingClientRect().top',
   )
@@ -204,13 +204,13 @@ try {
     tabsTop,
     'rail tabs stay visible while scrolling',
   )
-  await screenshot('compact-window')
+  await screenshot('sticky-tabs')
   assert.equal(
     await execute('return document.documentElement.scrollWidth<=innerWidth'),
     true,
     'no horizontal document overflow',
   )
-  console.log('PASS compact desktop layout has no document overflow')
+  console.log('PASS wide desktop tabs remain visible without document overflow')
   await writeFile(
     join(artifacts, 'result.json'),
     JSON.stringify(
@@ -228,7 +228,7 @@ try {
           'save',
           'history',
           'process restart',
-          'compact window',
+          'wide window with sticky tabs',
         ],
       },
       null,

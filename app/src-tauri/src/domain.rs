@@ -89,6 +89,15 @@ pub enum Inline {
     HardBreak,
     #[serde(rename = "citation")]
     Citation { attrs: CitationAttrs },
+    #[serde(rename = "note")]
+    Note { attrs: NoteAttrs },
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, TS)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+#[ts(export_to = "../../src/generated/")]
+pub struct NoteAttrs {
+    pub note_id: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, TS)]
@@ -168,7 +177,7 @@ impl Inline {
         match self {
             Self::Text { text, .. } => text.clone(),
             Self::HardBreak => "\n".into(),
-            Self::Citation { .. } => "\u{fffc}".into(),
+            Self::Citation { .. } | Self::Note { .. } => "\u{fffc}".into(),
         }
     }
     pub fn len_utf16(&self) -> usize {
@@ -210,6 +219,9 @@ fn validate_inline(content: &[Inline]) -> Result<(), Error> {
                         return Err(invalid("duplicate mark"));
                     }
                 }
+            }
+            Inline::Note { attrs } if attrs.note_id.trim().is_empty() => {
+                return Err(invalid("missing margin note identity"));
             }
             Inline::Citation { attrs } if attrs.citation_id.trim().is_empty() => {
                 return Err(invalid("missing citation identity"));

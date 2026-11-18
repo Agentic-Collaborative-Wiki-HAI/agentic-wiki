@@ -8,6 +8,7 @@ import type { Proposal } from './generated/Proposal'
 import type { Evidence } from './generated/Evidence'
 
 export interface InlineReviewState {
+  threads?: { id: string; anchor: PassageAnchor }[]
   proposal: Proposal | null
   anchor: PassageAnchor | null
   editing: boolean
@@ -37,16 +38,31 @@ function range(doc: Node, anchor: PassageAnchor) {
 function decorations(doc: Node, state: InlineReviewState) {
   const proposal = state.proposal
   const anchor = proposal?.anchor ?? state.anchor
-  if (!anchor || (proposal && (proposal.stale || proposal.status !== 'pending')))
-    return DecorationSet.empty
-  const target = range(doc, anchor)
-  if (!target) return DecorationSet.empty
-  const marks = [
+  const marks: Decoration[] = []
+  for (const thread of state.threads ?? []) {
+    const location = range(doc, thread.anchor)
+    if (location)
+      marks.push(
+        Decoration.inline(location.from, location.to, {
+          class: 'discussion-anchor',
+          'data-thread-anchor': thread.id,
+          role: 'button',
+          tabindex: '0',
+          'aria-label': 'Open passage discussion',
+        }),
+      )
+  }
+  const target =
+    anchor && (!proposal || (!proposal.stale && proposal.status === 'pending'))
+      ? range(doc, anchor)
+      : null
+  if (!target) return DecorationSet.create(doc, marks)
+  marks.push(
     Decoration.inline(target.from, target.to, {
       class: proposal ? 'suggested-deletion' : 'discussion-anchor',
       ...(proposal ? { role: 'deletion', 'aria-label': 'Suggested removal' } : {}),
     }),
-  ]
+  )
   if (proposal)
     marks.push(
       Decoration.widget(
@@ -83,16 +99,6 @@ function decorations(doc: Node, state: InlineReviewState) {
             addition.setAttribute('aria-label', 'Suggested replacement')
             addition.textContent = proposal.candidate.proposedWording
             wrapper.append(document.createTextNode(' '), addition)
-            proposal.evidence
-              .filter((e) => proposal.candidate.citedSourceIds.includes(e.id))
-              .forEach((e, i) => {
-                const button = document.createElement('button')
-                button.className = 'suggestion-citation text-link'
-                button.textContent = `[proposed source ${i + 1}]`
-                button.setAttribute('aria-label', `Inspect suggestion source: ${e.title}`)
-                button.addEventListener('click', () => state.onEvidence?.(e))
-                wrapper.append(button)
-              })
           }
           return wrapper
         },

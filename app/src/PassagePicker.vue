@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, ref, watch, useId } from 'vue'
 import { workspaceApi } from './workspaceApi'
 import type { Evidence } from './generated/Evidence'
 import type { PassageResult } from './generated/PassageResult'
 const emit = defineEmits<{ navigate: [PassageResult]; cite: [Evidence]; evidence: [Evidence[]] }>()
+const titleId = useId()
 const dialog = ref<HTMLDialogElement>(),
   mode = ref<'navigate' | 'cite' | 'evidence'>('navigate')
 const query = ref(''),
@@ -102,17 +103,17 @@ onBeforeUnmount(() => {
   <dialog
     ref="dialog"
     class="workspace-dialog passage-picker"
-    aria-labelledby="picker-title"
+    :aria-labelledby="titleId"
     @cancel="close"
   >
     <div class="picker-heading">
-      <h2 id="picker-title">
+      <h2 :id="titleId">
         {{
           mode === 'navigate'
             ? 'Search wiki'
             : mode === 'cite'
               ? 'Add citation'
-              : 'Choose sources for @agent'
+              : 'Choose context for @agent'
         }}
       </h2>
       <button @click="close" aria-label="Close search">Close</button>

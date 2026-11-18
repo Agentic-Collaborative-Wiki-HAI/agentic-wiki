@@ -106,7 +106,7 @@ pub(crate) async fn page_at(
     page_id: &str,
     revision: Option<i32>,
 ) -> Result<Page, Error> {
-    let row = sqlx::query("SELECT o.id,o.title,o.kind,r.revision,r.document_json FROM objects o JOIN revisions r ON o.id=r.object_id WHERE o.id=? AND r.revision=COALESCE(?,o.current_revision)")
+    let row = sqlx::query("SELECT o.id,COALESCE(r.title,o.title) AS title,o.kind,r.revision,r.document_json FROM objects o JOIN revisions r ON o.id=r.object_id WHERE o.id=? AND r.revision=COALESCE(?,o.current_revision)")
         .bind(page_id).bind(revision).fetch_optional(conn).await?.ok_or(Error::NotFound)?;
     let document: RichDocument = serde_json::from_str(row.get("document_json"))?;
     document.validate()?;
@@ -215,6 +215,16 @@ pub(crate) async fn validate_citations(
 ) -> Result<(), Error> {
     for block in &document.doc.content {
         for inline in block.content() {
+            if let Inline::Note { attrs } = inline {
+                let exists: bool =
+                    sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM margin_notes WHERE id=?)")
+                        .bind(&attrs.note_id)
+                        .fetch_one(&mut *conn)
+                        .await?;
+                if !exists {
+                    return Err(invalid("The document contains an unknown margin note."));
+                }
+            }
             if let Inline::Citation { attrs } = inline {
                 let exists: bool =
                     sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM citations WHERE id=?)")
@@ -324,8 +334,8 @@ impl Store {
         parent_id: Option<&str>,
     ) -> Result<(ProposalRequest, Vec<Evidence>), Error> {
         bounded(request_text)?;
-        if selections.is_empty() || selections.len() > 8 {
-            return Err(invalid("Choose between one and eight source passages."));
+        if selections.len() > 8 {
+            return Err(invalid("Choose up to eight source passages."));
         }
         let mut conn = self.pool.acquire().await?;
         let discussion = discussion_on(&mut conn, thread_id).await?;
@@ -547,11 +557,25 @@ impl Store {
                 if actual.quote != evidence.quote {
                     return Err(invalid("The cited passage cannot be verified."));
                 }
-                let citation_id = id();
-                sqlx::query("INSERT INTO citations(id,source_id,source_revision,block_id,quote,range_json) VALUES(?,?,?,?,?,?)").bind(&citation_id).bind(&evidence.source.object_id).bind(evidence.source.revision).bind(&evidence.source.block_id).bind(&evidence.quote).bind(evidence.source.range.as_ref().map(serde_json::to_string).transpose()?).execute(&mut *tx).await?;
-                replacement.push(Inline::Citation {
-                    attrs: CitationAttrs { citation_id },
-                });
+            }
+            // Proposal evidence belongs to the discussion. Preserve explicit annotations in the replaced range, without manufacturing new article references.
+            let block = page
+                .document
+                .doc
+                .content
+                .iter()
+                .find(|b| b.id() == p.anchor.block_id)
+                .ok_or(Error::NotFound)?;
+            let mut offset = 0;
+            for node in block.content() {
+                let end = offset + node.len_utf16();
+                if offset >= p.anchor.from_utf16
+                    && end <= p.anchor.to_utf16
+                    && matches!(node, Inline::Citation { .. } | Inline::Note { .. })
+                {
+                    replacement.push(node.clone());
+                }
+                offset = end;
             }
             let next = page.document.replace_passage(&PassagePatch {
                 block_id: p.anchor.block_id.clone(),

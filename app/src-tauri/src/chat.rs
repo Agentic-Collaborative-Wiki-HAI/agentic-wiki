@@ -92,7 +92,7 @@ impl ChatRequest {
             || self.history.len() > 3
             || serde_json::to_vec(self)?.len() > 32000
         {
-            return Err(bad("Narrow the question or select fewer source excerpts."));
+            return Err(bad("Shorten the message or select fewer source excerpts."));
         }
         let mut ids = HashSet::new();
         for s in &self.sources {
@@ -123,10 +123,8 @@ impl ChatAnswer {
         }
         for p in &self.paragraphs {
             let mut seen = HashSet::new();
-            if p.text.trim().is_empty() || p.cited_source_ids.is_empty() {
-                return Err(bad(
-                    "Every answer paragraph needs a supplied source citation.",
-                ));
+            if p.text.trim().is_empty() {
+                return Err(bad("Response paragraphs cannot be empty."));
             }
             for id in &p.cited_source_ids {
                 if !seen.insert(id) || !request.sources.iter().any(|s| &s.id == id) {

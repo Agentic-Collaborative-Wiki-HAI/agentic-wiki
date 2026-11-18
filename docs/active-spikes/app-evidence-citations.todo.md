@@ -10,7 +10,7 @@ The M1 evidence contract and approved N2 manual-citation/source-selection slice.
 ## To Do
 Source-change review remains a later slice. The approved manual citation authoring slice is implemented below.
 
-The N4 proposal-source marker fix passes unit and native workspace verification; proposed labels and saved article numbering coexist without altering the saved document.
+Proposed-edit evidence stays in the discussion. Article numbering is reserved for explicit citations and margin notes; accepting an edit preserves existing annotations without adding references. The approved interface correction below includes this behavior.
 
 ## Ready for Human QA
 - Review passage selection, the discussion and evidence presentation, and the accept/reject/history journey in the native app. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
@@ -38,3 +38,7 @@ Manual citation authoring selects an exact saved excerpt and pins its source rev
 - [x] Carry deduplicated citations into an unpublished editable draft and explicit publication, with source inspection and origin/history after restart. [Chat QA](../design/app-chat-qa-2026-11-17.md).
 
 Citation membership validation does not replace a person's assessment of factual support.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

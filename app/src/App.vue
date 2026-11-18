@@ -3,6 +3,28 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch 
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { hasUnsupportedPaste, wikiExtensions } from './editor'
 import { api } from './api'
+import { authoringApi } from './authoringApi'
+import type { ReferenceEntry } from './generated/ReferenceEntry'
+const references = ref<ReferenceEntry[]>([]),
+  citationsOnly = ref(false),
+  draftTitle = ref(''),
+  historyOpen = ref(false)
+const noteDialog = ref<HTMLDialogElement>(),
+  noteTitle = ref(''),
+  noteBody = ref(''),
+  noteError = ref('')
+let referenceSequence = 0
+async function refreshReferences() {
+  if (!editor.value) return
+  const seq = ++referenceSequence
+  try {
+    const entries = await authoringApi.references(readDocument())
+    if (seq === referenceSequence) references.value = entries
+  } catch (e) {
+    error.value = String(e)
+  }
+}
+
 import ReviewRail from './ReviewRail.vue'
 import AgentSettings from './AgentSettings.vue'
 import GlobalChat from './GlobalChat.vue'
@@ -46,9 +68,12 @@ const records = ref<WikiRecord[]>([])
 const pageDetails = ref<InstanceType<typeof PageDetails>>()
 const passagePicker = ref<InstanceType<typeof PassagePicker>>()
 const breadcrumb = computed(() => ancestors(records.value, page.value?.id ?? ''))
-const record = computed(() => records.value.find((r) => r.id === page.value?.id))
-let citationTarget: { pageId: string; revision: number; anchor: PassageAnchor; id: string } | null =
-  null
+let citationTarget: {
+  pageId: string
+  revision: number
+  anchor: PassageAnchor
+  editing: boolean
+} | null = null
 async function detailsSaved(saved: Page, created: boolean) {
   await refreshSources()
   await loadPage(saved.id)
@@ -65,38 +90,118 @@ async function openSearchHit(hit: PassageResult) {
   scrollTo(hit.source.blockId)
   status.value = 'Opened the matching passage.'
 }
-async function startCitation() {
-  if (!page.value || !selectionAnchor.value || editing.value) return
+function captureAnnotation() {
+  if (!page.value || !selectionAnchor.value) return false
   citationTarget = {
     pageId: page.value.id,
     revision: page.value.revision,
     anchor: { ...selectionAnchor.value },
-    id: crypto.randomUUID(),
+    editing: editing.value,
   }
-  await passagePicker.value?.open('cite')
+  return true
+}
+async function startCitation() {
+  if (captureAnnotation()) await passagePicker.value?.open('cite')
+}
+async function startNote() {
+  if (!captureAnnotation()) return
+  noteTitle.value = ''
+  noteBody.value = ''
+  noteError.value = ''
+  await nextTick()
+  noteDialog.value?.showModal()
+}
+function annotationPosition() {
+  const target = citationTarget,
+    e = editor.value
+  if (
+    !target ||
+    !e ||
+    target.pageId !== page.value?.id ||
+    target.revision !== page.value?.revision ||
+    target.editing !== editing.value
+  )
+    throw Error('The page changed. Select the passage again.')
+  let position: number | undefined
+  e.state.doc.forEach((block, pos) => {
+    if (block.attrs.blockId !== target.anchor.blockId) return
+    const text = block.textBetween(0, block.content.size, '', (leaf) =>
+      leaf.type.name === 'hardBreak' ? '\n' : '\uFFFC',
+    )
+    if (text.slice(target.anchor.fromUtf16, target.anchor.toUtf16) === target.anchor.quote)
+      position = pos + 1 + target.anchor.toUtf16
+  })
+  if (position === undefined)
+    throw Error('The selected passage changed. Select it again before adding a reference.')
+  return position
+}
+async function insertReference(entry: ReferenceEntry) {
+  const e = editor.value!,
+    pos = annotationPosition(),
+    target = citationTarget!
+  const atom =
+    entry.kind === 'note'
+      ? { type: 'note', attrs: { noteId: entry.id } }
+      : { type: 'citation', attrs: { citationId: entry.id } }
+  const node = e.schema.nodeFromJSON(atom)
+  if (editing.value) {
+    e.view.dispatch(e.state.tr.insert(pos, node))
+    await flushDraft()
+    await refreshReferences()
+    status.value = 'Reference added to your draft. Save the page to publish it.'
+  } else {
+    const document = {
+      schemaVersion: 1,
+      doc: e.state.tr.insert(pos, node).doc.toJSON(),
+    } as RichDocument
+    await api.save(target.pageId, target.revision, document)
+    busy.value = false
+    await loadPage(target.pageId)
+    status.value =
+      entry.kind === 'note' ? 'Margin note saved.' : 'Citation saved with its source revision.'
+  }
+  activeTab.value = 'references'
+  citationTarget = null
+  selectionAnchor.value = null
 }
 async function cite(evidence: Evidence) {
-  const target = citationTarget
-  if (!target || busy.value) return
+  if (!citationTarget || busy.value) return
   busy.value = true
   try {
-    await workspaceApi.cite(
-      target.id,
-      target.pageId,
-      target.revision,
-      target.anchor,
-      evidence.source,
-    )
-    busy.value = false
-    activeTab.value = 'references'
-    await loadPage(target.pageId)
-    status.value = 'Citation saved with its source revision.'
-    citationTarget = null
+    annotationPosition()
+    await insertReference(await authoringApi.citation(evidence.source))
   } catch (e) {
     error.value = String(e)
   } finally {
     busy.value = false
   }
+}
+async function saveNote() {
+  if (!citationTarget || busy.value) return
+  busy.value = true
+  noteError.value = ''
+  try {
+    annotationPosition()
+    await insertReference(await authoringApi.note(noteTitle.value, noteBody.value))
+    noteDialog.value?.close()
+  } catch (e) {
+    noteError.value = String(e)
+  } finally {
+    busy.value = false
+  }
+}
+function tabsKey(event: KeyboardEvent) {
+  if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+  event.preventDefault()
+  activeTab.value =
+    event.key === 'Home'
+      ? 'references'
+      : event.key === 'End'
+        ? 'comments'
+        : activeTab.value === 'references'
+          ? 'comments'
+          : 'references'
+  void nextTick(() => document.getElementById(`${activeTab.value}-tab`)?.focus())
 }
 
 const page = ref<Page | null>(null)
@@ -157,6 +262,7 @@ const readDocument = (): RichDocument => ({
 
 function scheduleDraft() {
   if (!editing.value || !page.value) return
+  void refreshReferences()
   clearTimeout(draftTimer)
   draftState.value = 'Saving draft…'
   draftTimer = setTimeout(() => queueDraft(), 250)
@@ -165,10 +271,11 @@ function queueDraft() {
   if (!editing.value || !page.value) return
   const id = page.value.id,
     revision = page.value.revision,
-    document = readDocument()
+    document = readDocument(),
+    title = draftTitle.value
   draftWrites = draftWrites
     .catch(() => {})
-    .then(() => api.putDraft(id, revision, document))
+    .then(() => api.putDraft(id, revision, document, title))
     .then(() => {
       draftState.value = 'Draft saved on this device'
     })
@@ -198,6 +305,9 @@ async function loadPage(id: string) {
     editor.value?.destroy()
     reviewPreview.value = { proposal: null, anchor: null, editing: false }
     page.value = loaded
+    historyOpen.value = false
+    references.value = []
+    draftTitle.value = loaded.title
     pageOrigin.value = origin
     selectionAnchor.value = null
     selectedText.value = ''
@@ -222,12 +332,7 @@ async function loadPage(id: string) {
           ' ',
         )
         const { $from, $to, empty } = e.state.selection
-        if (
-          !editing.value &&
-          !empty &&
-          $from.sameParent($to) &&
-          $from.parent.type.name === 'paragraph'
-        ) {
+        if (!empty && $from.sameParent($to) && $from.parent.type.name === 'paragraph') {
           const quote = $from.parent.textBetween(
             $from.parentOffset,
             $to.parentOffset,
@@ -244,6 +349,7 @@ async function loadPage(id: string) {
         }
       },
     })
+    await refreshReferences()
     const draft = await api.draft(id)
     if (draft) {
       if (draft.baseRevision === loaded.revision)
@@ -268,7 +374,9 @@ async function beginEdit() {
         'The saved draft is outdated. Its contents are retained; reload or resolve it before editing.'
       return
     }
+    draftTitle.value = draft?.title ?? page.value.title
     if (draft) editor.value?.commands.setContent(draft.document.doc)
+    await refreshReferences()
     selectionAnchor.value = null
     editing.value = true
     status.value = ''
@@ -286,12 +394,20 @@ async function save() {
   error.value = ''
   try {
     await flushDraft()
-    const saved = await api.save(page.value.id, page.value.revision, readDocument())
+    const saved = await api.save(
+      page.value.id,
+      page.value.revision,
+      readDocument(),
+      draftTitle.value,
+    )
     page.value = saved
     editing.value = false
     editor.value?.setEditable(false)
+    await clearSelection()
     draftState.value = ''
     status.value = `Saved revision ${saved.revision}.`
+    await refreshSources()
+    await refreshReferences()
     void reviewRail.value?.reload()
   } catch (e) {
     error.value = String(e)
@@ -310,7 +426,10 @@ async function cancel() {
     editor.value?.commands.setContent(page.value.document.doc)
     editing.value = false
     editor.value?.setEditable(false)
+    await clearSelection()
     draftState.value = ''
+    draftTitle.value = page.value.title
+    await refreshReferences()
     status.value = 'Draft discarded. Saved page unchanged.'
   } catch (e) {
     error.value = String(e)
@@ -320,6 +439,11 @@ async function cancel() {
 }
 async function openHistory() {
   try {
+    if (editing.value) {
+      error.value = 'Save or cancel your edit before opening history.'
+      return
+    }
+    chatOpen.value = false
     await revisionHistory.value?.open()
   } catch (e) {
     error.value = String(e)
@@ -371,14 +495,32 @@ async function startComment() {
 }
 function returnToCitation(id: string) {
   const marker = document.querySelector<HTMLElement>(
-    `.ProseMirror [data-citation-id="${CSS.escape(id)}"]`,
+    `.document-column .ProseMirror [data-citation-id="${CSS.escape(id)}"], .document-column .ProseMirror [data-note-id="${CSS.escape(id)}"]`,
   )
   marker?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   marker?.focus({ preventScroll: true })
 }
 function citationClick(event: MouseEvent) {
-  const marker = (event.target as HTMLElement).closest<HTMLElement>('[data-citation-id]')
-  if (marker?.dataset.citationId) void reviewRail.value?.openCitation(marker.dataset.citationId)
+  const target = event.target as HTMLElement
+  const marker = target.closest<HTMLElement>('[data-citation-id], [data-note-id]')
+  const id = marker?.dataset.citationId ?? marker?.dataset.noteId
+  if (id) {
+    activeTab.value = 'references'
+    void nextTick(() => reviewRail.value?.openReference(id))
+    return
+  }
+  const thread = target.closest<HTMLElement>('[data-thread-anchor]')?.dataset.threadAnchor
+  if (thread) {
+    activeTab.value = 'comments'
+    void nextTick(() => reviewRail.value?.selectThread(thread))
+  }
+}
+function articleKey(event: KeyboardEvent) {
+  const target = event.target as HTMLElement
+  if ((event.key === 'Enter' || event.key === ' ') && target.matches('[data-thread-anchor]')) {
+    event.preventDefault()
+    target.click()
+  }
 }
 async function showHistoryThread(d: Discussion) {
   await reviewRail.value?.inspectThread(d)
@@ -427,7 +569,39 @@ async function showAnswerOrigin() {
   await nextTick()
   await globalChat.value?.focusTurn(pageOrigin.value)
 }
+const headerElement = ref<HTMLElement>()
+const headerReflow = ref(false)
+const headerHeight = ref(100)
+let headerObserver: ResizeObserver | undefined
+function measureHeader() {
+  const header = headerElement.value
+  if (!header) return
+  const actions = header.querySelector<HTMLElement>('.global-actions')!
+  const brand = header.querySelector<HTMLElement>('.brand')!
+  // Text enlargement can exhaust the centered search's side columns without changing the viewport width.
+  const searchWidth = innerWidth > 1000 ? 375 : 230
+  const sideRoom = (header.clientWidth - searchWidth) / 2 - 32
+  headerReflow.value =
+    innerWidth > 650 && (actions.scrollWidth > sideRoom || brand.offsetWidth + 72 > sideRoom)
+  if (innerWidth <= 650) headerReflow.value = parseFloat(getComputedStyle(brand).fontSize) > 28
+  headerHeight.value = header.offsetHeight
+}
+const narrowLayout = window.matchMedia('(max-width: 1000px)')
+const compactContents = window.matchMedia('(max-width: 1200px)')
+function adaptLayout() {
+  if (narrowLayout.matches) treeOpen.value = false
+  if (compactContents.matches) contentsOpen.value = false
+}
 onMounted(async () => {
+  adaptLayout()
+  headerObserver = new ResizeObserver(measureHeader)
+  if (headerElement.value) {
+    headerObserver.observe(headerElement.value)
+    for (const element of headerElement.value.querySelectorAll('.global-actions, .brand'))
+      headerObserver.observe(element)
+  }
+  narrowLayout.addEventListener('change', adaptLayout)
+  compactContents.addEventListener('change', adaptLayout)
   await loadPage('getting-started')
   try {
     await refreshSources()
@@ -436,14 +610,21 @@ onMounted(async () => {
   }
 })
 onBeforeUnmount(() => {
+  headerObserver?.disconnect()
+  narrowLayout.removeEventListener('change', adaptLayout)
+  compactContents.removeEventListener('change', adaptLayout)
   clearTimeout(draftTimer)
   editor.value?.destroy()
 })
 </script>
 
 <template>
-  <div class="application">
-    <header class="wiki-header">
+  <div
+    class="application"
+    :class="{ 'chat-open': chatOpen }"
+    :style="headerReflow ? { '--header-height': `${headerHeight}px` } : undefined"
+  >
+    <header ref="headerElement" class="wiki-header" :class="{ 'header-reflow': headerReflow }">
       <div class="identity">
         <button
           class="icon-button"
@@ -456,8 +637,7 @@ onBeforeUnmount(() => {
         </button>
         <button class="brand" :disabled="!!answerDraft" @click="goHome">The Lab</button>
         <nav v-if="settingsOpen" class="breadcrumbs" aria-label="Breadcrumb">
-          <span>Settings</span><span>/</span
-          ><span class="crumb-current">Connections and sources</span>
+          <span>Settings</span><span>/</span><span class="crumb-current">Agent and workspace</span>
         </nav>
         <nav v-else class="breadcrumbs" aria-label="Breadcrumb">
           <template v-for="(r, index) in breadcrumb" :key="r.id"
@@ -465,11 +645,12 @@ onBeforeUnmount(() => {
             ><button
               :class="{ 'crumb-current': r.id === page?.id }"
               :disabled="!!answerDraft"
+              :title="r.title"
               @click="loadPage(r.id)"
             >
               {{ r.title }}
             </button></template
-          >
+          ><span v-if="historyOpen">/ History</span>
         </nav>
       </div>
       <button
@@ -518,7 +699,7 @@ onBeforeUnmount(() => {
       @published="publishAnswer"
     />
     <div
-      v-show="!settingsOpen && !answerDraft"
+      v-show="!settingsOpen && !answerDraft && !historyOpen"
       class="workspace"
       :class="{ 'tree-hidden': !treeOpen, 'contents-hidden': !contentsOpen }"
     >
@@ -547,16 +728,16 @@ onBeforeUnmount(() => {
         <p v-if="!page && !error" role="status">Opening the workspace…</p>
         <article v-if="page">
           <div class="title-row">
-            <h1>{{ page.title }}</h1>
+            <input
+              v-if="editing"
+              v-model="draftTitle"
+              class="page-title-input"
+              aria-label="Page title"
+              maxlength="240"
+              @input="scheduleDraft"
+            />
+            <h1 v-else>{{ page.title }}</h1>
             <div class="page-actions">
-              <button
-                v-if="record && !editing"
-                class="compact"
-                :disabled="busy"
-                @click="pageDetails?.open(record)"
-              >
-                Rename / move
-              </button>
               <button v-if="!editing" class="compact" @click="beginEdit" :disabled="busy">
                 <img :src="icon('edit')" alt="" />{{
                   page.kind === 'recording' || currentSource?.kind === 'transcript'
@@ -625,24 +806,41 @@ onBeforeUnmount(() => {
           <SelectionActions
             v-if="editor"
             :editor="editor"
-            :enabled="!editing && !settingsOpen && !chatOpen"
+            :enabled="!settingsOpen && !chatOpen && !historyOpen"
+            :editing="editing"
             @comment="startComment"
             @citation="startCitation"
+            @note="startNote"
           />
           <EditorContent
             v-if="editor"
             :editor="editor"
             :class="{ editing }"
             @click="citationClick"
+            @keydown="articleKey"
           />
-          <details v-if="reviewRail?.citations.length && !editing" class="page-endnotes">
-            <summary>Endnotes ({{ reviewRail.citations.length }})</summary>
-            <article v-for="(e, index) in reviewRail.citations" :key="e.id">
-              <button class="text-link" @click="reviewRail?.openEvidence(e)">
-                {{ index + 1 }} · {{ e.title }} · Revision {{ e.source.revision }}
+          <details v-if="references.length" class="page-endnotes">
+            <summary>Endnotes ({{ references.length }})</summary>
+            <label class="reference-filter"
+              ><input type="checkbox" role="switch" v-model="citationsOnly" />Citations only</label
+            >
+            <article
+              v-for="(entry, index) in references"
+              :key="entry.id"
+              v-show="!citationsOnly || entry.kind === 'citation'"
+            >
+              <button
+                v-if="entry.evidence"
+                class="text-link"
+                @click="reviewRail?.openEvidence(entry.evidence)"
+              >
+                {{ index + 1 }} · {{ entry.title }} · Revision {{ entry.evidence.source.revision }}
               </button>
-              <blockquote>{{ e.quote }}</blockquote>
-              <button class="text-link" @click="returnToCitation(e.id)">Return to citation</button>
+              <h3 v-else>{{ index + 1 }} · {{ entry.title }}</h3>
+              <blockquote>{{ entry.body }}</blockquote>
+              <button class="text-link" @click="returnToCitation(entry.id)">
+                Return to passage
+              </button>
             </article>
           </details>
         </article>
@@ -664,11 +862,12 @@ onBeforeUnmount(() => {
               <img :src="icon('plus')" alt="" />Add artifact
             </button>
           </div>
-          <div class="tabs" role="tablist" aria-label="Page context">
+          <div class="tabs" role="tablist" aria-label="Page context" @keydown="tabsKey">
             <button
               id="references-tab"
               role="tab"
               :aria-selected="activeTab === 'references'"
+              :tabindex="activeTab === 'references' ? 0 : -1"
               aria-controls="references-panel"
               @click="activeTab = 'references'"
             >
@@ -677,6 +876,7 @@ onBeforeUnmount(() => {
               id="comments-tab"
               role="tab"
               :aria-selected="activeTab === 'comments'"
+              :tabindex="activeTab === 'comments' ? 0 : -1"
               aria-controls="comments-panel"
               @click="activeTab = 'comments'"
             >
@@ -688,6 +888,7 @@ onBeforeUnmount(() => {
           v-if="page"
           ref="reviewRail"
           :page="page"
+          :references="references"
           :tab="activeTab"
           :selection="selectionAnchor"
           :editing="editing"
@@ -699,6 +900,17 @@ onBeforeUnmount(() => {
         />
       </aside>
     </div>
+    <RevisionHistory
+      v-if="page"
+      ref="revisionHistory"
+      :page="page"
+      :shown="historyOpen && !settingsOpen && !answerDraft"
+      :discussions="reviewRail?.discussions ?? []"
+      @open="historyOpen = true"
+      @close="historyOpen = false"
+      @thread="showHistoryThread"
+      @evidence="(e) => reviewRail?.openEvidence(e)"
+    />
     <footer>The Lab <span>Local workspace · Includes fictional starter pages</span></footer>
     <GlobalChat
       ref="globalChat"
@@ -714,13 +926,27 @@ onBeforeUnmount(() => {
     <PageDetails ref="pageDetails" :records="records" @saved="detailsSaved" />
     <PassagePicker ref="passagePicker" @navigate="openSearchHit" @cite="cite" />
     <ImportSource ref="importer" :page="page" @imported="imported" @settings="openSettings" />
-    <RevisionHistory
-      v-if="page"
-      ref="revisionHistory"
-      :page="page"
-      :discussions="reviewRail?.discussions ?? []"
-      @thread="showHistoryThread"
-      @evidence="(e) => reviewRail?.openEvidence(e)"
-    />
+    <dialog ref="noteDialog" class="workspace-dialog" aria-labelledby="note-title">
+      <form @submit.prevent="saveNote">
+        <h2 id="note-title">Add margin note</h2>
+        <p v-if="noteError" role="alert">{{ noteError }}</p>
+        <label
+          >Title<input v-model="noteTitle" required maxlength="240" aria-label="Margin note title"
+        /></label>
+        <label
+          >Note<textarea
+            v-model="noteBody"
+            required
+            maxlength="16000"
+            rows="5"
+            aria-label="Margin note text"
+          />
+        </label>
+        <div class="review-actions">
+          <button type="button" @click="noteDialog?.close()">Cancel</button
+          ><button class="primary" :disabled="busy">Add note</button>
+        </div>
+      </form>
+    </dialog>
   </div>
 </template>

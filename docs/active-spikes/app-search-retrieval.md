@@ -60,3 +60,8 @@ The broader filters/sort, semantic retrieval, judged corpus and external discove
 Chat waits for a deliberate message. Its default evidence combines bounded relevant excerpts from the current page and linked sources, up to eight excerpts and 16 KB of source text. Other workspace sources require explicit selection. Up to three completed exchanges within an 8 KB conversation budget preserve context; the complete request is limited to 32 KB. Prior answers cannot substitute for current evidence. Answers reject unknown source IDs and disclose missing evidence rather than fabricating an answer. These are structural safeguards, not automatic proof of factual support.
 
 An answer can create one editable unpublished draft with title, parent, rich text, pinned citations and AI origin. Draft creation never adds a wiki object or search result. Explicit Save page publishes a revision atomically; recovery retains drafts, answers and provenance. The [Chat QA record](../design/app-chat-qa-2026-11-17.md) distinguishes fixture checks from the passing real-subscription journey. Human review of usefulness and interface fit remains open.
+
+## Current interface and authoring boundary
+Global Chat accepts messages, editing instructions and questions. Its Context disclosure retains current-page and linked-source defaults and allows explicit selection of other or zero excerpts. Factual source claims still require human inspection; a citation identity check does not establish semantic support. Editorial and conversational responses can be uncited. Search remains the bounded keyword picker; a dedicated results page and semantic retrieval are not part of this correction.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

@@ -57,6 +57,21 @@ export const wikiExtensions = [
       '[…]',
     ],
   }),
+  Node.create({
+    name: 'note',
+    inline: true,
+    group: 'inline',
+    atom: true,
+    addAttributes: () => ({
+      noteId: { default: null, parseHTML: (el: HTMLElement) => el.dataset.noteId },
+    }),
+    parseHTML: () => [{ tag: 'span[data-note-id]' }],
+    renderHTML: ({ node }) => [
+      'span',
+      { 'data-note-id': node.attrs.noteId, class: 'citation-marker' },
+      '[…]',
+    ],
+  }),
   Mark.create({
     name: 'bold',
     parseHTML: () => [{ tag: 'strong' }, { tag: 'b' }],
@@ -98,31 +113,33 @@ export const wikiExtensions = [
         view(view) {
           const update = () => {
             const numbers = new Map<string, number>()
-            for (const marker of view.dom.querySelectorAll<HTMLElement>('[data-citation-id]')) {
-              const id = marker.dataset.citationId!
+            for (const marker of view.dom.querySelectorAll<HTMLElement>(
+              '[data-citation-id], [data-note-id]',
+            )) {
+              const id = marker.dataset.citationId ?? marker.dataset.noteId!
               if (!numbers.has(id)) numbers.set(id, numbers.size + 1)
               const number = numbers.get(id)!
               if (marker.textContent !== `[${number}]`) marker.textContent = `[${number}]`
               marker.setAttribute('role', 'button')
               marker.setAttribute('tabindex', '0')
-              marker.setAttribute('aria-label', `Open citation ${number}`)
+              marker.setAttribute(
+                'aria-label',
+                `Open ${marker.dataset.noteId ? 'note' : 'citation'} ${number}`,
+              )
             }
           }
           update()
-          return { update }
-        },
-        props: {
-          handleKeyDown(_view, event) {
-            if (
-              (event.key === 'Enter' || event.key === ' ') &&
-              (event.target as HTMLElement)?.matches('[data-citation-id]')
-            ) {
+          const keydown = (event: KeyboardEvent) => {
+            const marker = (event.target as HTMLElement)?.closest<HTMLElement>(
+              '[data-citation-id], [data-note-id]',
+            )
+            if (marker && (event.key === 'Enter' || event.key === ' ')) {
               event.preventDefault()
-              ;(event.target as HTMLElement).click()
-              return true
+              marker.click()
             }
-            return false
-          },
+          }
+          view.dom.addEventListener('keydown', keydown)
+          return { update, destroy: () => view.dom.removeEventListener('keydown', keydown) }
         },
       }),
     ],

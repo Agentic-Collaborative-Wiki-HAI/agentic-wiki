@@ -27,6 +27,7 @@ pub struct Page {
 #[serde(rename_all = "camelCase")]
 #[ts(export, export_to = "../../src/generated/")]
 pub struct Draft {
+    pub title: Option<String>,
     pub base_revision: i32,
     pub document: RichDocument,
 }
@@ -141,6 +142,18 @@ impl Store {
         })
     }
     pub async fn save(&self, id: &str, base: i32, document: &RichDocument) -> Result<Page, Error> {
+        self.save_edit(id, base, document, None).await
+    }
+    pub async fn save_edit(
+        &self,
+        id: &str,
+        base: i32,
+        document: &RichDocument,
+        title: Option<&str>,
+    ) -> Result<Page, Error> {
+        if let Some(t) = title {
+            crate::navigation::title(t)?;
+        }
         document.validate()?;
         let encoded = serde_json::to_string(document)?;
         let mut tx = self.pool.begin().await?;
@@ -150,6 +163,16 @@ impl Store {
             return Err(Error::Stale);
         }
         sqlx::query("INSERT INTO revisions(object_id,revision,document_json,actor_id) VALUES(?,?,?,'local-operator')").bind(id).bind(base+1).bind(encoded).execute(&mut *tx).await?;
+        if let Some(title) = title {
+            sqlx::query(
+                "UPDATE objects SET title=?,metadata_version=metadata_version+1 WHERE id=?",
+            )
+            .bind(title.trim())
+            .bind(id)
+            .execute(&mut *tx)
+            .await?;
+        }
+        sqlx::query("UPDATE revisions SET title=(SELECT title FROM objects WHERE id=?) WHERE object_id=? AND revision=?").bind(id).bind(id).bind(base+1).execute(&mut *tx).await?;
         sqlx::query("DELETE FROM drafts WHERE object_id=?")
             .bind(id)
             .execute(&mut *tx)
@@ -163,6 +186,18 @@ impl Store {
         base: i32,
         document: &RichDocument,
     ) -> Result<(), Error> {
+        self.put_edit_draft(id, base, document, None).await
+    }
+    pub async fn put_edit_draft(
+        &self,
+        id: &str,
+        base: i32,
+        document: &RichDocument,
+        title: Option<&str>,
+    ) -> Result<(), Error> {
+        if let Some(t) = title {
+            crate::navigation::title(t)?;
+        }
         document.validate()?;
         let mut tx = self.pool.begin().await?;
         crate::review::validate_citations(&mut tx, document).await?;
@@ -175,18 +210,25 @@ impl Store {
             return Err(Error::Stale);
         }
         sqlx::query("INSERT INTO drafts(object_id,base_revision,document_json) VALUES(?,?,?) ON CONFLICT(object_id) DO UPDATE SET base_revision=excluded.base_revision,document_json=excluded.document_json").bind(id).bind(base).bind(serde_json::to_string(document)?).execute(&mut *tx).await?;
+        sqlx::query("UPDATE drafts SET title=? WHERE object_id=?")
+            .bind(title)
+            .bind(id)
+            .execute(&mut *tx)
+            .await?;
         tx.commit().await?;
         Ok(())
     }
     pub async fn draft(&self, id: &str) -> Result<Option<Draft>, Error> {
-        let row = sqlx::query("SELECT base_revision,document_json FROM drafts WHERE object_id=?")
-            .bind(id)
-            .fetch_optional(&self.pool)
-            .await?;
+        let row =
+            sqlx::query("SELECT base_revision,document_json,title FROM drafts WHERE object_id=?")
+                .bind(id)
+                .fetch_optional(&self.pool)
+                .await?;
         row.map(|r| {
             let document: RichDocument = serde_json::from_str(r.get("document_json"))?;
             document.validate()?;
             Ok(Draft {
+                title: r.get("title"),
                 base_revision: r.get("base_revision"),
                 document,
             })

@@ -51,7 +51,7 @@ async function click(selector) {
 }
 async function clickButton(text) {
   const index = await execute(
-    'return [...document.querySelectorAll("button")].findIndex(e=>e.textContent.trim()===arguments[0])',
+    'return [...document.querySelectorAll("button")].findIndex(e=>e.getClientRects().length && e.textContent.trim()===arguments[0])',
     [text],
   )
   assert.ok(index >= 0, `Missing button ${text}`)
@@ -280,15 +280,10 @@ try {
   await clickButton('Accept')
   await until(
     async () => (await value('.metadata'))?.includes('Revision 2'),
-    'live wording and citation accepted',
+    'live wording accepted',
   )
-  assert.equal(
-    await value('[data-block-id=booking]'),
-    acceptedCandidate.candidate.proposedWording + '[1]',
-  )
-  await click('[data-citation-id]')
-  assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
-  await clickButton('Back to discussion')
+  assert.equal(await value('[data-block-id=booking]'), acceptedCandidate.candidate.proposedWording)
+  assert.equal(await value('[data-citation-id]'), null, 'acceptance does not author citations')
   await clickButton('Page history')
   await until(
     async () =>
@@ -297,13 +292,10 @@ try {
   )
   assert.match(await value('.revision-discussions'), /accepted/)
   await clickButton('Back to page')
-  checks.push('accepting live output saves exact wording and citation together with history')
+  checks.push('accepting live output saves exact wording without adding citations with history')
   await stop()
   await launch()
-  assert.equal(
-    await value('[data-block-id=booking]'),
-    acceptedCandidate.candidate.proposedWording + '[1]',
-  )
+  assert.equal(await value('[data-block-id=booking]'), acceptedCandidate.candidate.proposedWording)
   const restored = await discussion(acceptedThread)
   assert.equal(
     (await discussion(threadId)).proposals.find((p) => p.id === revised.id).status,

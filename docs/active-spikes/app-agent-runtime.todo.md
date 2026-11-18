@@ -39,3 +39,7 @@ The N2 native workspace run passed real generation from a selected imported exce
 - [x] Verify a real cited answer and explicit missing-evidence response with `gpt-6.2-sol`; inspect the exact source and complete draft publication/restart. [Chat QA](../design/app-chat-qa-2026-11-17.md).
 
 Quota exhaustion, provider-side cancellation and expired-token recovery remain unverified in this batch. Conversation context is bounded and distinct from the selected evidence.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

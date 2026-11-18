@@ -24,3 +24,7 @@ Try your own saved page, import and source choices. Check relevance and wording 
 - [x] N6: answer → editable unpublished draft → explicit Save page, preserving citations and AI provenance through restart.
 - [x] Verify both a labeled fixture journey and real subscription answers, including an unsupported question; rerun native review, workspace and foundation regressions. [Evidence and limits](../design/app-chat-qa-2026-11-17.md).
 - [ ] Human QA of answer usefulness, source support and the draft interaction. The model returning a valid source ID does not establish that the source supports its wording.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

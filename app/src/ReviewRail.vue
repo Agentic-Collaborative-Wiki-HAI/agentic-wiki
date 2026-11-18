@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch, onMounted } from 'vue'
 import PassagePicker from './PassagePicker.vue'
 import { workspaceApi } from './workspaceApi'
 import { reviewApi } from './reviewApi'
@@ -7,6 +7,7 @@ import { connection, model, agentBusy, refreshConnection } from './subscriptionS
 import { mentionsAgent } from './threadText'
 import ThreadText from './ThreadText.vue'
 import type { InlineReviewState } from './inlineReview'
+import type { ReferenceEntry } from './generated/ReferenceEntry'
 import type { Page } from './generated/Page'
 import type { PassageAnchor } from './generated/PassageAnchor'
 import type { Discussion } from './generated/Discussion'
@@ -14,6 +15,7 @@ import type { Evidence } from './generated/Evidence'
 import type { Proposal } from './generated/Proposal'
 const props = defineProps<{
   page: Page
+  references: ReferenceEntry[]
   tab: 'references' | 'comments'
   selection: PassageAnchor | null
   editing: boolean
@@ -34,6 +36,17 @@ const activeId = ref(''),
   error = ref(''),
   notice = ref(''),
   working = ref(false)
+const openDiscussions = computed(() =>
+  discussions.value
+    .filter((d) => !d.resolved)
+    .sort((a, b) => {
+      const blocks = props.page.document.doc.content.map((b) => b.attrs.blockId)
+      return (
+        blocks.indexOf(a.anchor.blockId) - blocks.indexOf(b.anchor.blockId) ||
+        a.anchor.fromUtf16 - b.anchor.fromUtf16
+      )
+    }),
+)
 const active = computed(() => discussions.value.find((d) => d.id === activeId.value))
 const pending = computed(() => active.value?.proposals.find((p) => p.status === 'pending'))
 const chosenSources = ref<Evidence[] | null>(null)
@@ -122,7 +135,8 @@ async function reload() {
     if (seq !== sequence) return
     discussions.value = d
     citations.value = c
-    if (!d.some((t) => t.id === activeId.value)) activeId.value = d.at(-1)?.id ?? ''
+    if (!d.some((t) => t.id === activeId.value && !t.resolved))
+      activeId.value = d.find((t) => !t.resolved)?.id ?? ''
   } catch (e) {
     error.value = String(e)
   }
@@ -172,10 +186,20 @@ watch(
 )
 watch(
   () =>
-    [pending.value, active.value?.anchor, props.editing, props.tab, editingProposal.value] as const,
+    [
+      pending.value,
+      active.value?.anchor,
+      props.editing,
+      props.tab,
+      editingProposal.value,
+      openDiscussions.value,
+    ] as const,
   () => {
     emit('preview', {
-      proposal: props.editing ? null : (pending.value ?? null),
+      threads: props.editing
+        ? []
+        : openDiscussions.value.map((d) => ({ id: d.id, anchor: d.anchor })),
+      proposal: props.editing || props.tab !== 'comments' ? null : (pending.value ?? null),
       anchor: props.editing || props.tab !== 'comments' ? null : (active.value?.anchor ?? null),
       editing: !!editingProposal.value,
       onWording: (value) => {
@@ -204,7 +228,7 @@ function selectThread(id: string) {
   activeId.value = id
   if (active.value) emit('locate', active.value.anchor)
 }
-async function readyForAgent(context = sources.value) {
+async function readyForAgent(_context = sources.value) {
   error.value = ''
   try {
     await refreshConnection()
@@ -215,7 +239,7 @@ async function readyForAgent(context = sources.value) {
   }
   needsConnection.value = !connection.value?.connected || !!connection.value.waiting || !model.value
   if (needsConnection.value) return false
-  if ((!chosenSources.value && (loadingSources.value || sourcesError.value)) || !context.length) {
+  if (!chosenSources.value && (loadingSources.value || sourcesError.value)) {
     error.value =
       sourcesError.value ||
       (loadingSources.value
@@ -336,7 +360,7 @@ async function decide(p: Proposal, accept: boolean) {
   await action(async () => {
     await reviewApi.decide(p.id, accept)
     notice.value = accept
-      ? 'Wording and citation saved together.'
+      ? 'Suggested edit saved.'
       : 'Suggestion rejected. Page wording and citations are unchanged.'
     if (accept) emit('published')
   })
@@ -346,10 +370,17 @@ async function openEvidence(e: Evidence) {
   await nextTick()
   evidenceDialog.value?.showModal()
 }
-async function openCitation(id: string) {
-  const e = citations.value.find((e) => e.id === id)
-  if (e) await openEvidence(e)
+async function openReference(id: string) {
+  const entry = props.references.find((e) => e.id === id)
+  if (entry?.evidence) await openEvidence(entry.evidence)
+  else {
+    await nextTick()
+    const card = document.querySelector<HTMLElement>(`[data-reference-id="${CSS.escape(id)}"]`)
+    card?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    card?.focus({ preventScroll: true })
+  }
 }
+const openCitation = openReference
 function editProposal(p: Proposal) {
   wording.value = p.candidate.proposedWording
   editingProposal.value = p.id
@@ -366,7 +397,7 @@ async function acceptEdited() {
     // Revision and acceptance remain distinct durable events. If acceptance fails, the edited draft remains pending.
     editingProposal.value = ''
     await reviewApi.decide(revised.id, true)
-    notice.value = 'Edited wording and citation saved together.'
+    notice.value = 'Edited suggestion saved.'
     emit('published')
   })
 }
@@ -379,7 +410,48 @@ async function inspectThread(d: Discussion) {
   await nextTick()
   historyDialog.value?.showModal()
 }
+let layoutFrame = 0
+function alignCards() {
+  layoutFrame = 0
+  const panel = document.getElementById(`${props.tab}-panel`)
+  if (!panel) return
+  for (const card of panel.querySelectorAll<HTMLElement>('.margin-card')) {
+    const id = card.dataset.referenceId ?? card.dataset.threadId!
+    const selector = card.dataset.referenceId
+      ? `[data-citation-id="${CSS.escape(id)}"], [data-note-id="${CSS.escape(id)}"]`
+      : `[data-thread-anchor="${CSS.escape(id)}"]`
+    const anchor = document.querySelector('.document-column .ProseMirror')?.querySelector(selector)
+    const current = parseFloat(card.style.marginTop || '16')
+    const margin =
+      window.innerWidth > 1000 && anchor
+        ? Math.max(
+            16,
+            Math.round(
+              current + anchor.getBoundingClientRect().top - card.getBoundingClientRect().top,
+            ),
+          )
+        : 16
+    if (margin !== current || !card.style.marginTop) card.style.marginTop = `${margin}px`
+  }
+}
+function scheduleLayout() {
+  if (!layoutFrame) layoutFrame = requestAnimationFrame(alignCards)
+}
+let resize: ResizeObserver | undefined
+onMounted(() => {
+  resize = new ResizeObserver(scheduleLayout)
+  for (const el of document.querySelectorAll('.document-column, .context-rail')) resize.observe(el)
+  window.addEventListener('resize', scheduleLayout)
+})
+watch(
+  () => [props.references, props.tab, openDiscussions.value, activeId.value, props.editing],
+  () => void nextTick(scheduleLayout),
+  { deep: true },
+)
 onBeforeUnmount(() => {
+  cancelAnimationFrame(layoutFrame)
+  resize?.disconnect()
+  window.removeEventListener('resize', scheduleLayout)
   ++sequence
   ++sourceSequence
   clearTimeout(sourceTimer)
@@ -388,6 +460,8 @@ onBeforeUnmount(() => {
 defineExpose({
   reload,
   openCitation,
+  openReference,
+  selectThread,
   openEvidence,
   focusComment,
   discussions,
@@ -409,11 +483,24 @@ defineExpose({
     role="tabpanel"
     aria-labelledby="references-tab"
   >
-    <p v-if="!citations.length">No references yet.</p>
-    <article v-for="(e, i) in citations" :key="e.id" class="reference-card">
-      <button class="text-link" @click="openEvidence(e)">{{ i + 1 }} · {{ e.title }}</button>
-      <p class="muted">Revision {{ e.source.revision }}</p>
-      <blockquote>{{ e.quote }}</blockquote>
+    <p v-if="!references.length">No references yet.</p>
+    <article
+      v-for="(entry, i) in references"
+      :key="entry.id"
+      class="reference-card margin-card"
+      :data-reference-id="entry.id"
+      tabindex="-1"
+    >
+      <button v-if="entry.evidence" class="text-link" @click="openEvidence(entry.evidence)">
+        {{ i + 1 }} · {{ entry.title }}
+      </button>
+      <h3 v-else>{{ i + 1 }} · {{ entry.title }}</h3>
+      <p class="muted">
+        {{
+          entry.kind === 'note' ? 'Note' : `Citation · Revision ${entry.evidence?.source.revision}`
+        }}
+      </p>
+      <blockquote>{{ entry.body }}</blockquote>
     </article>
   </div>
   <div
@@ -435,7 +522,7 @@ defineExpose({
         :disabled="agentBusy"
       ></textarea>
       <details v-if="mentionsAgent(comment)" class="request-context">
-        <summary>Context sent to the agent</summary>
+        <summary>Context</summary>
         <p>Your comment, the selected passage above, and these source excerpts:</p>
         <p v-if="loadingSources">Loading linked sources…</p>
         <p v-if="sourcesError" class="review-warning">{{ sourcesError }}</p>
@@ -465,222 +552,248 @@ defineExpose({
         </button>
       </div>
     </form>
-    <p v-if="!discussions.length && !selection" class="muted">
+    <p v-if="!openDiscussions.length && !selection" class="muted">
       Select a passage to start a discussion.
     </p>
-    <nav v-if="discussions.length > 1" class="thread-list" aria-label="Passage discussions">
-      <button
-        v-for="d in discussions"
-        :key="d.id"
-        :aria-pressed="activeId === d.id"
-        @click="selectThread(d.id)"
-      >
-        {{ d.anchor.quote.slice(0, 60) }}{{ d.resolved ? ' · Resolved' : '' }}
-      </button>
-    </nav>
-    <article v-if="active" class="discussion" :data-thread-id="active.id">
-      <div class="discussion-heading">
-        <span>Comment thread{{ active.resolved ? ' · Resolved' : '' }}</span
-        ><button
-          class="compact"
-          :disabled="working"
-          @click="action(() => reviewApi.resolve(activeId, !active!.resolved))"
-        >
-          {{ active.resolved ? 'Reopen thread' : 'Resolve thread' }}
-        </button>
-      </div>
-      <button class="text-link passage-location" @click="emit('locate', active.anchor)">
-        Show passage
-      </button>
-      <p v-if="active.anchor.state === 'detached'" class="muted">
-        The passage has changed. This discussion keeps its original reference to revision
-        {{ active.baseRevision }}.
-      </p>
-      <template
-        v-for="event in events"
-        :key="event.kind === 'message' ? event.message.id : event.proposal.id"
-      >
-        <div v-if="event.kind === 'message'" class="thread-message">
-          <div class="message-author">
-            <span class="person-avatar" aria-hidden="true">Y</span>
-            <div>
-              <strong>{{ displayActor(event.message.actorId) }}</strong><time>{{
-                new Date(event.message.createdAt).toLocaleString()
-              }}</time>
-            </div>
-          </div>
-          <p><ThreadText :text="event.message.body" /></p>
-        </div>
-        <details v-else-if="event.proposal.status === 'superseded'" class="earlier-suggestion">
-          <summary>Earlier suggestion</summary>
-          <p>{{ event.proposal.candidate.proposedWording }}</p>
-          <p>{{ event.proposal.candidate.explanation }}</p>
-        </details>
-        <div v-else class="proposal-card thread-message" :data-proposal-id="event.proposal.id">
-          <div class="message-author">
-            <span
-              v-if="event.proposal.origin === 'human revision'"
-              class="person-avatar"
-              aria-hidden="true"
-              >Y</span
-            ><img v-else src="/assets/05e24.svg" alt="" />
-            <div>
-              <strong>{{
-                event.proposal.origin === 'human revision' ? 'You · Edited suggestion' : 'Agent'
-              }}</strong><time>{{ new Date(event.proposal.createdAt).toLocaleString() }}</time>
-            </div>
-          </div>
-          <p class="proposal-status">
-            {{
-              event.proposal.status === 'pending'
-                ? 'Suggested edit · Pending'
-                : event.proposal.status === 'accepted'
-                  ? 'Accepted edit'
-                  : 'Rejected edit'
-            }}
-          </p>
-          <p>{{ event.proposal.candidate.explanation }}</p>
-          <p class="evidence-links">
-            <button
-              v-for="(e, i) in event.proposal.evidence.filter((e) =>
-                event.proposal.candidate.citedSourceIds.includes(e.id),
-              )"
-              :key="e.id"
-              class="text-link"
-              @click="openEvidence(e)"
-            >
-              [{{ i + 1 }}] {{ e.title }}
-            </button>
-          </p>
-          <p
-            v-if="event.proposal.stale && event.proposal.status === 'pending'"
-            class="review-warning"
-          >
-            The page changed after this suggestion. Select the current passage and reply to @agent
-            to request a refreshed version before accepting.
-          </p>
-          <template v-if="editingProposal === event.proposal.id">
-            <p class="muted">Edit the suggested wording in the article.</p>
-            <div class="review-actions">
-              <button
-                class="primary"
-                :disabled="working || !wording.trim() || agentBusy"
-                @click="acceptEdited"
-              >
-                Accept edited</button
-              ><button class="text-link" @click="editingProposal = ''">Cancel edits</button>
-            </div>
-          </template>
-          <template v-else-if="event.proposal.status === 'pending'">
-            <button
-              class="text-link"
-              :disabled="working || event.proposal.stale || editing || agentBusy"
-              @click="editProposal(event.proposal)"
-            >
-              Edit suggested text
-            </button>
-            <div class="review-actions proposal-decisions">
-              <button
-                class="primary"
-                :disabled="working || event.proposal.stale || editing || agentBusy"
-                @click="decide(event.proposal, true)"
-              >
-                Accept</button
-              ><button
-                :disabled="working || editing || agentBusy"
-                @click="decide(event.proposal, false)"
-              >
-                Reject
-              </button>
-            </div>
-          </template>
-          <details v-if="event.proposal.status !== 'pending' || event.proposal.stale">
-            <summary>View suggested wording</summary>
-            <div class="proposal-diff">
-              <del>{{ event.proposal.anchor.quote }}</del><ins>{{
-                event.proposal.candidate.proposedWording
-              }}</ins>
-            </div>
-          </details>
-          <p v-if="event.proposal.publishedRevision" class="muted">
-            Saved as revision {{ event.proposal.publishedRevision }}.
-          </p>
-          <span v-if="event.proposal.origin.startsWith('Test fixture')" class="muted">{{
-            event.proposal.origin
-          }}</span>
-        </div>
-      </template>
-      <form v-if="!active.resolved" class="reply-composer" @submit.prevent="postReply">
-        <textarea
-          v-model="reply"
-          aria-label="Reply to discussion"
-          placeholder="Write a reply… Mention @agent to ask for help."
-          required
-          maxlength="16000"
-          :disabled="agentBusy || !!editingProposal"
-        ></textarea>
-        <details v-if="mentionsAgent(reply)" class="request-context">
-          <summary>Context sent to the agent</summary>
-          <p>
-            {{
-              chosenSources
-                ? 'Using your selected excerpts.'
-                : pending
-                  ? 'Using the sources pinned to this pending suggestion.'
-                  : contextNotice
-            }}
-          </p>
-          <button
-            type="button"
-            class="text-link"
-            :disabled="agentBusy"
-            @click="openSourcePicker(false)"
-          >
-            Choose sources
-          </button>
-          <p>
-            Your reply and this passage<span v-if="pending">, with the previous suggestion</span>:
-          </p>
-          <blockquote v-if="requestAnchor">{{ requestAnchor.quote }}</blockquote>
-          <p v-else class="review-warning">
-            Select the current passage before requesting a refreshed suggestion.
-          </p>
-          <div v-if="pending" class="previous-proposal-context">
-            <strong>Previous suggestion</strong>
-            <blockquote>{{ pending.candidate.proposedWording }}</blockquote>
-            <p>{{ pending.candidate.explanation }}</p>
-          </div>
-          <p v-if="loadingSources">Loading linked sources…</p>
-          <p v-if="sourcesError" class="review-warning">{{ sourcesError }}</p>
-          <div v-for="e in sources" :key="e.id">
-            <button type="button" class="text-link" @click="openEvidence(e)">
-              {{ e.title }} · revision {{ e.source.revision }}
-            </button>
-            <blockquote>{{ e.quote }}</blockquote>
-          </div>
-          <p v-if="!loadingSources && !sources.length">No linked source excerpts are available.</p>
-        </details>
-        <div class="review-actions">
-          <button type="button" :disabled="agentBusy" @click="reply = ''">Cancel</button
+    <article
+      v-for="d in openDiscussions"
+      :key="d.id"
+      class="discussion margin-card"
+      :data-thread-id="d.id"
+      :data-active="activeId === d.id"
+    >
+      <template v-if="active && active.id === d.id">
+        <div class="discussion-heading">
+          <span>Comment thread{{ active.resolved ? ' · Resolved' : '' }}</span
           ><button
-            class="primary"
-            :disabled="working || agentBusy || !!editingProposal || editing || !reply.trim()"
+            class="compact"
+            :disabled="working"
+            @click="action(() => reviewApi.resolve(activeId, !active!.resolved))"
           >
-            Reply
+            {{ active.resolved ? 'Reopen thread' : 'Resolve thread' }}
           </button>
         </div>
-      </form>
-      <div v-if="runId && runThread === active.id" class="agent-progress" role="status">
-        Agent is preparing a suggestion…<button class="text-link" @click="cancelRequest">
-          Cancel request
+        <button class="text-link passage-location" @click="emit('locate', active.anchor)">
+          Show passage
         </button>
-      </div>
-      <button class="text-link discussion-history-link" @click="inspectThread(active)">
-        Discussion history
-      </button>
+        <p v-if="active.anchor.state === 'detached'" class="muted">
+          The passage has changed. This discussion keeps its original reference to revision
+          {{ active.baseRevision }}.
+        </p>
+        <template
+          v-for="event in events"
+          :key="event.kind === 'message' ? event.message.id : event.proposal.id"
+        >
+          <div v-if="event.kind === 'message'" class="thread-message">
+            <div class="message-author">
+              <span class="person-avatar" aria-hidden="true">Y</span>
+              <div>
+                <strong>{{ displayActor(event.message.actorId) }}</strong><time>{{
+                  new Date(event.message.createdAt).toLocaleString()
+                }}</time>
+              </div>
+            </div>
+            <p><ThreadText :text="event.message.body" /></p>
+          </div>
+          <details v-else-if="event.proposal.status === 'superseded'" class="earlier-suggestion">
+            <summary>Earlier suggestion</summary>
+            <p>{{ event.proposal.candidate.proposedWording }}</p>
+            <p>{{ event.proposal.candidate.explanation }}</p>
+          </details>
+          <div v-else class="proposal-card thread-message" :data-proposal-id="event.proposal.id">
+            <div class="message-author">
+              <span
+                v-if="event.proposal.origin === 'human revision'"
+                class="person-avatar"
+                aria-hidden="true"
+                >Y</span
+              ><img v-else src="/assets/05e24.svg" alt="" />
+              <div>
+                <strong>{{
+                  event.proposal.origin === 'human revision' ? 'You · Edited suggestion' : 'Agent'
+                }}</strong><time>{{ new Date(event.proposal.createdAt).toLocaleString() }}</time>
+              </div>
+            </div>
+            <p class="proposal-status">
+              {{
+                event.proposal.status === 'pending'
+                  ? 'Suggested edit · Pending'
+                  : event.proposal.status === 'accepted'
+                    ? 'Accepted edit'
+                    : 'Rejected edit'
+              }}
+            </p>
+            <p>{{ event.proposal.candidate.explanation }}</p>
+            <p class="evidence-links">
+              <button
+                v-for="e in event.proposal.evidence.filter((e) =>
+                  event.proposal.candidate.citedSourceIds.includes(e.id),
+                )"
+                :key="e.id"
+                class="text-link"
+                @click="openEvidence(e)"
+              >
+                {{ e.title }}
+              </button>
+            </p>
+            <p
+              v-if="event.proposal.stale && event.proposal.status === 'pending'"
+              class="review-warning"
+            >
+              The page changed after this suggestion. Select the current passage and reply to @agent
+              to request a refreshed version before accepting.
+            </p>
+            <template v-if="editingProposal === event.proposal.id">
+              <p class="muted">Edit the suggested wording in the article.</p>
+              <div class="review-actions">
+                <button
+                  class="primary"
+                  :disabled="working || !wording.trim() || agentBusy"
+                  @click="acceptEdited"
+                >
+                  Accept edited</button
+                ><button class="text-link" @click="editingProposal = ''">Cancel edits</button>
+              </div>
+            </template>
+            <template v-else-if="event.proposal.status === 'pending'">
+              <button
+                class="text-link"
+                :disabled="working || event.proposal.stale || editing || agentBusy"
+                @click="editProposal(event.proposal)"
+              >
+                Edit suggested text
+              </button>
+              <div class="review-actions proposal-decisions">
+                <button
+                  class="primary"
+                  :disabled="working || event.proposal.stale || editing || agentBusy"
+                  @click="decide(event.proposal, true)"
+                >
+                  Accept</button
+                ><button
+                  :disabled="working || editing || agentBusy"
+                  @click="decide(event.proposal, false)"
+                >
+                  Reject
+                </button>
+              </div>
+            </template>
+            <details v-if="event.proposal.status !== 'pending' || event.proposal.stale">
+              <summary>View suggested wording</summary>
+              <div class="proposal-diff">
+                <del>{{ event.proposal.anchor.quote }}</del><ins>{{
+                  event.proposal.candidate.proposedWording
+                }}</ins>
+              </div>
+            </details>
+            <p v-if="event.proposal.publishedRevision" class="muted">
+              Saved as revision {{ event.proposal.publishedRevision }}.
+            </p>
+            <span v-if="event.proposal.origin.startsWith('Test fixture')" class="muted">{{
+              event.proposal.origin
+            }}</span>
+          </div>
+        </template>
+        <form v-if="!active.resolved" class="reply-composer" @submit.prevent="postReply">
+          <textarea
+            v-model="reply"
+            aria-label="Reply to discussion"
+            placeholder="Write a reply… Mention @agent to ask for help."
+            required
+            maxlength="16000"
+            :disabled="agentBusy || !!editingProposal"
+          ></textarea>
+          <details v-if="mentionsAgent(reply)" class="request-context">
+            <summary>Context</summary>
+            <p>
+              {{
+                chosenSources
+                  ? 'Using your selected excerpts.'
+                  : pending
+                    ? 'Using the sources pinned to this pending suggestion.'
+                    : contextNotice
+              }}
+            </p>
+            <button
+              type="button"
+              class="text-link"
+              :disabled="agentBusy"
+              @click="openSourcePicker(false)"
+            >
+              Choose sources
+            </button>
+            <p>
+              Your reply and this passage<span v-if="pending">, with the previous suggestion</span>:
+            </p>
+            <blockquote v-if="requestAnchor">{{ requestAnchor.quote }}</blockquote>
+            <p v-else class="review-warning">
+              Select the current passage before requesting a refreshed suggestion.
+            </p>
+            <div v-if="pending" class="previous-proposal-context">
+              <strong>Previous suggestion</strong>
+              <blockquote>{{ pending.candidate.proposedWording }}</blockquote>
+              <p>{{ pending.candidate.explanation }}</p>
+            </div>
+            <p v-if="loadingSources">Loading linked sources…</p>
+            <p v-if="sourcesError" class="review-warning">{{ sourcesError }}</p>
+            <div v-for="e in sources" :key="e.id">
+              <button type="button" class="text-link" @click="openEvidence(e)">
+                {{ e.title }} · revision {{ e.source.revision }}
+              </button>
+              <blockquote>{{ e.quote }}</blockquote>
+            </div>
+            <p v-if="!loadingSources && !sources.length">
+              No linked source excerpts are available.
+            </p>
+          </details>
+          <div class="review-actions">
+            <button type="button" :disabled="agentBusy" @click="reply = ''">Cancel</button
+            ><button
+              class="primary"
+              :disabled="working || agentBusy || !!editingProposal || editing || !reply.trim()"
+            >
+              Reply
+            </button>
+          </div>
+        </form>
+        <div v-if="runId && runThread === active.id" class="agent-progress" role="status">
+          Agent is preparing a suggestion…<button class="text-link" @click="cancelRequest">
+            Cancel request
+          </button>
+        </div>
+        <button class="text-link discussion-history-link" @click="inspectThread(active)">
+          Discussion history
+        </button>
+      </template>
+      <template v-else>
+        <div class="discussion-heading">
+          <span>Comment thread</span
+          ><button
+            class="compact"
+            :disabled="working"
+            @click="action(() => reviewApi.resolve(d.id, true))"
+          >
+            Resolve thread
+          </button>
+        </div>
+        <blockquote>{{ d.anchor.quote }}</blockquote>
+        <div v-for="m in d.messages" :key="m.id" class="thread-message">
+          <strong>{{ displayActor(m.actorId) }}</strong>
+          <p><ThreadText :text="m.body" /></p>
+        </div>
+        <div
+          v-for="p in d.proposals.filter((p) => p.status !== 'superseded')"
+          :key="p.id"
+          class="thread-message"
+        >
+          <strong>Agent · {{ p.status }}</strong>
+          <p>{{ p.candidate.explanation }}</p>
+        </div>
+        <button class="text-link" @click="selectThread(d.id)">Reply and review</button>
+      </template>
     </article>
   </div>
-  <dialog ref="evidenceDialog" class="evidence-dialog">
+  <dialog ref="evidenceDialog" class="evidence-dialog" aria-label="Source evidence">
     <template v-if="preview"
       ><p class="eyebrow">Source evidence · Revision {{ preview.source.revision }}</p>
       <h2>{{ preview.title }}</h2>
@@ -689,7 +802,7 @@ defineExpose({
       <button class="primary" @click="evidenceDialog?.close()">Back to discussion</button></template
     >
   </dialog>
-  <dialog ref="historyDialog" class="discussion-history">
+  <dialog ref="historyDialog" class="discussion-history" aria-label="Discussion history">
     <template v-if="historyThread"
       ><h2>Discussion history</h2>
       <blockquote>{{ historyThread.anchor.quote }}</blockquote>

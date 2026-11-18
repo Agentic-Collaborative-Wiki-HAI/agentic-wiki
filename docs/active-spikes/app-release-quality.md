@@ -52,3 +52,8 @@ Harness and failure catalog start at M0. A milestone is not blocked by unbuilt f
 The M0 foundation and bounded M1 review implementation are checked in the companion task records and [native review QA](../design/app-review-qa-2026-11-17.md). The full passage-to-decision route passes deterministic and live subscription checks. The Codex coding-session path remains disabled; product inference uses the isolated app-owned connection. Hands-on M1 review remains open. Broader milestones and D6–D8 remain deferred.
 
 Continues from: docs/active-spikes/implementation-planning.md
+
+## Current interface and authoring boundary
+The interface correction batch covers explicit note/citation authoring, source-optional review, title drafts/history, open discussion cards, custom task instructions, responsive shell and keyboard controls. The dedicated authoring suite uses a disposable database and labeled candidates; it checks Cancel/Save, restart, source-free acceptance, resolved-thread hiding and Chat persistence. Broader Prototype parity, VoiceOver, media timing and cross-platform behavior are not inferred from these checks.
+
+See [interface QA](../design/app-interface-qa-2026-11-17.md) for checked cases and remaining limits.

@@ -33,4 +33,8 @@ Aslan approved the authoring controls for the saved wiki tree, source search/cit
 ## Prototype implementation audit — 2026-11-17
 - [x] Compare implemented native routes with live released Prototype boards, recording screenshots outside Git, layout measurements and targeted native accessibility checks.
 - [x] Separate mismatches from deliberate local-app additions and unimplemented routes. [Audit findings A1–A12](../design/app-prototype-audit-2026-11-17.md).
-- [ ] Agree the next corrective batch. Recommended first: persistent breadcrumbs, title/action spacing, usable narrow-window/Chat layout, citation keyboard activation, tab focus behavior, named dialogs and text reflow. No broad UI fix or Figma change was made by this audit.
+- [x] Record approval of U1–U3 and implement persistent breadcrumbs, title/action spacing, narrow-window/Chat layout, citation keyboard activation, tab focus behavior, named dialogs and text reflow. The app-only correction and verification are documented below.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

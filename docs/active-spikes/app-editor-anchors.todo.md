@@ -28,3 +28,7 @@ The schema currently includes paragraphs, headings, bold/italic/code/link marks,
 - [x] Verify real native body/title edits, close/reopen, process restart, explicit publication and saved citations/history. [Chat QA](../design/app-chat-qa-2026-11-17.md).
 
 The limited Bold/Italic toolbar and broader Prototype editor differences remain separate follow-up work.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).

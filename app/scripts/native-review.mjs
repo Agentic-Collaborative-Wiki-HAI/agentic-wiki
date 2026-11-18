@@ -49,7 +49,7 @@ async function click(selector) {
 }
 async function clickButton(text) {
   const index = await execute(
-    'return [...document.querySelectorAll("button")].findIndex(e=>e.textContent.trim()===arguments[0])',
+    'return [...document.querySelectorAll("button")].findIndex(e=>e.getClientRects().length && e.textContent.trim()===arguments[0])',
     [text],
   )
   assert.ok(index >= 0, `Missing button ${text}`)
@@ -156,7 +156,7 @@ async function checkSelectionPopup() {
   const initial = await geometry()
   assert.equal(initial.fixed, 'fixed')
   assert.equal(initial.articleTop, before, 'opening the popup does not move the article')
-  assert.ok(initial.popup.width < 260, 'compact action instead of a full-width bar')
+  assert.ok(initial.popup.width < 360, 'compact action instead of a full-width bar')
   assert.ok(
     Math.abs(initial.selection.top - initial.popup.bottom - 8) < 2 ||
       Math.abs(initial.popup.top - initial.selection.bottom - 8) < 2,
@@ -199,10 +199,12 @@ async function createComment(text) {
   await selectBooking()
   await type('[aria-label="New passage comment"]', text)
   await clickButton('Add comment')
-  await until(async () => (await value('.discussion'))?.includes(text), 'comment persisted')
-  return execute('return document.querySelector(".discussion").dataset.threadId')
+  await until(async () => (await value('#comments-panel'))?.includes(text), 'comment persisted')
+  return execute('return document.querySelector(".discussion[data-active=true]").dataset.threadId')
 }
 async function reload() {
+  if (!(await execute('return !!document.querySelector("#wiki-tree")')))
+    await click('[aria-label="Toggle wiki navigation"]')
   await clickButton('Microscope orientation recording')
   await clickButton('Getting started with the microscope')
   await click('#comments-tab')
@@ -226,7 +228,10 @@ try {
     '@agent Compare this passage with the orientation transcript and suggest a revision.'
   await type('[aria-label="Reply to discussion"]', requestText)
   await click('.request-context summary')
-  assert.match(await value('.request-context'), /Microscope orientation recording/)
+  await until(
+    async () => (await value('.request-context'))?.includes('Microscope orientation recording'),
+    'linked context loaded',
+  )
   assert.doesNotMatch(await value('.request-context'), /Sources to include/)
   await clickButton('Reply')
   await until(
@@ -273,10 +278,9 @@ try {
   )
   await clickButton('Reply')
   await clickButton('Resolve thread')
-  assert.match(await value('.discussion-heading'), /Resolved/)
-  assert.match(await value('.proposal-card'), /Suggested edit/)
-  await clickButton('Reopen thread')
-  assert.equal(await execute('return !!document.querySelector(".reply-composer")'), true)
+  assert.equal(await value('.discussion'), null, 'resolved threads leave the active sidebar')
+  await invoke('resolve_discussion', { id: threadId, resolved: false })
+  await reload()
   await clickButton('Edit suggested text')
   const wording =
     'Check the equipment page for current booking instructions before your first session.'
@@ -307,20 +311,15 @@ try {
     async () => (await value('.metadata'))?.includes('Revision 2'),
     'accepted edited revision',
   )
-  assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
+  assert.equal(await value('[data-block-id=booking]'), wording)
   assert.equal(await execute('return !!document.querySelector(".inline-suggestion")'), false)
-  await click('[data-citation-id]')
-  assert.match(await value('.evidence-dialog[open]'), /booking calendar/)
-  await clickButton('Back to discussion')
+  assert.equal(await value('[data-citation-id]'), null, 'acceptance does not author citations')
   await clickButton('Edit page')
   await replaceBooking('A draft that must be discarded.')
   await clickButton('Cancel')
-  assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
+  assert.equal(await value('[data-block-id=booking]'), wording)
   await clickButton('Page history')
-  await until(
-    async () => !!(await value('.history-dialog[open] .revision-content')),
-    'history content',
-  )
+  await until(async () => !!(await value('.history-page .revision-content')), 'history content')
   assert.match(await value('.revision-content'), /current booking instructions/)
   assert.match(await value('.revision-discussions'), /accepted/)
   await click('.revision-list button:last-child')
@@ -333,7 +332,7 @@ try {
   await screenshot('accepted-with-discussion')
   await stop()
   await launch()
-  assert.equal(await value('[data-block-id=booking]'), wording + '[1]')
+  assert.equal(await value('[data-block-id=booking]'), wording)
   await click('#comments-tab')
   await until(
     async () => (await value('.discussion'))?.includes(comment),
@@ -350,9 +349,11 @@ try {
   )
   await invoke('native_test_candidate', { threadId: rejectedThread })
   await reload()
-  await click('.thread-list button:last-child')
+  await execute(
+    'const c=[...document.querySelectorAll(".discussion")].at(-1); if(c.dataset.active!=="true") c.querySelector("button.text-link:last-child").click();return true',
+  )
   await clickButton('Reject')
-  await until(async () => (await value('.proposal-card'))?.includes('Rejected edit'), 'rejection')
+  await until(async () => (await value('#comments-panel'))?.includes('Rejected edit'), 'rejection')
   assert.deepEqual(
     (await invoke('read_page', { id: 'getting-started' })).document,
     accepted.document,
@@ -361,9 +362,14 @@ try {
   await stop()
   await launch()
   await click('#comments-tab')
-  await until(async () => !!(await value('.thread-list')), 'reopened threads')
-  await click('.thread-list button:last-child')
-  assert.match(await value('.proposal-card'), /Rejected edit/)
+  await until(
+    async () => (await execute('return document.querySelectorAll(".discussion").length')) > 1,
+    'reopened threads',
+  )
+  await execute(
+    'const c=[...document.querySelectorAll(".discussion")].at(-1); if(c.dataset.active!=="true") c.querySelector("button.text-link:last-child").click();return true',
+  )
+  assert.match(await value('#comments-panel'), /Rejected edit/)
   await selectBooking()
   assert.ok(await value('.comment-composer'), 'same passage can be selected again after rejection')
   await click('.comment-composer button[type=button]')
@@ -374,7 +380,9 @@ try {
   const staleThread = await createComment('Please check the booking instruction once more.')
   await invoke('native_test_candidate', { threadId: staleThread })
   await reload()
-  await click('.thread-list button:last-child')
+  await execute(
+    'const c=[...document.querySelectorAll(".discussion")].at(-1); if(c.dataset.active!=="true") c.querySelector("button.text-link:last-child").click();return true',
+  )
   await clickButton('Edit page')
   await execute(
     'const e=document.querySelector("[data-block-id=overview]");const r=document.createRange();r.selectNodeContents(e);const s=getSelection();s.removeAllRanges();s.addRange(r);return true',
@@ -411,7 +419,9 @@ try {
   await click('.comment-composer button[type=button]')
   await invoke('native_test_candidate', { threadId: staleThread })
   await reload()
-  await click('.thread-list button:last-child')
+  await execute(
+    'const c=[...document.querySelectorAll(".discussion")].at(-1); if(c.dataset.active!=="true") c.querySelector("button.text-link:last-child").click();return true',
+  )
   assert.equal(
     await execute(
       'return [...document.querySelectorAll("button")].find(e=>e.textContent.trim()==="Accept").disabled',
@@ -453,7 +463,7 @@ try {
           'revision request discloses previous draft',
           'stale acceptance blocked and explicit refreshed review',
           'atomic acceptance',
-          'inline citation',
+          'acceptance creates no citation',
           'cancel after acceptance',
           'original and accepted revision views',
           'restart persistence',

@@ -52,6 +52,7 @@ defineExpose({ open })
   <dialog
     ref="dialog"
     class="workspace-dialog"
+    aria-label="Add page"
     aria-labelledby="page-details-title"
     @cancel="busy && $event.preventDefault()"
   >

@@ -340,8 +340,9 @@ async fn backup_restores_complete_workspace_without_connections_or_overwrite() {
     );
     assert!(restored.draft(&p.id).await.unwrap().is_some());
     assert_eq!(restored.imported_sources().await.unwrap().len(), 1);
+    assert!(restored.page_citations(&p.id, 3).await.unwrap().is_empty());
     assert_eq!(
-        restored.page_citations(&p.id, 3).await.unwrap()[0].quote,
+        restored.discussion(&accepted.id).await.unwrap().proposals[0].evidence[0].quote,
         "00:18 Dana: Use the booking calendar."
     );
     let threads = restored.discussions(&p.id).await.unwrap();

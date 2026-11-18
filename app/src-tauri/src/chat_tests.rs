@@ -77,8 +77,7 @@ async fn rejects_unselected_citations_and_accepts_honest_missing_evidence() {
     let mut a = answer(&t);
     a.paragraphs[0].cited_source_ids = vec!["invented".into()];
     assert!(s.complete_chat(&t.id, &a).await.is_err());
-    a.paragraphs[0].cited_source_ids.clear();
-    assert!(s.complete_chat(&t.id, &a).await.is_err());
+
     a.paragraphs.clear();
     a.missing_evidence = "The selected sources do not answer this question.".into();
     let done = s.complete_chat(&t.id, &a).await.unwrap();
@@ -253,4 +252,22 @@ async fn backup_recovers_answers_and_unpublished_drafts_with_provenance() {
         t.id
     );
     assert!(s.read(&d.id).await.is_err());
+}
+
+#[tokio::test]
+async fn editorial_response_can_have_no_source_citations() {
+    let dir = tempfile::tempdir().unwrap();
+    let s = Store::open(&dir.path().join("wiki.sqlite")).await.unwrap();
+    let t = pending(&s).await;
+    let mut a = answer(&t);
+    a.paragraphs[0].text = "Here is a shorter version of your wording.".into();
+    a.paragraphs[0].cited_source_ids.clear();
+    let done = s.complete_chat(&t.id, &a).await.unwrap();
+    assert_eq!(done.status, "completed");
+    assert!(
+        done.answer.unwrap().paragraphs[0]
+            .cited_source_ids
+            .is_empty()
+    );
+    assert_eq!(s.read("getting-started").await.unwrap().revision, 1);
 }

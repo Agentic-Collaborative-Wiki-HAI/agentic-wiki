@@ -5,7 +5,7 @@
   font-synthesis: none;
   --border: #d5dae0;
   --subtle: #f7f9fb;
-  --secondary: #697582;
+  --secondary: #647180;
   --link: #1875be;
   --selected: #e9f0f6;
   --header-height: 68px;
@@ -1286,4 +1286,368 @@ dialog::backdrop {
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+/* The document and its margin share one scroll surface; only the opaque tab strip sticks. */
+:root {
+  --rail-width: 360px;
+}
+.workspace {
+  --rail: var(--rail-width);
+}
+.context-rail {
+  position: relative;
+  align-self: stretch;
+  max-height: none;
+  overflow: visible;
+}
+.rail-sticky {
+  top: 0;
+  box-shadow: 0 -8px 0 8px white;
+}
+.reference-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+}
+.reference-card h3 {
+  font-size: 14px;
+  margin: 0;
+}
+.reference-card blockquote {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.margin-card {
+  scroll-margin-top: 100px;
+}
+.discussion-anchor {
+  background: #fff1b8;
+  cursor: pointer;
+}
+.page-title-input {
+  min-width: 0;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.title-row {
+  flex-direction: column;
+  gap: 10px;
+}
+.page-actions {
+  align-self: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+h1 {
+  line-height: 1.25;
+}
+.ProseMirror {
+  line-height: 1.5;
+}
+.ProseMirror h2 {
+  line-height: 1.4;
+}
+.ProseMirror:focus-visible {
+  outline: 2px solid #2468a0;
+  outline-offset: 3px;
+}
+.metadata,
+.compact,
+.context-rail,
+.wiki-tree,
+.page-contents nav button,
+.settings-page,
+.context-rail textarea {
+  line-height: 1.5;
+}
+.editor-toolbar {
+  flex-wrap: wrap;
+}
+.workspace-dialog textarea,
+.agent-instructions textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.agent-instructions label {
+  display: block;
+  margin: 20px 0;
+}
+.agent-instructions textarea {
+  margin-top: 8px;
+}
+.reference-filter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 16px 0;
+}
+.reference-filter input {
+  accent-color: #3d6082;
+  width: 32px;
+  height: 20px;
+}
+.breadcrumbs {
+  display: flex;
+}
+.breadcrumbs button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 24px;
+}
+.breadcrumbs button:not(.crumb-current) {
+  flex-shrink: 2;
+}
+.chat-drawer {
+  width: var(--rail-width);
+}
+.chat-open .context-rail {
+  visibility: hidden;
+}
+.history-page {
+  flex: 1;
+  overflow: auto;
+  padding: 32px;
+}
+.history-columns {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 32px;
+}
+.history-columns .revision-list {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: start;
+}
+.history-columns .revision-list button {
+  padding: 12px;
+}
+.history-columns time {
+  display: block;
+  font-size: 12px;
+  color: var(--secondary);
+  margin-top: 6px;
+}
+.history-page .revision-layout {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.history-page .revision-discussions {
+  font-size: 14px;
+}
+@media (max-width: 1600px) {
+  :root {
+    --header-height: 100px;
+    --rail-width: 320px;
+  }
+  .wiki-header {
+    flex-shrink: 0;
+    padding-bottom: 32px;
+  }
+  .breadcrumbs {
+    position: absolute;
+    left: 20px;
+    bottom: 8px;
+    max-width: calc(100% - 40px);
+  }
+  .workspace {
+    --tree: 210px;
+    --contents: 132px;
+  }
+  .wiki-tree {
+    height: calc(100vh - var(--header-height) - 28px);
+  }
+  .page-contents {
+    padding-inline: 12px;
+  }
+  .document-column {
+    padding: 40px 24px 60px;
+  }
+}
+@media (max-width: 1200px) {
+  .workspace {
+    --tree: 190px;
+    --contents: 52px;
+  }
+  .page-contents {
+    padding: 40px 10px 12px;
+  }
+  .page-contents h2,
+  .page-contents nav {
+    display: none;
+  }
+  .page-contents:has([aria-expanded='true']) nav {
+    display: flex;
+    position: absolute;
+    left: 8px;
+    top: 80px;
+    z-index: 6;
+    width: 180px;
+    background: white;
+    padding: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 3px 12px #0002;
+  }
+  .global-actions button:disabled {
+    display: none;
+  }
+  .history-columns {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .history-page .revision-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 1000px) {
+  .workspace {
+    --tree: 0px;
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+  .wiki-tree {
+    position: fixed;
+    z-index: 8;
+    top: var(--header-height);
+    left: 0;
+    width: min(280px, 85vw);
+    box-shadow: 3px 0 12px #0002;
+  }
+  .page-contents {
+    grid-column: 1;
+  }
+  .document-column {
+    grid-column: 2;
+  }
+  .context-rail {
+    grid-column: 2;
+    padding: 0 24px 32px;
+  }
+  .rail-sticky {
+    position: relative;
+  }
+  .chat-open .workspace {
+    margin-right: var(--rail-width);
+  }
+  .chat-open .document-column {
+    padding-inline: 16px;
+  }
+  .global-actions {
+    gap: 4px;
+  }
+  .search {
+    width: 230px;
+  }
+}
+@media (max-width: 650px) {
+  :root {
+    --header-height: 138px;
+  }
+  .wiki-header {
+    padding: 12px 12px 76px;
+    gap: 8px;
+  }
+  .identity {
+    width: auto;
+    gap: 8px;
+  }
+  .search {
+    top: 58px;
+    left: 12px;
+    width: calc(100% - 24px);
+    transform: none;
+  }
+  .breadcrumbs {
+    left: 12px;
+    max-width: calc(100% - 24px);
+    font-size: 12px;
+  }
+  .brand {
+    font-size: 20px;
+  }
+  .document-column {
+    padding: 28px 16px 40px 8px;
+  }
+  h1,
+  .page-title-input {
+    font-size: 26px;
+  }
+  .context-rail {
+    padding: 0 16px 24px 8px;
+  }
+  .chat-open .workspace {
+    margin-right: 0;
+  }
+  .chat-drawer {
+    width: min(100vw, 400px);
+  }
+  .passage-actions {
+    max-width: calc(100vw - 16px);
+    flex-wrap: wrap;
+  }
+  .passage-actions button {
+    padding: 6px;
+  }
+  .history-page {
+    padding: 20px 16px;
+  }
+  .history-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .history-columns .revision-list {
+    flex-direction: row;
+  }
+  footer span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .settings-card {
+    padding: 16px;
+  }
+}
+
+/* Let enlarged text reflow around the search instead of painting navigation over it. */
+.wiki-header.header-reflow {
+  height: auto;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  padding: 12px 20px 52px;
+  gap: 12px 20px;
+}
+.header-reflow .identity {
+  width: auto;
+  flex: 1 0 auto;
+}
+.header-reflow .global-actions {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.header-reflow .search {
+  position: static;
+  transform: none;
+  width: 100%;
+  flex: 0 0 100%;
+  height: auto;
+  min-height: 36px;
+  padding-block: 8px;
+}
+.header-reflow .breadcrumbs {
+  position: absolute;
+  left: 20px;
+  bottom: 8px;
+  max-width: calc(100% - 40px);
+}
+.page-contents h2 {
+  line-height: 1.5;
 }

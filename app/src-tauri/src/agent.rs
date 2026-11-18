@@ -87,13 +87,8 @@ impl ProposalRequest {
 impl ProposalCandidate {
     pub fn validate_for(&self, request: &ProposalRequest) -> Result<(), &'static str> {
         request.validate()?;
-        if self.proposed_wording.trim().is_empty()
-            || self.explanation.trim().is_empty()
-            || self.cited_source_ids.is_empty()
-        {
-            return Err(
-                "A candidate requires proposed wording, an explanation and a selected source citation.",
-            );
+        if self.proposed_wording.trim().is_empty() || self.explanation.trim().is_empty() {
+            return Err("A candidate requires proposed wording and an explanation.");
         }
         if serde_json::to_vec(self)
             .map_err(|_| "Invalid candidate")?

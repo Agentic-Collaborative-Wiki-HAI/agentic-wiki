@@ -97,7 +97,8 @@ pub async fn ask_chat(
     let mut was_cancelled = false;
     let result = async {
         let t = store.prepare_chat(&request.id, &request.page_id, &request.question, &request.sources, &request.model).await.map_err(|e| e.to_string())?;
-        let generation = runtime.connection.answer(&request.model, &t.request);
+        let instructions = store.instructions().await.map_err(|e|e.to_string())?;
+        let generation = runtime.connection.answer_with_instructions(&request.model, &t.request, &instructions.chat);
         let answer = tokio::select! {
             biased;
             _ = &mut cancel => { was_cancelled = true; return Err("Request cancelled. No answer was saved.".into()); },

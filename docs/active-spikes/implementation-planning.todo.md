@@ -11,7 +11,7 @@ The planning pass produced thirteen workstream briefs and an approval slate. Asl
 D1–D5 approved on 2026-11-17. Nine workstreams are active: S01–S07, S09 and S12 cover the foundation, passage review, source imports, local authoring, search and recovery; four remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
 
 ## To Do
-N1–N6 implementation and bounded native/live checks are committed. Human review of the new Chat/draft interaction remains open. Agree the next corrective interface batch using the [Prototype audit](../design/app-prototype-audit-2026-11-17.md); the audit itself is complete and does not authorize those fixes. Transcription, semantic retrieval, automatic maintenance and shared operation remain deferred. Preserve D5's explicit context boundary.
+N1–N6 implementation and bounded native/live checks are committed. Human review of the new Chat/draft interaction remains open. The approved U1–U3 interface corrections and accompanying authoring fixes are implemented and checked; [interface QA](../design/app-interface-qa-2026-11-17.md) records evidence and remaining limits. Human interaction review remains open. Transcription, semantic retrieval, automatic maintenance and shared operation remain deferred. Preserve D5's explicit context boundary.
 
 ## Ready for Human QA
 - Review the passage comment → `@agent` reply → inline proposed wording and evidence → accept/reject → history journey, including Settings and returning to the unfinished request. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
@@ -59,3 +59,15 @@ The mixed root TODO index and the nine unrelated design files remain outside thi
 N4 is committed as `0fe2fa9`; sourced Chat and editable unpublished drafts are committed as `f2519f4`. The [Chat QA record](../design/app-chat-qa-2026-11-17.md) covers fixture/live answers, missing evidence, draft recovery, publication, citations and history after restart. The [Prototype audit](../design/app-prototype-audit-2026-11-17.md) records twelve implementation/accessibility findings, deliberate local-app differences and unimplemented routes. These findings are proposals for the next batch, not silently approved redesigns. Human QA of Chat/draft usefulness and presentation remains open.
 
 The normal desktop build without test instrumentation is reopened for the user. The root index and nine unrelated design records remain excluded; no push or Figma mutation occurred. This checkpoint does not close the broader child spikes.
+
+## Approved interface correction batch — 2026-11-17
+U1–U3 and the accompanying interaction corrections are approved. Work stays in the app, with local commits and no Figma edits or push.
+- [x] S01/S12: persistent breadcrumbs, responsive shell/Chat, scalable typography, keyboard citations/tabs and named dialogs.
+- [x] S04/S05: real margin notes, passage highlights for comments, passage-aligned reference/discussion cards, no thread-switching tabs, and hide resolved threads from the active rail.
+- [x] S03/S04: edit titles within page editing; author citations and margin notes in both read/edit states; preserve Save/Cancel and draft recovery. Remove Rename / move UI; defer moving.
+- [x] S05: make Page history a page with associated discussion and clear return context.
+- [x] S06/S09: support editing instructions without mandatory external sources, keep revision evidence in the discussion rather than creating article references, and use message-oriented Chat copy with an inspectable Context disclosure.
+- [x] S06: expose editable application task instructions in Settings, retaining explicit human publication and bounded-source/tool enforcement in code.
+- [x] S12: native functional, accessibility, persistence and visual checks; update the owning records and commit only this scope.
+
+The [interface QA record](../design/app-interface-qa-2026-11-17.md) separates fixture, live-subscription and native keyboard/visual evidence. Remaining history comparison, media, search and sharing work stays in its owning spikes. This checkpoint does not close them.

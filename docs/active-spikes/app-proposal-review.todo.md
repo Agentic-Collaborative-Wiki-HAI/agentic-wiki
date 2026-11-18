@@ -26,3 +26,7 @@ The bounded M1 interaction uses thread mentions and inline suggestions. Aslan co
 
 ## Verification boundary
 The deterministic native suite exercises Tauri/SQLite persistence with labeled test candidates. A separate opt-in native suite passes with real subscription-generated proposals and their pinned evidence. No failed request is replaced with fixture output; the live check leaves the working wiki unchanged.
+
+## Approved interface correction — 2026-11-17
+- [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
+- [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).
