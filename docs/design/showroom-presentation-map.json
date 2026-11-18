@@ -2,7 +2,7 @@
   "date": "2026-11-10",
   "fileId": "fm5zX32mbG13hahShVgJwd",
   "pageId": "1469:30532",
-  "status": "Presentation outline; joint review and final Prototype media pending",
+  "status": "Presentation outline; Prototype capture sources assigned, final media pending",
   "outlineSectionId": "1838:135",
   "referenceSectionId": "2123:623",
   "startFrameId": "2116:559",
@@ -10,7 +10,7 @@
     "width": 1920,
     "height": 1080
   },
-  "sourcePolicy": "Retained illustrations are Workshop proposals. Staging sources inform the two routes. No Prototype promotion or final source assignment.",
+  "sourcePolicy": "Retained illustrations are labelled Workshop examples. Capture the two presentation routes from the linked Prototype states.",
   "replacementGuidance": "Keep slide IDs, header, footer, annotations and navigation. Replace only nested product media within content containers; existing content containers also contain research annotations.",
   "slides": [
     {
@@ -55,7 +55,7 @@
       "contentId": "2116:620",
       "stagingSourceId": "1934:4394",
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:85970"
     },
     {
       "order": 5,
@@ -66,7 +66,7 @@
       "contentId": "2116:646",
       "stagingSourceId": "1934:4394",
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:85970"
     },
     {
       "order": 6,
@@ -77,7 +77,7 @@
       "contentId": "2116:672",
       "stagingSourceId": "1939:25765",
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:101596"
     },
     {
       "order": 7,
@@ -88,7 +88,7 @@
       "contentId": "1838:585",
       "stagingSourceId": null,
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:89154"
     },
     {
       "order": 8,
@@ -99,7 +99,7 @@
       "contentId": "1838:841",
       "stagingSourceId": null,
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:89759"
     },
     {
       "order": 9,
@@ -110,7 +110,7 @@
       "contentId": "1838:912",
       "stagingSourceId": null,
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:89285"
     },
     {
       "order": 10,
@@ -121,7 +121,7 @@
       "contentId": "1838:1249",
       "stagingSourceId": null,
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:98958"
     },
     {
       "order": 11,
@@ -132,7 +132,7 @@
       "contentId": "1838:1444",
       "stagingSourceId": null,
       "researchMapSourceId": null,
-      "prototypeSourceId": null
+      "prototypeSourceId": "2621:100665"
     },
     {
       "order": 12,

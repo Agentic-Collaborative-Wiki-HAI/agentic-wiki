@@ -4,6 +4,12 @@
 ## Scope
 Agent verification of the joint Staging draft in Figma file `fm5zX32mbG13hahShVgJwd`, page `1469:31745`. Human acceptance and Prototype promotion remain outstanding. This report separates native playback from structural and visual inspection.
 
+## Centrifuge overview and planning page cleanup · 12 Nov 2026
+- The wiki tree’s **Centrifuge** entry opens a dedicated [equipment overview](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2271-35182&scaling=scale-down-width) (`2271:35182`). The overview’s inline link and child tree entry both open **Centrifuge safety** (`1939:27311`). The parent tree entry on the safety page returns to the overview.
+- Removed the placeholder **Related Pages** section from both the [Planning a microscope session reader](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width) (`1934:37358`) and its editor (`1934:37485`).
+
+Checked the overview render and read back the persisted Staging interactions: 201 other Centrifuge tree instances navigate to the overview, and its selected row stays in place. Confirmed the safety destination and return path, and confirmed the placeholder is absent from both planning frames. No native playback was run for these two fixes. The Workshops and Prototype were unchanged.
+
 ## Structural results
 - 233 native editable top-level frames: 178 copied Aslan boards and 55 added reconciliation states/previews.
 - Latest recursive reaction scan after the recording consolidation, including hidden descendants and conditional actions: 12,601 reactions; no missing destinations, no non-variant NODE destinations outside Staging, and no SCROLL_TO targeting another frame.
@@ -229,3 +235,64 @@ The comment/request/evidence/acceptance/editor/history route was traversed conti
 This is native playback verification of scripted examples, not actual file upload, transcription, audio playback, persistence or agent execution. It is not a full graph rescan, exhaustive check of all 230 states, or joint design acceptance. Auxiliary caller contexts, deeper accepted-page annotation/Track changes paths, maintenance/delegation branches and richer transcript-edit outcomes remain in the active task record. No Prototype promotion occurred.
 
 Temporary evidence is under `/private/tmp/`: `launcher-comment-entry2.png`, `ordinary-selection.png`, `agent-proposal.png`, `proposal-evidence.png`, `evidence-close.png`, `proposal-accepted.png`, `accepted-editor.png`, `accepted-cancel.png`, `accepted-saved.png`, `accepted-history.png`, `history-return.png`, `resolved-revision-final.png`, `proposal-rejected.png`, `global-chat-empty.png`, `chat-finder.png`, `chat-attached.png`, `chat-type-choice.png`, `chat-artifact-confirm.png`, `chat-added.png`, `chat-artifact-open.png`, `uploaded-transcript-edit.png`, `transcript-cancel.png`, and `transcript-reviewed.png`. These local screenshots are not repository publication artifacts and are not durable CI evidence.
+
+## Shared wiki page shell and sticky tabs · 12 Nov 2026
+The Staging wiki states use one shared page-shell component with a Body slot. The canvas audit found the shell and both sticky context-tab states on all 168 in-scope screens. Of those screens, 85 use the standard title row and 83 retain their existing title treatment inside the Body slot, including editable titles and artifact-specific controls. History, standalone dialogs, Search, Settings and Maintenance retain their dedicated layouts. Both Workshops and Prototype are outside this rollout.
+
+The References and Comments controls stay at the top of the right rail while its contents scroll with the page. Existing populated rails keep their cards and annotation links. The rollout also restored transcript viewport sizing where moving content into the slot changed vertical fill behavior. The launcher resets the new empty-rail tab state when starting a scripted activity.
+
+### Native Figma playback
+| Path | Observed result |
+| --- | --- |
+| [Planning a microscope session](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width&hide-ui=1) → scroll → Comments | The tabs stayed in place, the article stayed at the same scroll position, and the comment card appeared at its position in the scrolling rail. |
+| Getting started → Edit page → Comments → References | The editable title and formatting bar stayed visible, with the same article body as the context rail switched. |
+| Getting started → select the sample sentence → Add comment | The simulated selection menu opened the comment composer on the same article with the original passage highlighted. |
+| Launcher → Review a proposed change → Accept → Page history → Back to page | The updated wording appeared in the reader. History showed the diff and associated thread, and Back returned to the accepted state. |
+| Launcher → Review a recording → Edit transcript → Comments → Audio | The editor kept timestamps and speaker labels. The Audio contents link brought the player into view while the selected tab remained visible. |
+| Generated recording → Comments → Add artifact | The transcript remained visible before the overlay opened, and the Create control still opened the artifact modal after switching tabs. |
+| Using the microscope → Comments → References → booking citation | Tab switching preserved the article. The inline citation selected its matching reference card. Edit page and Cancel also returned to the reader. |
+| Centrifuge → Centrifuge safety → Centrifuge | The overview linked to the safety page, and the wiki tree returned to the overview. |
+
+The count covers structural inspection. Playback sampled the routes above and did not exercise every state or every alternate branch. Joint review and Prototype promotion remain open.
+
+## Figma review comments · 13 Nov 2026
+Reviewed the open threads explicitly addressed to `@agent` against the current wireframes. Closed 68 matching root threads after applying the requested fixes or finding existing verification. Two additional follow-ups were addressed on threads whose parent was already resolved. Design edits were scoped to Staging.
+
+| Area | Result | Verification |
+| --- | --- | --- |
+| [Search](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24863&scaling=scale-down-width&hide-ui=1) | Results identify pages and recordings inline and use excerpts from their source content. | Opened the search mode control and exercised Keyword and Vector concept search in native playback. |
+| [Add page](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-14560&scaling=scale-down-width&hide-ui=1) | The draft uses the shared citation picker. The inline marker sits beside the selected words and can include an optional citation title. | Added wiki, web and manual print citations in playback. Each returned to the same draft and showed its inline marker and matching References card. |
+| [Centrifuge safety](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1974-35251&scaling=scale-down-width&hide-ui=1) | Accept and Reject preserve a submitted reply in the discussion, record the decision and clear the composer. Direct decisions have no scripted human reply. | Exercised both decisions from the reply state in playback. Inspected the history links for both resulting states. |
+| [Home](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-4220&scaling=scale-down-width&hide-ui=1) and [Maintenance](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26421&scaling=scale-down-width&hide-ui=1) | The Home hub has global Create controls without an empty context rail. Maintenance has check-specific links and hierarchical breadcrumbs. Staging navigation puts Maintenance before Notifications. | Opened Add artifact from Home, followed a Maintenance suggestion to its review and checked Notifications on the Maintenance check log in playback. |
+
+### Manual print citation playback
+From Add page, right-click “microscope care instructions” → Add citation → Enter source details → Source type → Book → Add citation. Selecting a source type now advances the picker within the draft. In playback, Book filled the scripted example, and Add citation closed the picker without leaving the draft. The inline `[1]` appeared immediately after “microscope care instructions”. References showed “Shared microscope handbook”, Book, and “The Lab · 2026 · Internal print edition · pp. 12–14”. All six source-type choices were checked in the design for the same in-place transition.
+
+Read back the comment statuses through the Figma connector. Playback used scripted examples and covered the routes listed above.
+
+## Staging follow-up review · 13 Nov 2026
+- [Microscope overview](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=2300-35748&scaling=scale-down-width&hide-ui=1). The article clears the outline. Opened Using the microscope from its guide list in playback.
+- [Using the microscope](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24893&scaling=scale-down-width&hide-ui=1). The internal Booking sheet citation uses standard link styling. Opened the transcript citation preview and inspected its darker border and low-blur shadow in playback.
+- [Orientation recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1). Migrated 43 recording and audio-note outlines to the library outline in their existing sticky hosts. Removed the rich-text toolbar from 19 transcript edit states and kept the transcript actions. Playback covered opening the editor and using its Audio outline link.
+- [Add page](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-14560&scaling=scale-down-width&hide-ui=1). Right-click the sample phrase, choose Add margin note, and click the note field to fill the scripted example. Adding the note closes the dialog and places the number beside the selected phrase and its card in References.
+- [Planning a microscope session](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-37358&scaling=scale-down-width&hide-ui=1). The read and edit states use the shared endnotes, thread and message components. Playback covered opening an inline yellow anchor, resolving its thread, and expanding endnotes and switching Citations only on. The example contains only citations, so all three entries remain when the filter is on.
+- [Getting started history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1934-35180&scaling=scale-down-width&hide-ui=1). The revision timeline stays above resolved threads when switching to Version 2.
+- [Booking sheet history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1956-33070&scaling=scale-down-width&hide-ui=1). Opened Version 4 from Version 5, viewed its snapshot with the earlier cited booking notice, and returned to the Version 4 history detail.
+
+### Recording footer and earlier Booking sheet revisions
+Removed both footer shortcuts across nine Staging orientation recording states. In playback, the Audio outline entry brought the player and endnotes into view without either shortcut. [Orientation recording](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-25765&scaling=scale-down-width&hide-ui=1)
+
+Booking sheet Versions 1–3 have labeled sample copy in their history entries and page snapshots. In playback, selected Versions 1–4 from the timeline, opened each snapshot, and used Page history to return to the matching selected entry. Version 4 shows the earlier cited booking notice. [Booking sheet history](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1956-33070&scaling=scale-down-width&hide-ui=1)
+
+Confirmed all thirteen review threads in this batch are resolved in Figma.
+
+## Booking suggestion and citation decision · 13 Nov 2026
+[Maintenance](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26351&scaling=scale-down-width&hide-ui=1) and Comments on [Using the microscope](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-24893&scaling=scale-down-width&hide-ui=1) open the same agent-initiated booking suggestion. The thread explains the proposed wording and links to the exact Booking sheet revision 5 passage. The published citation opens the revision it cites, including the full source from the preview. Booking sheet history shows the source change.
+
+- **Pending:** Opened the suggestion from Maintenance and from the article’s Comments tab in native Figma playback. The thread’s evidence opened revision 5, and the published inline citation opened revision 4.
+- **Accept:** The article published “two working days ahead” as revision 8. The inline citation and References card opened revision 5. Open source showed the revision 5 wording. Returning through the wiki tree kept the accepted article, and Page history showed the wording diff and citation update in the same revision.
+- **Reject:** The article kept “at least one day ahead” at revision 7. The inline citation opened revision 4 and Open source showed the version 4 snapshot. Returning through the wiki tree kept the rejected state. Page history recorded the review event without a new content revision.
+- After either decision the booking suggestion left the pending Maintenance list. The Centrifuge safety entry remained visible.
+
+### Maintenance queue layout
+The [Staging Maintenance queue](https://www.figma.com/proto/fm5zX32mbG13hahShVgJwd?node-id=1939-26351&scaling=scale-down-width&hide-ui=1) lists one descriptive link per pending suggestion. The check-log frames remain available on the Staging canvas. In native playback, opened the booking suggestion, accepted it, returned to Maintenance and confirmed that only the centrifuge link remained. Opened that link and confirmed it reached the Centrifuge safety suggestion thread.
