@@ -88,7 +88,7 @@ function decorations(doc: Node, state: InlineReviewState) {
               .forEach((e, i) => {
                 const button = document.createElement('button')
                 button.className = 'suggestion-citation text-link'
-                button.textContent = `[${i + 1}]`
+                button.textContent = `[proposed source ${i + 1}]`
                 button.setAttribute('aria-label', `Inspect suggestion source: ${e.title}`)
                 button.addEventListener('click', () => state.onEvidence?.(e))
                 wrapper.append(button)

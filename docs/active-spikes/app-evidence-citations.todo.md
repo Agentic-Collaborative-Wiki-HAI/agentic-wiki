@@ -10,12 +10,13 @@ The M1 evidence contract and approved N2 manual-citation/source-selection slice.
 ## To Do
 Source-change review remains a later slice. The approved manual citation authoring slice is implemented below.
 
-- [ ] Clarify proposal citation numbering when the selected passage already has an article citation; the preview can show adjacent `[1]` markers for the proposed and existing references.
+The N4 proposal-source marker fix is implemented; native verification accompanies the next integrated Chat run.
 
 ## Ready for Human QA
 - Review passage selection, the discussion and evidence presentation, and the accept/reject/history journey in the native app. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
 
 ## Done
+- [x] Clarify proposal citation numbering when the selected passage already has an article citation; the preview can show adjacent `[1]` markers for the proposed and existing references. Pending sources now read `[proposed source 1]`; saved article numbers stay unchanged. The editor regression verifies both markers, correct evidence selection and an unchanged serialized document before and after dismissing the preview.
 - [x] Persist revision-pinned source evidence and citation records.
 - [x] Preview the exact source passage and return to the same discussion.
 - [x] Verify evidence identity, unknown sources, citation/revision atomicity and repeated inline numbering.
