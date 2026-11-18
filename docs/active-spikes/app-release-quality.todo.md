@@ -70,5 +70,5 @@ Frontend formatting, Rust formatting, Clippy with warnings denied and the ordina
 The integrated workspace checkpoint covers create → import → search/cite → review → restart → backup/restore. The first deterministic native journey passed, using labeled candidates and disposable data. Backend checks include content recovery, credential exclusion, corrupt archives and bounded source selection.
 
 - [x] Add the isolated native workspace suite and document reproduction and data boundaries.
-- [ ] Complete the final live imported-source check and regression playback with an unlocked desktop. The current run is blocked at native editor focus; no live candidate has been requested in this batch.
+- [x] Complete the final live imported-source check and native foundation/review/import regressions. Real generation, explicit source selection, review, history, restart and isolated restore pass. Rejection uses a labeled fixture; the Drive regression uses a simulated adapter.
 - [ ] Human QA of page organization, source relevance and restored workspace behavior. See the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).

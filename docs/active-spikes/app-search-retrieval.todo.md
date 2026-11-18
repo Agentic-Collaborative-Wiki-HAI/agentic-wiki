@@ -10,8 +10,8 @@ Owner: Aslan’s agent in this implementation conversation. [Concept](app-search
 - [x] Default agent context to linked sources; allow explicit additions without automatic all-workspace retrieval.
 - [x] Verify long transcripts, conflicting sources, manual citations, source revisions and return paths.
 
-## Remaining verification
-- [ ] Complete the final native source-picker/live-proposal check with an unlocked desktop. The first deterministic journey passed; [QA evidence](../design/app-workspace-qa-2026-11-17.md) records the boundary.
+## Verification
+- [x] Complete the native source-picker/live-proposal check, including explicit addition and removal of other saved evidence before a real request. The live workspace journey and regression suites pass; [QA evidence](../design/app-workspace-qa-2026-11-17.md) records the boundary.
 
 ## Later
 Semantic retrieval, general chat answers and external-source discovery remain deferred.

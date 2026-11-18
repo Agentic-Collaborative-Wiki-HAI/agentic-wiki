@@ -30,3 +30,5 @@ The app-owned connection passed a real native review loop with `gpt-6.2-sol` usi
 
 ## Approved N2 source context — 2026-11-17
 Requests use bounded excerpts from linked sources by default. The thread’s context disclosure offers Choose sources, with other workspace pages available only through explicit opt-in. Pending-suggestion follow-ups preserve their pinned evidence unless the reviewer changes it. The Rust adapter still accepts only explicit revision-bound selections, advertises no tools and rejects oversized or malformed requests. No provider, external search or standing policy changed.
+
+The N2 native workspace run passed real generation from a selected imported excerpt, including explicit inclusion/removal of other workspace evidence before the request. The generated booking correction was checked against its pinned transcript; acceptance and restart retained it. See the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).

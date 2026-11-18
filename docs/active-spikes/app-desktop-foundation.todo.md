@@ -8,7 +8,7 @@ Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Conc
 The local desktop foundation and approved N1–N3 authoring controls: saved navigation, page organization, search/citation selection and workspace recovery. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
-Complete the final unlocked-desktop checks recorded below. Broader Prototype parity remains in the concept brief.
+Human review of the new authoring controls remains open. Broader Prototype parity remains in the concept brief.
 
 ## Ready for Human QA
 The foundation appearance is approved. New review-journey QA is tracked in [S05](app-proposal-review.todo.md) and [S12](app-release-quality.todo.md).
@@ -28,4 +28,4 @@ Aslan launched the native foundation and reported that it looks good. This confi
 Aslan approved the authoring controls for the saved wiki tree, source search/citation picker and workspace recovery settings. The page identity remains stable when its title or location changes.
 
 - [x] Implement create/rename/move, saved breadcrumbs, keyword search, manual citations and backup/restore controls in the native shell.
-- [ ] Complete the final unlocked-desktop regression run; the first deterministic workspace journey passed. Evidence and limits are in the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).
+- [x] Complete the live workspace journey and native foundation/review/import regressions. Evidence and limits are in the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).
