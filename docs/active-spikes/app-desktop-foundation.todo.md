@@ -38,3 +38,8 @@ Aslan approved the authoring controls for the saved wiki tree, source search/cit
 ## Approved interface correction — 2026-11-17
 - [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
 - [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).
+
+## Contributor launch guide — 2026-11-17
+- [x] Add a root README quick start and an agent-assisted launch prompt with the existing agent icon.
+- [x] Expand the app guide with first-install prerequisites, the native launch command, optional sign-in/imports, local-data boundaries, restart/update steps and common startup errors.
+- [ ] Verify the published checkout and pinned dependencies before reporting teammate setup ready.

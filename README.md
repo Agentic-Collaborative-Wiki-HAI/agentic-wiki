@@ -3,9 +3,39 @@ A collaborative knowledge workspace for small academic and research teams, explo
 
 Term project for **INF 385T.13 Human-AI Interaction**, UT Austin iSchool, Fall 2026.
 
-**Current phase:** a local desktop implementation is beginning after the course presentation. The approved Figma Prototype remains the design baseline. The [Tauri + Vue + Rust app](app/README.md) runs locally with persistent editing, subscription-backed passage suggestions, human acceptance/rejection and history, plus Meet/local transcript and notes imports. The complete Prototype and both presentation routes are not implemented. The [implementation map](docs/active-spikes/implementation-planning.md) separates that work into thirteen bounded workstreams.
+**Current phase:** a local desktop implementation is in progress after the course presentation. The approved Figma Prototype remains the design baseline. The [Tauri + Vue + Rust app](app/README.md) runs locally with persistent editing, subscription-backed passage suggestions, human acceptance/rejection and history, plus Meet/local transcript and notes imports. The complete Prototype and both presentation routes are not implemented. The [implementation map](docs/active-spikes/implementation-planning.md) separates that work into thirteen bounded workstreams.
 
 [Figma wireframes](https://www.figma.com/design/fm5zX32mbG13hahShVgJwd/Agentic-Collaborative-Wiki) · [User flows and scenarios](https://www.figma.com/board/zWKFoZeOtzEHpC25y2mg98/User-Flow-and-Scenarios?node-id=88-1085) · [Current issues](https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki/issues) · [Spike index](TODO.md)
+
+## Try the desktop app
+This is an early local prototype, built from source. The checked setup is Apple Silicon macOS; Windows and Linux have not been verified. There is no downloadable installer yet. You can use editing, comments, margin notes and local search without signing in. Agent requests need the app’s **Settings → Continue with ChatGPT** connection; no API key or separate Codex CLI is required.
+
+<a id="run-with-an-agent"></a>
+<h3><img src="assets/agent-hands-head-thumbs-up.png" height="28" alt="Robot head giving a thumbs-up"> Paste this into your agent to run it</h3>
+
+Use a coding agent that can work with files and run commands on your computer. You can paste this before cloning the repository:
+
+```text
+Help me run the Agentic Collaborative Wiki desktop app on this computer: https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki
+
+Use an existing checkout if I have one; otherwise clone the repository with its pinned submodules into an appropriate project folder. Read README.md, AGENTS.md and app/README.md. Inspect my OS and installed tools, then help me install only the missing Git, Node/npm, rustup and OS-specific Tauri prerequisites. Follow the repository's pinned Rust toolchain and lockfiles. Preserve local changes, existing tool installations, app data and credentials; do not reset branches, replace lockfiles or change the application to bypass a setup error. Let me complete any system-installer or account prompts myself.
+
+From app/, run npm ci and npm run desktop. Confirm that the actual desktop window opens and shows the example wiki; a browser preview alone is not enough. Explain how to stop and reopen it, and help diagnose any startup error. For agent features, guide me to Settings → Continue with ChatGPT and let me sign in myself. Do not read or copy Codex credentials, enable paid API fallbacks, or send real documents as a setup test. Google Drive/Agent Hands integration is optional and can wait until I need imports. Don't commit, push or change Figma during setup. Finish with what works and any steps I still need to take.
+```
+
+### Run it yourself
+Install [Node.js 24.13 or newer and npm](https://nodejs.org/en/download), [Rust through rustup](https://rust-lang.org/tools/install/), Git, and the [Tauri prerequisites for your OS](https://v2.tauri.app/start/prerequisites/). On macOS, the desktop build needs Xcode Command Line Tools (`xcode-select --install` if missing). Then open a terminal in the folder where you keep projects:
+
+```sh
+git clone --recurse-submodules https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki.git
+cd agentic-wiki/app
+npm ci
+npm run desktop
+```
+
+The first build downloads and compiles dependencies, so allow a few minutes. Keep the terminal open while using this development launch; press **Ctrl+C** there to stop it. To reopen, return to `agentic-wiki/app` and run `npm run desktop` again. npm runs the Vue/Vite tooling and launches Tauri, which compiles and runs the Rust backend.
+
+Your workspace database, imported documents and sign-in stay on your computer, outside Git. A new user gets fictional example content, not our working data. See the [app guide](app/README.md) for first steps, imports, backups, updates and troubleshooting—including the `cargo metadata` / missing Cargo error.
 
 ## The question
 > How can people delegate knowledge work to an agent in a shared workspace while understanding its evidence, reviewing its proposed changes, and retaining an accountable history?
@@ -62,7 +92,7 @@ Copy this prompt into your agent while working in this repository. It covers gen
 ```text
 Help me get set up to contribute to this Agentic Collaborative Wiki repository. Read README.md and AGENTS.md first, inspect Git and submodule state without overwriting local work, and initialize missing pinned submodules recursively without updating to remote tips or resetting dirty checkouts. Read TODO.md and the relevant project policies, then orient me to the project's purpose, scope, repository layout, current work and available validation. Ask what I want to contribute before starting implementation or creating work records.
 
-Highlight the two workflow collections available here: project-workflows for planning, spikes, contribution coordination and commits, and wireframe-workflows for design-file organization, exploration, components and prototype work. Read the project-owned docs/workflow.toml and use its project-local procedures for project records; use the pinned wireframe-workflows procedures for design work. Project instructions and pinned skills take precedence over global copies. Explain any actual development prerequisites from the repository rather than assuming an application stack exists.
+Highlight the two workflow collections available here: project-workflows for planning, spikes, contribution coordination and commits, and wireframe-workflows for design-file organization, exploration, components and prototype work. Read the project-owned docs/workflow.toml and use its project-local procedures for project records; use the pinned wireframe-workflows procedures for design work. Project instructions and pinned skills take precedence over global copies. For application work, follow app/README.md for the Tauri + Vue + Rust prerequisites, launch instructions and verification limits.
 
 If I will work on wireframes, read design-files.json, docs/design/wireframe-conventions.md and wireframe-workflows/setup-wireframe-workflows/SKILL.md. Establish which owner's pages I will work on and preserve everyone else's work. Check my chosen agent client for an existing design-tool connection. If Figma or Penpot is missing, guide the selected provider's installation, authentication and read-only file verification through that setup skill instead of stopping at a missing connector. Let me complete account authorization and secret entry securely; continue independent repo onboarding while those steps are pending. Offer optional global workflow skill discovery for my chosen clients using each collection's documented procedure, previewing changes and preserving existing installations. Do not install unrelated integrations, change design files or sharing, publish branches, or push during onboarding. Finish with what is ready, what needs my action, and an appropriate first contribution based on my interests.
 ```

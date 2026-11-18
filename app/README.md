@@ -2,14 +2,56 @@
 The local application uses Tauri 2, Vue 3/TypeScript and Rust. Its design baseline is the released Figma Prototype. The current checkpoint implements local page authoring, keyword search, citations, margin notes, passage review, transcript/notes import, sourced global Chat, editable answer-derived drafts and portable backup/restore. App-owned ChatGPT sign-in and the live passage-review journey have been verified on the development Mac. The complete wiki and both presentation demo routes are not implemented. The [Prototype audit](../docs/design/app-prototype-audit-2026-11-17.md) records remaining interface and accessibility differences.
 
 ## Run locally
-Prerequisites: Node 24.13 or newer, npm, Rust installed through rustup, and the [Tauri prerequisites for your operating system](https://v2.tauri.app/start/prerequisites/). Development has been checked on Apple Silicon macOS 15.5 with Command Line Tools. The Rust toolchain is pinned in `rust-toolchain.toml`; npm and Cargo dependencies have lockfiles. Other platforms are not verified.
+The checked development setup is Apple Silicon macOS 15.5. Windows, Linux and Intel Macs have not been verified. There is no packaged installer yet. If you prefer your coding agent to handle setup, use the [copyable launch prompt in the main README](../README.md#run-with-an-agent).
 
-From this directory:
+### Install the prerequisites once
+- **Git** to download and update the repository.
+- **Node.js 24.13 or newer and npm.** Node 24 is the tested major version. Use your existing version manager or the [Node installer](https://nodejs.org/en/download); npm is included with the standard Node distribution.
+- **Rust through [rustup](https://rust-lang.org/tools/install/).** The repository pins Rust 1.100.0 in `rust-toolchain.toml`; rustup selects and downloads it when you run Cargo from `app/`. You do not need to change your global default Rust version.
+- **[Tauri’s platform prerequisites](https://v2.tauri.app/start/prerequisites/).** On macOS, install Xcode Command Line Tools with `xcode-select --install` if they are missing. Windows requires C++ build tools and WebView2; Linux requires the libraries listed for your distribution. Those platforms remain untested in this app.
+
+Open a fresh terminal after installing the tools. Check `git --version`, `node --version`, `npm --version`, `rustup --version` and `cargo --version` before continuing. Rustup’s first toolchain download can take time. npm and Cargo dependencies have committed lockfiles.
+
+### Download and launch
+From the folder where you keep projects:
 ```sh
+git clone --recurse-submodules https://github.com/Agentic-Collaborative-Wiki-HAI/agentic-wiki.git
+cd agentic-wiki/app
 npm ci
 npm run desktop
 ```
-If rustup is installed but `cargo` is not on your PATH, load the environment script rustup supplies before running these commands. `npm run dev` alone starts only the frontend; persistence requires the Tauri application. The browser view reports that limitation rather than substituting an in-memory database.
+If you already have a checkout, start in its `app/` directory with `npm ci` and `npm run desktop`; do not clone over it. The submodules provide contributor workflows and design guidance; the app itself does not load them at runtime.
+
+The first launch compiles the native dependencies and opens **The Lab · Agentic Wiki**. Keep that terminal running; **Ctrl+C** stops the development process. To start again, run `npm run desktop` from `app/`. npm orchestrates the Vue/Vite frontend and Tauri CLI; Cargo builds and runs the Rust backend. `npm run dev` alone is only a frontend preview and cannot save to the native workspace.
+
+### First things to try
+1. Open **Getting started**, choose **Edit page**, change a sentence and **Save page**. **Page history** shows the saved revision.
+2. While reading, select a passage and choose **Comment**. While reading or editing, select text and choose **Add margin note** or **Add citation**. Edit-mode annotations stay in the draft until Save.
+3. To use the agent, open **Settings → Continue with ChatGPT**, complete your own browser sign-in, then select an available model. Return to a passage comment and send `@agent Make this shorter without changing its meaning.` Review the inline suggestion before accepting or rejecting it. Model availability and usage depend on your account; the app has no paid fallback.
+
+The wiki works without ChatGPT sign-in for local reading and authoring. A Codex CLI installation, API key, Google account and Agent Hands are not prerequisites for opening it. [Google Meet imports](#import-meet-transcripts-or-local-exports) are optional. The first launch creates fictional examples; real working data and credentials are not included in the repository.
+
+### Update an existing checkout
+Save your work or wait for **Draft saved on this device**, then stop the development process. From the repository root, inspect `git status`. If you have local changes or divergent commits, preserve them and reconcile before updating; do not reset or discard them to follow these steps. On a clean checkout tracking `main`:
+```sh
+git pull --ff-only
+git submodule update --init --recursive
+cd app
+npm ci
+npm run desktop
+```
+Check submodules for local edits before updating them as well. Restart the app after pulling: an already-running standalone window can still be showing the old build. Updates preserve the local workspace; use **Settings → Backup and restore** before trying significant changes.
+
+### If it does not start
+| Symptom | What to check |
+| --- | --- |
+| `cargo metadata` fails with “No such file or directory,” or `cargo` is not found | Install Rust through rustup if missing. If it is already installed, open a new terminal; on macOS/Linux you can load its environment with `. "$HOME/.cargo/env"`, then check `cargo --version` from `app/` and retry. |
+| `node` or `npm` is not found | Install or activate Node, reopen the terminal, and check both versions. |
+| Native compiler or WebKit/WebView2 dependency errors | Follow Tauri’s prerequisites for your operating system. On macOS, confirm `xcode-select -p` reports the installed developer tools. |
+| Port 1420 is already in use | Stop the earlier development session you started, then retry. Do not terminate an unrelated service. |
+| A browser page appears but persistence is unavailable | Run `npm run desktop`, not just `npm run dev`. |
+| A new feature is missing after an update | Save any draft, close the old app and relaunch from the updated checkout. |
+| Agent access fails | Open Settings and reconnect ChatGPT if needed. Keep using the local wiki; the app reports sign-in, model and usage errors rather than substituting a fake answer. |
 
 ## What works
 - Getting started and an orientation-transcript excerpt are seeded as explicitly fictional example records. Switching pages, the independent wiki/page contents controls, References/Comments tabs and a quiet-on-open Chat drawer work.
