@@ -42,3 +42,8 @@ Citation membership validation does not replace a person's assessment of factual
 ## Approved interface correction — 2026-11-17
 - [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
 - [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).
+
+## Existing generated references — 2026-11-17
+- [x] Trace two existing article markers to accepted proposals from the old automatic-citation behavior.
+- [x] Verify a guarded repair on a database copy, back up the working workspace, and remove those markers in a new revision. Preserve wording, historical snapshots, discussion evidence, decisions and registered source records; do not blanket-delete deliberate citations.
+- [x] Recheck acceptance with no new references in the native authoring suite. [Verification and limits](../design/app-interface-qa-2026-11-17.md#running-window-follow-up--2026-11-17).

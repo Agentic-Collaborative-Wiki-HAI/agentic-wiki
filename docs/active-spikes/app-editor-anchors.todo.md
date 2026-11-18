@@ -32,3 +32,7 @@ The limited Bold/Italic toolbar and broader Prototype editor differences remain 
 ## Approved interface correction — 2026-11-17
 - [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
 - [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).
+
+## Running-window selection follow-up — 2026-11-17
+- [x] Add native macOS Shift–Arrow selection to the edit-mode margin-note regression and rerun the full authoring suite. The menu and insertion pass; pointer drag remains a separate check.
+- [x] Identify the stale ordinary process that lacked the authoring correction; track restart verification in the [interface QA record](../design/app-interface-qa-2026-11-17.md).

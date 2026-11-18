@@ -92,3 +92,8 @@ Successful functional checks do not establish full Prototype fidelity; that is a
 ## Approved interface correction — 2026-11-17
 - [x] Implement the owning changes described in the conceptual record and verify the integrated native authoring journey in a disposable workspace.
 - [ ] Human QA of the corrected interface and interaction. See [interface QA](../design/app-interface-qa-2026-11-17.md).
+
+## Running-window follow-up — 2026-11-17
+- [x] Strengthen the edit-mode annotation test with actual macOS selection keys and rerun native authoring.
+- [x] Distinguish isolated test success from the older ordinary process still open for use; verify backed-up cleanup of its generated references.
+- [x] Confirm the rebuilt ordinary window has loaded the current authoring UI and database migration. [Interface QA](../design/app-interface-qa-2026-11-17.md#running-window-follow-up--2026-11-17).

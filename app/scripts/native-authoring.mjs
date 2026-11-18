@@ -15,6 +15,7 @@ let child,
   session,
   logs = '',
   livePhase = false
+let selectionHelper
 await mkdir(artifacts, { recursive: true })
 await rm(join(artifacts, 'result.json'), { force: true })
 const delay = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -160,13 +161,53 @@ async function openChat() {
     'chat open',
   )
 }
-async function selectParagraph(id, from = 0, to = null) {
+async function selectParagraph(id, from = 0, to = null, nativeKeys = false) {
   await focus()
-  await execute(
-    `const e=document.querySelector('.document-column [data-block-id="'+arguments[0]+'"]');e.scrollIntoView({block:'center'});const r=document.createRange(); const node=e.firstChild; r.setStart(node,arguments[1]);r.setEnd(node,arguments[2]??node.textContent.length);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event('selectionchange'));return true`,
+  if (nativeKeys && process.platform === 'darwin') {
+    await selectWithNativeKeys(id, from, to)
+  } else
+    await execute(
+      `const e=document.querySelector('.document-column [data-block-id="'+arguments[0]+'"]');e.scrollIntoView({block:'center'});const r=document.createRange(); const node=e.firstChild; r.setStart(node,arguments[1]);r.setEnd(node,arguments[2]??node.textContent.length);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event('selectionchange'));return true`,
+      [id, from, to],
+    )
+  await until(async () => !!(await value('.passage-actions')), 'selection popup')
+}
+async function selectWithNativeKeys(id, from, to) {
+  if (!selectionHelper) {
+    selectionHelper = join(data, 'select-with-keys')
+    await new Promise((resolve, reject) =>
+      execFile(
+        'clang',
+        [
+          '-framework',
+          'ApplicationServices',
+          join(root, 'scripts/native-selection-macos.m'),
+          '-o',
+          selectionHelper,
+        ],
+        (error) => (error ? reject(error) : resolve()),
+      ),
+    )
+  }
+  const expected = await execute(
+    `const e=document.querySelector('.document-column [data-block-id="'+arguments[0]+'"]');e.scrollIntoView({block:'center'});e.closest('.tiptap').focus();const r=document.createRange();r.setStart(e.firstChild,arguments[1]);r.collapse(true);const s=getSelection();s.removeAllRanges();s.addRange(r);return e.firstChild.textContent.slice(arguments[1],arguments[2]??undefined)`,
     [id, from, to],
   )
-  await until(async () => !!(await value('.passage-actions')), 'selection popup')
+  assert.match(
+    expected,
+    /^[\x20-\x7e]+$/,
+    'native key fixture uses single-code-unit printable characters',
+  )
+  await delay(100)
+  await new Promise((resolve, reject) =>
+    execFile(selectionHelper, [String(child.pid), String(expected.length)], (error) =>
+      error ? reject(error) : resolve(),
+    ),
+  )
+  await until(
+    async () => (await execute('return getSelection().toString()')) === expected,
+    'native keyboard passage selection',
+  )
 }
 async function addNote(title, body) {
   await clickButton('Add margin note')
@@ -188,7 +229,7 @@ try {
   await request(endpoint('/window/rect'), { width: 1440, height: 960 })
   await clickButton('Edit page')
   await type('[aria-label="Page title"]', 'Session guide', true)
-  await selectParagraph('booking')
+  await selectParagraph('booking', 0, null, true)
   await addNote('Training', 'Contact the equipment lead for training.')
   assert.equal(await value('[data-note-id]'), '[1]')
   assert.equal((await invoke('read_page', { id: 'getting-started' })).revision, 1)
