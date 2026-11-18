@@ -42,4 +42,4 @@ Aslan approved the authoring controls for the saved wiki tree, source search/cit
 ## Contributor launch guide — 2026-11-17
 - [x] Add a root README quick start and an agent-assisted launch prompt with the existing agent icon.
 - [x] Expand the app guide with first-install prerequisites, the native launch command, optional sign-in/imports, local-data boundaries, restart/update steps and common startup errors.
-- [ ] Verify the published checkout and pinned dependencies before reporting teammate setup ready.
+- [x] Verify the published checkout and all three recursive submodule pins. A clean publication checkout passed `npm ci`, TypeScript/Vite build and locked Cargo metadata; a subsequent GitHub clone matched the tested app and README. The app is source-buildable on the checked Mac setup; other platforms and an installer remain unverified.

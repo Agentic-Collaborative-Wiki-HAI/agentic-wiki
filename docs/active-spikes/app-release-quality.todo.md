@@ -8,6 +8,7 @@ Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Conc
 The local app foundation, passage-review and source-import journeys, and approved N1–N6 workspace authoring, recovery and sourced Chat/draft checks. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
+- [ ] Review [GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf) in the npm development toolchain. The publication check reported seven high-severity affected packages through `picomatch`; `npm audit --omit=dev` reported zero advisories. Evaluate compatible fixes and recheck the locked build; the publication pass did not change dependency versions.
 - [ ] Record human review of the complete passage-to-decision journey.
 
 ## Ready for Human QA
