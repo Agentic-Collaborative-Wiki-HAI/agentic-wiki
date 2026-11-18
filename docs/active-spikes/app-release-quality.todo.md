@@ -81,3 +81,10 @@ The integrated workspace checkpoint covers create → import → search/cite →
 - [ ] Human review of Chat answer quality and the draft interaction. See the [Chat QA record](../design/app-chat-qa-2026-11-17.md) for scope and untested conditions.
 
 Successful functional checks do not establish full Prototype fidelity; that is a separately recorded audit.
+
+## Read-only fidelity and accessibility audit — 2026-11-17
+- [x] Capture 21 native states and compare implemented routes with rendered released Prototype boards.
+- [x] Inspect macOS names/roles/states and actual native keys; record inline-citation activation failure, nonstandard tab navigation and an unnamed History dialog.
+- [x] Check wide/default/compact layout and diagnostic text enlargement/reflow/spacing. A small outer scrollWidth is not evidence that all content remains visible.
+- [x] Record exact findings, deliberate differences and unreached states in the [Prototype audit](../design/app-prototype-audit-2026-11-17.md).
+- [ ] Scope and implement the corrective UI batch after review. The functional N4–N6 checkpoint does not close these findings.

@@ -8,10 +8,10 @@ Opened 2026-11-17. Slug: `implementation-planning`. [Concept, map and drafts](im
 The planning pass produced thirteen workstream briefs and an approval slate. Aslan approved D1–D5 and authorized the foundation plus editor/Rust and Codex feasibility checks on 2026-11-17. This coordinating record tracks those decisions and the child evidence. D6–D8 remain deferred. Figma changes, publication and standing-policy amendments are outside this continuation.
 
 ## Current state
-D1–D5 approved on 2026-11-17. Eight workstreams are active for the foundation, M1 review journey and S07 source imports; five remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
+D1–D5 approved on 2026-11-17. Nine workstreams are active: S01–S07, S09 and S12 cover the foundation, passage review, source imports, local authoring, search and recovery; four remain scratch drafts. D6–D8 are deferred. Existing local design edits are preserved; the published release and live Prototype metadata supply the current baseline. The full approval slate belongs in chat, not a file.
 
 ## To Do
-The foundation is committed and the M1 review journey is implemented with passing native checks. App-owned sign-in and live generation/cancellation verification pass. Complete the remaining hands-on interaction QA. S07 source-folder settings and Agent Hands imports are authorized separately; transcription, semantic retrieval and maintenance execution remain deferred. Preserve D5’s explicit context boundary.
+N1–N6 implementation and bounded native/live checks are committed. Human review of the new Chat/draft interaction remains open. Agree the next corrective interface batch using the [Prototype audit](../design/app-prototype-audit-2026-11-17.md); the audit itself is complete and does not authorize those fixes. Transcription, semantic retrieval, automatic maintenance and shared operation remain deferred. Preserve D5's explicit context boundary.
 
 ## Ready for Human QA
 - Review the passage comment → `@agent` reply → inline proposed wording and evidence → accept/reject → history journey, including Settings and returning to the unfinished request. Foundation appearance is approved. The live model check passes; D1–D5 do not need renewed approval.
@@ -46,3 +46,16 @@ The user’s hands-on check confirmed the live mechanics but requested Prototype
 
 ## Source-import checkpoint — 2026-11-17
 The approved S07 slice imports existing Meet documents through Agent Hands and UTF-8 exports through a local source-folder setting. The [active intake spike](app-artifact-intake.md) owns implementation and the [import QA record](../design/app-import-qa-2026-11-17.md) separates fixture UI checks from real provider verification. Chat and Add artifact share explicit preview/confirmation. Import does not invoke a model, ingest the private vault, or activate the deferred transcription and retrieval decisions. The mixed TODO index remains untouched.
+
+## Approved Chat and fidelity continuation — 2026-11-17
+- [x] N4: distinguish proposed source markers from the article's existing citation numbering (S04).
+- [x] N5: implement sourced global Chat with exact evidence inspection, missing-evidence answers, explicit context selection and no request on opening Chat (S06/S09).
+- [x] N6: save an answer as an editable draft with citations and AI provenance; require explicit Save to publish, and verify restart persistence (S02/S03/S04/S09).
+- [x] Audit implemented routes against live released Prototype: rendered layout, interactions, state/return paths and built-product accessibility; separate missing capabilities, implementation mismatches and decisions. Record evidence and unreached states (S01/S12).
+
+The mixed root TODO index and the nine unrelated design files remain outside this continuation. Detailed child records and this coordinating overview carry the app's current status.
+
+## Chat and fidelity checkpoint — 2026-11-17
+N4 is committed as `0fe2fa9`; sourced Chat and editable unpublished drafts are committed as `f2519f4`. The [Chat QA record](../design/app-chat-qa-2026-11-17.md) covers fixture/live answers, missing evidence, draft recovery, publication, citations and history after restart. The [Prototype audit](../design/app-prototype-audit-2026-11-17.md) records twelve implementation/accessibility findings, deliberate local-app differences and unimplemented routes. These findings are proposals for the next batch, not silently approved redesigns. Human QA of Chat/draft usefulness and presentation remains open.
+
+The normal desktop build without test instrumentation is reopened for the user. The root index and nine unrelated design records remain excluded; no push or Figma mutation occurred. This checkpoint does not close the broader child spikes.

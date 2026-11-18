@@ -57,7 +57,7 @@ The first `app/` implementation runs as a native macOS window. It has the shared
 The Codex check produced a negative isolation result, not a failed subscription login. ChatGPT sign-in is available, but this installed app-server build inherits global instructions and a loopback-only request inspection still sees additional tools. The Codex generation path remains disconnected. S06 uses a separately authorized app-owned connection with explicit context and no tools. Its live native verification is recorded below; the inherited coding session is not used for product inference.
 
 ## Proposed workstreams
-S01–S07 and the initial S12 checks are active. S07 currently covers existing text-source import; its media work remains later scope. The other five children remain draft scratch briefs. The IDs below are planning references, not Figma numbering or permanent product identities. Future work is not active or assigned merely because it appears here.
+S01–S07, S09 and S12 are active. S07 currently covers existing text-source import; its media work remains later scope. S09 covers keyword search and the approved sourced-Chat slice. Four children remain draft scratch briefs. The IDs below are planning references, not Figma numbering or permanent product identities. Future work is not active or assigned merely because it appears here.
 
 The existing `.gitignore` rule `scratch/` ignores these new briefs. They are local planning records at this stage. Before a later publication, deliberately include the reviewed drafts or promote them and repair the map links; do not publish an index that depends on missing files. This planning phase does not change ignore rules or stage files.
 
@@ -225,3 +225,6 @@ Aslan confirmed that the live mechanics worked and requested the Prototype’s i
 
 ## N1–N3 continuation — 2026-11-17
 Approved: dynamic page tree and page creation/rename/move (S01/S02), manual citations and local keyword passage search (S04/S09), explicit source selection for requests (S06/S09), and portable backup/restore into separate local copies (S02/S12). Linked sources are the default; additional sources require explicit selection. Shareable links are captured under S13, without activating hosting or publication. Each owning spike tracks its portion and the shared native journey verifies integration.
+
+## N4–N6 and Prototype audit checkpoint — 2026-11-17
+The approved continuation implements distinct proposed-source markers, sourced global Chat with explicit context and editable unpublished answer-derived pages. Real subscription and native persistence journeys pass; [QA](../design/app-chat-qa-2026-11-17.md) records the evidence and limits. The separate [read-only Prototype audit](../design/app-prototype-audit-2026-11-17.md) identifies remaining shell, annotation, search/history, editor and accessibility differences. Its recommended next batch is shared-shell/accessibility alignment, followed by passage-relative notes and dedicated history. Those corrections await scope approval; deferred capabilities remain deferred.

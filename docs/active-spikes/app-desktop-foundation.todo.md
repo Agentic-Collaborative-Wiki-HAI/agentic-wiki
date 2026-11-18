@@ -29,3 +29,8 @@ Aslan approved the authoring controls for the saved wiki tree, source search/cit
 
 - [x] Implement create/rename/move, saved breadcrumbs, keyword search, manual citations and backup/restore controls in the native shell.
 - [x] Complete the live workspace journey and native foundation/review/import regressions. Evidence and limits are in the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).
+
+## Prototype implementation audit — 2026-11-17
+- [x] Compare implemented native routes with live released Prototype boards, recording screenshots outside Git, layout measurements and targeted native accessibility checks.
+- [x] Separate mismatches from deliberate local-app additions and unimplemented routes. [Audit findings A1–A12](../design/app-prototype-audit-2026-11-17.md).
+- [ ] Agree the next corrective batch. Recommended first: persistent breadcrumbs, title/action spacing, usable narrow-window/Chat layout, citation keyboard activation, tab focus behavior, named dialogs and text reflow. No broad UI fix or Figma change was made by this audit.
