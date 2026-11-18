@@ -5,7 +5,7 @@ attention: live
 Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Concept](app-agent-runtime.md).
 
 ## Current scope
-The bounded subscription-backed passage-review runtime and approved N2 source-selection integration. Linked sources are the default; other saved sources require explicit selection. No ambient file access, additional provider or publication is enabled.
+The bounded subscription-backed passage-review runtime, N2 source selection and N5 sourced Chat integration. Linked sources are the default; other saved sources require explicit selection. No ambient file access, additional provider or publication is enabled.
 
 ## To Do
 The implemented M1 runtime has passed its bounded live check. Expiry/refresh, quota-exhaustion and service-outage cases remain release-hardening work; they were not provoked against the real account.
@@ -32,3 +32,10 @@ The app-owned connection passed a real native review loop with `gpt-6.2-sol` usi
 Requests use bounded excerpts from linked sources by default. The thread’s context disclosure offers Choose sources, with other workspace pages available only through explicit opt-in. Pending-suggestion follow-ups preserve their pinned evidence unless the reviewer changes it. The Rust adapter still accepts only explicit revision-bound selections, advertises no tools and rejects oversized or malformed requests. No provider, external search or standing policy changed.
 
 The N2 native workspace run passed real generation from a selected imported excerpt, including explicit inclusion/removal of other workspace evidence before the request. The generated booking correction was checked against its pinned transcript; acceptance and restart retained it. See the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).
+
+## Sourced Chat — 2026-11-17
+- [x] Share the app-owned subscription transport while keeping separate provider-neutral proposal and answer contracts, explicit context, no tools and no model write authority.
+- [x] Persist pending/completed/failed/cancelled turns; reject late completion after cancellation and mark interrupted requests retryable after restart.
+- [x] Verify a real cited answer and explicit missing-evidence response with `gpt-6.2-sol`; inspect the exact source and complete draft publication/restart. [Chat QA](../design/app-chat-qa-2026-11-17.md).
+
+Quota exhaustion, provider-side cancellation and expired-token recovery remain unverified in this batch. Conversation context is bounded and distinct from the selected evidence.

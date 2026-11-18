@@ -10,7 +10,7 @@ The M1 evidence contract and approved N2 manual-citation/source-selection slice.
 ## To Do
 Source-change review remains a later slice. The approved manual citation authoring slice is implemented below.
 
-The N4 proposal-source marker fix is implemented; native verification accompanies the next integrated Chat run.
+The N4 proposal-source marker fix passes unit and native workspace verification; proposed labels and saved article numbering coexist without altering the saved document.
 
 ## Ready for Human QA
 - Review passage selection, the discussion and evidence presentation, and the accept/reject/history journey in the native app. Automated checks are recorded in [M1 verification](../design/app-review-qa-2026-11-17.md); they do not replace human QA.
@@ -31,3 +31,10 @@ Manual citation authoring selects an exact saved excerpt and pins its source rev
 - [x] Add citation from selected article text, inspect the source, and persist the citation with its new document revision atomically.
 - [x] Expose citations in References and collapsible endnotes, with a return to the inline marker.
 - [x] Verify stale/invalid anchors, source pinning, Unicode boundaries and retry idempotency. The [workspace QA record](../design/app-workspace-qa-2026-11-17.md) records the passed deterministic and live journeys, regression checks and remaining display follow-up.
+
+## Chat evidence and native marker verification — 2026-11-17
+- [x] Verify `[proposed source 1]` beside the article's saved `[1]` in the native workspace route before acceptance.
+- [x] Keep answer citations tied to exact saved source revisions; reject unselected or missing IDs.
+- [x] Carry deduplicated citations into an unpublished editable draft and explicit publication, with source inspection and origin/history after restart. [Chat QA](../design/app-chat-qa-2026-11-17.md).
+
+Citation membership validation does not replace a person's assessment of factual support.

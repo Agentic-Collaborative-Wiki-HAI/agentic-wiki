@@ -360,6 +360,16 @@ try {
     await reloadPage('Booking notes')
   }
   assert.ok(await value('.inline-suggestion'), 'suggested wording is inline in the real article')
+  assert.match(
+    await value('.inline-suggestion'),
+    /proposed source 1/,
+    'proposed sources have a distinct label',
+  )
+  assert.equal(
+    await value('[data-citation-id]'),
+    '[1]',
+    'existing article citation keeps its own number',
+  )
   await screenshot('suggestion-before-accept')
   console.log('Suggestion ready.')
   await clickButton('Accept')

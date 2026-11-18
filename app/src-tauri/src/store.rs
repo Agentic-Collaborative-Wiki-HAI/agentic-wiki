@@ -57,6 +57,7 @@ impl Store {
             .map_err(|e| Error::Invalid(format!("Migration failed: {e}")))?;
         let store = Self { pool };
         store.seed().await?;
+        sqlx::query("UPDATE chat_turns SET status='failed',error='The app closed before this answer completed. Retry when ready.' WHERE status='pending'").execute(&store.pool).await?;
         Ok(store)
     }
     async fn seed(&self) -> Result<(), Error> {

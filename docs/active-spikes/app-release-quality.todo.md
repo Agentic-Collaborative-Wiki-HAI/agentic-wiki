@@ -5,7 +5,7 @@ attention: live
 Opened 2026-11-17. Owner: Aslan’s agent in this foundation conversation. [Concept](app-release-quality.md).
 
 ## Current scope
-The local app foundation, passage-review and source-import journeys, and approved N1–N3 workspace authoring/recovery checks. No publication, Figma edits or standing policy changes are part of this work.
+The local app foundation, passage-review and source-import journeys, and approved N1–N6 workspace authoring, recovery and sourced Chat/draft checks. No publication, Figma edits or standing policy changes are part of this work.
 
 ## To Do
 - [ ] Record human review of the complete passage-to-decision journey.
@@ -72,3 +72,12 @@ The integrated workspace checkpoint covers create → import → search/cite →
 - [x] Add the isolated native workspace suite and document reproduction and data boundaries.
 - [x] Complete the final live imported-source check and native foundation/review/import regressions. Real generation, explicit source selection, review, history, restart and isolated restore pass. Rejection uses a labeled fixture; the Drive regression uses a simulated adapter.
 - [ ] Human QA of page organization, source relevance and restored workspace behavior. See the [workspace QA record](../design/app-workspace-qa-2026-11-17.md).
+
+## N4–N6 verification — 2026-11-17
+- [x] Pass 11 frontend tests, 86 Rust tests including generated-type exports, ten valid/four invalid editor-contract cases, type checking and frontend build.
+- [x] Pass native Chat fixtures and a real subscription answer → evidence → editable unpublished draft → close/restart → explicit Save → citations/history/restart journey, plus honest missing-evidence output.
+- [x] Rerun native workspace, review and foundation suites; include the N4 proposed/saved source-label assertion.
+- [x] Pass frontend/Rust formatting, Clippy with warnings denied and an ordinary desktop build without test instrumentation.
+- [ ] Human review of Chat answer quality and the draft interaction. See the [Chat QA record](../design/app-chat-qa-2026-11-17.md) for scope and untested conditions.
+
+Successful functional checks do not establish full Prototype fidelity; that is a separately recorded audit.

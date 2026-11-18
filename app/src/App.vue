@@ -5,6 +5,14 @@ import { hasUnsupportedPaste, wikiExtensions } from './editor'
 import { api } from './api'
 import ReviewRail from './ReviewRail.vue'
 import AgentSettings from './AgentSettings.vue'
+import GlobalChat from './GlobalChat.vue'
+import AnswerDraftEditor from './AnswerDraftEditor.vue'
+import { chatApi } from './chatApi'
+import type { AnswerDraft } from './generated/AnswerDraft'
+import type { ChatTurn } from './generated/ChatTurn'
+const answerDraft = ref<AnswerDraft | null>(null)
+const pageOrigin = ref<ChatTurn | null>(null)
+const globalChat = ref<InstanceType<typeof GlobalChat>>()
 import SelectionActions from './SelectionActions.vue'
 import ImportSource from './ImportSource.vue'
 import { sourceApi } from './sourceApi'
@@ -104,8 +112,7 @@ const error = ref(''),
   draftState = ref(''),
   selectedText = ref('')
 const revisionHistory = ref<InstanceType<typeof RevisionHistory>>()
-const chatButton = ref<HTMLButtonElement>(),
-  chatClose = ref<HTMLButtonElement>()
+const chatButton = ref<HTMLButtonElement>()
 let draftTimer: ReturnType<typeof setTimeout> | undefined
 let draftWrites = Promise.resolve()
 let loadSequence = 0
@@ -186,11 +193,12 @@ async function loadPage(id: string) {
   error.value = ''
   status.value = ''
   try {
-    const loaded = await api.read(id)
+    const [loaded, origin] = await Promise.all([api.read(id), chatApi.origin(id)])
     if (seq !== loadSequence) return
     editor.value?.destroy()
     reviewPreview.value = { proposal: null, anchor: null, editing: false }
     page.value = loaded
+    pageOrigin.value = origin
     selectionAnchor.value = null
     selectedText.value = ''
     editor.value = new Editor({
@@ -325,13 +333,15 @@ function scrollTo(id: string) {
 async function toggleChat() {
   chatOpen.value = !chatOpen.value
   await nextTick()
-  ;(chatOpen.value ? chatClose.value : chatButton.value)?.focus()
+  if (chatOpen.value) globalChat.value?.focus()
+  else chatButton.value?.focus()
 }
 function goHome() {
   settingsOpen.value = false
   void loadPage('getting-started')
 }
 function openSettings() {
+  chatOpen.value = false
   settingsOpen.value = true
 }
 async function closeSettings() {
@@ -391,6 +401,32 @@ async function openOriginal() {
     error.value = String(e)
   }
 }
+function openAnswerDraft(draft: AnswerDraft) {
+  if (editing.value || busy.value || settingsOpen.value) return
+  answerDraft.value = draft
+  chatOpen.value = false
+}
+function closeAnswerDraft() {
+  answerDraft.value = null
+  chatOpen.value = true
+}
+async function openChatPage(id: string) {
+  if (editing.value || busy.value) return
+  chatOpen.value = false
+  await loadPage(id)
+}
+async function publishAnswer(saved: Page) {
+  answerDraft.value = null
+  await refreshSources()
+  await loadPage(saved.id)
+  status.value = 'Page saved. Its AI origin and source citations are retained.'
+}
+async function showAnswerOrigin() {
+  if (!pageOrigin.value) return
+  chatOpen.value = true
+  await nextTick()
+  await globalChat.value?.focusTurn(pageOrigin.value)
+}
 onMounted(async () => {
   await loadPage('getting-started')
   try {
@@ -418,7 +454,7 @@ onBeforeUnmount(() => {
         >
           <img :src="icon('tree')" alt="" />
         </button>
-        <button class="brand" @click="goHome">The Lab</button>
+        <button class="brand" :disabled="!!answerDraft" @click="goHome">The Lab</button>
         <nav v-if="settingsOpen" class="breadcrumbs" aria-label="Breadcrumb">
           <span>Settings</span><span>/</span
           ><span class="crumb-current">Connections and sources</span>
@@ -426,7 +462,11 @@ onBeforeUnmount(() => {
         <nav v-else class="breadcrumbs" aria-label="Breadcrumb">
           <template v-for="(r, index) in breadcrumb" :key="r.id"
             ><span v-if="index">/</span
-            ><button :class="{ 'crumb-current': r.id === page?.id }" @click="loadPage(r.id)">
+            ><button
+              :class="{ 'crumb-current': r.id === page?.id }"
+              :disabled="!!answerDraft"
+              @click="loadPage(r.id)"
+            >
               {{ r.title }}
             </button></template
           >
@@ -435,7 +475,7 @@ onBeforeUnmount(() => {
       <button
         class="search search-launch"
         aria-label="Search wiki"
-        :disabled="editing || busy"
+        :disabled="editing || busy || !!answerDraft"
         @click="passagePicker?.open('navigate')"
       >
         <img :src="icon('search')" alt="" />Search wiki
@@ -452,19 +492,33 @@ onBeforeUnmount(() => {
         </button>
         <button
           class="compact settings-button"
+          :disabled="!!answerDraft"
           :aria-current="settingsOpen ? 'page' : undefined"
           @click="openSettings"
         >
           <img :src="icon('settings')" alt="" />Settings
         </button>
-        <button ref="chatButton" class="compact" :aria-expanded="chatOpen" @click="toggleChat">
+        <button
+          ref="chatButton"
+          :disabled="!!answerDraft"
+          class="compact"
+          :aria-expanded="chatOpen"
+          @click="toggleChat"
+        >
           <img :src="icon('chat')" alt="" />Chat
         </button>
       </nav>
     </header>
     <AgentSettings v-if="settingsOpen" @back="closeSettings" />
+    <AnswerDraftEditor
+      v-if="answerDraft"
+      :draft="answerDraft"
+      :records="records"
+      @close="closeAnswerDraft"
+      @published="publishAnswer"
+    />
     <div
-      v-show="!settingsOpen"
+      v-show="!settingsOpen && !answerDraft"
       class="workspace"
       :class="{ 'tree-hidden': !treeOpen, 'contents-hidden': !contentsOpen }"
     >
@@ -526,16 +580,21 @@ onBeforeUnmount(() => {
             }}
             ·
             {{
-              currentSource
-                ? 'Saved on this device'
-                : page.revision === 1 &&
-                    ['getting-started', 'orientation-recording'].includes(page.id)
-                  ? 'Example workspace'
-                  : 'Edited by you'
+              pageOrigin
+                ? 'Created from an AI answer · Published by you'
+                : currentSource
+                  ? 'Saved on this device'
+                  : page.revision === 1 &&
+                      ['getting-started', 'orientation-recording'].includes(page.id)
+                    ? 'Example workspace'
+                    : 'Edited by you'
             }}
             · Revision
             {{ page.revision }}
           </p>
+          <button v-if="pageOrigin" class="text-link answer-origin" @click="showAnswerOrigin">
+            View originating Chat answer
+          </button>
           <div v-if="currentSource" class="source-provenance">
             <p>
               Imported from
@@ -593,11 +652,15 @@ onBeforeUnmount(() => {
           <div class="create-actions">
             <button
               class="compact"
-              :disabled="editing || busy"
+              :disabled="editing || busy || !!answerDraft"
               @click="pageDetails?.open(null, page?.id ?? null)"
             >
               <img :src="icon('plus')" alt="" />Add page</button
-            ><button class="compact" :disabled="editing || busy" @click="importer?.open()">
+            ><button
+              class="compact"
+              :disabled="editing || busy || !!answerDraft"
+              @click="importer?.open()"
+            >
               <img :src="icon('plus')" alt="" />Add artifact
             </button>
           </div>
@@ -637,28 +700,17 @@ onBeforeUnmount(() => {
       </aside>
     </div>
     <footer>The Lab <span>Local workspace · Includes fictional starter pages</span></footer>
-    <aside
-      v-if="chatOpen"
-      class="chat-drawer"
-      aria-label="Agent global chat"
-      @keydown.esc="toggleChat"
-    >
-      <div class="chat-title">
-        <h2>Agent global chat</h2>
-        <button ref="chatClose" class="compact" @click="toggleChat">
-          <img :src="icon('chat')" alt="" />Close chat
-        </button>
-      </div>
-      <p>Ask the agent about your workspace.</p>
-      <p class="muted">
-        Global chat is planned for a later milestone. You can already ask @agent in a passage’s
-        comment thread.
-      </p>
-      <button class="text-link" :disabled="editing || busy" @click="importer?.open()">
-        Import a transcript or notes
-      </button>
-      <textarea aria-label="Message Agent" placeholder="Message Agent…" disabled></textarea>
-    </aside>
+    <GlobalChat
+      ref="globalChat"
+      :open="chatOpen"
+      :page="page"
+      :can-open-draft="!editing && !busy && !settingsOpen"
+      @close="toggleChat"
+      @settings="openSettings"
+      @import="importer?.open()"
+      @draft="openAnswerDraft"
+      @page="openChatPage"
+    />
     <PageDetails ref="pageDetails" :records="records" @saved="detailsSaved" />
     <PassagePicker ref="passagePicker" @navigate="openSearchHit" @cite="cite" />
     <ImportSource ref="importer" :page="page" @imported="imported" @settings="openSettings" />

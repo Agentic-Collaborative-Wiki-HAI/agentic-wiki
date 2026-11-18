@@ -3,7 +3,12 @@ compile_error!("Native WebDriver instrumentation is only allowed in debug builds
 
 pub mod agent;
 pub mod backup;
+pub mod chat;
+#[cfg(test)]
+mod chat_tests;
 pub mod codex;
+#[cfg(feature = "desktop")]
+mod desktop_chat;
 #[cfg(feature = "desktop")]
 mod desktop_workspace;
 pub mod domain;
@@ -30,6 +35,7 @@ mod desktop {
         domain::RichDocument,
         store::{Draft, HistoryEntry, Page, Store},
     };
+    use crate::desktop_chat::*;
     use crate::desktop_imports::*;
     use crate::desktop_review::*;
     use crate::desktop_workspace::*;
@@ -137,6 +143,16 @@ mod desktop {
                 Ok(())
             })
             .invoke_handler(tauri::generate_handler![
+                chat_context,
+                chat_turns,
+                ask_chat,
+                answer_drafts,
+                create_answer_draft,
+                save_answer_draft,
+                publish_answer_draft,
+                chat_page_origin,
+                #[cfg(feature = "native-e2e")]
+                native_test_chat,
                 wiki_records,
                 create_wiki_page,
                 organize_wiki_page,

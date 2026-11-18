@@ -18,7 +18,7 @@ pub struct WikiRecord {
     pub metadata_version: i32,
     pub imported: bool,
 }
-fn title(value: &str) -> Result<&str, Error> {
+pub(crate) fn title(value: &str) -> Result<&str, Error> {
     let value = value.trim();
     if value.is_empty() || value.chars().count() > 200 || value.chars().any(char::is_control) {
         return Err(Error::Invalid(
@@ -27,7 +27,7 @@ fn title(value: &str) -> Result<&str, Error> {
     }
     Ok(value)
 }
-async fn parent_valid(
+pub(crate) async fn parent_valid(
     conn: &mut SqliteConnection,
     id: &str,
     parent: Option<&str>,

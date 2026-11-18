@@ -128,12 +128,13 @@ async fn validate_copy(path: &Path) -> Result<i64, Error> {
     {
         return Err(bad("Backup contains broken record references."));
     }
+    crate::chat::validate_chat_records(&mut conn).await?;
     let heads:i64=sqlx::query_scalar("SELECT count(*) FROM objects o LEFT JOIN revisions r ON r.object_id=o.id AND r.revision=o.current_revision WHERE r.object_id IS NULL").fetch_one(&mut conn).await?;
     if heads != 0 {
         return Err(bad("Backup is missing current page revisions."));
     }
     for row in sqlx::query(
-        "SELECT document_json FROM revisions UNION ALL SELECT document_json FROM drafts",
+        "SELECT document_json FROM revisions UNION ALL SELECT document_json FROM drafts UNION ALL SELECT document_json FROM chat_page_drafts",
     )
     .fetch_all(&mut conn)
     .await?

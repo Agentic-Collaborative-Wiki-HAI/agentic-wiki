@@ -4,7 +4,7 @@ status: active
 opened: "2026-11-17"
 ---
 # S09 · Wiki search, source finding and grounded answers
-Active spike: `app-search-retrieval`. Aslan approved the N2 keyword search/source selection slice on 2026-11-17. Semantic retrieval and general chat answers remain later scope. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M3; semantic retrieval is a separate gate within this spike. Owner: Aslan’s agent in this implementation conversation.
+Active spike: `app-search-retrieval`. Aslan approved the N2 keyword search/source selection slice and N5–N6 sourced Chat and answer-derived drafts on 2026-11-17. Semantic retrieval remains later scope. [Build map, evidence and decisions](implementation-planning.md). Intended delivery: M3; semantic retrieval is a separate gate within this spike. Owner: Aslan’s agent in this implementation conversation.
 
 ## Outcome
 Find pages and source passages, distinguish their location and provenance, and ask a question whose answer links to inspectable evidence.
@@ -54,4 +54,9 @@ Continues from: docs/active-spikes/implementation-planning.md
 ## Implemented keyword slice
 SQLite FTS5 indexes only current saved paragraphs, with source IDs, revisions and UTF-16 offsets. Title changes refresh the index; parent changes update result breadcrumbs. Drafts stay outside search. Results open their saved passage; reopening wiki search retains the last query. The same picker supplies manual citations and explicitly chosen agent evidence. Default evidence includes deduplicated pinned citations plus relevant excerpts from directly linked sources, bounded to six excerpts and 12 KB of source text. Explicit selection supports up to eight excerpts; the request validator retains its total payload limit. Search ranking is lexical relevance, not evidence sufficiency.
 
-The broader filters/sort, semantic retrieval, judged corpus, general answers and external discovery in the roadmap remain unfinished; completing this slice does not close S09.
+The broader filters/sort, semantic retrieval, judged corpus and external discovery in the roadmap remain unfinished; completing these slices does not close S09.
+
+## Implemented sourced Chat and draft slice
+Chat waits for a deliberate message. Its default evidence combines bounded relevant excerpts from the current page and linked sources, up to eight excerpts and 16 KB of source text. Other workspace sources require explicit selection. Up to three completed exchanges within an 8 KB conversation budget preserve context; the complete request is limited to 32 KB. Prior answers cannot substitute for current evidence. Answers reject unknown source IDs and disclose missing evidence rather than fabricating an answer. These are structural safeguards, not automatic proof of factual support.
+
+An answer can create one editable unpublished draft with title, parent, rich text, pinned citations and AI origin. Draft creation never adds a wiki object or search result. Explicit Save page publishes a revision atomically; recovery retains drafts, answers and provenance. The [Chat QA record](../design/app-chat-qa-2026-11-17.md) distinguishes fixture checks from the passing real-subscription journey. Human review of usefulness and interface fit remains open.

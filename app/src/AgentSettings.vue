@@ -70,8 +70,8 @@ onBeforeUnmount(() => {
         {{ connection?.connected ? 'Reconnect ChatGPT' : 'Continue with ChatGPT' }}
       </button>
       <label v-if="models.length" class="model-setting"
-        >Suggestion model
-        <select v-model="model" aria-label="Suggestion model" :disabled="agentBusy">
+        >Agent model
+        <select v-model="model" aria-label="Agent model" :disabled="agentBusy">
           <option v-for="m in models" :key="m.slug" :value="m.slug">{{ m.displayName }}</option>
         </select>
       </label>
@@ -93,6 +93,11 @@ onBeforeUnmount(() => {
         before sending.
       </p>
       <p>Suggested edits stay pending until you accept or reject them.</p>
+      <p>
+        Global Chat responds only when you send a message. Answers use excerpts from the current
+        page and linked sources by default; Choose sources lets you include other saved material.
+        You can turn an answer into a draft, review it and save it as a page.
+      </p>
     </section>
   </main>
 </template>

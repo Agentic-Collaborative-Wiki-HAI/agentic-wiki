@@ -189,12 +189,12 @@ try {
   await until(
     async () =>
       await execute('return !!document.querySelector(arguments[0])?.value', [
-        '[aria-label="Suggestion model"]',
+        '[aria-label="Agent model"]',
       ]),
     'model catalog in Settings',
   )
   const model = await execute('return document.querySelector(arguments[0]).value', [
-    '[aria-label="Suggestion model"]',
+    '[aria-label="Agent model"]',
   ])
   await clickButton('Back to page')
   assert.match(

@@ -1,5 +1,5 @@
 # Agentic Wiki desktop app
-The local application uses Tauri 2, Vue 3/TypeScript and Rust. Its design baseline is the released Figma Prototype. The current checkpoint implements local page organization, keyword search, citations, passage review, transcript/notes import and portable backup/restore. App-owned ChatGPT sign-in and the live passage-review journey have been verified on the development Mac. The complete wiki and both presentation demo routes are not implemented.
+The local application uses Tauri 2, Vue 3/TypeScript and Rust. Its design baseline is the released Figma Prototype. The current checkpoint implements local page organization, keyword search, citations, passage review, transcript/notes import, sourced global Chat, editable answer-derived drafts and portable backup/restore. App-owned ChatGPT sign-in and the live passage-review journey have been verified on the development Mac. The complete wiki and both presentation demo routes are not implemented.
 
 ## Run locally
 Prerequisites: Node 24.13 or newer, npm, Rust installed through rustup, and the [Tauri prerequisites for your operating system](https://v2.tauri.app/start/prerequisites/). Development has been checked on Apple Silicon macOS 15.5 with Command Line Tools. The Rust toolchain is pinned in `rust-toolchain.toml`; npm and Cargo dependencies have lockfiles. Other platforms are not verified.
@@ -12,7 +12,7 @@ npm run desktop
 If rustup is installed but `cargo` is not on your PATH, load the environment script rustup supplies before running these commands. `npm run dev` alone starts only the frontend; persistence requires the Tauri application. The browser view reports that limitation rather than substituting an in-memory database.
 
 ## What works
-- Getting started and an orientation-transcript excerpt are seeded as explicitly fictional example records. Switching pages, the independent wiki/page contents controls, References/Comments tabs and an empty Chat drawer work.
+- Getting started and an orientation-transcript excerpt are seeded as explicitly fictional example records. Switching pages, the independent wiki/page contents controls, References/Comments tabs and a quiet-on-open Chat drawer work.
 - Add page creates a saved record in the wiki tree. Rename / move changes its title or parent while preserving its ID, content revisions, citations and discussions. Breadcrumbs and search results follow its saved location.
 - Search wiki finds saved paragraphs by keyword and opens the matching passage. Select text → Add citation to inspect a saved source excerpt and attach its revision-pinned citation. References and collapsible endnotes open that evidence; endnotes return to the inline citation.
 - The bounded editor supports paragraphs, headings, basic inline formatting, links and citation identities. Save publishes a revision; Cancel discards the draft and preserves the saved document. Unsupported pasted structures are rejected with an explanation.
@@ -21,9 +21,10 @@ If rustup is installed but `cargo` is not on your PATH, load the environment scr
 - Proposed wording appears inline in the article as deleted and inserted text, while remaining separate from the saved document. The thread holds the explanation, pinned evidence and decision controls. You can reply with `@agent` for another version, edit the proposed wording inline, accept or reject; resolving the thread is a separate action. Accept publishes wording and citations together. A stale suggestion cannot be accepted until it is refreshed and reviewed.
 - History shows saved page revisions alongside associated discussions and decisions. Comments, original and revised candidates, citations and decisions survive restart. References/Comments tabs remain visible while scrolling a long discussion.
 - Add artifact and Chat share a source importer: browse local text exports or Meet documents through Agent Hands, preview, choose transcript versus notes, optionally link to the current page, and confirm. Sources remain editable and revisioned; unchanged imports open the existing copy and changed imports require confirmation.
+- Global Chat answers deliberate questions using inspectable saved excerpts. Answers retain their source revisions and can become editable, unpublished drafts; only Save page adds one to the wiki.
 - SQLite transactions enforce document validation, revision preconditions, idempotent decisions and rollback.
 
-Binary media intake/playback, semantic/vector search, natural-language global agent chat, sharing and the remaining routes are not implemented. Their controls are disabled or explicitly describe the current limit. The recording fixture contains an excerpt, not a playable imported recording.
+Binary media intake/playback, semantic/vector search, automatic maintenance, sharing and the remaining routes are not implemented. Their controls are disabled or explicitly describe the current limit. The recording fixture contains an excerpt, not a playable imported recording.
 
 ## Data and boundaries
 The database lives in the operating system's application-data directory for `org.agentic-wiki.desktop`, outside the repository. On macOS this is `~/Library/Application Support/org.agentic-wiki.desktop/wiki.sqlite`. The first launch creates example content; subsequent launches preserve saved revisions. This is one local operator's workspace, without shared authentication or a reviewer-permission system.
@@ -50,6 +51,14 @@ npm run probe:codex -- /absolute/path/to/codex
 ```
 The argument is optional when `codex` is on PATH. The tested Codex `0.169.0-alpha.11.1` inherited global instructions and additional tools; that generation path stays disabled. The probe checks metadata in its own temporary app-server session, never calls `turn/start`, and does not alter global configuration or read authentication files.
 
+## Ask a question and create a draft page
+1. Open **Chat** and write a question. Opening the drawer makes no model request. **Sources for this question** shows relevant excerpts from the current page and its linked sources; **Choose sources** lets you remove them or explicitly add other saved material.
+2. Send the question. The app uses the model selected in Settings. Inspect the numbered citations to read the exact saved excerpts. If those excerpts cannot answer the question, the response should explain what is missing; that is not a claim that the answer exists nowhere in the workspace.
+3. Choose **Create draft page** on a supported answer. Review its title, location, body and citations. Its AI origin and model remain visible. Drafts autosave after 350 ms idle; wait for **Draft saved on this device** before quitting. **Keep draft and close** flushes pending edits; reopen through **Continue draft** in Chat.
+4. **Save page** publishes the reviewed draft to the local wiki. Before that action it is absent from the tree and search. The saved page links back to its originating answer, keeps its citations, and survives restart with revision history.
+
+Chat sends up to eight revision-pinned excerpts, with default source text bounded to 16 KB, plus up to three recent completed exchanges within an 8 KB conversation budget. The total request is limited to 32 KB. Prior answers provide conversational context, not evidence; new citations must come from the current selected sources. No whole-vault search, ambient files, external tools, or automatic publication is enabled. The validator checks citation identity and request structure; a human still needs to judge whether the cited text supports the answer. Chat history displays the latest 50 exchanges; saved-page origin links can reopen older originating answers.
+
 ## Import Meet transcripts or local exports
 1. Open **Settings → Sources**. For local sync, set an absolute folder path containing UTF-8 `.txt`, `.md`, `.srt` or `.vtt` exports. Only files directly inside that folder are listed; `.gdoc` files are shortcuts and need the Drive path instead.
 2. For Meet, use **Find installed tool** or enter the installed Agent Hands `use-google-drive/scripts/drive` path, plus its existing Google account alias. Optionally set the Meet folder link/ID; imports will be restricted to that folder and its subfolders. Agent Hands owns the account access; the app does not copy its credentials. If account access is missing, use Agent Hands’ `setup-google-services` guidance to establish it first.
@@ -67,7 +76,7 @@ This is an explicit import, without background folder watching or “a meeting h
 3. Choose **Use after restarting**, then close and reopen the app. The original workspace remains selectable in Settings. Restored databases live under the app-data directory’s `restored/<copy-id>/` folder.
 4. Reconnect ChatGPT and configure sources in the restored copy. Credentials, account aliases, CLI paths and local source-folder settings are excluded. Content provenance, including original source identities/paths, remains part of the private content backup.
 
-The archive includes saved pages, original imported text, all revisions, citation identities, threads, candidates, review decisions, draft documents and title/location events. Search indexes are disposable and rebuild from saved content. Backups are unencrypted private files, limited to 100 MB, and currently require the same database schema/migrations as the exporting app. This is local recovery and portability, without sync, publishing or shared access.
+The archive includes saved pages, original imported text, all revisions, citation identities, threads, candidates, review decisions, draft documents, Chat answers and their unpublished page drafts, and title/location events. Search indexes are disposable and rebuild from saved content. Backups are unencrypted private files, limited to 100 MB, and currently require the same database schema/migrations as the exporting app. This is local recovery and portability, without sync, publishing or shared access.
 
 ## Verify changes
 ```sh
@@ -78,6 +87,14 @@ npm run test:import:native
 npm run test:workspace:native
 ```
 `check` runs frontend tests, Rust behavior/type-export tests, real ProseMirror-versus-Rust patch comparisons, TypeScript checks and the frontend production build. `test:native` compiles a debug-only WebDriver build and tests the actual native window and Rust/SQLite boundary. It uses its own temporary database and writes screenshots/results under ignored `.artifacts/native-smoke/`. The review suite uses port 4447 and `.artifacts/native-review/`; the foundation suite uses port 4446. The import suite uses port 4448 and `.artifacts/native-import/`, with local exports and a labeled Agent Hands fixture. The workspace suite uses port 4450 and `.artifacts/native-workspace/`; it covers create → import → search/cite → review → restart → backup/restore. Set `WIKI_RUN_LIVE_CHECK=1` for an explicitly authorized run that uses the app-owned connection for its imported-source suggestion; rejection still uses a labeled fixture, and restored-copy checks disable the live connection override. Run native suites sequentially; each port must be free. Keep the desktop unlocked so the native editor can receive focus and text selections. The review suite injects explicitly labeled test candidates through a debug-only command, never through the product UI or as a fallback for failed inference. No browser-only IPC mock substitutes for these native checks.
+
+The Chat suite uses port 4452 and ignored `.artifacts/native-chat/` output. It checks quiet opening, context selection, evidence inspection, editable draft recovery, explicit publication, history and restart against the real Tauri/SQLite app:
+```sh
+npm run test:chat:native
+# Only when a live check has been explicitly authorized:
+WIKI_RUN_LIVE_CHECK=1 npm run test:chat:native
+```
+The ordinary run uses clearly labeled fictional answers. The opt-in live run uses the app-owned ChatGPT connection in place and fictional workspace content; it also checks an unsupported question. Both use disposable databases. These checks do not imply complete Prototype parity. See the [Chat QA record](../docs/design/app-chat-qa-2026-11-17.md).
 
 The live review suite is opt-in and consumes ChatGPT plan usage:
 ```sh

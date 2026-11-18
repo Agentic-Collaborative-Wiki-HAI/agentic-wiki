@@ -143,7 +143,10 @@ try {
   assert.ok(await value('.chat-drawer'))
   assert.equal(await value('[data-block-id=booking]'), original)
   await clickButton('Close chat')
-  assert.equal(await value('.chat-drawer'), null)
+  assert.equal(
+    await execute('return !!document.querySelector(".chat-drawer")?.getClientRects().length'),
+    false,
+  )
   await clickButton('Microscope orientation recording')
   assert.equal(await value('h1'), 'Microscope orientation recording')
   await clickButton('Getting started with the microscope')
